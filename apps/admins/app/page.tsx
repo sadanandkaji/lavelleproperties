@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import PropertyForm from "./components/PropertyForm";
 import PropertyCard from "./components/PropertyCard";
 import AmenityModal from "./components/AmenityModal";
@@ -11,6 +12,7 @@ interface AmenityModalState {
 }
 
 export default function AdminPage() {
+  const router = useRouter();
   const [properties, setProperties] = useState<any[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -18,6 +20,14 @@ export default function AdminPage() {
     isOpen: false,
     category: "BASIC",
   });
+
+  // Client-side auth guard — redirects to /login if no token
+  useEffect(() => {
+    const token = localStorage.getItem("admin_token");
+    if (!token) {
+      router.replace("/login");
+    }
+  }, [router]);
 
   const fetchData = async () => {
     try {
@@ -43,6 +53,16 @@ export default function AdminPage() {
 
   const closeAmenityModal = () => {
     setAmenityModal((prev) => ({ ...prev, isOpen: false }));
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } catch (_) {
+      // ignore errors, clear local storage anyway
+    }
+    localStorage.removeItem("admin_token");
+    router.push("/login");
   };
 
   return (
@@ -86,6 +106,15 @@ export default function AdminPage() {
               }`}
             >
               {isFormOpen ? "✕ CLOSE" : "+ NEW LISTING"}
+            </button>
+
+            {/* LOGOUT */}
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-red-400 uppercase tracking-widest transition hover:border-red-500/30 hover:bg-red-500/10"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
+              LOGOUT
             </button>
           </div>
         </div>
@@ -131,7 +160,9 @@ export default function AdminPage() {
         ) : properties.length === 0 ? (
           <div className="flex h-64 flex-col items-center justify-center rounded-xl border border-dashed border-[#222]">
             <p className="text-sm text-[#444]">No properties found.</p>
-            <p className="text-xs text-[#333] mt-1">Start by adding a new listing above.</p>
+            <p className="text-xs text-[#333] mt-1">
+              Start by adding a new listing above.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
