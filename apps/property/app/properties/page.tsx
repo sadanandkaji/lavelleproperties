@@ -15,10 +15,28 @@ const PropertiesContent = () => {
       
       {/* Circular Back Button - Positioned below Navbar */}
       <button 
-        onClick={() => router.push('/')}
-        className="absolute left-6 top-16 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-[#d4af3744] bg-white/10 backdrop-blur-md text-[#c5a059] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#d4af37] hover:text-white hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] active:scale-95 max-md:left-4 max-md:h-10 max-md:w-10"
-        title="Back to Home"
-      >
+  onClick={() => router.push('/')}
+  className="
+    fixed z-50 flex items-center justify-center 
+    h-12 w-12 md:h-12 md:w-12
+    rounded-full border border-[#d4af3744] 
+    bg-white/10 backdrop-blur-md text-[#c5a059] 
+    shadow-lg transition-all 
+    hover:scale-110 hover:bg-[#d4af37] hover:text-white 
+    active:scale-95
+
+    /* Default (desktop & normal phones) */
+    left-4 top-22 md:left-6
+
+    /* 👇 Move tighter to top-left ONLY for small screens */
+    [@media(max-width:320px)]:top-16
+    [@media(max-width:320px)]:left-0
+
+    [@media(max-width:300px)]:top-18
+    [@media(max-width:300px)]:left-2
+  "
+  title="Back to Home"
+>
         <svg 
           width="20" 
           height="20" 
@@ -62,12 +80,21 @@ const PropertiesContent = () => {
 
 const PropertiesPage: React.FC = () => {
   return (
-    /* pt-20 adds padding to the top of the whole page to clear your navbar */
-    <main className="relative flex min-h-screen w-full items-start justify-center overflow-hidden bg-transparent pt-20">
-      <Suspense fallback={null}>
-        <PropertiesContent />
-      </Suspense>
-    </main>
+    <main className="relative flex min-h-screen w-full items-start justify-center overflow-hidden bg-transparent pt-22">
+
+  {/* 👇 Scaling only for tiny screens */}
+  <div className="
+    w-full flex justify-center 
+    [@media(max-width:320px)]:scale-[0.85]
+    [@media(max-width:300px)]:scale-[0.78]
+    origin-top
+  ">
+    <Suspense fallback={null}>
+      <PropertiesContent />
+    </Suspense>
+  </div>
+
+</main>
   );
 };
 

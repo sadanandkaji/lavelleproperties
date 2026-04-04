@@ -95,7 +95,7 @@ const AmenitiesContent = () => {
             `/innerlayout?type=${propertyType}&subtype=${subType}&layouttype=${layoutType}`
           )
         }
-        className="fixed left-6 top-36 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-[#d4af3744] bg-white/10 backdrop-blur-md text-[#c5a059] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#d4af37] hover:text-white hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] active:scale-95 max-md:left-4 max-md:top-36 max-md:h-10 max-md:w-10"
+        className="fixed left-6 top-36 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-[#d4af3744] bg-white/10 backdrop-blur-md text-[#c5a059] shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#d4af37] hover:text-white hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] active:scale-95 max-md:left-4 max-md:top-30 max-md:h-10 max-md:w-10"
         title="Back to Configuration"
       >
         <ArrowLeft size={24} />

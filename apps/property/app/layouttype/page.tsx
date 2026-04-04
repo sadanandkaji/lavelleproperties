@@ -23,7 +23,7 @@ const LayoutTypeContent = () => {
       {/* Back Button - Positioned to stay visible below navbar */}
       <button 
         onClick={() => router.push(`/properties?type=${propertyType}`)}
-        className="fixed left-4 top-36 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-[#d4af3744] bg-white/10 backdrop-blur-md text-[#c5a059] shadow-lg transition-all hover:scale-110 hover:bg-[#d4af37] hover:text-white active:scale-95 md:left-6 md:h-12 md:w-12"
+        className="fixed left-4 top-26 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-[#d4af3744] bg-white/10 backdrop-blur-md text-[#c5a059] shadow-lg transition-all hover:scale-110 hover:bg-[#d4af37] hover:text-white active:scale-95 md:left-6 md:h-12 md:w-12"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M19 12H5M5 12L12 19M5 12L12 5"/>
