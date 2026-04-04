@@ -216,7 +216,7 @@ function BackButton() {
 export default function FilteredPropertiesPage() {
   return (
     <main className="relative min-h-screen bg-transparent pt-20 pb-20">
-      <div className="w-full text-center mb-12 px-5">
+      <div className="w-full text-center mb-12 px-14">
         <h1 className="text-[#c5a059] text-[0.7rem] font-bold uppercase tracking-[12px] md:tracking-[20px] opacity-80 mt-14">
           Curated Real Estate
         </h1>

@@ -379,8 +379,6 @@ export default function PropertyDetailPage() {
                 <span className="text-[11px] font-bold uppercase tracking-[8px] text-[#c5a059] opacity-60">Luxury Living</span>
               </div>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#fdfbf0]/50 via-transparent to-transparent" />
-
             {/* Price — bottom right of image */}
             <div className="absolute bottom-5 right-5 bg-white/80 backdrop-blur-md border border-[#d4af3744] rounded-2xl px-5 py-3 text-right shadow-[0_4px_20px_rgba(197,160,89,0.15)]">
               <p className="text-[9px] text-[#c5a059] uppercase tracking-[3px] font-bold mb-0.5">Total Price</p>
