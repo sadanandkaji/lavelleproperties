@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// This is your updated schema.prisma
+
+model Property {
+  id              String          @id @default(uuid())
+  title           String
+  location        String
+  price           Int
+  imageUrl        String?
+  description     String
+  
+  // Categorization
+  type            PropertyType    @default(RENT)
+  subType         SubType         @default(FLAT)
+  layoutType      LayoutType      @default(BHK1)
+  furnishing      Furnishing      @default(FURNISHED)
+
+  // NEW: The property itself belongs to a category. 
+  // No relation to the Amenity table is needed for filtering.
+  amenityCategory AmenityCategory @default(BASIC)
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+model Amenity {
+  id        String          @id @default(uuid())
+  name      String          @unique 
+  category  AmenityCategory @default(BASIC)
+}
+
+enum AmenityCategory {
+  BASIC
+  FULL
+}
+
+enum PropertyType {
+  RENT
+  LEASE
+  SALE
+}
+
+enum SubType {
+  FLAT
+  STANDALONE_HOUSE
+  INDEPENDENT_VILLA
+  PENTHOUSE
+}
+
+enum LayoutType {
+  BHK1   @map("1BHK")
+  BHK2   @map("2BHK")
+  BHK2_5 @map("2_5BHK")
+  BHK3   @map("3BHK")
+  BHK3_5 @map("3_5BHK")
+  BHK4   @map("4BHK")
+  BHK5   @map("5BHK")
+  BHK5P  @map("5BHKP")
+}
+
+enum Furnishing {
+  FURNISHED
+  SEMIFURNISHED
+  UNFURNISHED
+}

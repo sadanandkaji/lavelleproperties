@@ -1,0 +1,8 @@
+-- AlterTable
+ALTER TABLE "Property" ADD COLUMN     "amenities" TEXT NOT NULL DEFAULT 'basic',
+ADD COLUMN     "furnishing" TEXT NOT NULL DEFAULT 'furnished',
+ADD COLUMN     "layoutType" TEXT NOT NULL DEFAULT '1bhk',
+ADD COLUMN     "subType" TEXT NOT NULL DEFAULT 'flat',
+ADD COLUMN     "type" TEXT NOT NULL DEFAULT 'rent',
+ADD COLUMN     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ALTER COLUMN "imageUrl" DROP NOT NULL;
