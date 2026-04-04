@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000">
+  <!-- Generator: Adobe Illustrator 29.8.2, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st1 {
+        fill: #93520a;
+      }
+
+      .st2 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st3 {
+        fill: #513703;
+      }
+
+      .st4 {
+        fill: url(#linear-gradient4);
+      }
+
+      .st5 {
+        fill: url(#linear-gradient5);
+      }
+
+      .st6 {
+        fill: url(#linear-gradient3);
+      }
+
+      .st7 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="293.81" y1="742.79" x2="293.81" y2="374.98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#483100"/>
+      <stop offset="1" stop-color="#c18723"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="403.65" y1="748.61" x2="403.65" y2="282.61" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient2" x1="538.46" y1="748.61" x2="538.46" y2="172.77" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient3" x1="582.56" y1="748.61" x2="582.56" y2="225.19" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient4" x1="725.05" y1="749.79" x2="725.05" y2="380.8" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient5" x1="224.98" y1="764.11" x2="775.02" y2="764.11" xlink:href="#linear-gradient"/>
+  </defs>
+  <g>
+    <polygon class="st7" points="302.13 742.79 331.26 742.79 307.96 374.98 256.36 429.07 302.13 742.79"/>
+    <polygon class="st2" points="378.69 294.26 378.69 748.61 422.79 748.61 428.62 677.88 400.32 289.27 390.34 282.61 378.69 294.26"/>
+    <polygon class="st0" points="493.52 186.92 493.52 748.61 546.78 748.61 583.39 221.87 508.5 172.77 493.52 186.92"/>
+    <polygon class="st6" points="626.67 236.84 616.68 225.19 538.46 279.28 578.4 748.61 626.67 748.61 626.67 236.84"/>
+    <polygon class="st4" points="709.76 380.8 762.18 431.57 714.55 749.79 687.93 749.79 709.76 380.8"/>
+    <g>
+      <line class="st1" x1="318.77" y1="339.2" x2="339.58" y2="742.79"/>
+      <polygon class="st3" points="324.13 338.92 339.58 742.79 313.41 339.47 324.13 338.92 324.13 338.92"/>
+    </g>
+    <g>
+      <line class="st3" x1="333.52" y1="323.58" x2="348.73" y2="742.79"/>
+      <polygon class="st3" points="338.89 323.36 351 739.65 328.16 323.81 338.89 323.36 338.89 323.36"/>
+    </g>
+    <g>
+      <line class="st3" x1="348.73" y1="315.9" x2="359.55" y2="742.79"/>
+      <polygon class="st3" points="354.1 315.76 359.55 742.79 343.36 316.03 354.1 315.76 354.1 315.76"/>
+    </g>
+    <g>
+      <line class="st1" x1="365.37" y1="303.42" x2="369.53" y2="748.61"/>
+      <polygon class="st3" points="370.74 303.37 369.53 748.61 360.01 303.47 370.74 303.37 370.74 303.37"/>
+    </g>
+    <g>
+      <line class="st3" x1="419.8" y1="245.37" x2="445.79" y2="748.61"/>
+      <polygon class="st3" points="425.16 245.09 445.79 748.61 414.44 245.64 425.16 245.09 425.16 245.09"/>
+    </g>
+    <g>
+      <line class="st3" x1="434.96" y1="230.2" x2="456.91" y2="748.61"/>
+      <polygon class="st3" points="440.33 229.97 456.91 748.61 429.6 230.43 440.33 229.97 440.33 229.97"/>
+    </g>
+    <g>
+      <line class="st3" x1="456.19" y1="217.06" x2="470.05" y2="748.61"/>
+      <polygon class="st3" points="461.56 216.92 470.05 748.61 450.83 217.2 461.56 216.92 461.56 216.92"/>
+    </g>
+    <g>
+      <line class="st3" x1="476.41" y1="201.89" x2="481.47" y2="748.61"/>
+      <polygon class="st3" points="481.78 201.84 481.47 748.61 471.05 201.94 481.78 201.84 481.78 201.84"/>
+    </g>
+    <g>
+      <line class="st3" x1="702.21" y1="296.13" x2="676.22" y2="748.61"/>
+      <polygon class="st3" points="707.57 296.44 676.22 748.61 696.85 295.82 707.57 296.44 707.57 296.44"/>
+    </g>
+    <g>
+      <line class="st3" x1="687.05" y1="280.96" x2="665.1" y2="748.61"/>
+      <polygon class="st3" points="692.41 281.21 665.1 748.61 681.69 280.71 692.41 281.21 692.41 281.21"/>
+    </g>
+    <g>
+      <line class="st3" x1="665.82" y1="267.82" x2="651.96" y2="748.61"/>
+      <polygon class="st3" points="671.18 267.97 651.96 748.61 660.45 267.66 671.18 267.97 671.18 267.97"/>
+    </g>
+    <g>
+      <line class="st3" x1="645.6" y1="252.65" x2="640.54" y2="748.61"/>
+      <polygon class="st3" points="650.96 252.71 640.54 748.61 640.23 252.6 650.96 252.71 650.96 252.71"/>
+    </g>
+  </g>
+  <path class="st5" d="M224.98,742.59c66.56,20.72,163.55,42.91,281.85,43.05,111.35.13,203.42-19.33,268.19-38.27"/>
+</svg>
