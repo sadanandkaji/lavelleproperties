@@ -70,8 +70,10 @@ const AmenitiesContent = () => {
   };
 
   // FULL list = BASIC items + FULL-category items
-  const fullList = [...data.basic, ...data.full];
+const basicSet = new Set(data.basic);
 
+// Only keep items in FULL that are NOT in BASIC
+const fullList = data.full.filter(item => !basicSet.has(item));
   const cards = [
     {
       type: 'basic',

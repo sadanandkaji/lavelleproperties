@@ -8,28 +8,59 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// This is your updated schema.prisma
-
 model Property {
-  id          String  @id @default(uuid())
+  id          String @id @default(uuid())
   title       String
   location    String
-  price       Int
-  imageUrl    String?
   description String
 
-  // Categorization
-  type       PropertyType @default(RENT)
-  subType    SubType      @default(FLAT)
-  layoutType LayoutType   @default(BHK1)
-  furnishing Furnishing   @default(FURNISHED)
+  // Pricing
+  price        Int
+  pricePerSqft Int?
+  priceNote    String?
+  callForPrice Boolean @default(false)
 
-  // NEW: The property itself belongs to a category. 
-  // No relation to the Amenity table is needed for filtering.
+  // Basic Facts
+  bedrooms      Int?
+  bathrooms     Int?
+  halfBaths     Int?
+  totalRooms    Int?
+  floors        Int?
+  floorLevel    Int?
+  areaSqft      Int?
+  lotSizeSqft   Int?
+  yearBuilt     Int?
+  yearRemodeled Int?
+
+  // Tags (stored as string arrays)
+  rentPeriods     String[] @default([])
+  statuses        String[] @default([])
+  parkingOptions  String[] @default([])
+  basementOptions String[] @default([])
+
+  // Categorization
+  type            PropertyType    @default(RENT)
+  subType         SubType         @default(FLAT)
+  layoutType      LayoutType      @default(BHK1)
+  furnishing      Furnishing      @default(FURNISHED)
   amenityCategory AmenityCategory @default(BASIC)
+
+  // Images — up to 10, stored as related records
+  images PropertyImage[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model PropertyImage {
+  id         String   @id @default(uuid())
+  url        String
+  isPrimary  Boolean  @default(false)
+  order      Int      @default(0)
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String
+
+  createdAt DateTime @default(now())
 }
 
 model Amenity {

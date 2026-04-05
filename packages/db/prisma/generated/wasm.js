@@ -126,9 +126,25 @@ exports.Prisma.PropertyScalarFieldEnum = {
   id: 'id',
   title: 'title',
   location: 'location',
-  price: 'price',
-  imageUrl: 'imageUrl',
   description: 'description',
+  price: 'price',
+  pricePerSqft: 'pricePerSqft',
+  priceNote: 'priceNote',
+  callForPrice: 'callForPrice',
+  bedrooms: 'bedrooms',
+  bathrooms: 'bathrooms',
+  halfBaths: 'halfBaths',
+  totalRooms: 'totalRooms',
+  floors: 'floors',
+  floorLevel: 'floorLevel',
+  areaSqft: 'areaSqft',
+  lotSizeSqft: 'lotSizeSqft',
+  yearBuilt: 'yearBuilt',
+  yearRemodeled: 'yearRemodeled',
+  rentPeriods: 'rentPeriods',
+  statuses: 'statuses',
+  parkingOptions: 'parkingOptions',
+  basementOptions: 'basementOptions',
   type: 'type',
   subType: 'subType',
   layoutType: 'layoutType',
@@ -136,6 +152,15 @@ exports.Prisma.PropertyScalarFieldEnum = {
   amenityCategory: 'amenityCategory',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PropertyImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  isPrimary: 'isPrimary',
+  order: 'order',
+  propertyId: 'propertyId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.AmenityScalarFieldEnum = {
@@ -195,6 +220,7 @@ exports.AmenityCategory = exports.$Enums.AmenityCategory = {
 
 exports.Prisma.ModelName = {
   Property: 'Property',
+  PropertyImage: 'PropertyImage',
   Amenity: 'Amenity'
 };
 

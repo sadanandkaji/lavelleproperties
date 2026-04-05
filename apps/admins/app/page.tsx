@@ -21,12 +21,9 @@ export default function AdminPage() {
     category: "BASIC",
   });
 
-  // Client-side auth guard — redirects to /login if no token
   useEffect(() => {
     const token = localStorage.getItem("admin_token");
-    if (!token) {
-      router.replace("/login");
-    }
+    if (!token) router.replace("/login");
   }, [router]);
 
   const fetchData = async () => {
@@ -43,24 +40,10 @@ export default function AdminPage() {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const openAmenityModal = (category: "BASIC" | "FULL") => {
-    setAmenityModal({ isOpen: true, category });
-  };
-
-  const closeAmenityModal = () => {
-    setAmenityModal((prev) => ({ ...prev, isOpen: false }));
-  };
+  useEffect(() => { fetchData(); }, []);
 
   const handleLogout = async () => {
-    try {
-      await fetch("/api/auth/logout", { method: "POST" });
-    } catch (_) {
-      // ignore errors, clear local storage anyway
-    }
+    try { await fetch("/api/auth/logout", { method: "POST" }); } catch (_) {}
     localStorage.removeItem("admin_token");
     router.push("/login");
   };
@@ -84,14 +67,14 @@ export default function AdminPage() {
 
           <div className="flex flex-wrap items-center gap-2">
             <button
-              onClick={() => openAmenityModal("BASIC")}
+              onClick={() => setAmenityModal({ isOpen: true, category: "BASIC" })}
               className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-[#60a5fa] uppercase tracking-widest transition hover:border-[#60a5fa]/40 hover:bg-[#60a5fa]/10"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-[#60a5fa]" />
               BASIC TIER
             </button>
             <button
-              onClick={() => openAmenityModal("FULL")}
+              onClick={() => setAmenityModal({ isOpen: true, category: "FULL" })}
               className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-[#a78bfa] uppercase tracking-widest transition hover:border-[#a78bfa]/40 hover:bg-[#a78bfa]/10"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-[#a78bfa]" />
@@ -107,8 +90,6 @@ export default function AdminPage() {
             >
               {isFormOpen ? "✕ CLOSE" : "+ NEW LISTING"}
             </button>
-
-            {/* LOGOUT */}
             <button
               onClick={handleLogout}
               className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-red-400 uppercase tracking-widest transition hover:border-red-500/30 hover:bg-red-500/10"
@@ -124,7 +105,7 @@ export default function AdminPage() {
       <AmenityModal
         isOpen={amenityModal.isOpen}
         category={amenityModal.category}
-        onClose={closeAmenityModal}
+        onClose={() => setAmenityModal((prev) => ({ ...prev, isOpen: false }))}
       />
 
       {/* MAIN */}
@@ -160,9 +141,7 @@ export default function AdminPage() {
         ) : properties.length === 0 ? (
           <div className="flex h-64 flex-col items-center justify-center rounded-xl border border-dashed border-[#222]">
             <p className="text-sm text-[#444]">No properties found.</p>
-            <p className="text-xs text-[#333] mt-1">
-              Start by adding a new listing above.
-            </p>
+            <p className="text-xs text-[#333] mt-1">Start by adding a new listing above.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -24,9 +24,7 @@ const PropertiesContent = () => {
     shadow-lg transition-all 
     hover:scale-110 hover:bg-[#d4af37] hover:text-white 
     active:scale-95
-
-    /* Default (desktop & normal phones) */
-    left-4 top-22 md:left-6
+    left-4 top-36 md:left-6  sm:top-36
 
     /* 👇 Move tighter to top-left ONLY for small screens */
     [@media(max-width:320px)]:top-16
