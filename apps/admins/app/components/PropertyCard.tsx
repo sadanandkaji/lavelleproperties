@@ -10,6 +10,12 @@ export interface PropertyImage {
   order: number;
 }
 
+export interface PropertyAmenity {
+  id: string;
+  name: string;
+  propertyId: string;
+}
+
 export interface Property {
   id: string;
   title: string;
@@ -19,6 +25,7 @@ export interface Property {
   pricePerSqft?: number | null;
   priceNote?: string | null;
   callForPrice?: boolean;
+  isSoldOut?: boolean;
   bedrooms?: number | null;
   bathrooms?: number | null;
   halfBaths?: number | null;
@@ -39,11 +46,13 @@ export interface Property {
   furnishing: string;
   amenityCategory: "BASIC" | "FULL";
   images: PropertyImage[];
+  propertyAmenities?: PropertyAmenity[];
 }
 
 interface PropertyCardProps {
   property: Property;
   onDelete: () => void;
+  onEdit: (property: Property) => void;
 }
 
 export const formatLabel = (str: string) => {
@@ -54,7 +63,7 @@ export const formatLabel = (str: string) => {
 export const formatLayout = (layout: string) =>
   layout.replace("BHK", "").replace("_", ".").replace("P", "+") + " BHK";
 
-export default function PropertyCard({ property, onDelete }: PropertyCardProps) {
+export default function PropertyCard({ property, onDelete, onEdit }: PropertyCardProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
 
@@ -65,8 +74,7 @@ export default function PropertyCard({ property, onDelete }: PropertyCardProps) 
 
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    const confirmDelete = confirm(`Delete "${property.title}"?`);
-    if (!confirmDelete) return;
+    if (!confirm(`Delete "${property.title}"?`)) return;
     setIsDeleting(true);
     try {
       const res = await fetch(`/api/property?id=${property.id}`, { method: "DELETE" });
@@ -84,6 +92,7 @@ export default function PropertyCard({ property, onDelete }: PropertyCardProps) 
   };
 
   const isBasic = property.amenityCategory === "BASIC";
+  const isSoldOut = property.isSoldOut;
 
   return (
     <>
@@ -99,11 +108,20 @@ export default function PropertyCard({ property, onDelete }: PropertyCardProps) 
             <img
               src={primaryImage}
               alt={property.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${isSoldOut ? "grayscale opacity-70" : ""}`}
             />
           ) : (
             <div className="w-full h-full bg-[#1a1a1a] flex items-center justify-center text-[#333] text-xs uppercase tracking-widest">
               No Image
+            </div>
+          )}
+
+          {/* Sold Out Overlay */}
+          {isSoldOut && (
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+              <div className="border border-red-500/60 bg-red-500/20 backdrop-blur-sm text-red-400 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded rotate-[-8deg]">
+                SOLD OUT
+              </div>
             </div>
           )}
 
@@ -115,9 +133,11 @@ export default function PropertyCard({ property, onDelete }: PropertyCardProps) 
           )}
 
           {/* Price Badge */}
-          <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm border border-[#333] text-white px-3 py-1.5 rounded text-sm font-bold">
-            {property.callForPrice ? "Call for Price" : `₹${Number(property.price).toLocaleString("en-IN")}`}
-          </div>
+          {!isSoldOut && (
+            <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm border border-[#333] text-white px-3 py-1.5 rounded text-sm font-bold">
+              {property.callForPrice ? "Call for Price" : `₹${Number(property.price).toLocaleString("en-IN")}`}
+            </div>
+          )}
 
           {/* Amenity Badge */}
           <div
@@ -144,6 +164,11 @@ export default function PropertyCard({ property, onDelete }: PropertyCardProps) 
             <span className="text-[9px] font-bold px-2 py-1 rounded bg-[#1a1a1a] border border-[#2a2a2a] text-[#f59e0b] uppercase tracking-widest">
               {formatLabel(property.subType)}
             </span>
+            {isSoldOut && (
+              <span className="text-[9px] font-bold px-2 py-1 rounded bg-red-500/10 border border-red-500/30 text-red-400 uppercase tracking-widest">
+                SOLD OUT
+              </span>
+            )}
           </div>
 
           {/* Title */}
@@ -174,6 +199,22 @@ export default function PropertyCard({ property, onDelete }: PropertyCardProps) 
             {property.description}
           </p>
 
+          {/* Per-property amenities preview */}
+          {property.propertyAmenities && property.propertyAmenities.length > 0 && (
+            <div className="flex flex-wrap gap-1">
+              {property.propertyAmenities.slice(0, 3).map((a) => (
+                <span key={a.id} className="text-[9px] px-1.5 py-0.5 rounded bg-[#1a1a1a] border border-[#222] text-[#666]">
+                  {a.name}
+                </span>
+              ))}
+              {property.propertyAmenities.length > 3 && (
+                <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#1a1a1a] border border-[#222] text-[#555]">
+                  +{property.propertyAmenities.length - 3} more
+                </span>
+              )}
+            </div>
+          )}
+
           {/* Amenity Indicator */}
           <div
             className={`rounded border px-3 py-2 text-[10px] font-bold uppercase tracking-widest ${
@@ -191,14 +232,20 @@ export default function PropertyCard({ property, onDelete }: PropertyCardProps) 
               onClick={(e) => { e.stopPropagation(); setShowDetail(true); }}
               className="flex-1 py-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] text-xs font-bold text-[#555] uppercase tracking-widest transition-all hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-400"
             >
-              View Details
+              View
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); onEdit(property); }}
+              className="flex-1 py-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] text-xs font-bold text-[#555] uppercase tracking-widest transition-all hover:border-yellow-500/40 hover:bg-yellow-500/10 hover:text-yellow-400"
+            >
+              ✎ Edit
             </button>
             <button
               onClick={handleDelete}
               disabled={isDeleting}
               className="flex-1 py-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] text-xs font-bold text-[#555] uppercase tracking-widest transition-all hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-400 disabled:cursor-not-allowed disabled:opacity-30"
             >
-              {isDeleting ? "Removing..." : "✕ Delete"}
+              {isDeleting ? "..." : "✕"}
             </button>
           </div>
         </div>
@@ -209,6 +256,7 @@ export default function PropertyCard({ property, onDelete }: PropertyCardProps) 
           property={property}
           onClose={() => setShowDetail(false)}
           onDelete={() => { setShowDetail(false); onDelete(); }}
+          onEdit={() => { setShowDetail(false); onEdit(property); }}
         />
       )}
     </>

@@ -168,10 +168,6 @@ export async function POST(req: NextRequest) {
                   <!-- Header -->
                   <tr>
                     <td style="background:linear-gradient(135deg,#1a1500,#2a2000);padding:48px 40px 36px;text-align:center;border-bottom:1px solid #d4af3722;">
-                      <!-- Checkmark -->
-                      <div style="width:64px;height:64px;border-radius:50%;background:#d4af3722;border:1px solid #d4af37;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;line-height:64px;font-size:28px;">
-                        ✓
-                      </div>
                       <p style="margin:0 0 8px;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#c5a059;font-weight:700;">
                         Lavelle Venture
                       </p>

@@ -60,6 +60,8 @@ export default function PropertyForm({ onAdded }: { onAdded: () => void }) {
   const [uploading, setUploading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [propertyAmenities, setPropertyAmenities] = useState<string[]>([]);
+const [amenityInput, setAmenityInput] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -121,7 +123,17 @@ export default function PropertyForm({ onAdded }: { onAdded: () => void }) {
   const removeImage = (idx: number) => {
     setImages((prev) => prev.filter((_, i) => i !== idx));
   };
+const addAmenity = () => {
+  const val = amenityInput.trim();
+  if (!val) return;
+if (propertyAmenities.some(a => a.toLowerCase() === val.toLowerCase())) return;
+  setPropertyAmenities((prev) => [...prev, val]);
+  setAmenityInput("");
+};
 
+const removeAmenity = (name: string) => {
+  setPropertyAmenities((prev) => prev.filter((a) => a !== name));
+};
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -164,6 +176,7 @@ export default function PropertyForm({ onAdded }: { onAdded: () => void }) {
           rentPeriods: splitTags(form.rentPeriods),
           statuses: splitTags(form.statuses),
           parkingOptions: splitTags(form.parkingOptions),
+propertyAmenities: propertyAmenities.map((name) => ({ name })),
           basementOptions: splitTags(form.basementOptions),
           images: images.map((img, i) => ({
             url: img.cloudUrl,
@@ -348,6 +361,46 @@ export default function PropertyForm({ onAdded }: { onAdded: () => void }) {
         </div>
       </div>
 
+{/* PROPERTY AMENITIES */}
+<div className={sectionCls}>
+  <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] mb-4">
+    Property Amenities
+  </p>
+
+  <div className="flex gap-2 mb-3">
+    <input
+      value={amenityInput}
+      onChange={(e) => setAmenityInput(e.target.value)}
+      placeholder="e.g. Swimming Pool"
+      className={inputCls}
+    />
+    <button
+      type="button"
+      onClick={addAmenity}
+      className="px-3 bg-emerald-500 text-black text-xs font-bold rounded"
+    >
+      Add
+    </button>
+  </div>
+
+  <div className="flex flex-wrap gap-2">
+    {propertyAmenities.map((a) => (
+      <div
+        key={a}
+        className="px-2 py-1 text-xs bg-[#1a1a1a] border border-[#2a2a2a] rounded flex items-center gap-2"
+      >
+        {a}
+        <button
+          type="button"
+          onClick={() => removeAmenity(a)}
+          className="text-red-400"
+        >
+          ✕
+        </button>
+      </div>
+    ))}
+  </div>
+</div>
       {/* IMAGES */}
       <div className="mb-6">
         <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] mb-4">

@@ -7,13 +7,13 @@ interface Props {
   property: Property;
   onClose: () => void;
   onDelete: () => void;
+  onEdit: () => void;
 }
 
-export default function PropertyDetailModal({ property, onClose, onDelete }: Props) {
+export default function PropertyDetailModal({ property, onClose, onDelete, onEdit }: Props) {
   const [activeImg, setActiveImg] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Close on ESC
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", handler);
@@ -21,7 +21,9 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
   }, [onClose]);
 
   const isBasic = property.amenityCategory === "BASIC";
+  const isSoldOut = property.isSoldOut;
   const images = property.images || [];
+  const propertyAmenities = property.propertyAmenities || [];
 
   const handleDelete = async () => {
     if (!confirm(`Delete "${property.title}"?`)) return;
@@ -86,26 +88,38 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
         {/* IMAGE GALLERY */}
         {images.length > 0 ? (
           <div className="relative w-full bg-[#0a0a0a]">
-            {/* Main image */}
             <div className="relative w-full h-[340px] overflow-hidden">
               <img
                 src={images[activeImg]?.url}
                 alt={property.title}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover ${isSoldOut ? "grayscale opacity-60" : ""}`}
               />
-              {/* Overlay badges */}
-              <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                <div className="bg-black/80 backdrop-blur-sm border border-[#333] text-white px-4 py-2 rounded-lg text-lg font-bold">
-                  {property.callForPrice
-                    ? "Call for Price"
-                    : `₹${Number(property.price).toLocaleString("en-IN")}`}
-                </div>
-                {property.pricePerSqft && (
-                  <div className="bg-black/70 backdrop-blur-sm border border-[#333] text-[#aaa] px-3 py-2 rounded-lg text-sm">
-                    ₹{Number(property.pricePerSqft).toLocaleString("en-IN")} /sqft
+
+              {/* Sold Out Overlay */}
+              {isSoldOut && (
+                <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                  <div className="border-2 border-red-500/70 bg-red-500/20 backdrop-blur-sm text-red-400 text-2xl font-bold uppercase tracking-[0.3em] px-8 py-4 rounded rotate-[-6deg]">
+                    SOLD OUT
                   </div>
-                )}
-              </div>
+                </div>
+              )}
+
+              {/* Overlay badges */}
+              {!isSoldOut && (
+                <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                  <div className="bg-black/80 backdrop-blur-sm border border-[#333] text-white px-4 py-2 rounded-lg text-lg font-bold">
+                    {property.callForPrice
+                      ? "Call for Price"
+                      : `₹${Number(property.price).toLocaleString("en-IN")}`}
+                  </div>
+                  {property.pricePerSqft && (
+                    <div className="bg-black/70 backdrop-blur-sm border border-[#333] text-[#aaa] px-3 py-2 rounded-lg text-sm">
+                      ₹{Number(property.pricePerSqft).toLocaleString("en-IN")} /sqft
+                    </div>
+                  )}
+                </div>
+              )}
+
               <div
                 className={`absolute top-4 left-4 rounded-lg px-3 py-1.5 text-xs font-bold uppercase tracking-widest border backdrop-blur-sm ${
                   isBasic
@@ -116,7 +130,6 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
                 {isBasic ? "● BASIC TIER" : "◆ FULL TIER"}
               </div>
 
-              {/* Arrow nav */}
               {images.length > 1 && (
                 <>
                   <button
@@ -135,7 +148,6 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
               )}
             </div>
 
-            {/* Thumbnail strip */}
             {images.length > 1 && (
               <div className="flex gap-2 p-3 overflow-x-auto bg-[#0f0f0f] border-t border-[#1a1a1a]">
                 {images.map((img, idx) => (
@@ -175,6 +187,11 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
               <span className="text-[9px] font-bold px-2 py-1 rounded bg-[#1a1a1a] border border-[#2a2a2a] text-[#a78bfa] uppercase tracking-widest">
                 {formatLabel(property.furnishing)}
               </span>
+              {isSoldOut && (
+                <span className="text-[9px] font-bold px-2 py-1 rounded bg-red-500/10 border border-red-500/30 text-red-400 uppercase tracking-widest">
+                  SOLD OUT
+                </span>
+              )}
             </div>
             <h2 className="text-xl font-bold text-white mb-1">{property.title}</h2>
             <p className="text-sm text-[#666] flex items-center gap-1.5">
@@ -185,7 +202,6 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
             )}
           </div>
 
-          {/* Description */}
           {property.description && (
             <div className="mb-6 border-b border-[#1e1e1e] pb-6">
               <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] mb-2">Description</p>
@@ -193,7 +209,7 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
             </div>
           )}
 
-          {/* Basic Facts Grid */}
+          {/* Basic Facts */}
           <div className="mb-6 border-b border-[#1e1e1e] pb-6">
             <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] mb-4">Basic Facts</p>
             <div className="grid grid-cols-3 gap-x-6 gap-y-4 sm:grid-cols-5">
@@ -211,10 +227,8 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
           </div>
 
           {/* Tags */}
-          {(property.rentPeriods?.length ||
-            property.statuses?.length ||
-            property.parkingOptions?.length ||
-            property.basementOptions?.length) ? (
+          {(property.rentPeriods?.length || property.statuses?.length ||
+            property.parkingOptions?.length || property.basementOptions?.length) ? (
             <div className="mb-6 border-b border-[#1e1e1e] pb-6">
               <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] mb-4">Details</p>
               <div className="grid grid-cols-2 gap-4">
@@ -225,6 +239,25 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
               </div>
             </div>
           ) : null}
+
+          {/* Per-property amenities */}
+          {propertyAmenities.length > 0 && (
+            <div className="mb-6 border-b border-[#1e1e1e] pb-6">
+              <p className="text-[9px] font-bold uppercase tracking-widest text-[#444] mb-4">
+                Property Amenities
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {propertyAmenities.map((a) => (
+                  <span
+                    key={a.id}
+                    className="text-[10px] font-bold px-2 py-1 rounded bg-[#1a1a1a] border border-[#2a2a2a] text-emerald-400 uppercase tracking-wide"
+                  >
+                    ✓ {a.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Amenity Package */}
           <div
@@ -237,14 +270,22 @@ export default function PropertyDetailModal({ property, onClose, onDelete }: Pro
             {isBasic ? "🛡 Basic Amenity Package" : "💎 Full Amenity Package"}
           </div>
 
-          {/* Delete */}
-          <button
-            onClick={handleDelete}
-            disabled={isDeleting}
-            className="w-full py-2.5 rounded border border-[#2a2a2a] bg-[#1a1a1a] text-xs font-bold text-[#555] uppercase tracking-widest transition-all hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-400 disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            {isDeleting ? "Removing..." : "✕ Delete Listing"}
-          </button>
+          {/* Action Buttons */}
+          <div className="flex gap-3">
+            <button
+              onClick={onEdit}
+              className="flex-1 py-2.5 rounded border border-[#2a2a2a] bg-[#1a1a1a] text-xs font-bold text-[#555] uppercase tracking-widest transition-all hover:border-yellow-500/40 hover:bg-yellow-500/10 hover:text-yellow-400"
+            >
+              ✎ Edit Listing
+            </button>
+            <button
+              onClick={handleDelete}
+              disabled={isDeleting}
+              className="flex-1 py-2.5 rounded border border-[#2a2a2a] bg-[#1a1a1a] text-xs font-bold text-[#555] uppercase tracking-widest transition-all hover:border-red-500/40 hover:bg-red-500/10 hover:text-red-400 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              {isDeleting ? "Removing..." : "✕ Delete Listing"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

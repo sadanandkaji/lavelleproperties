@@ -131,6 +131,7 @@ exports.Prisma.PropertyScalarFieldEnum = {
   pricePerSqft: 'pricePerSqft',
   priceNote: 'priceNote',
   callForPrice: 'callForPrice',
+  isSoldOut: 'isSoldOut',
   bedrooms: 'bedrooms',
   bathrooms: 'bathrooms',
   halfBaths: 'halfBaths',
@@ -167,6 +168,14 @@ exports.Prisma.AmenityScalarFieldEnum = {
   id: 'id',
   name: 'name',
   category: 'category'
+};
+
+exports.Prisma.PropertyAmenityScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  normalized: 'normalized',
+  propertyId: 'propertyId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -221,7 +230,8 @@ exports.AmenityCategory = exports.$Enums.AmenityCategory = {
 exports.Prisma.ModelName = {
   Property: 'Property',
   PropertyImage: 'PropertyImage',
-  Amenity: 'Amenity'
+  Amenity: 'Amenity',
+  PropertyAmenity: 'PropertyAmenity'
 };
 
 /**

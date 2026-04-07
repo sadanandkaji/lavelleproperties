@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import PropertyForm from "./components/PropertyForm";
-import PropertyCard from "./components/PropertyCard";
+import PropertyCard, { Property } from "./components/PropertyCard";
 import AmenityModal from "./components/AmenityModal";
+import PropertyEditModal from "./components/Propertyeditmodal";
 
 interface AmenityModalState {
   isOpen: boolean;
@@ -13,13 +14,14 @@ interface AmenityModalState {
 
 export default function AdminPage() {
   const router = useRouter();
-  const [properties, setProperties] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [amenityModal, setAmenityModal] = useState<AmenityModalState>({
     isOpen: false,
     category: "BASIC",
   });
+  const [editingProperty, setEditingProperty] = useState<Property | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("admin_token");
@@ -108,6 +110,18 @@ export default function AdminPage() {
         onClose={() => setAmenityModal((prev) => ({ ...prev, isOpen: false }))}
       />
 
+      {/* EDIT MODAL */}
+      {editingProperty && (
+        <PropertyEditModal
+          property={editingProperty}
+          onClose={() => setEditingProperty(null)}
+          onSaved={() => {
+            setEditingProperty(null);
+            fetchData();
+          }}
+        />
+      )}
+
       {/* MAIN */}
       <main className="mx-auto mt-8 max-w-7xl px-4 md:px-8">
         {isFormOpen && (
@@ -126,9 +140,16 @@ export default function AdminPage() {
           <h2 className="text-sm font-bold uppercase tracking-widest text-[#888]">
             Active Inventory
           </h2>
-          <span className="rounded border border-[#222] bg-[#1a1a1a] px-3 py-1 text-xs font-bold text-[#555] uppercase tracking-wider">
-            {properties.length} properties
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="rounded border border-[#222] bg-[#1a1a1a] px-3 py-1 text-xs font-bold text-[#555] uppercase tracking-wider">
+              {properties.length} properties
+            </span>
+            {properties.some((p) => p.isSoldOut) && (
+              <span className="rounded border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-bold text-red-400 uppercase tracking-wider">
+                {properties.filter((p) => p.isSoldOut).length} sold out
+              </span>
+            )}
+          </div>
         </div>
 
         {loading ? (
@@ -146,7 +167,12 @@ export default function AdminPage() {
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {properties.map((p) => (
-              <PropertyCard key={p.id} property={p} onDelete={fetchData} />
+              <PropertyCard
+                key={p.id}
+                property={p}
+                onDelete={fetchData}
+                onEdit={(prop) => setEditingProperty(prop)}
+              />
             ))}
           </div>
         )}

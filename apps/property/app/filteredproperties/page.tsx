@@ -25,6 +25,7 @@ interface Property {
   amenityCategory: "BASIC" | "FULL";
   description: string;
   bedrooms?: number | null;
+  isSoldOut?: boolean; // ✅ ADD THIS
   bathrooms?: number | null;
   areaSqft?: number | null;
   statuses?: string[];
@@ -155,12 +156,30 @@ function PropertyList() {
         const imageCount = prop.images?.length ?? 0;
         return (
           <div
-            key={prop.id}
-            onClick={() => router.push(`/property/${prop.id}`)}
-            className="group relative h-[500px] w-full cursor-pointer overflow-hidden rounded-[35px] border-[1px] border-[#d4af3733] bg-[#1a1a1a] shadow-[0_15px_35px_rgba(0,0,0,0.2)] transition-all duration-500 hover:shadow-[0_25px_60px_rgba(139,109,29,0.3)] hover:-translate-y-2 flex flex-col"
-          >
+  key={prop.id}
+  onClick={() => {
+    if (!prop.isSoldOut) {
+      router.push(`/property/${prop.id}`);
+    }
+  }}
+  className={`group relative h-[500px] w-full overflow-hidden rounded-[35px] border-[1px] 
+  border-[#d4af3733] bg-[#1a1a1a] shadow-[0_15px_35px_rgba(0,0,0,0.2)] 
+  transition-all duration-500 flex flex-col
+  ${
+    prop.isSoldOut
+      ? "cursor-not-allowed opacity-60 grayscale"
+      : "cursor-pointer hover:shadow-[0_25px_60px_rgba(139,109,29,0.3)] hover:-translate-y-2"
+  }`}
+>
             {/* Image */}
             <div className="relative h-[260px] w-full flex-shrink-0 overflow-hidden">
+              {prop.isSoldOut && (
+  <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-20">
+    <span className="text-white text-sm font-black tracking-[4px] uppercase border border-white px-4 py-2">
+      Sold Out
+    </span>
+  </div>
+)}
               <PropImage images={prop.images ?? []} alt={prop.title} />
 
               {/* Image count pill */}
@@ -256,9 +275,17 @@ function PropertyList() {
                   )}
                 </div>
 
-                <div className="flex h-10 w-24 items-center justify-center rounded-full border-[1.5px] border-[#d4af37] text-[10px] font-black uppercase tracking-widest text-white transition-all group-hover:bg-[#d4af37] group-hover:text-black">
-                  View
-                </div>
+                <div
+  className={`flex h-10 w-24 items-center justify-center rounded-full border-[1.5px] 
+  text-[10px] font-black uppercase tracking-widest transition-all
+  ${
+    prop.isSoldOut
+      ? "border-gray-500 text-gray-500 cursor-not-allowed"
+      : "border-[#d4af37] text-white group-hover:bg-[#d4af37] group-hover:text-black"
+  }`}
+>
+  {prop.isSoldOut ? "Unavailable" : "View"}
+</div>
               </div>
             </div>
 

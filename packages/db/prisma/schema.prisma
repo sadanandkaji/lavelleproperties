@@ -20,6 +20,9 @@ model Property {
   priceNote       String?
   callForPrice    Boolean         @default(false)
 
+  // Availability
+  isSoldOut       Boolean         @default(false)
+
   // Basic Facts
   bedrooms        Int?
   bathrooms       Int?
@@ -48,6 +51,9 @@ model Property {
   // Images — up to 10, stored as related records
   images          PropertyImage[]
 
+  // Per-property amenities (separate from global tier amenities)
+  propertyAmenities PropertyAmenity[]
+
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
 }
@@ -63,10 +69,24 @@ model PropertyImage {
   createdAt  DateTime @default(now())
 }
 
+/// Global amenity definitions (used as templates / tier config)
 model Amenity {
   id       String          @id @default(uuid())
   name     String          @unique
   category AmenityCategory @default(BASIC)
+}
+
+/// Per-property amenities — each property gets its own list
+model PropertyAmenity {
+  id         String   @id @default(uuid())
+  name       String
+  normalized String   // 👈 ADD THIS
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  createdAt  DateTime @default(now())
+
+  @@unique([propertyId, normalized]) // ✅ now valid
 }
 
 enum AmenityCategory {

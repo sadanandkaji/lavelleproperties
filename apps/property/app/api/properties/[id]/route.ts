@@ -16,6 +16,7 @@ export async function GET(
       where: { id },
       include: {
         images: { orderBy: { order: "asc" } },
+        propertyAmenities: { orderBy: { createdAt: "asc" } }, // ✅ ADD THIS
       },
     });
 
@@ -48,6 +49,9 @@ export async function GET(
       priceNote: property.priceNote ?? null,
       callForPrice: property.callForPrice,
 
+      // ✅ ADD THIS
+      isSoldOut: property.isSoldOut,
+
       // Basic facts
       bedrooms: property.bedrooms ?? null,
       bathrooms: property.bathrooms ?? null,
@@ -75,6 +79,9 @@ export async function GET(
 
       // Images
       images: property.images,
+
+      // ✅ ADD THIS
+      propertyAmenities: property.propertyAmenities,
 
       createdAt: property.createdAt.toISOString(),
     };
