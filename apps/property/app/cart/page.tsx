@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/useCart";
 import { useAuth } from "@/lib/useAuth";
@@ -8,6 +8,7 @@ import { formatPrice } from "@/lib/formatPrice";
 import { type CartProperty } from "@/lib/cart";
 import LoginModal from "@/app/components/LoginModal";
 
+// ─── Cart Booking Modal ────────────────────────────────────────────────────────
 // ─── Cart Booking Modal ────────────────────────────────────────────────────────
 function CartBookingModal({
   selectedProperties,
@@ -27,30 +28,32 @@ function CartBookingModal({
   const [submitted,    setSubmitted]    = useState(false);
   const [loading,      setLoading]      = useState(false);
 
-  // Pre-fill from logged-in user
+  const dateScrollRef = useRef<HTMLDivElement>(null);
+  const timeScrollRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (user) setForm({ name: user.name, email: user.email, phone: user.phone });
   }, [user]);
 
+  // ── Generate next 4 available dates ────────────────────────────────────────
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const maxDate = new Date(today);
-  maxDate.setDate(today.getDate() + 3);
 
-  const [viewYear,  setViewYear]  = useState(today.getFullYear());
-  const [viewMonth, setViewMonth] = useState(today.getMonth());
+  const availableDates: Date[] = Array.from({ length: 4 }, (_, i) => {
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    return d;
+  });
 
-  const MONTHS = [
-    "January","February","March","April","May","June",
-    "July","August","September","October","November","December",
-  ];
-  const DAYS        = ["Su","Mo","Tu","We","Th","Fr","Sa"];
-  const firstDay    = new Date(viewYear, viewMonth, 1).getDay();
-  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const DAY_SHORT  = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const MONTH_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-  const cells: (number | null)[] = [
-    ...Array(firstDay).fill(null),
-    ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
+  // ── Time slots ──────────────────────────────────────────────────────────────
+  const slots = [
+    "09:00 AM","09:30 AM","10:00 AM","10:30 AM",
+    "11:00 AM","11:30 AM","12:00 PM","12:30 PM",
+    "02:00 PM","02:30 PM","03:00 PM","03:30 PM",
+    "04:00 PM","04:30 PM","05:00 PM","05:30 PM",
   ];
 
   const formatDate = (d: Date) =>
@@ -92,13 +95,7 @@ function CartBookingModal({
   const canProceedStep1 = selectedDate !== null && selectedTime !== "";
   const canProceedStep2 = form.name.trim() && form.email.trim() && form.phone.trim();
 
-  const slots = [
-    "09:00 AM","09:30 AM","10:00 AM","10:30 AM",
-    "11:00 AM","11:30 AM","12:00 PM","12:30 PM",
-    "02:00 PM","02:30 PM","03:00 PM","03:30 PM",
-    "04:00 PM","04:30 PM","05:00 PM","05:30 PM",
-  ];
-
+  // ── Success screen ─────────────────────────────────────────────────────────
   if (submitted) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
@@ -143,26 +140,30 @@ function CartBookingModal({
       <div className="relative z-10 bg-white/80 backdrop-blur-md border border-white/40 rounded-[30px] w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-[0_20px_60px_rgba(197,160,89,0.2)]">
 
         {/* Header */}
-        <div className="sticky top-0 bg-white/95 backdrop-blur-sm z-10 flex items-center justify-between px-8 pt-7 pb-5 border-b border-[#d4af3722]">
+        <div className="sticky top-0 bg-white/95 backdrop-blur-sm z-10 flex items-center justify-between px-6 pt-6 pb-4 border-b border-[#d4af3722]">
           <div>
-            <p className="text-[9px] text-[#c5a059] uppercase tracking-[5px] font-bold mb-1">Book Site Visits</p>
+            <p className="text-[9px] text-[#c5a059] uppercase tracking-[5px] font-bold mb-0.5">Book Site Visits</p>
             <h2 className="text-base font-black text-[#3a2e0f]">
               {selectedProperties.length} {selectedProperties.length === 1 ? "Property" : "Properties"}
             </h2>
           </div>
-          <button onClick={onClose} className="w-9 h-9 rounded-full border border-[#d4af3744] flex items-center justify-center text-[#c5a059] hover:bg-[#d4af3711] transition-all">✕</button>
+          <button onClick={onClose}
+            className="w-8 h-8 rounded-full border border-[#d4af3744] flex items-center justify-center text-[#c5a059] hover:bg-[#d4af3711] transition-all text-sm">
+            ✕
+          </button>
         </div>
 
-        {/* Steps */}
-        <div className="flex items-center gap-3 px-8 py-4">
-          {[{ n: 1, label: "Date & Time" }, { n: 2, label: "Your Details" }, { n: 3, label: "Confirm" }].map(({ n, label }) => (
+        {/* Step indicators */}
+        <div className="flex items-center gap-2 px-6 py-3">
+          {[{ n: 1, label: "Date & Time" }, { n: 2, label: "Details" }, { n: 3, label: "Confirm" }].map(({ n, label }) => (
             <React.Fragment key={n}>
-              <div className="flex items-center gap-2">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black transition-all
+              <div className="flex items-center gap-1.5">
+                <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-black transition-all
                   ${step >= n ? "bg-[#d4af37] text-white" : "border border-[#d4af3744] text-[#c5a05966]"}`}>
                   {step > n ? "✓" : n}
                 </div>
-                <span className={`text-[10px] font-bold uppercase tracking-widest hidden sm:block ${step >= n ? "text-[#c5a059]" : "text-[#c5a05966]"}`}>
+                <span className={`text-[9px] font-bold uppercase tracking-widest hidden sm:block
+                  ${step >= n ? "text-[#c5a059]" : "text-[#c5a05966]"}`}>
                   {label}
                 </span>
               </div>
@@ -171,73 +172,118 @@ function CartBookingModal({
           ))}
         </div>
 
-        <div className="px-8 pb-8">
+        <div className="px-6 pb-6">
 
-          {/* STEP 1 */}
+          {/* ── STEP 1 — Date & Time scroll pickers ─────────────────────────── */}
           {step === 1 && (
-            <div className="space-y-6">
-              <div className="bg-[#fdfbf0] border border-[#d4af3733] rounded-2xl p-5 select-none">
-                <div className="flex items-center justify-between mb-5">
-                  <button onClick={() => { if (viewMonth === 0) { setViewMonth(11); setViewYear(y => y - 1); } else setViewMonth(m => m - 1); }}
-                    className="w-8 h-8 flex items-center justify-center rounded-full border border-[#d4af3744] text-[#c5a059] hover:bg-[#d4af3722] transition-all">‹</button>
-                  <span className="text-sm font-bold text-[#3a2e0f] tracking-[3px] uppercase">{MONTHS[viewMonth]} {viewYear}</span>
-                  <button onClick={() => { if (viewMonth === 11) { setViewMonth(0); setViewYear(y => y + 1); } else setViewMonth(m => m + 1); }}
-                    className="w-8 h-8 flex items-center justify-center rounded-full border border-[#d4af3744] text-[#c5a059] hover:bg-[#d4af3722] transition-all">›</button>
-                </div>
-                <div className="grid grid-cols-7 mb-2">
-                  {DAYS.map(d => <div key={d} className="text-center text-[10px] font-bold text-[#c5a059] uppercase tracking-widest py-1">{d}</div>)}
-                </div>
-                <div className="grid grid-cols-7 gap-y-1">
-                  {cells.map((day, idx) => {
-                    if (!day) return <div key={`e-${idx}`} />;
-                    const cellDate   = new Date(viewYear, viewMonth, day);
-                    const isDisabled = cellDate < today || cellDate > maxDate;
-                    const isSelected = selectedDate && selectedDate.getFullYear() === viewYear && selectedDate.getMonth() === viewMonth && selectedDate.getDate() === day;
-                    const isToday    = today.getFullYear() === viewYear && today.getMonth() === viewMonth && today.getDate() === day;
+            <div className="space-y-4">
+
+              {/* Date scroll picker */}
+              <div>
+                <p className="text-[9px] uppercase tracking-[4px] text-[#c5a059] font-bold mb-2.5">Select Date</p>
+                <div
+                  ref={dateScrollRef}
+                  className="flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                >
+                  {availableDates.map((d, i) => {
+                    const isSelected =
+                      selectedDate &&
+                      selectedDate.getFullYear() === d.getFullYear() &&
+                      selectedDate.getMonth()    === d.getMonth()    &&
+                      selectedDate.getDate()     === d.getDate();
+                    const isToday = i === 0;
+
                     return (
-                      <button key={day} disabled={isDisabled} onClick={() => setSelectedDate(cellDate)}
-                        className={`mx-auto w-9 h-9 rounded-full text-sm font-semibold transition-all duration-200
-                          ${isDisabled ? "text-[#c5a05933] cursor-not-allowed" : "cursor-pointer"}
-                          ${isSelected ? "bg-[#d4af37] text-white font-black shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-                            : isToday && !isDisabled ? "border border-[#d4af37] text-[#c5a059]"
-                            : !isDisabled ? "text-[#5a4a2a] hover:bg-[#d4af3722] hover:text-[#3a2e0f]" : ""}`}>
-                        {day}
+                      <button
+                        key={i}
+                        onClick={() => setSelectedDate(d)}
+                        className={`flex-shrink-0 snap-start flex flex-col items-center justify-center w-[72px] h-[80px] rounded-2xl border-[1.5px] transition-all duration-200
+                          ${isSelected
+                            ? "bg-[#d4af37] border-[#d4af37] text-white shadow-[0_0_16px_rgba(212,175,55,0.4)]"
+                            : "bg-[#fdfbf0] border-[#d4af3733] text-[#3a2e0f] hover:border-[#d4af37]"}`}
+                      >
+                        <span className={`text-[9px] font-bold uppercase tracking-widest mb-1
+                          ${isSelected ? "text-white/70" : isToday ? "text-[#c5a059]" : "text-[#aaa]"}`}>
+                          {isToday ? "Today" : DAY_SHORT[d.getDay()]}
+                        </span>
+                        <span className="text-2xl font-black leading-none">{d.getDate()}</span>
+                        <span className={`text-[9px] font-bold mt-0.5
+                          ${isSelected ? "text-white/70" : "text-[#aaa]"}`}>
+                          {MONTH_SHORT[d.getMonth()]}
+                        </span>
                       </button>
                     );
                   })}
                 </div>
-                <p className="mt-4 text-center text-[10px] text-[#c5a05988] uppercase tracking-widest font-bold">Available: Next 4 days only</p>
               </div>
 
-              {selectedDate && (
-                <div className="space-y-3">
-                  <p className="text-[10px] uppercase tracking-[4px] text-[#c5a059] font-bold">Select Time</p>
-                  <div className="grid grid-cols-4 gap-2">
-                    {slots.map(slot => (
-                      <button key={slot} onClick={() => setSelectedTime(slot)}
-                        className={`py-2 rounded-xl text-[11px] font-bold tracking-wide transition-all duration-200
-                          ${selectedTime === slot
-                            ? "bg-[#d4af37] text-white shadow-[0_0_12px_rgba(212,175,55,0.3)]"
-                            : "border border-[#d4af3744] text-[#8a7040] hover:border-[#d4af37] hover:text-[#3a2e0f] bg-white/40"}`}>
-                        {slot}
-                      </button>
-                    ))}
+              {/* Time scroll picker */}
+              <div>
+                <p className="text-[9px] uppercase tracking-[4px] text-[#c5a059] font-bold mb-2.5">Select Time</p>
+                <div
+                  ref={timeScrollRef}
+                  className="flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                >
+                  {slots.map(slot => (
+                    <button
+                      key={slot}
+                      onClick={() => setSelectedTime(slot)}
+                      className={`flex-shrink-0 snap-start px-4 py-3 rounded-2xl border-[1.5px] text-[11px] font-black tracking-wide transition-all duration-200 whitespace-nowrap
+                        ${selectedTime === slot
+                          ? "bg-[#d4af37] border-[#d4af37] text-white shadow-[0_0_12px_rgba(212,175,55,0.35)]"
+                          : "bg-[#fdfbf0] border-[#d4af3733] text-[#8a7040] hover:border-[#d4af37] hover:text-[#3a2e0f]"}`}
+                    >
+                      {slot}
+                    </button>
+                  ))}
+                  {/* Trailing spacer */}
+                  <div className="flex-shrink-0 w-2" />
+                </div>
+              </div>
+
+              {/* Selection summary */}
+              {(selectedDate || selectedTime) && (
+                <div className="bg-[#d4af3711] border border-[#d4af3733] rounded-2xl px-4 py-3 flex items-center gap-3">
+                  <span className="text-base">📅</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[11px] font-bold text-[#3a2e0f] truncate">
+                      {selectedDate
+                        ? `${DAY_SHORT[selectedDate.getDay()]}, ${selectedDate.getDate()} ${MONTH_SHORT[selectedDate.getMonth()]}`
+                        : <span className="text-[#c5a05966]">No date selected</span>}
+                    </p>
+                    <p className="text-[10px] text-[#c5a059] font-semibold">
+                      {selectedTime || <span className="text-[#c5a05966]">No time selected</span>}
+                    </p>
                   </div>
+                  {selectedDate && selectedTime && (
+                    <div className="w-5 h-5 rounded-full bg-[#d4af37] flex items-center justify-center flex-shrink-0">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
               )}
 
-              <button disabled={!canProceedStep1} onClick={() => setStep(2)}
-                className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
-                  ${canProceedStep1 ? "bg-[#d4af37] text-white hover:bg-[#c5a059]" : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}>
+              <button
+                disabled={!canProceedStep1}
+                onClick={() => setStep(2)}
+                className={`w-full py-3.5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
+                  ${canProceedStep1
+                    ? "bg-[#d4af37] text-white hover:bg-[#c5a059] shadow-[0_0_20px_rgba(212,175,55,0.2)]"
+                    : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}>
                 Continue
               </button>
             </div>
           )}
 
-          {/* STEP 2 */}
+          {/* ── STEP 2 — Details ─────────────────────────────────────────────── */}
           {step === 2 && (
             <div className="space-y-4">
-              <div className="bg-[#d4af3711] border border-[#d4af3733] rounded-2xl px-5 py-3 flex items-center gap-3">
+              {/* Date + time recap */}
+              <div className="bg-[#d4af3711] border border-[#d4af3733] rounded-2xl px-4 py-3 flex items-center gap-3">
                 <span className="text-sm">📅</span>
                 <div>
                   <p className="text-xs font-bold text-[#3a2e0f]">{selectedDate ? formatDate(selectedDate) : ""}</p>
@@ -252,17 +298,23 @@ function CartBookingModal({
               ].map(({ key, label, type, placeholder }) => (
                 <div key={key} className="space-y-1">
                   <label className="text-[10px] uppercase tracking-[4px] font-bold text-[#8a7040]">{label}</label>
-                  <input type={type} value={form[key as keyof typeof form]}
+                  <input
+                    type={type}
+                    value={form[key as keyof typeof form]}
                     onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
                     placeholder={placeholder}
-                    className="w-full bg-[#fdfbf0] border border-[#d4af3744] rounded-xl px-4 py-3 text-sm text-[#3a2e0f] placeholder-[#c5a05966] focus:outline-none focus:border-[#d4af37] transition-all" />
+                    className="w-full bg-[#fdfbf0] border border-[#d4af3744] rounded-xl px-4 py-3 text-sm text-[#3a2e0f] placeholder-[#c5a05966] focus:outline-none focus:border-[#d4af37] transition-all"
+                  />
                 </div>
               ))}
 
-              <div className="flex gap-3 pt-2">
-                <button onClick={() => setStep(1)} className="flex-1 py-4 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">Back</button>
+              <div className="flex gap-3 pt-1">
+                <button onClick={() => setStep(1)}
+                  className="flex-1 py-3.5 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">
+                  Back
+                </button>
                 <button disabled={!canProceedStep2} onClick={() => setStep(3)}
-                  className={`flex-[2] py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
+                  className={`flex-[2] py-3.5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
                     ${canProceedStep2 ? "bg-[#d4af37] text-white hover:bg-[#c5a059]" : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}>
                   Review
                 </button>
@@ -270,19 +322,19 @@ function CartBookingModal({
             </div>
           )}
 
-          {/* STEP 3 */}
+          {/* ── STEP 3 — Confirm ─────────────────────────────────────────────── */}
           {step === 3 && (
-            <div className="space-y-5">
+            <div className="space-y-4">
               <div className="bg-[#fdfbf0] border border-[#d4af3733] rounded-2xl divide-y divide-[#d4af3722]">
                 {[
                   { icon: "📅", label: "Date",  value: selectedDate ? formatDate(selectedDate) : "" },
-                  { icon: "🕐", label: "Time",  value: selectedTime },
-                  { icon: "👤", label: "Name",  value: form.name },
-                  { icon: "📧", label: "Email", value: form.email },
-                  { icon: "📞", label: "Phone", value: form.phone },
+                  { icon: "🕐", label: "Time",  value: selectedTime  },
+                  { icon: "👤", label: "Name",  value: form.name     },
+                  { icon: "📧", label: "Email", value: form.email    },
+                  { icon: "📞", label: "Phone", value: form.phone    },
                 ].map(({ icon, label, value }) => (
-                  <div key={label} className="flex items-start gap-4 px-5 py-3">
-                    <span className="text-base mt-0.5">{icon}</span>
+                  <div key={label} className="flex items-start gap-3 px-4 py-3">
+                    <span className="text-sm mt-0.5">{icon}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-[9px] uppercase tracking-[3px] text-[#c5a05988] font-bold mb-0.5">{label}</p>
                       <p className="text-sm font-semibold text-[#3a2e0f] truncate">{value}</p>
@@ -291,13 +343,14 @@ function CartBookingModal({
                 ))}
               </div>
 
-              <div className="space-y-2">
-                <p className="text-[9px] uppercase tracking-[4px] font-bold text-[#c5a059]">
+              {/* Properties list */}
+              <div>
+                <p className="text-[9px] uppercase tracking-[4px] font-bold text-[#c5a059] mb-2">
                   Properties ({selectedProperties.length})
                 </p>
                 <div className="space-y-1.5 max-h-32 overflow-y-auto">
                   {selectedProperties.map(p => (
-                    <div key={p.id} className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#fdfbf0] border border-[#d4af3733]">
+                    <div key={p.id} className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#fdfbf0] border border-[#d4af3733]">
                       <span className="text-[#d4af37] text-xs font-black shrink-0">✓</span>
                       <div className="flex-1 min-w-0">
                         <p className="text-[11px] font-bold text-[#3a2e0f] truncate">{p.title}</p>
@@ -312,9 +365,12 @@ function CartBookingModal({
               </div>
 
               <div className="flex gap-3">
-                <button onClick={() => setStep(2)} className="flex-1 py-4 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">Edit</button>
+                <button onClick={() => setStep(2)}
+                  className="flex-1 py-3.5 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">
+                  Edit
+                </button>
                 <button onClick={handleSubmit} disabled={loading}
-                  className="flex-[2] py-4 rounded-2xl bg-[#d4af37] text-white font-black uppercase tracking-widest text-sm hover:bg-[#c5a059] transition-all shadow-[0_0_30px_rgba(212,175,55,0.3)] flex items-center justify-center gap-2">
+                  className="flex-[2] py-3.5 rounded-2xl bg-[#d4af37] text-white font-black uppercase tracking-widest text-sm hover:bg-[#c5a059] transition-all shadow-[0_0_24px_rgba(212,175,55,0.3)] flex items-center justify-center gap-2">
                   {loading
                     ? <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />Booking...</>
                     : `Confirm ${selectedProperties.length} Visit${selectedProperties.length > 1 ? "s" : ""}`}
@@ -324,6 +380,10 @@ function CartBookingModal({
           )}
         </div>
       </div>
+
+      <style jsx global>{`
+        div::-webkit-scrollbar { display: none; }
+      `}</style>
     </div>
   );
 }
@@ -447,14 +507,12 @@ const { cart, remove: removeFromCart, clear: clearCart } = useCart();
   // ── Cart with items ────────────────────────────────────────────────────────
   return (
     <>
-      <main className="min-h-screen bg-[#fdf8f0] pt-36 pb-36 px-4">
+      <main className="min-h-screen bg-[#fdf8f0] pt-42 pb-36 px-4">
         <div className="max-w-3xl mx-auto">
 
           {/* Header */}
           <div className="text-center mb-10">
-            <p className="text-[#c5a059] text-[0.65rem] font-bold uppercase tracking-[12px] opacity-80">
-              Your Collection
-            </p>
+            
             <h1 className="mt-2 text-3xl font-black text-[#3a2e0f]">Saved Properties</h1>
             <div className="mt-3 mx-auto h-[1px] w-16 bg-gradient-to-r from-transparent via-[#c5a059] to-transparent" />
             <p className="mt-3 text-[#888] text-xs uppercase tracking-[4px] font-bold">

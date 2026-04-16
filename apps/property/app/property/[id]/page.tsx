@@ -1,54 +1,31 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { formatPrice } from "@/lib/formatPrice";
+import { useAuth } from "@/lib/useAuth";
 
 interface PropertyImage {
-  id: string;
-  url: string;
-  isPrimary: boolean;
-  order: number;
+  id: string; url: string; isPrimary: boolean; order: number;
 }
-
 interface Amenity {
-  id: string;
-  name: string;
-  propertyId: string;
+  id: string; name: string; propertyId: string;
 }
-
 interface Property {
-  id: string;
-  title: string;
-  location: string;
-  price: number;
-  pricePerSqft?: number | null;
-  priceNote?: string | null;
-  callForPrice?: boolean;
-  isSoldOut?: boolean;
-  type: string;
-  subType: string;
-  layoutType: string;
-  furnishing: string;
-  amenityCategory: "BASIC" | "FULL";
+  id: string; title: string; location: string;
+  price: number; pricePerSqft?: number | null; priceNote?: string | null;
+  callForPrice?: boolean; isSoldOut?: boolean;
+  type: string; subType: string; layoutType: string;
+  furnishing: string; amenityCategory: "BASIC" | "FULL";
   description: string;
-  bedrooms?: number | null;
-  bathrooms?: number | null;
-  halfBaths?: number | null;
-  totalRooms?: number | null;
-  floors?: number | null;
-  floorLevel?: number | null;
-  areaSqft?: number | null;
-  lotSizeSqft?: number | null;
-  yearBuilt?: number | null;
-  yearRemodeled?: number | null;
-  rentPeriods?: string[];
-  statuses?: string[];
-  parkingOptions?: string[];
-  basementOptions?: string[];
+  bedrooms?: number | null; bathrooms?: number | null; halfBaths?: number | null;
+  totalRooms?: number | null; floors?: number | null; floorLevel?: number | null;
+  areaSqft?: number | null; lotSizeSqft?: number | null;
+  yearBuilt?: number | null; yearRemodeled?: number | null;
+  rentPeriods?: string[]; statuses?: string[];
+  parkingOptions?: string[]; basementOptions?: string[];
   images: PropertyImage[];
-  basicAmenities?: Amenity[];
-  fullAmenities?: Amenity[];
+  basicAmenities?: Amenity[]; fullAmenities?: Amenity[];
   createdAt: string;
 }
 
@@ -63,134 +40,15 @@ const THUMB_TRANSFORM = "w_200,h_130,c_fill,q_auto,f_auto";
 function getCloudinaryUrl(url: string, transform: string): string {
   if (!url) return "";
   if (url.includes(transform)) return url;
-  if (url.includes("res.cloudinary.com") && url.includes("/upload/")) {
+  if (url.includes("res.cloudinary.com") && url.includes("/upload/"))
     return url.replace("/upload/", `/upload/${transform}/`);
-  }
   return url;
 }
 
-// ─── Calendar ────────────────────────────────────────────────────────────────
-function Calendar({
-  selectedDate,
-  onSelect,
-}: {
-  selectedDate: Date | null;
-  onSelect: (d: Date) => void;
-}) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const maxDate = new Date(today);
-  maxDate.setDate(today.getDate() + 3);
-
-  const [viewYear,  setViewYear]  = useState(today.getFullYear());
-  const [viewMonth, setViewMonth] = useState(today.getMonth());
-
-  const MONTHS = [
-    "January","February","March","April","May","June",
-    "July","August","September","October","November","December",
-  ];
-  const DAYS        = ["Su","Mo","Tu","We","Th","Fr","Sa"];
-  const firstDay    = new Date(viewYear, viewMonth, 1).getDay();
-  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
-
-  const cells: (number | null)[] = [
-    ...Array(firstDay).fill(null),
-    ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
-  ];
-
-  const prev = () => {
-    if (viewMonth === 0) { setViewMonth(11); setViewYear(y => y - 1); }
-    else setViewMonth(m => m - 1);
-  };
-  const next = () => {
-    if (viewMonth === 11) { setViewMonth(0); setViewYear(y => y + 1); }
-    else setViewMonth(m => m + 1);
-  };
-
-  return (
-    <div className="w-full select-none">
-      <div className="flex items-center justify-between mb-5">
-        <button onClick={prev} className="w-8 h-8 flex items-center justify-center rounded-full border border-[#d4af3744] text-[#c5a059] hover:bg-[#d4af3722] transition-all">‹</button>
-        <span className="text-sm font-bold text-[#3a2e0f] tracking-[3px] uppercase">{MONTHS[viewMonth]} {viewYear}</span>
-        <button onClick={next} className="w-8 h-8 flex items-center justify-center rounded-full border border-[#d4af3744] text-[#c5a059] hover:bg-[#d4af3722] transition-all">›</button>
-      </div>
-      <div className="grid grid-cols-7 mb-2">
-        {DAYS.map(d => (
-          <div key={d} className="text-center text-[10px] font-bold text-[#c5a059] uppercase tracking-widest py-1">{d}</div>
-        ))}
-      </div>
-      <div className="grid grid-cols-7 gap-y-1">
-        {cells.map((day, idx) => {
-          if (!day) return <div key={`e-${idx}`} />;
-          const cellDate   = new Date(viewYear, viewMonth, day);
-          const isDisabled = cellDate < today || cellDate > maxDate;
-          const isSelected =
-            selectedDate &&
-            selectedDate.getFullYear() === viewYear &&
-            selectedDate.getMonth()    === viewMonth &&
-            selectedDate.getDate()     === day;
-          const isToday =
-            today.getFullYear() === viewYear &&
-            today.getMonth()    === viewMonth &&
-            today.getDate()     === day;
-
-          return (
-            <button
-              key={day}
-              disabled={isDisabled}
-              onClick={() => onSelect(cellDate)}
-              className={`mx-auto w-9 h-9 rounded-full text-sm font-semibold transition-all duration-200
-                ${isDisabled ? "text-[#c5a05933] cursor-not-allowed" : "cursor-pointer"}
-                ${isSelected
-                  ? "bg-[#d4af37] text-white font-black shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-                  : isToday && !isDisabled
-                  ? "border border-[#d4af37] text-[#c5a059]"
-                  : !isDisabled
-                  ? "text-[#5a4a2a] hover:bg-[#d4af3722] hover:text-[#3a2e0f]"
-                  : ""}`}
-            >
-              {day}
-            </button>
-          );
-        })}
-      </div>
-      <p className="mt-4 text-center text-[10px] text-[#c5a05988] uppercase tracking-widest font-bold">
-        Available: Next 4 days only
-      </p>
-    </div>
-  );
-}
-
-function TimePicker({
-  selectedTime,
-  onSelect,
-}: {
-  selectedTime: string;
-  onSelect: (t: string) => void;
-}) {
-  const slots = [
-    "09:00 AM","09:30 AM","10:00 AM","10:30 AM",
-    "11:00 AM","11:30 AM","12:00 PM","12:30 PM",
-    "02:00 PM","02:30 PM","03:00 PM","03:30 PM",
-    "04:00 PM","04:30 PM","05:00 PM","05:30 PM",
-  ];
-  return (
-    <div className="grid grid-cols-4 gap-2">
-      {slots.map(slot => (
-        <button key={slot} onClick={() => onSelect(slot)}
-          className={`py-2 rounded-xl text-[11px] font-bold tracking-wide transition-all duration-200
-            ${selectedTime === slot
-              ? "bg-[#d4af37] text-white shadow-[0_0_12px_rgba(212,175,55,0.3)]"
-              : "border border-[#d4af3744] text-[#8a7040] hover:border-[#d4af37] hover:text-[#3a2e0f] bg-white/40"}`}>
-          {slot}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-// ─── Booking Modal ────────────────────────────────────────────────────────────
+// ── Booking Modal ─────────────────────────────────────────────────────────────
 function BookingModal({ property, onClose }: BookingModalProps) {
+  const { user } = useAuth();
+
   const [step,         setStep]         = useState<1 | 2 | 3>(1);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState("");
@@ -198,40 +56,55 @@ function BookingModal({ property, onClose }: BookingModalProps) {
   const [submitted,    setSubmitted]    = useState(false);
   const [loading,      setLoading]      = useState(false);
 
+  // Pre-fill from logged-in user
+  useEffect(() => {
+    if (user) setForm({ name: user.name, email: user.email, phone: user.phone });
+  }, [user]);
+
+  // ── Date options: next 4 days ────────────────────────────────────────────────
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const availableDates: Date[] = Array.from({ length: 4 }, (_, i) => {
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    return d;
+  });
+
+  const DAY_SHORT   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const MONTH_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  // ── Time slots ───────────────────────────────────────────────────────────────
+  const slots = [
+    "09:00 AM","09:30 AM","10:00 AM","10:30 AM",
+    "11:00 AM","11:30 AM","12:00 PM","12:30 PM",
+    "02:00 PM","02:30 PM","03:00 PM","03:30 PM",
+    "04:00 PM","04:30 PM","05:00 PM","05:30 PM",
+  ];
+
   const formatDate = (d: Date) =>
     d.toLocaleDateString("en-IN", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
 
-  // ── Single call with `properties` array (matches new booking API) ──────────
   const handleSubmit = async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/booking", {
-        method:  "POST",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name:  form.name,
-          email: form.email,
-          phone: form.phone,
-          date:  selectedDate
+          name: form.name, email: form.email, phone: form.phone,
+          date: selectedDate
             ? `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`
             : undefined,
           time: selectedTime,
-          // Use the new multi-property format — single property in the array
-          properties: [
-            {
-              id:           property.id,
-              title:        property.title,
-              location:     property.location,
-              price:        property.price,
-              callForPrice: property.callForPrice,
-            },
-          ],
+          properties: [{
+            id: property.id, title: property.title,
+            location: property.location, price: property.price,
+            callForPrice: property.callForPrice,
+          }],
         }),
       });
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || "Booking failed");
-      }
+      if (!res.ok) { const e = await res.json(); throw new Error(e.error || "Booking failed"); }
       setSubmitted(true);
     } catch (error) {
       console.error("Booking error:", error);
@@ -244,25 +117,25 @@ function BookingModal({ property, onClose }: BookingModalProps) {
   const canProceedStep1 = selectedDate !== null && selectedTime !== "";
   const canProceedStep2 = form.name.trim() && form.email.trim() && form.phone.trim();
 
+  // ── Success ──────────────────────────────────────────────────────────────────
   if (submitted) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4">
-        <div className="bg-white border border-[#d4af3744] rounded-[30px] p-10 max-w-md w-full text-center space-y-6 shadow-[0_20px_60px_rgba(197,160,89,0.25)] animate-[fadeUp_0.4s_ease]">
-          <div className="w-16 h-16 rounded-full bg-[#d4af3722] border border-[#d4af37] flex items-center justify-center mx-auto">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+        <div className="bg-white border border-[#d4af3744] rounded-[30px] p-8 max-w-sm w-full text-center space-y-5 shadow-[0_20px_60px_rgba(197,160,89,0.25)]">
+          <div className="w-14 h-14 rounded-full bg-[#d4af3722] border border-[#d4af37] flex items-center justify-center mx-auto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M5 12l5 5L19 7" stroke="#d4af37" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <h3 className="text-2xl font-black text-[#3a2e0f] tracking-tight">Visit Confirmed!</h3>
+          <h3 className="text-xl font-black text-[#3a2e0f]">Visit Confirmed!</h3>
           <p className="text-[#8a7040] text-sm leading-relaxed">
-            Your visit to{" "}
-            <span className="text-[#c5a059] font-bold">{property.title}</span> is confirmed for{" "}
+            Your visit to <span className="text-[#c5a059] font-bold">{property.title}</span> is confirmed for{" "}
             <span className="text-[#3a2e0f] font-semibold">{selectedDate ? formatDate(selectedDate) : ""}</span> at{" "}
             <span className="text-[#d4af37] font-bold">{selectedTime}</span>.
           </p>
           <p className="text-[#aaa] text-xs">A confirmation will be sent to {form.email}</p>
           <button onClick={onClose}
-            className="w-full py-3 rounded-2xl bg-[#d4af37] text-white font-black tracking-widest text-sm uppercase transition-all hover:bg-[#c5a059]">
+            className="w-full py-3 rounded-2xl bg-[#d4af37] text-white font-black tracking-widest text-sm uppercase hover:bg-[#c5a059] transition-all">
             Done
           </button>
         </div>
@@ -271,38 +144,51 @@ function BookingModal({ property, onClose }: BookingModalProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 pt-32 sm:pt-40">
-      {/* Liquid glass backdrop */}
-      <div className="absolute w-[90%] max-w-3xl h-[80%] rounded-[40px] bg-white/10 backdrop-blur-2xl backdrop-saturate-150 border border-white/20 shadow-[0_20px_80px_rgba(0,0,0,0.25)] overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/20 rounded-full blur-3xl opacity-40" />
-        <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#d4af37]/20 rounded-full blur-3xl opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/10 pointer-events-none" />
-      </div>
+    <div className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center bg-black/40 backdrop-blur-sm  ">
+      {/* Glass orbs (desktop only) */}
+      <div className="hidden sm:block absolute w-[500px] h-[500px] rounded-full bg-[#d4af37]/8 blur-[120px] pointer-events-none " />
 
-      <div className="relative z-10 bg-white/70 backdrop-blur-md border border-white/40 rounded-[30px] w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-[0_20px_60px_rgba(197,160,89,0.2)] animate-[fadeUp_0.4s_ease]">
+      {/* Sheet — bottom sheet on mobile, centered on desktop */}
+<div className="relative z-10 w-full sm:max-w-md 
+  bg-white 
+  sm:rounded-[28px] rounded-t-[28px] 
+  max-h-[85vh] sm:max-h-[70vh]
+  overflow-hidden 
+  flex flex-col
+  shadow-[0_-20px_60px_rgba(197,160,89,0.2)] 
+  sm:shadow-[0_20px_60px_rgba(197,160,89,0.2)] 
+  sm:mx-4 sm:mb-0"
+>
+        {/* Gold top bar */}
+        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
+
+        {/* Mobile drag handle */}
+        <div className="flex justify-center pt-3 pb-0 sm:hidden">
+          <div className="w-10 h-1 rounded-full bg-[#e8dfc8]" />
+        </div>
 
         {/* Header */}
-        <div className="sticky top-0 bg-white z-10 flex items-center justify-between px-8 pt-8 pb-5 border-b border-[#d4af3722]">
+        <div className="sticky top-0 bg-white z-10 flex items-center justify-between px-6 pt-5 sm:pt-6  pb-4 border-b border-[#d4af3722] ">
           <div>
-            <p className="text-[9px] text-[#c5a059] uppercase tracking-[5px] font-bold mb-1">Schedule a Visit</p>
-            <h2 className="text-lg font-black text-[#3a2e0f] line-clamp-1">{property.title}</h2>
+            <p className="text-[9px] text-[#c5a059] uppercase tracking-[5px] font-bold mb-0.5">Schedule a Visit</p>
+            <h2 className="text-base font-black text-[#3a2e0f] line-clamp-1 pr-4">{property.title}</h2>
           </div>
           <button onClick={onClose}
-            className="w-9 h-9 rounded-full border border-[#d4af3744] flex items-center justify-center text-[#c5a059] hover:bg-[#d4af3711] transition-all shrink-0 ml-3">
+            className="w-8 h-8 rounded-full border border-[#d4af3744] flex items-center justify-center text-[#c5a059] hover:bg-[#d4af3711] transition-all shrink-0 text-sm">
             ✕
           </button>
         </div>
 
         {/* Step indicators */}
-        <div className="flex items-center gap-3 px-8 py-4">
-          {[{ n: 1, label: "Date & Time" }, { n: 2, label: "Your Details" }, { n: 3, label: "Confirm" }].map(({ n, label }) => (
+        <div className="flex items-center gap-2 px-6 py-3">
+          {[{ n: 1, label: "Date & Time" }, { n: 2, label: "Details" }, { n: 3, label: "Confirm" }].map(({ n, label }) => (
             <React.Fragment key={n}>
-              <div className="flex items-center gap-2">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black transition-all
+              <div className="flex items-center gap-1.5">
+                <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-black transition-all
                   ${step >= n ? "bg-[#d4af37] text-white" : "border border-[#d4af3744] text-[#c5a05966]"}`}>
                   {step > n ? "✓" : n}
                 </div>
-                <span className={`text-[10px] font-bold uppercase tracking-widest hidden sm:block
+                <span className={`text-[9px] font-bold uppercase tracking-widest hidden sm:block
                   ${step >= n ? "text-[#c5a059]" : "text-[#c5a05966]"}`}>
                   {label}
                 </span>
@@ -312,35 +198,99 @@ function BookingModal({ property, onClose }: BookingModalProps) {
           ))}
         </div>
 
-        <div className="px-8 pb-8">
-
-          {/* STEP 1 */}
+<div className="px-6 pt-4 overflow-y-auto flex-1">        
+    {/* ── STEP 1 ── */}
           {step === 1 && (
-            <div className="space-y-6">
-              <div className="bg-[#fdfbf0] border border-[#d4af3733] rounded-2xl p-5">
-                <Calendar selectedDate={selectedDate} onSelect={setSelectedDate} />
+            <div className="space-y-4">
+
+              {/* Date scroll */}
+              <div>
+                <p className="text-[9px] uppercase tracking-[4px] text-[#c5a059] font-bold mb-2.5">Select Date</p>
+                <div className="flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+                  {availableDates.map((d, i) => {
+                    const isSelected =
+                      selectedDate &&
+                      selectedDate.getFullYear() === d.getFullYear() &&
+                      selectedDate.getMonth()    === d.getMonth()    &&
+                      selectedDate.getDate()     === d.getDate();
+                    return (
+                      <button key={i} onClick={() => setSelectedDate(d)}
+                        className={`flex-shrink-0 snap-start flex flex-col items-center justify-center w-[72px] h-[80px] rounded-2xl border-[1.5px] transition-all duration-200
+                          ${isSelected
+                            ? "bg-[#d4af37] border-[#d4af37] text-white shadow-[0_0_16px_rgba(212,175,55,0.35)]"
+                            : "bg-[#fdfbf0] border-[#d4af3733] text-[#3a2e0f] hover:border-[#d4af37]"}`}>
+                        <span className={`text-[9px] font-bold uppercase tracking-widest mb-1
+                          ${isSelected ? "text-white/70" : i === 0 ? "text-[#c5a059]" : "text-[#aaa]"}`}>
+                          {i === 0 ? "Today" : DAY_SHORT[d.getDay()]}
+                        </span>
+                        <span className="text-2xl font-black leading-none">{d.getDate()}</span>
+                        <span className={`text-[9px] font-bold mt-0.5 ${isSelected ? "text-white/70" : "text-[#aaa]"}`}>
+                          {MONTH_SHORT[d.getMonth()]}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-              {selectedDate && (
-                <div className="space-y-3 animate-[fadeUp_0.3s_ease]">
-                  <p className="text-[10px] uppercase tracking-[4px] text-[#c5a059] font-bold">Select Time</p>
-                  <TimePicker selectedTime={selectedTime} onSelect={setSelectedTime} />
+
+              {/* Time scroll */}
+              <div>
+                <p className="text-[9px] uppercase tracking-[4px] text-[#c5a059] font-bold mb-2.5">Select Time</p>
+                <div className="flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+                  {slots.map(slot => (
+                    <button key={slot} onClick={() => setSelectedTime(slot)}
+                      className={`flex-shrink-0 snap-start px-4 py-3 rounded-2xl border-[1.5px] text-[11px] font-black tracking-wide transition-all duration-200 whitespace-nowrap
+                        ${selectedTime === slot
+                          ? "bg-[#d4af37] border-[#d4af37] text-white shadow-[0_0_12px_rgba(212,175,55,0.3)]"
+                          : "bg-[#fdfbf0] border-[#d4af3733] text-[#8a7040] hover:border-[#d4af37]"}`}>
+                      {slot}
+                    </button>
+                  ))}
+                  <div className="flex-shrink-0 w-2" />
+                </div>
+              </div>
+
+              {/* Selection summary */}
+              {(selectedDate || selectedTime) && (
+                <div className="bg-[#d4af3711] border border-[#d4af3733] rounded-2xl px-4 py-3 flex items-center gap-3">
+                  <span className="text-base">📅</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[11px] font-bold text-[#3a2e0f] truncate">
+                      {selectedDate
+                        ? `${DAY_SHORT[selectedDate.getDay()]}, ${selectedDate.getDate()} ${MONTH_SHORT[selectedDate.getMonth()]}`
+                        : <span className="text-[#c5a05966] font-normal">No date selected</span>}
+                    </p>
+                    <p className="text-[10px] text-[#c5a059] font-semibold">
+                      {selectedTime || <span className="text-[#c5a05966] font-normal">No time selected</span>}
+                    </p>
+                  </div>
+                  {selectedDate && selectedTime && (
+                    <div className="w-5 h-5 rounded-full bg-[#d4af37] flex items-center justify-center shrink-0">
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
               )}
+
               <button disabled={!canProceedStep1} onClick={() => setStep(2)}
-                className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
+                className={`w-full py-3.5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
                   ${canProceedStep1
-                    ? "bg-[#d4af37] text-white hover:bg-[#c5a059] shadow-[0_0_25px_rgba(212,175,55,0.25)]"
+                    ? "bg-[#d4af37] text-white hover:bg-[#c5a059] shadow-[0_0_20px_rgba(212,175,55,0.2)]"
                     : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}>
                 Continue
               </button>
             </div>
           )}
 
-          {/* STEP 2 */}
+          {/* ── STEP 2 ── */}
           {step === 2 && (
-            <div className="space-y-4 animate-[fadeUp_0.3s_ease]">
-              <div className="bg-[#d4af3711] border border-[#d4af3733] rounded-2xl px-5 py-3 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#d4af3722] flex items-center justify-center text-sm">📅</div>
+            <div className="space-y-4">
+              <div className="bg-[#d4af3711] border border-[#d4af3733] rounded-2xl px-4 py-3 flex items-center gap-3">
+                <span className="text-sm">📅</span>
                 <div>
                   <p className="text-xs font-bold text-[#3a2e0f]">{selectedDate ? formatDate(selectedDate) : ""}</p>
                   <p className="text-[10px] text-[#c5a059]">{selectedTime}</p>
@@ -354,35 +304,32 @@ function BookingModal({ property, onClose }: BookingModalProps) {
               ].map(({ key, label, type, placeholder }) => (
                 <div key={key} className="space-y-1">
                   <label className="text-[10px] uppercase tracking-[4px] font-bold text-[#8a7040]">{label}</label>
-                  <input
-                    type={type}
-                    value={form[key as keyof typeof form]}
+                  <input type={type} value={form[key as keyof typeof form]}
                     onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
                     placeholder={placeholder}
-                    className="w-full bg-[#fdfbf0] border border-[#d4af3744] rounded-xl px-4 py-3 text-sm text-[#3a2e0f] placeholder-[#c5a05966] focus:outline-none focus:border-[#d4af37] transition-all"
-                  />
+                    className="w-full bg-[#fdfbf0] border border-[#d4af3744] rounded-xl px-4 py-3 text-sm text-[#3a2e0f] placeholder-[#c5a05966] focus:outline-none focus:border-[#d4af37] transition-all" />
                 </div>
               ))}
 
-              <div className="flex gap-3 pt-2">
+              <div className="flex gap-3 pt-1">
                 <button onClick={() => setStep(1)}
-                  className="flex-1 py-4 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">
+                  className="flex-1 py-3.5 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">
                   Back
                 </button>
                 <button disabled={!canProceedStep2} onClick={() => setStep(3)}
-                  className={`flex-[2] py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
-                    ${canProceedStep2
-                      ? "bg-[#d4af37] text-white hover:bg-[#c5a059]"
-                      : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}>
+                  className={`flex-[2] py-3.5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
+                    ${canProceedStep2 ? "bg-[#d4af37] text-white hover:bg-[#c5a059]" : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}>
                   Review
                 </button>
               </div>
             </div>
           )}
 
-          {/* STEP 3 */}
+          {/* ── STEP 3 ── */}
           {step === 3 && (
-            <div className="space-y-5 animate-[fadeUp_0.3s_ease]">
+            
+            <div className="space-y-4">
+              
               <div className="bg-[#fdfbf0] border border-[#d4af3733] rounded-2xl divide-y divide-[#d4af3722]">
                 {[
                   { icon: "🏠", label: "Property", value: property.title    },
@@ -394,8 +341,8 @@ function BookingModal({ property, onClose }: BookingModalProps) {
                   { icon: "📧", label: "Email",    value: form.email    },
                   { icon: "📞", label: "Phone",    value: form.phone    },
                 ].map(({ icon, label, value }) => (
-                  <div key={label} className="flex items-start gap-4 px-5 py-3.5">
-                    <span className="text-base mt-0.5">{icon}</span>
+                  <div key={label} className="flex items-start gap-3 px-4 py-3">
+                    <span className="text-sm mt-0.5">{icon}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-[9px] uppercase tracking-[3px] text-[#c5a05988] font-bold mb-0.5">{label}</p>
                       <p className="text-sm font-semibold text-[#3a2e0f] truncate">{value}</p>
@@ -404,27 +351,42 @@ function BookingModal({ property, onClose }: BookingModalProps) {
                 ))}
               </div>
 
-              <div className="flex gap-3">
-                <button onClick={() => setStep(2)}
-                  className="flex-1 py-4 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">
-                  Edit
-                </button>
-                <button onClick={handleSubmit} disabled={loading}
-                  className="flex-[2] py-4 rounded-2xl bg-[#d4af37] text-white font-black uppercase tracking-widest text-sm hover:bg-[#c5a059] transition-all shadow-[0_0_30px_rgba(212,175,55,0.3)] flex items-center justify-center gap-2">
-                  {loading
-                    ? <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />Booking...</>
-                    : "Confirm Visit"}
-                </button>
-              </div>
+             <div className="sticky bottom-0 bg-white border-t border-[#d4af3722] px-6 py-4 flex gap-3">
+      
+      <button
+        onClick={() => setStep(2)}
+        className="flex-1 py-3.5 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all"
+      >
+        Edit
+      </button>
+
+      <button
+        onClick={handleSubmit}
+        disabled={loading}
+        className="flex-[2] py-3.5 rounded-2xl bg-[#d4af37] text-white font-black uppercase tracking-widest text-sm hover:bg-[#c5a059] transition-all shadow-[0_0_24px_rgba(212,175,55,0.3)] flex items-center justify-center gap-2"
+      >
+        {loading ? (
+          <>
+            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            Booking...
+          </>
+        ) : (
+          "Confirm Visit"
+        )}
+      </button>
+
+    </div>
             </div>
+            
           )}
+          
         </div>
       </div>
     </div>
   );
 }
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
+// ── Main Page ─────────────────────────────────────────────────────────────────
 export default function PropertyDetailPage() {
   const params       = useParams();
   const router       = useRouter();
@@ -454,11 +416,8 @@ export default function PropertyDetailPage() {
         const res  = await fetch(`/api/properties/${id}`);
         const data = await res.json();
         setProperty(data);
-      } catch {
-        setProperty(null);
-      } finally {
-        setLoading(false);
-      }
+      } catch { setProperty(null); }
+      finally   { setLoading(false); }
     };
     load();
   }, [id]);
@@ -488,8 +447,7 @@ export default function PropertyDetailPage() {
   const basicAmenities = property.basicAmenities ?? [];
   const fullAmenities  = property.fullAmenities  ?? [];
   const activeImageUrl = images[activeImg]
-    ? getCloudinaryUrl(images[activeImg].url, HERO_TRANSFORM)
-    : "";
+    ? getCloudinaryUrl(images[activeImg].url, HERO_TRANSFORM) : "";
   const isSoldOut = property.isSoldOut ?? false;
 
   const TagChips = ({ items }: { items?: string[] }) => {
@@ -509,9 +467,9 @@ export default function PropertyDetailPage() {
   const StatCard = ({ icon, label, value }: { icon: string; label: string; value: any }) => {
     if (value == null || value === "") return null;
     return (
-      <div className="bg-[#fdf8ec]/80 border border-[#c5a05944] rounded-2xl px-5 py-4 space-y-1 backdrop-blur-md shadow-[0_2px_12px_rgba(197,160,89,0.1)]">
+      <div className="bg-[#fdf8ec]/80 border border-[#c5a05944] rounded-2xl px-4 py-3 space-y-1 backdrop-blur-md">
         <div className="flex items-center gap-2">
-          <span className="text-base">{icon}</span>
+          <span className="text-sm">{icon}</span>
           <span className="text-[9px] uppercase tracking-[3px] font-bold text-[#a07830]">{label}</span>
         </div>
         <p className="text-sm font-bold text-[#2a1f08]">{value}</p>
@@ -521,30 +479,33 @@ export default function PropertyDetailPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-transparent pb-24 pt-40">
-        <div className="max-w-4xl mx-auto px-6 md:px-10 space-y-8">
+      {/*
+        Navbar heights from your Navbar.tsx:
+        Mobile:  h-[80px]   → pt-[80px]   + extra breathing room = pt-24 (96px)
+        Desktop: h-[120px]  → pt-[120px]  + extra = pt-36 (144px)
+      */}
+      <main className="min-h-screen bg-transparent pb-24 pt-44 sm:pt-46">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10 space-y-8">
 
-          {/* Back button */}
+          {/* Back button — positioned just below navbar */}
           <button
             onClick={handleBackNavigation}
-            className="fixed top-24 left-6 md:left-10 z-50 flex items-center gap-2 text-[#c5a059] text-[10px] font-black uppercase tracking-[3px] px-5 py-3 bg-white/40 backdrop-blur-md border border-[#d4af3733] rounded-full hover:bg-[#d4af37] hover:text-white transition-all shadow-sm group sm:top-36"
+            className="fixed top-[88px] sm:top-[128px] left-4 sm:left-6 md:left-10 z-50 flex items-center gap-2 text-[#c5a059] text-[10px] font-black uppercase tracking-[3px] px-4 py-2.5 bg-white/40 backdrop-blur-md border border-[#d4af3733] rounded-full hover:bg-[#d4af37] hover:text-white transition-all shadow-sm group"
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:-translate-x-1">
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none"
+              className="transition-transform group-hover:-translate-x-1">
               <path d="M12 7H2M2 7L7 2M2 7L7 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Back
+            <span className="hidden sm:block">Back</span>
           </button>
 
-          {/* IMAGE GALLERY */}
+          {/* ── IMAGE GALLERY ── */}
           {images.length > 0 ? (
-            <div className="space-y-3 pt-10 sm:pt-14">
-              <div className="relative w-full h-[300px] md:h-[420px] rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(197,160,89,0.2)] border border-[#d4af3733]">
+            <div className="space-y-3">
+              <div className="relative w-full h-[240px] sm:h-[340px] md:h-[420px] rounded-[24px] overflow-hidden shadow-[0_20px_60px_rgba(197,160,89,0.2)] border border-[#d4af3733]">
                 {activeImageUrl ? (
-                  <img
-                    src={activeImageUrl}
-                    alt={property.title}
-                    className={`w-full h-full object-cover transition-all duration-500 ${isSoldOut ? "grayscale opacity-60" : ""}`}
-                  />
+                  <img src={activeImageUrl} alt={property.title}
+                    className={`w-full h-full object-cover transition-all duration-500 ${isSoldOut ? "grayscale opacity-60" : ""}`} />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-[#fdf6e3] to-[#f5e6c0] flex items-center justify-center">
                     <span className="text-[11px] font-bold uppercase tracking-[8px] text-[#c5a059] opacity-60">Luxury Living</span>
@@ -553,60 +514,53 @@ export default function PropertyDetailPage() {
 
                 {isSoldOut && (
                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                    <div className="border-2 border-red-500/70 bg-red-500/20 backdrop-blur-sm text-red-400 text-2xl font-black uppercase tracking-[0.3em] px-8 py-4 rounded rotate-[-6deg]">
+                    <div className="border-2 border-red-500/70 bg-red-500/20 backdrop-blur-sm text-red-400 text-xl font-black uppercase tracking-[0.3em] px-6 py-3 rounded rotate-[-6deg]">
                       SOLD OUT
                     </div>
                   </div>
                 )}
 
                 {!isSoldOut && (
-                  <div className="absolute bottom-5 right-5 bg-white/80 backdrop-blur-md border border-[#d4af3744] rounded-2xl px-5 py-3 text-right shadow-[0_4px_20px_rgba(197,160,89,0.15)]">
+                  <div className="absolute bottom-4 right-4 bg-white/80 backdrop-blur-md border border-[#d4af3744] rounded-2xl px-4 py-2.5 text-right shadow-sm">
                     <p className="text-[9px] text-[#c5a059] uppercase tracking-[3px] font-bold mb-0.5">Total Price</p>
-                    <p className="text-2xl font-black text-[#c5a059] leading-none">
+                    <p className="text-xl sm:text-2xl font-black text-[#c5a059] leading-none">
                       {property.callForPrice ? "Call for Price" : `₹${formatPrice(property.price ?? 0)}`}
                     </p>
                     {property.pricePerSqft && (
-                      <p className="text-[10px] text-[#8a7040] mt-1">
-                        ₹{formatPrice(property.pricePerSqft)} /sqft
-                      </p>
+                      <p className="text-[9px] text-[#8a7040] mt-0.5">₹{formatPrice(property.pricePerSqft)} /sqft</p>
                     )}
                   </div>
                 )}
 
-                <div className="absolute top-4 left-4">
-                  <span className="bg-[#d4af37] text-white text-[10px] font-black uppercase tracking-[2px] px-3 py-1.5 rounded-full shadow-md">
+                <div className="absolute top-3 left-3">
+                  <span className="bg-[#d4af37] text-white text-[9px] font-black uppercase tracking-[2px] px-2.5 py-1.5 rounded-full shadow-md">
                     {property.type}
                   </span>
                 </div>
 
                 {images.length > 1 && (
-                  <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full">
+                  <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
                     {activeImg + 1} / {images.length}
                   </div>
                 )}
 
                 {images.length > 1 && (
                   <>
-                    <button
-                      onClick={() => setActiveImg(p => (p - 1 + images.length) % images.length)}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white text-lg flex items-center justify-center hover:bg-black/80 transition">
-                      ‹
-                    </button>
-                    <button
-                      onClick={() => setActiveImg(p => (p + 1) % images.length)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white text-lg flex items-center justify-center hover:bg-black/80 transition">
-                      ›
-                    </button>
+                    <button onClick={() => setActiveImg(p => (p - 1 + images.length) % images.length)}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 border border-white/10 text-white text-lg flex items-center justify-center hover:bg-black/80 transition">‹</button>
+                    <button onClick={() => setActiveImg(p => (p + 1) % images.length)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 border border-white/10 text-white text-lg flex items-center justify-center hover:bg-black/80 transition">›</button>
                   </>
                 )}
               </div>
 
               {/* Thumbnail strip */}
               {images.length > 1 && (
-                <div className="flex gap-2 overflow-x-auto pb-1">
+                <div className="flex gap-2 overflow-x-auto pb-1"
+                  style={{ scrollbarWidth: "none" }}>
                   {images.map((img, idx) => (
                     <button key={idx} onClick={() => setActiveImg(idx)}
-                      className={`flex-shrink-0 h-16 w-24 rounded-xl overflow-hidden border-2 transition-all
+                      className={`flex-shrink-0 h-14 w-20 sm:h-16 sm:w-24 rounded-xl overflow-hidden border-2 transition-all
                         ${activeImg === idx
                           ? "border-[#d4af37] opacity-100 shadow-[0_0_12px_rgba(212,175,55,0.4)]"
                           : "border-transparent opacity-50 hover:opacity-80"}`}>
@@ -617,24 +571,24 @@ export default function PropertyDetailPage() {
               )}
             </div>
           ) : (
-            <div className="w-full h-48 rounded-[28px] bg-gradient-to-br from-[#fdf6e3] to-[#f5e6c0] flex items-center justify-center mt-10 sm:mt-14">
+            <div className="w-full h-40 rounded-[24px] bg-gradient-to-br from-[#fdf6e3] to-[#f5e6c0] flex items-center justify-center">
               <span className="text-[11px] font-bold uppercase tracking-[8px] text-[#c5a059] opacity-60">Luxury Living</span>
             </div>
           )}
 
-          {/* TITLE + LOCATION */}
+          {/* ── TITLE ── */}
           <div>
             {isSoldOut && (
-              <div className="inline-flex items-center gap-2 mb-3 px-4 py-1.5 rounded-full border border-red-500/40 bg-red-500/10">
+              <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full border border-red-500/40 bg-red-500/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-[3px] text-red-400">Sold Out</span>
+                <span className="text-[9px] font-black uppercase tracking-[3px] text-red-400">Sold Out</span>
               </div>
             )}
-            <h1 className="text-3xl md:text-4xl font-black text-[#3a2e0f] leading-tight tracking-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#3a2e0f] leading-tight tracking-tight">
               {property.title}
             </h1>
             <div className="flex items-center gap-2 mt-2">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#c5a059" />
                 <circle cx="12" cy="9" r="2.5" fill="#fdfbf0" />
               </svg>
@@ -647,24 +601,18 @@ export default function PropertyDetailPage() {
 
           <div className="h-[1px] bg-gradient-to-r from-[#d4af3755] via-[#d4af37] to-transparent" />
 
-          {/* DESCRIPTION */}
+          {/* ── DESCRIPTION ── */}
           {property.description?.trim() && (
-            <div className="space-y-3">
-              <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">
-                About This Property
-              </h2>
-              <p className="text-[#5a4a2a] leading-[1.9] text-[0.95rem] font-light">
-                {property.description}
-              </p>
+            <div className="space-y-2">
+              <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">About This Property</h2>
+              <p className="text-[#5a4a2a] leading-[1.9] text-[0.9rem] font-light">{property.description}</p>
             </div>
           )}
 
-          {/* PROPERTY DETAILS GRID */}
+          {/* ── DETAILS GRID ── */}
           <div>
-            <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059] mb-5">
-              Property Details
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059] mb-4">Property Details</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <StatCard icon="🏷️" label="Type"            value={property.type} />
               <StatCard icon="🏢" label="Sub Type"        value={property.subType} />
               <StatCard icon="🛏️" label="Layout"          value={property.layoutType} />
@@ -676,7 +624,7 @@ export default function PropertyDetailPage() {
               <StatCard icon="🛁" label="Half Baths"      value={property.halfBaths} />
               <StatCard icon="🏠" label="Total Rooms"     value={property.totalRooms} />
               <StatCard icon="📐" label="Area (sqft)"     value={property.areaSqft?.toLocaleString("en-IN")} />
-              <StatCard icon="🌿" label="Lot Size (sqft)" value={property.lotSizeSqft?.toLocaleString("en-IN")} />
+              <StatCard icon="🌿" label="Lot Size"        value={property.lotSizeSqft?.toLocaleString("en-IN")} />
               <StatCard icon="🏗️" label="Floors"          value={property.floors} />
               <StatCard icon="🔢" label="Floor Level"     value={property.floorLevel} />
               <StatCard icon="🏛️" label="Year Built"      value={property.yearBuilt} />
@@ -684,30 +632,25 @@ export default function PropertyDetailPage() {
             </div>
           </div>
 
-        {basicAmenities.length > 0 && (
-  <div className="space-y-4">
-    <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
+          {/* ── BASIC AMENITIES ── */}
+          {basicAmenities.length > 0 && (
+            <div className="space-y-3">
+              <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
+              <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#60a5fa]">🛡 Basic Amenities</h2>
+              <div className="flex flex-wrap gap-2">
+                {basicAmenities.map(a => (
+                  <span key={a.id}
+                    className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full border border-[#60a5fa]/30 text-[#60a5fa] bg-[#60a5fa]/10 uppercase tracking-wide">
+                    <span>✓</span> {a.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
-    <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-black">
-      Basic Amenities
-    </h2>
-
-    <div className="flex flex-wrap gap-x-4 gap-y-2">
-      {basicAmenities.map(a => (
-        <span
-          key={a.id}
-          className="text-[11px] font-medium text-black"
-        >
-          ✓ {a.name}
-        </span>
-      ))}
-    </div>
-  </div>
-)}
-
-          {/* FULL AMENITIES */}
+          {/* ── FULL AMENITIES ── */}
           {fullAmenities.length > 0 && (
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
               <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#a78bfa]">💎 Full Amenities</h2>
               <div className="flex flex-wrap gap-2">
@@ -721,10 +664,10 @@ export default function PropertyDetailPage() {
             </div>
           )}
 
-          {/* TAG SECTIONS */}
+          {/* ── TAG SECTIONS ── */}
           {(property.rentPeriods?.length || property.statuses?.length ||
             property.parkingOptions?.length || property.basementOptions?.length) ? (
-            <div className="space-y-5">
+            <div className="space-y-4">
               <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
               {property.rentPeriods?.length ? (
                 <div className="space-y-2">
@@ -755,38 +698,38 @@ export default function PropertyDetailPage() {
 
           <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
 
-          {/* CTA */}
+          {/* ── CTA ── */}
           {isSoldOut ? (
-            <div className="relative overflow-hidden bg-gradient-to-br from-[#1a0a0a] via-[#1a0505]/80 to-[#200a0a] border border-red-500/20 rounded-[28px] p-8 md:p-12 text-center space-y-4 shadow-[0_10px_40px_rgba(239,68,68,0.08)]">
+            <div className="relative overflow-hidden bg-gradient-to-br from-[#1a0a0a] via-[#1a0505]/80 to-[#200a0a] border border-red-500/20 rounded-[24px] p-7 sm:p-12 text-center space-y-4">
               <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-red-500/10 blur-3xl pointer-events-none" />
               <div className="relative space-y-3">
                 <p className="text-[9px] font-bold uppercase tracking-[8px] text-red-400/70">Availability</p>
-                <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
+                <h3 className="text-2xl sm:text-4xl font-black text-white leading-tight">
                   This Property is<br /><span className="text-red-400">Sold Out</span>
                 </h3>
                 <p className="text-red-300/60 text-sm max-w-sm mx-auto leading-relaxed">
-                  This property is no longer available. Browse our other listings to find your perfect home.
+                  This property is no longer available.
                 </p>
               </div>
               <button onClick={handleBackNavigation}
-                className="relative inline-flex items-center gap-3 bg-white/10 border border-white/20 text-white font-black text-sm uppercase tracking-[3px] px-10 py-4 rounded-full hover:bg-white/20 transition-all">
+                className="relative inline-flex items-center gap-3 bg-white/10 border border-white/20 text-white font-black text-sm uppercase tracking-[3px] px-8 py-3.5 rounded-full hover:bg-white/20 transition-all">
                 Browse Other Properties
               </button>
             </div>
           ) : (
-            <div className="relative overflow-hidden bg-gradient-to-br from-[#fffdf0] via-white/80 to-[#fdf6e3] border border-[#d4af3744] rounded-[28px] p-8 md:p-12 text-center space-y-6 shadow-[0_10px_40px_rgba(197,160,89,0.12)]">
+            <div className="relative overflow-hidden bg-gradient-to-br from-[#fffdf0] via-white/80 to-[#fdf6e3] border border-[#d4af3744] rounded-[24px] p-7 sm:p-12 text-center space-y-5">
               <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-[#d4af3715] blur-3xl pointer-events-none" />
               <div className="relative space-y-3">
                 <p className="text-[9px] font-bold uppercase tracking-[8px] text-[#c5a059]">Ready to Experience It?</p>
-                <h3 className="text-3xl md:text-4xl font-black text-[#3a2e0f] leading-tight">
+                <h3 className="text-2xl sm:text-4xl font-black text-[#3a2e0f] leading-tight">
                   Book a Personal<br /><span className="text-[#d4af37]">Site Visit</span>
                 </h3>
                 <p className="text-[#8a7040] text-sm max-w-sm mx-auto leading-relaxed">
-                  Schedule a private walkthrough with our property advisor at your preferred time.
+                  Schedule a private walkthrough with our property advisor.
                 </p>
               </div>
               <button onClick={() => setShowBooking(true)}
-                className="relative inline-flex items-center gap-3 bg-[#d4af37] text-white font-black text-sm uppercase tracking-[3px] px-10 py-4 rounded-full hover:bg-[#c5a059] transition-all shadow-[0_0_30px_rgba(212,175,55,0.35)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
+                className="relative inline-flex items-center gap-3 bg-[#d4af37] text-white font-black text-sm uppercase tracking-[3px] px-8 py-3.5 rounded-full hover:bg-[#c5a059] transition-all shadow-[0_0_30px_rgba(212,175,55,0.35)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
                 Book a Meet
               </button>
             </div>
@@ -794,15 +737,12 @@ export default function PropertyDetailPage() {
         </div>
       </main>
 
-      {/* Pass full property object to modal */}
       {showBooking && property && !isSoldOut && (
-        <BookingModal
-          property={property}
-          onClose={() => setShowBooking(false)}
-        />
+        <BookingModal property={property} onClose={() => setShowBooking(false)} />
       )}
 
       <style jsx global>{`
+        div::-webkit-scrollbar { display: none; }
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
