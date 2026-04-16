@@ -81,24 +81,33 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // ── Shared property rows HTML ──────────────────────────────────────────────
-    const propertyRowsHTML = properties.map((p, i) => `
-      <tr>
-        <td style="padding:${i === 0 ? '0' : '12px 0 0'};vertical-align:top;">
-          <div style="background:#ffffff08;border:1px solid #ffffff0a;border-radius:14px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;">
-            <div style="width:26px;height:26px;border-radius:50%;background:#d4af3722;border:1px solid #d4af3744;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:900;color:#d4af37;text-align:center;line-height:26px;">
-              ${i + 1}
-            </div>
-            <div style="flex:1;min-width:0;">
-              <p style="margin:0;font-size:14px;font-weight:800;color:#ffffff;line-height:1.3;">${p.title}</p>
-              ${p.location ? `<p style="margin:4px 0 0;font-size:11px;color:#888;">📍 ${p.location}</p>` : ''}
-              ${p.price || p.callForPrice ? `<p style="margin:6px 0 0;font-size:12px;font-weight:700;color:#d4af37;">${formatINRPrice(p.price, p.callForPrice)}</p>` : ''}
-              ${p.id ? `<p style="margin:4px 0 0;font-size:10px;color:#444;font-family:monospace;">ID: ${p.id}</p>` : ''}
-            </div>
-          </div>
-        </td>
-      </tr>
-    `).join('');
+const propertyRowsHTML = properties.map((p, i) => `
+  <tr>
+    <td style="padding:${i === 0 ? '0' : '12px 0 0'};vertical-align:top;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff08;border:1px solid #ffffff0a;border-radius:14px;overflow:hidden;">
+        <tr>
+          <td width="26" style="padding:14px 0 14px 14px;vertical-align:top;width:26px;">
+            <!-- Number circle — table-cell centering for Gmail compatibility -->
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="26" height="26"
+                  style="width:26px;height:26px;min-width:26px;border-radius:50%;background:#d4af3722;border:1px solid #d4af3744;text-align:center;vertical-align:middle;font-size:11px;font-weight:900;color:#d4af37;line-height:1;font-family:'Segoe UI',Arial,sans-serif;">
+                  ${i + 1}
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td style="padding:14px 14px 14px 10px;vertical-align:top;">
+            <p style="margin:0;font-size:14px;font-weight:800;color:#ffffff;line-height:1.3;font-family:'Segoe UI',Arial,sans-serif;">${p.title}</p>
+            ${p.location ? `<p style="margin:4px 0 0;font-size:11px;color:#888;font-family:'Segoe UI',Arial,sans-serif;">📍 ${p.location}</p>` : ''}
+            ${(p.price || p.callForPrice) ? `<p style="margin:6px 0 0;font-size:12px;font-weight:700;color:#d4af37;font-family:'Segoe UI',Arial,sans-serif;">${formatINRPrice(p.price, p.callForPrice)}</p>` : ''}
+            ${p.id ? `<p style="margin:4px 0 0;font-size:10px;color:#444;font-family:monospace;">ID: ${p.id}</p>` : ''}
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+`).join('');
 
     // ── Property summary chips for client email header ─────────────────────────
     const propertySummaryChips = properties.map(p => `
