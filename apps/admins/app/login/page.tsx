@@ -36,8 +36,8 @@ export default function LoginPage() {
       }
 
       // Store session token
-      localStorage.setItem("admin_token", data.token);
-      router.push("/");
+localStorage.setItem("admin_token", data.token);
+window.location.href = "/";
     } catch (err) {
       setError("Something went wrong. Please try again.");
     } finally {

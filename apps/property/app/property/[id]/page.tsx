@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { formatPrice } from "@/lib/formatPrice";
 
 interface PropertyImage {
   id: string;
@@ -10,7 +11,7 @@ interface PropertyImage {
   order: number;
 }
 
-interface PropertyAmenity {
+interface Amenity {
   id: string;
   name: string;
   propertyId: string;
@@ -24,7 +25,7 @@ interface Property {
   pricePerSqft?: number | null;
   priceNote?: string | null;
   callForPrice?: boolean;
-  isSoldOut?: boolean; // ✅ ADDED
+  isSoldOut?: boolean;
   type: string;
   subType: string;
   layoutType: string;
@@ -46,17 +47,17 @@ interface Property {
   parkingOptions?: string[];
   basementOptions?: string[];
   images: PropertyImage[];
-  propertyAmenities?: PropertyAmenity[]; // ✅ ADDED
+  basicAmenities?: Amenity[];
+  fullAmenities?: Amenity[];
   createdAt: string;
 }
 
 interface BookingModalProps {
-  propertyTitle: string;
-  propertyId: string;
+  property: Property;
   onClose: () => void;
 }
 
-const HERO_TRANSFORM = "w_1200,h_700,c_fill,q_auto,f_auto";
+const HERO_TRANSFORM  = "w_1200,h_700,c_fill,q_auto,f_auto";
 const THUMB_TRANSFORM = "w_200,h_130,c_fill,q_auto,f_auto";
 
 function getCloudinaryUrl(url: string, transform: string): string {
@@ -68,8 +69,7 @@ function getCloudinaryUrl(url: string, transform: string): string {
   return url;
 }
 
-// ─── Calendar — only next 4 days from today are clickable ────────────────────
-
+// ─── Calendar ────────────────────────────────────────────────────────────────
 function Calendar({
   selectedDate,
   onSelect,
@@ -79,32 +79,33 @@ function Calendar({
 }) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-
-  // ✅ Only the next 4 days (today + 3 more) are selectable
   const maxDate = new Date(today);
   maxDate.setDate(today.getDate() + 3);
 
-  const [viewYear, setViewYear] = useState(today.getFullYear());
+  const [viewYear,  setViewYear]  = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
 
-  const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const DAYS = ["Su","Mo","Tu","We","Th","Fr","Sa"];
-  const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+  const MONTHS = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December",
+  ];
+  const DAYS        = ["Su","Mo","Tu","We","Th","Fr","Sa"];
+  const firstDay    = new Date(viewYear, viewMonth, 1).getDay();
   const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
-
-  const prev = () => {
-    if (viewMonth === 0) { setViewMonth(11); setViewYear((y) => y - 1); }
-    else setViewMonth((m) => m - 1);
-  };
-  const next = () => {
-    if (viewMonth === 11) { setViewMonth(0); setViewYear((y) => y + 1); }
-    else setViewMonth((m) => m + 1);
-  };
 
   const cells: (number | null)[] = [
     ...Array(firstDay).fill(null),
     ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
   ];
+
+  const prev = () => {
+    if (viewMonth === 0) { setViewMonth(11); setViewYear(y => y - 1); }
+    else setViewMonth(m => m - 1);
+  };
+  const next = () => {
+    if (viewMonth === 11) { setViewMonth(0); setViewYear(y => y + 1); }
+    else setViewMonth(m => m + 1);
+  };
 
   return (
     <div className="w-full select-none">
@@ -114,25 +115,24 @@ function Calendar({
         <button onClick={next} className="w-8 h-8 flex items-center justify-center rounded-full border border-[#d4af3744] text-[#c5a059] hover:bg-[#d4af3722] transition-all">›</button>
       </div>
       <div className="grid grid-cols-7 mb-2">
-        {DAYS.map((d) => (
+        {DAYS.map(d => (
           <div key={d} className="text-center text-[10px] font-bold text-[#c5a059] uppercase tracking-widest py-1">{d}</div>
         ))}
       </div>
       <div className="grid grid-cols-7 gap-y-1">
         {cells.map((day, idx) => {
           if (!day) return <div key={`e-${idx}`} />;
-          const cellDate = new Date(viewYear, viewMonth, day);
-          // ✅ Disabled if before today OR after today+3
+          const cellDate   = new Date(viewYear, viewMonth, day);
           const isDisabled = cellDate < today || cellDate > maxDate;
           const isSelected =
             selectedDate &&
             selectedDate.getFullYear() === viewYear &&
-            selectedDate.getMonth() === viewMonth &&
-            selectedDate.getDate() === day;
+            selectedDate.getMonth()    === viewMonth &&
+            selectedDate.getDate()     === day;
           const isToday =
             today.getFullYear() === viewYear &&
-            today.getMonth() === viewMonth &&
-            today.getDate() === day;
+            today.getMonth()    === viewMonth &&
+            today.getDate()     === day;
 
           return (
             <button
@@ -147,15 +147,13 @@ function Calendar({
                   ? "border border-[#d4af37] text-[#c5a059]"
                   : !isDisabled
                   ? "text-[#5a4a2a] hover:bg-[#d4af3722] hover:text-[#3a2e0f]"
-                  : ""
-                }`}
+                  : ""}`}
             >
               {day}
             </button>
           );
         })}
       </div>
-      {/* ✅ Helper hint */}
       <p className="mt-4 text-center text-[10px] text-[#c5a05988] uppercase tracking-widest font-bold">
         Available: Next 4 days only
       </p>
@@ -163,13 +161,27 @@ function Calendar({
   );
 }
 
-function TimePicker({ selectedTime, onSelect }: { selectedTime: string; onSelect: (t: string) => void }) {
-  const slots = ["09:00 AM","09:30 AM","10:00 AM","10:30 AM","11:00 AM","11:30 AM","12:00 PM","12:30 PM","02:00 PM","02:30 PM","03:00 PM","03:30 PM","04:00 PM","04:30 PM","05:00 PM","05:30 PM"];
+function TimePicker({
+  selectedTime,
+  onSelect,
+}: {
+  selectedTime: string;
+  onSelect: (t: string) => void;
+}) {
+  const slots = [
+    "09:00 AM","09:30 AM","10:00 AM","10:30 AM",
+    "11:00 AM","11:30 AM","12:00 PM","12:30 PM",
+    "02:00 PM","02:30 PM","03:00 PM","03:30 PM",
+    "04:00 PM","04:30 PM","05:00 PM","05:30 PM",
+  ];
   return (
     <div className="grid grid-cols-4 gap-2">
-      {slots.map((slot) => (
+      {slots.map(slot => (
         <button key={slot} onClick={() => onSelect(slot)}
-          className={`py-2 rounded-xl text-[11px] font-bold tracking-wide transition-all duration-200 ${selectedTime === slot ? "bg-[#d4af37] text-white shadow-[0_0_12px_rgba(212,175,55,0.3)]" : "border border-[#d4af3744] text-[#8a7040] hover:border-[#d4af37] hover:text-[#3a2e0f] bg-white/40"}`}>
+          className={`py-2 rounded-xl text-[11px] font-bold tracking-wide transition-all duration-200
+            ${selectedTime === slot
+              ? "bg-[#d4af37] text-white shadow-[0_0_12px_rgba(212,175,55,0.3)]"
+              : "border border-[#d4af3744] text-[#8a7040] hover:border-[#d4af37] hover:text-[#3a2e0f] bg-white/40"}`}>
           {slot}
         </button>
       ))}
@@ -178,32 +190,42 @@ function TimePicker({ selectedTime, onSelect }: { selectedTime: string; onSelect
 }
 
 // ─── Booking Modal ────────────────────────────────────────────────────────────
-
-function BookingModal({ propertyTitle, propertyId, onClose }: BookingModalProps) {
-  const [step, setStep] = useState<1 | 2 | 3>(1);
+function BookingModal({ property, onClose }: BookingModalProps) {
+  const [step,         setStep]         = useState<1 | 2 | 3>(1);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState("");
-  const [form, setForm] = useState({ name: "", email: "", phone: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [form,         setForm]         = useState({ name: "", email: "", phone: "" });
+  const [submitted,    setSubmitted]    = useState(false);
+  const [loading,      setLoading]      = useState(false);
 
   const formatDate = (d: Date) =>
     d.toLocaleDateString("en-IN", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
 
+  // ── Single call with `properties` array (matches new booking API) ──────────
   const handleSubmit = async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/booking", {
-        method: "POST",
+        method:  "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: form.name,
+          name:  form.name,
           email: form.email,
           phone: form.phone,
-          date: selectedDate?.toISOString(),
+          date:  selectedDate
+            ? `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${String(selectedDate.getDate()).padStart(2, "0")}`
+            : undefined,
           time: selectedTime,
-          propertyTitle,
-          propertyId,
+          // Use the new multi-property format — single property in the array
+          properties: [
+            {
+              id:           property.id,
+              title:        property.title,
+              location:     property.location,
+              price:        property.price,
+              callForPrice: property.callForPrice,
+            },
+          ],
         }),
       });
       if (!res.ok) {
@@ -231,14 +253,18 @@ function BookingModal({ propertyTitle, propertyId, onClose }: BookingModalProps)
               <path d="M5 12l5 5L19 7" stroke="#d4af37" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <h3 className="text-2xl font-black text-[#3a2e0f] tracking-tight">Meeting Scheduled</h3>
+          <h3 className="text-2xl font-black text-[#3a2e0f] tracking-tight">Visit Confirmed!</h3>
           <p className="text-[#8a7040] text-sm leading-relaxed">
-            Your visit to <span className="text-[#c5a059] font-bold">{propertyTitle}</span> is confirmed for{" "}
+            Your visit to{" "}
+            <span className="text-[#c5a059] font-bold">{property.title}</span> is confirmed for{" "}
             <span className="text-[#3a2e0f] font-semibold">{selectedDate ? formatDate(selectedDate) : ""}</span> at{" "}
             <span className="text-[#d4af37] font-bold">{selectedTime}</span>.
           </p>
           <p className="text-[#aaa] text-xs">A confirmation will be sent to {form.email}</p>
-          <button onClick={onClose} className="w-full py-3 rounded-2xl bg-[#d4af37] text-white font-black tracking-widest text-sm uppercase transition-all hover:bg-[#c5a059]">Done</button>
+          <button onClick={onClose}
+            className="w-full py-3 rounded-2xl bg-[#d4af37] text-white font-black tracking-widest text-sm uppercase transition-all hover:bg-[#c5a059]">
+            Done
+          </button>
         </div>
       </div>
     );
@@ -246,39 +272,40 @@ function BookingModal({ propertyTitle, propertyId, onClose }: BookingModalProps)
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4 pt-32 sm:pt-40">
-      {/* 🔥 LONG LIQUID GLASS BACK PANEL */}
-<div className="absolute w-[90%] max-w-3xl h-[80%] rounded-[40px]
-bg-white/10 backdrop-blur-2xl backdrop-saturate-150
-border border-white/20
-shadow-[0_20px_80px_rgba(0,0,0,0.25)]
-overflow-hidden">
+      {/* Liquid glass backdrop */}
+      <div className="absolute w-[90%] max-w-3xl h-[80%] rounded-[40px] bg-white/10 backdrop-blur-2xl backdrop-saturate-150 border border-white/20 shadow-[0_20px_80px_rgba(0,0,0,0.25)] overflow-hidden">
+        <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/20 rounded-full blur-3xl opacity-40" />
+        <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#d4af37]/20 rounded-full blur-3xl opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/10 pointer-events-none" />
+      </div>
 
-  {/* Liquid blobs */}
-  <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/20 rounded-full blur-3xl opacity-40" />
-  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#d4af37]/20 rounded-full blur-3xl opacity-40" />
+      <div className="relative z-10 bg-white/70 backdrop-blur-md border border-white/40 rounded-[30px] w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-[0_20px_60px_rgba(197,160,89,0.2)] animate-[fadeUp_0.4s_ease]">
 
-  {/* Glass shine */}
-  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/10 pointer-events-none" />
-</div>
-     <div className="relative z-10 bg-white/70 backdrop-blur-md border border-white/40 rounded-[30px] w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-[0_20px_60px_rgba(197,160,89,0.2)] animate-[fadeUp_0.4s_ease]">
         {/* Header */}
         <div className="sticky top-0 bg-white z-10 flex items-center justify-between px-8 pt-8 pb-5 border-b border-[#d4af3722]">
           <div>
             <p className="text-[9px] text-[#c5a059] uppercase tracking-[5px] font-bold mb-1">Schedule a Visit</p>
-            <h2 className="text-lg font-black text-[#3a2e0f]">{propertyTitle}</h2>
+            <h2 className="text-lg font-black text-[#3a2e0f] line-clamp-1">{property.title}</h2>
           </div>
-          <button onClick={onClose} className="w-9 h-9 rounded-full border border-[#d4af3744] flex items-center justify-center text-[#c5a059] hover:bg-[#d4af3711] transition-all">✕</button>
+          <button onClick={onClose}
+            className="w-9 h-9 rounded-full border border-[#d4af3744] flex items-center justify-center text-[#c5a059] hover:bg-[#d4af3711] transition-all shrink-0 ml-3">
+            ✕
+          </button>
         </div>
 
-        {/* Steps */}
+        {/* Step indicators */}
         <div className="flex items-center gap-3 px-8 py-4">
           {[{ n: 1, label: "Date & Time" }, { n: 2, label: "Your Details" }, { n: 3, label: "Confirm" }].map(({ n, label }) => (
             <React.Fragment key={n}>
               <div className="flex items-center gap-2">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black transition-all ${step >= n ? "bg-[#d4af37] text-white" : "border border-[#d4af3744] text-[#c5a05966]"}`}>
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black transition-all
+                  ${step >= n ? "bg-[#d4af37] text-white" : "border border-[#d4af3744] text-[#c5a05966]"}`}>
                   {step > n ? "✓" : n}
                 </div>
-                <span className={`text-[10px] font-bold uppercase tracking-widest hidden sm:block ${step >= n ? "text-[#c5a059]" : "text-[#c5a05966]"}`}>{label}</span>
+                <span className={`text-[10px] font-bold uppercase tracking-widest hidden sm:block
+                  ${step >= n ? "text-[#c5a059]" : "text-[#c5a05966]"}`}>
+                  {label}
+                </span>
               </div>
               {n < 3 && <div className={`flex-1 h-[1px] ${step > n ? "bg-[#d4af37]" : "bg-[#d4af3733]"}`} />}
             </React.Fragment>
@@ -286,6 +313,8 @@ overflow-hidden">
         </div>
 
         <div className="px-8 pb-8">
+
+          {/* STEP 1 */}
           {step === 1 && (
             <div className="space-y-6">
               <div className="bg-[#fdfbf0] border border-[#d4af3733] rounded-2xl p-5">
@@ -297,16 +326,17 @@ overflow-hidden">
                   <TimePicker selectedTime={selectedTime} onSelect={setSelectedTime} />
                 </div>
               )}
-              <button
-                disabled={!canProceedStep1}
-                onClick={() => setStep(2)}
-                className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all ${canProceedStep1 ? "bg-[#d4af37] text-white hover:bg-[#c5a059] shadow-[0_0_25px_rgba(212,175,55,0.25)]" : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}
-              >
+              <button disabled={!canProceedStep1} onClick={() => setStep(2)}
+                className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
+                  ${canProceedStep1
+                    ? "bg-[#d4af37] text-white hover:bg-[#c5a059] shadow-[0_0_25px_rgba(212,175,55,0.25)]"
+                    : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}>
                 Continue
               </button>
             </div>
           )}
 
+          {/* STEP 2 */}
           {step === 2 && (
             <div className="space-y-4 animate-[fadeUp_0.3s_ease]">
               <div className="bg-[#d4af3711] border border-[#d4af3733] rounded-2xl px-5 py-3 flex items-center gap-3">
@@ -316,47 +346,55 @@ overflow-hidden">
                   <p className="text-[10px] text-[#c5a059]">{selectedTime}</p>
                 </div>
               </div>
+
               {[
-                { key: "name", label: "Full Name", type: "text", placeholder: "Your name" },
+                { key: "name",  label: "Full Name",     type: "text",  placeholder: "Your name"       },
                 { key: "email", label: "Email Address", type: "email", placeholder: "you@example.com" },
-                { key: "phone", label: "Phone Number", type: "tel", placeholder: "+91 98765 43210" },
+                { key: "phone", label: "Phone Number",  type: "tel",   placeholder: "+91 98765 43210" },
               ].map(({ key, label, type, placeholder }) => (
                 <div key={key} className="space-y-1">
                   <label className="text-[10px] uppercase tracking-[4px] font-bold text-[#8a7040]">{label}</label>
                   <input
                     type={type}
                     value={form[key as keyof typeof form]}
-                    onChange={(e) => setForm((f) => ({ ...f, [key]: e.target.value }))}
+                    onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
                     placeholder={placeholder}
                     className="w-full bg-[#fdfbf0] border border-[#d4af3744] rounded-xl px-4 py-3 text-sm text-[#3a2e0f] placeholder-[#c5a05966] focus:outline-none focus:border-[#d4af37] transition-all"
                   />
                 </div>
               ))}
+
               <div className="flex gap-3 pt-2">
-                <button onClick={() => setStep(1)} className="flex-1 py-4 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">Back</button>
-                <button
-                  disabled={!canProceedStep2}
-                  onClick={() => setStep(3)}
-                  className={`flex-[2] py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all ${canProceedStep2 ? "bg-[#d4af37] text-white hover:bg-[#c5a059]" : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}
-                >
+                <button onClick={() => setStep(1)}
+                  className="flex-1 py-4 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">
+                  Back
+                </button>
+                <button disabled={!canProceedStep2} onClick={() => setStep(3)}
+                  className={`flex-[2] py-4 rounded-2xl font-black uppercase tracking-widest text-sm transition-all
+                    ${canProceedStep2
+                      ? "bg-[#d4af37] text-white hover:bg-[#c5a059]"
+                      : "bg-[#d4af3722] text-[#c5a05966] cursor-not-allowed"}`}>
                   Review
                 </button>
               </div>
             </div>
           )}
 
+          {/* STEP 3 */}
           {step === 3 && (
             <div className="space-y-5 animate-[fadeUp_0.3s_ease]">
               <div className="bg-[#fdfbf0] border border-[#d4af3733] rounded-2xl divide-y divide-[#d4af3722]">
                 {[
-                  { icon: "🏠", label: "Property", value: propertyTitle },
-                  { icon: "📅", label: "Date", value: selectedDate ? formatDate(selectedDate) : "" },
-                  { icon: "🕐", label: "Time", value: selectedTime },
-                  { icon: "👤", label: "Name", value: form.name },
-                  { icon: "📧", label: "Email", value: form.email },
-                  { icon: "📞", label: "Phone", value: form.phone },
+                  { icon: "🏠", label: "Property", value: property.title    },
+                  { icon: "📍", label: "Location", value: property.location },
+                  { icon: "💰", label: "Price",    value: property.callForPrice ? "Call for Price" : `₹${formatPrice(property.price)}` },
+                  { icon: "📅", label: "Date",     value: selectedDate ? formatDate(selectedDate) : "" },
+                  { icon: "🕐", label: "Time",     value: selectedTime  },
+                  { icon: "👤", label: "Name",     value: form.name     },
+                  { icon: "📧", label: "Email",    value: form.email    },
+                  { icon: "📞", label: "Phone",    value: form.phone    },
                 ].map(({ icon, label, value }) => (
-                  <div key={label} className="flex items-start gap-4 px-5 py-4">
+                  <div key={label} className="flex items-start gap-4 px-5 py-3.5">
                     <span className="text-base mt-0.5">{icon}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-[9px] uppercase tracking-[3px] text-[#c5a05988] font-bold mb-0.5">{label}</p>
@@ -365,16 +403,17 @@ overflow-hidden">
                   </div>
                 ))}
               </div>
+
               <div className="flex gap-3">
-                <button onClick={() => setStep(2)} className="flex-1 py-4 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">Edit</button>
-                <button
-                  onClick={handleSubmit}
-                  disabled={loading}
-                  className="flex-[2] py-4 rounded-2xl bg-[#d4af37] text-white font-black uppercase tracking-widest text-sm hover:bg-[#c5a059] transition-all shadow-[0_0_30px_rgba(212,175,55,0.3)] flex items-center justify-center gap-2"
-                >
-                  {loading ? (
-                    <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />Booking...</>
-                  ) : "Confirm Visit"}
+                <button onClick={() => setStep(2)}
+                  className="flex-1 py-4 rounded-2xl border border-[#d4af3744] text-sm font-bold text-[#8a7040] hover:text-[#3a2e0f] hover:border-[#c5a059] transition-all">
+                  Edit
+                </button>
+                <button onClick={handleSubmit} disabled={loading}
+                  className="flex-[2] py-4 rounded-2xl bg-[#d4af37] text-white font-black uppercase tracking-widest text-sm hover:bg-[#c5a059] transition-all shadow-[0_0_30px_rgba(212,175,55,0.3)] flex items-center justify-center gap-2">
+                  {loading
+                    ? <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />Booking...</>
+                    : "Confirm Visit"}
                 </button>
               </div>
             </div>
@@ -385,27 +424,25 @@ overflow-hidden">
   );
 }
 
-// ─── Main Detail Page ─────────────────────────────────────────────────────────
-
+// ─── Main Page ────────────────────────────────────────────────────────────────
 export default function PropertyDetailPage() {
-  const params = useParams();
-  const router = useRouter();
+  const params       = useParams();
+  const router       = useRouter();
   const searchParams = useSearchParams();
   const id = params?.id as string;
 
-  const [property, setProperty] = useState<Property | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [property,    setProperty]    = useState<Property | null>(null);
+  const [loading,     setLoading]     = useState(true);
   const [showBooking, setShowBooking] = useState(false);
-  const [activeImg, setActiveImg] = useState(0);
+  const [activeImg,   setActiveImg]   = useState(0);
 
   const handleBackNavigation = () => {
-    const type = searchParams.get("type") || "rent";
-    const subType = searchParams.get("subType") || "flat";
+    const type       = searchParams.get("type")       || "rent";
+    const subType    = searchParams.get("subType")    || "flat";
     const layoutType = searchParams.get("layoutType") || "bhk1";
     const furnishing = searchParams.get("furnishing") || "furnished";
-    const amenities = searchParams.get("amenities") || "basic";
     router.push(
-      `/filteredproperties?type=${type.toLowerCase()}&subtype=${subType.toLowerCase()}&layouttype=${layoutType.toLowerCase()}&furnishing=${furnishing.toLowerCase()}&amenities=${amenities.toLowerCase()}`
+      `/filteredproperties?type=${type.toLowerCase()}&subtype=${subType.toLowerCase()}&layouttype=${layoutType.toLowerCase()}&furnishing=${furnishing.toLowerCase()}`
     );
   };
 
@@ -414,7 +451,7 @@ export default function PropertyDetailPage() {
     const load = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/properties/${id}`);
+        const res  = await fetch(`/api/properties/${id}`);
         const data = await res.json();
         setProperty(data);
       } catch {
@@ -439,30 +476,29 @@ export default function PropertyDetailPage() {
     return (
       <div className="min-h-screen bg-transparent flex flex-col items-center justify-center gap-6 text-center px-6">
         <p className="text-2xl font-black text-[#3a2e0f]">Property Not Found</p>
-        <button onClick={() => router.back()} className="text-xs font-bold uppercase tracking-widest border border-[#c5a059] text-[#c5a059] px-8 py-3 hover:bg-[#c5a059] hover:text-white transition-all rounded-full">Go Back</button>
+        <button onClick={() => router.back()}
+          className="text-xs font-bold uppercase tracking-widest border border-[#c5a059] text-[#c5a059] px-8 py-3 hover:bg-[#c5a059] hover:text-white transition-all rounded-full">
+          Go Back
+        </button>
       </div>
     );
   }
 
-  const images = property.images ?? [];
-  const activeImageUrl = images[activeImg] ? getCloudinaryUrl(images[activeImg].url, HERO_TRANSFORM) : "";
-  const isSoldOut = property.isSoldOut ?? false; // ✅
-  const propertyAmenities = property.propertyAmenities ?? []; // ✅
-
-  const badges = [
-    { label: property.type ?? "—", gold: true },
-    { label: property.subType ?? "—", gold: false },
-    { label: (property.layoutType ?? "").replace("BHK", " BHK"), gold: false },
-    { label: property.furnishing ?? "—", gold: false },
-    { label: property.amenityCategory === "FULL" ? "Full Amenities" : "Basic Amenities", gold: false },
-  ];
+  const images         = property.images         ?? [];
+  const basicAmenities = property.basicAmenities ?? [];
+  const fullAmenities  = property.fullAmenities  ?? [];
+  const activeImageUrl = images[activeImg]
+    ? getCloudinaryUrl(images[activeImg].url, HERO_TRANSFORM)
+    : "";
+  const isSoldOut = property.isSoldOut ?? false;
 
   const TagChips = ({ items }: { items?: string[] }) => {
     if (!items?.length) return null;
     return (
       <div className="flex flex-wrap gap-2">
-        {items.map((t) => (
-          <span key={t} className="text-[10px] font-bold px-3 py-1.5 rounded-full border border-[#d4af3766] text-[#c5a059] bg-white/40 uppercase tracking-wide">
+        {items.map(t => (
+          <span key={t}
+            className="text-[10px] font-bold px-3 py-1.5 rounded-full border border-[#d4af3766] text-[#c5a059] bg-white/40 uppercase tracking-wide">
             {t}
           </span>
         ))}
@@ -473,12 +509,12 @@ export default function PropertyDetailPage() {
   const StatCard = ({ icon, label, value }: { icon: string; label: string; value: any }) => {
     if (value == null || value === "") return null;
     return (
-      <div className="bg-white/60 border border-[#d4af3733] rounded-2xl px-5 py-4 space-y-1 backdrop-blur-sm">
+      <div className="bg-[#fdf8ec]/80 border border-[#c5a05944] rounded-2xl px-5 py-4 space-y-1 backdrop-blur-md shadow-[0_2px_12px_rgba(197,160,89,0.1)]">
         <div className="flex items-center gap-2">
           <span className="text-base">{icon}</span>
-          <span className="text-[9px] uppercase tracking-[3px] font-bold text-[#c5a05988]">{label}</span>
+          <span className="text-[9px] uppercase tracking-[3px] font-bold text-[#a07830]">{label}</span>
         </div>
-        <p className="text-sm font-bold text-[#3a2e0f]">{value}</p>
+        <p className="text-sm font-bold text-[#2a1f08]">{value}</p>
       </div>
     );
   };
@@ -499,7 +535,7 @@ export default function PropertyDetailPage() {
             Back
           </button>
 
-          {/* ── IMAGE GALLERY ── */}
+          {/* IMAGE GALLERY */}
           {images.length > 0 ? (
             <div className="space-y-3 pt-10 sm:pt-14">
               <div className="relative w-full h-[300px] md:h-[420px] rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(197,160,89,0.2)] border border-[#d4af3733]">
@@ -515,7 +551,6 @@ export default function PropertyDetailPage() {
                   </div>
                 )}
 
-                {/* ✅ SOLD OUT overlay */}
                 {isSoldOut && (
                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                     <div className="border-2 border-red-500/70 bg-red-500/20 backdrop-blur-sm text-red-400 text-2xl font-black uppercase tracking-[0.3em] px-8 py-4 rounded rotate-[-6deg]">
@@ -524,46 +559,44 @@ export default function PropertyDetailPage() {
                   </div>
                 )}
 
-                {/* Price overlay — hidden if sold out */}
                 {!isSoldOut && (
                   <div className="absolute bottom-5 right-5 bg-white/80 backdrop-blur-md border border-[#d4af3744] rounded-2xl px-5 py-3 text-right shadow-[0_4px_20px_rgba(197,160,89,0.15)]">
                     <p className="text-[9px] text-[#c5a059] uppercase tracking-[3px] font-bold mb-0.5">Total Price</p>
                     <p className="text-2xl font-black text-[#c5a059] leading-none">
-                      {property.callForPrice ? "Call for Price" : `₹${(property.price ?? 0).toLocaleString("en-IN")}`}
+                      {property.callForPrice ? "Call for Price" : `₹${formatPrice(property.price ?? 0)}`}
                     </p>
                     {property.pricePerSqft && (
                       <p className="text-[10px] text-[#8a7040] mt-1">
-                        ₹{property.pricePerSqft.toLocaleString("en-IN")} /sqft
+                        ₹{formatPrice(property.pricePerSqft)} /sqft
                       </p>
                     )}
                   </div>
                 )}
 
-                {/* Type badge */}
                 <div className="absolute top-4 left-4">
                   <span className="bg-[#d4af37] text-white text-[10px] font-black uppercase tracking-[2px] px-3 py-1.5 rounded-full shadow-md">
                     {property.type}
                   </span>
                 </div>
 
-                {/* Image counter */}
                 {images.length > 1 && (
                   <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full">
                     {activeImg + 1} / {images.length}
                   </div>
                 )}
 
-                {/* Arrow nav */}
                 {images.length > 1 && (
                   <>
                     <button
-                      onClick={() => setActiveImg((p) => (p - 1 + images.length) % images.length)}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white text-lg flex items-center justify-center hover:bg-black/80 transition"
-                    >‹</button>
+                      onClick={() => setActiveImg(p => (p - 1 + images.length) % images.length)}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white text-lg flex items-center justify-center hover:bg-black/80 transition">
+                      ‹
+                    </button>
                     <button
-                      onClick={() => setActiveImg((p) => (p + 1) % images.length)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white text-lg flex items-center justify-center hover:bg-black/80 transition"
-                    >›</button>
+                      onClick={() => setActiveImg(p => (p + 1) % images.length)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white text-lg flex items-center justify-center hover:bg-black/80 transition">
+                      ›
+                    </button>
                   </>
                 )}
               </div>
@@ -572,11 +605,11 @@ export default function PropertyDetailPage() {
               {images.length > 1 && (
                 <div className="flex gap-2 overflow-x-auto pb-1">
                   {images.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveImg(idx)}
-                      className={`flex-shrink-0 h-16 w-24 rounded-xl overflow-hidden border-2 transition-all ${activeImg === idx ? "border-[#d4af37] opacity-100 shadow-[0_0_12px_rgba(212,175,55,0.4)]" : "border-transparent opacity-50 hover:opacity-80"}`}
-                    >
+                    <button key={idx} onClick={() => setActiveImg(idx)}
+                      className={`flex-shrink-0 h-16 w-24 rounded-xl overflow-hidden border-2 transition-all
+                        ${activeImg === idx
+                          ? "border-[#d4af37] opacity-100 shadow-[0_0_12px_rgba(212,175,55,0.4)]"
+                          : "border-transparent opacity-50 hover:opacity-80"}`}>
                       <img src={getCloudinaryUrl(img.url, THUMB_TRANSFORM)} alt="" className="w-full h-full object-cover" />
                     </button>
                   ))}
@@ -589,16 +622,17 @@ export default function PropertyDetailPage() {
             </div>
           )}
 
-          {/* ── TITLE + LOCATION ── */}
+          {/* TITLE + LOCATION */}
           <div>
-            {/* ✅ SOLD OUT badge under title */}
             {isSoldOut && (
               <div className="inline-flex items-center gap-2 mb-3 px-4 py-1.5 rounded-full border border-red-500/40 bg-red-500/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-[3px] text-red-400">Sold Out</span>
               </div>
             )}
-            <h1 className="text-3xl md:text-4xl font-black text-[#3a2e0f] leading-tight tracking-tight">{property.title}</h1>
+            <h1 className="text-3xl md:text-4xl font-black text-[#3a2e0f] leading-tight tracking-tight">
+              {property.title}
+            </h1>
             <div className="flex items-center gap-2 mt-2">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#c5a059" />
@@ -613,81 +647,98 @@ export default function PropertyDetailPage() {
 
           <div className="h-[1px] bg-gradient-to-r from-[#d4af3755] via-[#d4af37] to-transparent" />
 
-         
+          {/* DESCRIPTION */}
+          {property.description?.trim() && (
+            <div className="space-y-3">
+              <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">
+                About This Property
+              </h2>
+              <p className="text-[#5a4a2a] leading-[1.9] text-[0.95rem] font-light">
+                {property.description}
+              </p>
+            </div>
+          )}
 
-          {/* Description */}
-          <div className="space-y-3">
-            <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">About This Property</h2>
-            <p className="text-[#5a4a2a] leading-[1.9] text-[0.95rem] font-light">{property.description}</p>
-          </div>
-
-          {/* ── BASIC FACTS GRID ── */}
+          {/* PROPERTY DETAILS GRID */}
           <div>
-            <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059] mb-5">Property Details</h2>
+            <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059] mb-5">
+              Property Details
+            </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <StatCard icon="🏷️" label="Type" value={property.type} />
-              <StatCard icon="🏢" label="Sub Type" value={property.subType} />
-              <StatCard icon="🛏️" label="Layout" value={(property.layoutType ?? "").replace("BHK", " BHK")} />
-              <StatCard icon="🛋️" label="Furnishing" value={property.furnishing} />
-              <StatCard icon="⭐" label="Amenities" value={property.amenityCategory === "FULL" ? "Full Package" : "Basic Package"} />
-              <StatCard icon="📅" label="Listed" value={new Date(property.createdAt).toLocaleDateString("en-IN", { month: "short", year: "numeric" })} />
-              <StatCard icon="🛏" label="Bedrooms" value={property.bedrooms} />
-              <StatCard icon="🚿" label="Bathrooms" value={property.bathrooms} />
-              <StatCard icon="🛁" label="Half Baths" value={property.halfBaths} />
-              <StatCard icon="🏠" label="Total Rooms" value={property.totalRooms} />
-              <StatCard icon="📐" label="Area (sqft)" value={property.areaSqft?.toLocaleString("en-IN")} />
+              <StatCard icon="🏷️" label="Type"            value={property.type} />
+              <StatCard icon="🏢" label="Sub Type"        value={property.subType} />
+              <StatCard icon="🛏️" label="Layout"          value={property.layoutType} />
+              <StatCard icon="🛋️" label="Furnishing"      value={property.furnishing} />
+              <StatCard icon="⭐" label="Amenity Tier"    value={property.amenityCategory === "FULL" ? "Full" : "Basic"} />
+              <StatCard icon="📅" label="Listed"          value={new Date(property.createdAt).toLocaleDateString("en-IN", { month: "short", year: "numeric" })} />
+              <StatCard icon="🛏"  label="Bedrooms"        value={property.bedrooms} />
+              <StatCard icon="🚿" label="Bathrooms"       value={property.bathrooms} />
+              <StatCard icon="🛁" label="Half Baths"      value={property.halfBaths} />
+              <StatCard icon="🏠" label="Total Rooms"     value={property.totalRooms} />
+              <StatCard icon="📐" label="Area (sqft)"     value={property.areaSqft?.toLocaleString("en-IN")} />
               <StatCard icon="🌿" label="Lot Size (sqft)" value={property.lotSizeSqft?.toLocaleString("en-IN")} />
-              <StatCard icon="🏗️" label="Floors" value={property.floors} />
-              <StatCard icon="🔢" label="Floor Level" value={property.floorLevel} />
-              <StatCard icon="🏛️" label="Year Built" value={property.yearBuilt} />
-              <StatCard icon="🔨" label="Year Remodeled" value={property.yearRemodeled} />
+              <StatCard icon="🏗️" label="Floors"          value={property.floors} />
+              <StatCard icon="🔢" label="Floor Level"     value={property.floorLevel} />
+              <StatCard icon="🏛️" label="Year Built"      value={property.yearBuilt} />
+              <StatCard icon="🔨" label="Year Remodeled"  value={property.yearRemodeled} />
             </div>
           </div>
 
-          {/* ✅ PROPERTY AMENITIES SECTION */}
-          {propertyAmenities.length > 0 && (
+          {/* BASIC AMENITIES */}
+          {basicAmenities.length > 0 && (
             <div className="space-y-4">
               <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
-              <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">Property Amenities</h2>
+              <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#60a5fa]">🛡 Basic Amenities</h2>
               <div className="flex flex-wrap gap-2">
-                {propertyAmenities.map((a) => (
-                  <span
-                    key={a.id}
-                    className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full border border-[#d4af3766] text-[#c5a059] bg-white/40 uppercase tracking-wide"
-                  >
-                    <span className="text-[#d4af37]">✓</span> {a.name}
+                {basicAmenities.map(a => (
+                  <span key={a.id}
+                    className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full border border-[#60a5fa]/30 text-[#60a5fa] bg-[#60a5fa]/10 uppercase tracking-wide">
+                    <span>✓</span> {a.name}
                   </span>
                 ))}
               </div>
             </div>
           )}
 
-          {/* ── TAG SECTIONS ── */}
-          {(property.rentPeriods?.length || property.statuses?.length || property.parkingOptions?.length || property.basementOptions?.length) ? (
+          {/* FULL AMENITIES */}
+          {fullAmenities.length > 0 && (
+            <div className="space-y-4">
+              <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
+              <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#a78bfa]">💎 Full Amenities</h2>
+              <div className="flex flex-wrap gap-2">
+                {fullAmenities.map(a => (
+                  <span key={a.id}
+                    className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full border border-[#a78bfa]/30 text-[#a78bfa] bg-[#a78bfa]/10 uppercase tracking-wide">
+                    <span>✓</span> {a.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAG SECTIONS */}
+          {(property.rentPeriods?.length || property.statuses?.length ||
+            property.parkingOptions?.length || property.basementOptions?.length) ? (
             <div className="space-y-5">
               <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
-
               {property.rentPeriods?.length ? (
                 <div className="space-y-2">
                   <h3 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">Rent Periods</h3>
                   <TagChips items={property.rentPeriods} />
                 </div>
               ) : null}
-
               {property.statuses?.length ? (
                 <div className="space-y-2">
                   <h3 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">Status</h3>
                   <TagChips items={property.statuses} />
                 </div>
               ) : null}
-
               {property.parkingOptions?.length ? (
                 <div className="space-y-2">
                   <h3 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">Parking</h3>
                   <TagChips items={property.parkingOptions} />
                 </div>
               ) : null}
-
               {property.basementOptions?.length ? (
                 <div className="space-y-2">
                   <h3 className="text-[10px] font-bold uppercase tracking-[5px] text-[#c5a059]">Basement</h3>
@@ -699,9 +750,8 @@ export default function PropertyDetailPage() {
 
           <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
 
-          {/* ── CTA — hidden if sold out ── */}
+          {/* CTA */}
           {isSoldOut ? (
-            // ✅ Sold out CTA replacement
             <div className="relative overflow-hidden bg-gradient-to-br from-[#1a0a0a] via-[#1a0505]/80 to-[#200a0a] border border-red-500/20 rounded-[28px] p-8 md:p-12 text-center space-y-4 shadow-[0_10px_40px_rgba(239,68,68,0.08)]">
               <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-red-500/10 blur-3xl pointer-events-none" />
               <div className="relative space-y-3">
@@ -713,10 +763,8 @@ export default function PropertyDetailPage() {
                   This property is no longer available. Browse our other listings to find your perfect home.
                 </p>
               </div>
-              <button
-                onClick={handleBackNavigation}
-                className="relative inline-flex items-center gap-3 bg-white/10 border border-white/20 text-white font-black text-sm uppercase tracking-[3px] px-10 py-4 rounded-full hover:bg-white/20 transition-all"
-              >
+              <button onClick={handleBackNavigation}
+                className="relative inline-flex items-center gap-3 bg-white/10 border border-white/20 text-white font-black text-sm uppercase tracking-[3px] px-10 py-4 rounded-full hover:bg-white/20 transition-all">
                 Browse Other Properties
               </button>
             </div>
@@ -732,10 +780,8 @@ export default function PropertyDetailPage() {
                   Schedule a private walkthrough with our property advisor at your preferred time.
                 </p>
               </div>
-              <button
-                onClick={() => setShowBooking(true)}
-                className="relative inline-flex items-center gap-3 bg-[#d4af37] text-white font-black text-sm uppercase tracking-[3px] px-10 py-4 rounded-full hover:bg-[#c5a059] transition-all shadow-[0_0_30px_rgba(212,175,55,0.35)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-0.5"
-              >
+              <button onClick={() => setShowBooking(true)}
+                className="relative inline-flex items-center gap-3 bg-[#d4af37] text-white font-black text-sm uppercase tracking-[3px] px-10 py-4 rounded-full hover:bg-[#c5a059] transition-all shadow-[0_0_30px_rgba(212,175,55,0.35)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] hover:-translate-y-0.5">
                 Book a Meet
               </button>
             </div>
@@ -743,10 +789,10 @@ export default function PropertyDetailPage() {
         </div>
       </main>
 
+      {/* Pass full property object to modal */}
       {showBooking && property && !isSoldOut && (
         <BookingModal
-          propertyTitle={property.title}
-          propertyId={property.id}
+          property={property}
           onClose={() => setShowBooking(false)}
         />
       )}

@@ -9,53 +9,46 @@ datasource db {
 }
 
 model Property {
-  id              String          @id @default(uuid())
-  title           String
-  location        String
-  description     String
+  id            String   @id @default(uuid())
+  title         String
+  location      String
+  description   String
 
-  // Pricing
-  price           Int
-  pricePerSqft    Int?
-  priceNote       String?
-  callForPrice    Boolean         @default(false)
+  price         Int
+  pricePerSqft  Int?
+  priceNote     String?
+  callForPrice  Boolean  @default(false)
+  isSoldOut     Boolean  @default(false)
 
-  // Availability
-  isSoldOut       Boolean         @default(false)
+  bedrooms      Int?
+  bathrooms     Int?
+  halfBaths     Int?
+  totalRooms    Int?
+  floors        Int?
+  floorLevel    Int?
+  areaSqft      Int?
+  lotSizeSqft   Int?
+  yearBuilt     Int?
+  yearRemodeled Int?
 
-  // Basic Facts
-  bedrooms        Int?
-  bathrooms       Int?
-  halfBaths       Int?
-  totalRooms      Int?
-  floors          Int?
-  floorLevel      Int?
-  areaSqft        Int?
-  lotSizeSqft     Int?
-  yearBuilt       Int?
-  yearRemodeled   Int?
+  rentPeriods     String[] @default([])
+  statuses        String[] @default([])
+  parkingOptions  String[] @default([])
+  basementOptions String[] @default([])
 
-  // Tags (stored as string arrays)
-  rentPeriods     String[]        @default([])
-  statuses        String[]        @default([])
-  parkingOptions  String[]        @default([])
-  basementOptions String[]        @default([])
-
-  // Categorization
   type            PropertyType    @default(RENT)
   subType         SubType         @default(FLAT)
   layoutType      LayoutType      @default(BHK1)
   furnishing      Furnishing      @default(FURNISHED)
   amenityCategory AmenityCategory @default(BASIC)
 
-  // Images — up to 10, stored as related records
-  images          PropertyImage[]
+  images         PropertyImage[]
+  basicAmenities BasicAmenity[]
+  fullAmenities  FullAmenity[]
+  cartItems      CartItem[]
 
-  // Per-property amenities (separate from global tier amenities)
-  propertyAmenities PropertyAmenity[]
-
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model PropertyImage {
@@ -65,28 +58,78 @@ model PropertyImage {
   order      Int      @default(0)
   property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   propertyId String
-
   createdAt  DateTime @default(now())
 }
 
-/// Global amenity definitions (used as templates / tier config)
-model Amenity {
-  id       String          @id @default(uuid())
-  name     String          @unique
-  category AmenityCategory @default(BASIC)
-}
-
-/// Per-property amenities — each property gets its own list
-model PropertyAmenity {
+model BasicAmenity {
   id         String   @id @default(uuid())
   name       String
-  normalized String   // 👈 ADD THIS
-  propertyId String
+  normalized String
   property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-
+  propertyId String
   createdAt  DateTime @default(now())
 
-  @@unique([propertyId, normalized]) // ✅ now valid
+  @@unique([propertyId, normalized])
+}
+
+model FullAmenity {
+  id         String   @id @default(uuid())
+  name       String
+  normalized String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String
+  createdAt  DateTime @default(now())
+
+  @@unique([propertyId, normalized])
+}
+
+// ── User (for future auth) ───────────────────────────────────────────────────
+model User {
+  id        String   @id @default(uuid())
+  name      String?
+  email     String   @unique
+  phone     String?
+  password  String?  // hashed, optional — for email/password auth later
+  cart      Cart?
+  bookings  Booking[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ── Cart (one per user) ───────────────────────────────────────────────────────
+model Cart {
+  id        String     @id @default(uuid())
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String     @unique
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CartItem {
+  id         String   @id @default(uuid())
+  cart       Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  cartId     String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String
+  addedAt    DateTime @default(now())
+
+  @@unique([cartId, propertyId])
+}
+
+// ── Booking ───────────────────────────────────────────────────────────────────
+model Booking {
+  id            String   @id @default(uuid())
+  name          String
+  email         String
+  phone         String
+  date          String
+  time          String
+  propertyTitle String
+  propertyId    String
+  user          User?    @relation(fields: [userId], references: [id])
+  userId        String?
+  createdAt     DateTime @default(now())
 }
 
 enum AmenityCategory {

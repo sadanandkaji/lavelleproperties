@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import PropertyForm from "./components/PropertyForm";
 import PropertyCard, { Property } from "./components/PropertyCard";
-import AmenityModal from "./components/AmenityModal";
 import PropertyEditModal from "./components/Propertyeditmodal";
 
 interface AmenityModalState {
@@ -69,20 +68,6 @@ export default function AdminPage() {
 
           <div className="flex flex-wrap items-center gap-2">
             <button
-              onClick={() => setAmenityModal({ isOpen: true, category: "BASIC" })}
-              className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-[#60a5fa] uppercase tracking-widest transition hover:border-[#60a5fa]/40 hover:bg-[#60a5fa]/10"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#60a5fa]" />
-              BASIC TIER
-            </button>
-            <button
-              onClick={() => setAmenityModal({ isOpen: true, category: "FULL" })}
-              className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-[#a78bfa] uppercase tracking-widest transition hover:border-[#a78bfa]/40 hover:bg-[#a78bfa]/10"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#a78bfa]" />
-              FULL TIER
-            </button>
-            <button
               onClick={() => setIsFormOpen(!isFormOpen)}
               className={`inline-flex items-center gap-2 rounded px-5 py-2 text-xs font-bold uppercase tracking-widest transition ${
                 isFormOpen
@@ -103,12 +88,7 @@ export default function AdminPage() {
         </div>
       </header>
 
-      {/* AMENITY MODAL */}
-      <AmenityModal
-        isOpen={amenityModal.isOpen}
-        category={amenityModal.category}
-        onClose={() => setAmenityModal((prev) => ({ ...prev, isOpen: false }))}
-      />
+   
 
       {/* EDIT MODAL */}
       {editingProperty && (

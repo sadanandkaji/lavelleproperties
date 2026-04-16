@@ -164,17 +164,56 @@ exports.Prisma.PropertyImageScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.AmenityScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  category: 'category'
-};
-
-exports.Prisma.PropertyAmenityScalarFieldEnum = {
+exports.Prisma.BasicAmenityScalarFieldEnum = {
   id: 'id',
   name: 'name',
   normalized: 'normalized',
   propertyId: 'propertyId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.FullAmenityScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  normalized: 'normalized',
+  propertyId: 'propertyId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CartScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CartItemScalarFieldEnum = {
+  id: 'id',
+  cartId: 'cartId',
+  propertyId: 'propertyId',
+  addedAt: 'addedAt'
+};
+
+exports.Prisma.BookingScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  date: 'date',
+  time: 'time',
+  propertyTitle: 'propertyTitle',
+  propertyId: 'propertyId',
+  userId: 'userId',
   createdAt: 'createdAt'
 };
 
@@ -230,8 +269,12 @@ exports.AmenityCategory = exports.$Enums.AmenityCategory = {
 exports.Prisma.ModelName = {
   Property: 'Property',
   PropertyImage: 'PropertyImage',
-  Amenity: 'Amenity',
-  PropertyAmenity: 'PropertyAmenity'
+  BasicAmenity: 'BasicAmenity',
+  FullAmenity: 'FullAmenity',
+  User: 'User',
+  Cart: 'Cart',
+  CartItem: 'CartItem',
+  Booking: 'Booking'
 };
 
 /**
