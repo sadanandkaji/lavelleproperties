@@ -1,7 +1,7 @@
 export function formatPrice(amount: number): string {
   if (amount >= 1_00_00_000) {
     const val = amount / 1_00_00_000;
-    return `${val % 1 === 0 ? val : val.toFixed(2)}C`;
+    return `${val % 1 === 0 ? val : val.toFixed(2)}CR`;
   }
   if (amount >= 1_00_000) {
     const val = amount / 1_00_000;

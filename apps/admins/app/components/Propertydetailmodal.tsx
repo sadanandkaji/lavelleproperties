@@ -195,7 +195,7 @@ export default function PropertyDetailModal({ property, onClose, onDelete, onEdi
           {basicAmenities.length > 0 && (
             <div className="mb-4 border-b border-[#1e1e1e] pb-4">
               <p className="text-[9px] font-bold uppercase tracking-widest text-[#60a5fa] mb-3">
-                🛡 Basic Amenities ({basicAmenities.length})
+                 Basic Amenities ({basicAmenities.length})
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {basicAmenities.map((a) => (

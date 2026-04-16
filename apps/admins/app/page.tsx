@@ -67,24 +67,39 @@ export default function AdminPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={() => setIsFormOpen(!isFormOpen)}
-              className={`inline-flex items-center gap-2 rounded px-5 py-2 text-xs font-bold uppercase tracking-widest transition ${
-                isFormOpen
-                  ? "border border-[#333] bg-[#1a1a1a] text-white"
-                  : "bg-emerald-500 text-black hover:bg-emerald-400"
-              }`}
-            >
-              {isFormOpen ? "✕ CLOSE" : "+ NEW LISTING"}
-            </button>
-            <button
-              onClick={handleLogout}
-              className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-red-400 uppercase tracking-widest transition hover:border-red-500/30 hover:bg-red-500/10"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
-              LOGOUT
-            </button>
-          </div>
+  <button
+    onClick={() => setIsFormOpen(!isFormOpen)}
+    className={`inline-flex items-center gap-2 rounded px-5 py-2 text-xs font-bold uppercase tracking-widest transition ${
+      isFormOpen
+        ? "border border-[#333] bg-[#1a1a1a] text-white"
+        : "bg-emerald-500 text-black hover:bg-emerald-400"
+    }`}
+  >
+    {isFormOpen ? "✕ CLOSE" : "+ NEW LISTING"}
+  </button>
+
+  {/* ← NEW button */}
+  <button
+    onClick={() => router.push("/propertieslist")}
+    className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-[#60a5fa] uppercase tracking-widest transition hover:border-[#60a5fa]/40 hover:bg-[#60a5fa]/10"
+  >
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="7" height="7" />
+      <rect x="14" y="3" width="7" height="7" />
+      <rect x="14" y="14" width="7" height="7" />
+      <rect x="3" y="14" width="7" height="7" />
+    </svg>
+    ALL LISTINGS
+  </button>
+
+  <button
+    onClick={handleLogout}
+    className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-red-400 uppercase tracking-widest transition hover:border-red-500/30 hover:bg-red-500/10"
+  >
+    <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
+    LOGOUT
+  </button>
+</div>
         </div>
       </header>
 

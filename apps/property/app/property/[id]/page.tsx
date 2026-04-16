@@ -684,21 +684,26 @@ export default function PropertyDetailPage() {
             </div>
           </div>
 
-          {/* BASIC AMENITIES */}
-          {basicAmenities.length > 0 && (
-            <div className="space-y-4">
-              <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
-              <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-[#60a5fa]">🛡 Basic Amenities</h2>
-              <div className="flex flex-wrap gap-2">
-                {basicAmenities.map(a => (
-                  <span key={a.id}
-                    className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full border border-[#60a5fa]/30 text-[#60a5fa] bg-[#60a5fa]/10 uppercase tracking-wide">
-                    <span>✓</span> {a.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
+        {basicAmenities.length > 0 && (
+  <div className="space-y-4">
+    <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3755] to-transparent" />
+
+    <h2 className="text-[10px] font-bold uppercase tracking-[5px] text-black">
+      Basic Amenities
+    </h2>
+
+    <div className="flex flex-wrap gap-x-4 gap-y-2">
+      {basicAmenities.map(a => (
+        <span
+          key={a.id}
+          className="text-[11px] font-medium text-black"
+        >
+          ✓ {a.name}
+        </span>
+      ))}
+    </div>
+  </div>
+)}
 
           {/* FULL AMENITIES */}
           {fullAmenities.length > 0 && (
