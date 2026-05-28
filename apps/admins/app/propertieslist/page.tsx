@@ -1,8 +1,9 @@
-"use client";
+'use client'
 
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { formatPrice } from "@/lib/formatPrice";
+import Sidebar from '../components/Sidebar'; // Add this import
 
 interface PropertyImage { id: string; url: string; isPrimary: boolean; order: number; }
 interface Amenity { id: string; name: string; }
@@ -77,7 +78,6 @@ function MobileFilterSheet({
   maxPrice: string; setMaxPrice: (v: string) => void;
   activeCount: number; onClear: () => void;
 }) {
-  // Lock body scroll when open
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
@@ -105,21 +105,14 @@ function MobileFilterSheet({
 
   return (
     <>
-      {/* Backdrop */}
       <div
         className="fixed inset-0 z-[300] bg-black/70 backdrop-blur-sm"
         onClick={onClose}
       />
-
-      {/* Sheet */}
       <div className="fixed bottom-0 left-0 right-0 z-[301] bg-[#0f0f0f] border-t border-[#222] rounded-t-[28px] animate-[sheetUp_0.3s_cubic-bezier(0.32,0.72,0,1)] max-h-[88vh] flex flex-col">
-
-        {/* Drag handle */}
         <div className="flex justify-center pt-3 pb-0 flex-shrink-0">
           <div className="w-10 h-1 rounded-full bg-[#333]" />
         </div>
-
-        {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[#1a1a1a] flex-shrink-0">
           <div>
             <h3 className="text-base font-black text-white tracking-tight">Filters</h3>
@@ -140,17 +133,12 @@ function MobileFilterSheet({
             </button>
           </div>
         </div>
-
-        {/* Scrollable filter content */}
         <div className="flex-1 overflow-y-auto px-5 py-5">
-
           <FilterRow label="Property Type" items={TYPES} val={type} set={setType} />
           <FilterRow label="Sub Type"      items={SUBTYPES} val={subType} set={setSubType} labelMap={SUBTYPE_LABEL} />
           <FilterRow label="Layout"        items={LAYOUTS}  val={layout}  set={setLayout}  labelMap={LAYOUT_LABEL}  />
           <FilterRow label="Furnishing"    items={FURNISHING} val={furnish} set={setFurnish} />
           <FilterRow label="Amenity Tier"  items={AMENITY}  val={amenity} set={setAmenity}  />
-
-          {/* Availability */}
           <div className="mb-5">
             <p className="text-[10px] font-black uppercase tracking-[3px] text-[#555] mb-2.5">Availability</p>
             <div className="flex gap-2">
@@ -158,8 +146,6 @@ function MobileFilterSheet({
               <Chip label="Sold Out"  active={soldOut === "true"}  onClick={() => setSoldOut(soldOut === "true"  ? "" : "true")} />
             </div>
           </div>
-
-          {/* Price range */}
           <div className="mb-5">
             <p className="text-[10px] font-black uppercase tracking-[3px] text-[#555] mb-2.5">Price Range (₹)</p>
             <div className="flex items-center gap-3">
@@ -172,12 +158,8 @@ function MobileFilterSheet({
                 className="flex-1 px-4 py-3 rounded-2xl border border-[#1e1e1e] bg-[#0d0d0d] text-sm text-white placeholder-[#333] focus:outline-none focus:border-[#d4af3766] transition-all" />
             </div>
           </div>
-
-          {/* Extra bottom padding so last item clears the apply button */}
           <div className="h-24" />
         </div>
-
-        {/* Sticky apply button */}
         <div className="flex-shrink-0 px-5 pb-6 pt-3 border-t border-[#1a1a1a] bg-[#0f0f0f]">
           <button onClick={onClose}
             className="w-full py-4 rounded-2xl bg-[#d4af37] text-black font-black text-sm uppercase tracking-widest hover:bg-[#c5a059] transition-all shadow-[0_0_20px_rgba(212,175,55,0.25)]">
@@ -196,10 +178,7 @@ function MobilePropertyCard({ prop, onClick }: { prop: Property; onClick: () => 
     <div onClick={onClick}
       className={`flex bg-[#111] border rounded-[20px] overflow-hidden transition-all duration-200 active:scale-[0.98] cursor-pointer
         ${prop.isSoldOut ? "opacity-50 grayscale border-[#1e1e1e]" : "border-[#1e1e1e] active:border-[#d4af3744]"}`}>
-
       <div className={`w-1 flex-shrink-0 ${prop.isSoldOut ? "bg-[#333]" : "bg-gradient-to-b from-[#d4af37] to-[#c5a059]"}`} />
-
-      {/* Image */}
       <div className="relative w-[110px] flex-shrink-0 bg-[#0a0a0a]">
         {img ? (
           <img src={img} alt={prop.title}
@@ -227,8 +206,6 @@ function MobilePropertyCard({ prop, onClick }: { prop: Property; onClick: () => 
           </div>
         )}
       </div>
-
-      {/* Content */}
       <div className="flex flex-col flex-grow p-3 min-w-0">
         <div className="flex items-start justify-between gap-2 mb-1">
           <h3 className="text-[13px] font-black text-white leading-tight line-clamp-1 flex-1">{prop.title}</h3>
@@ -239,9 +216,7 @@ function MobilePropertyCard({ prop, onClick }: { prop: Property; onClick: () => 
             {prop.amenityCategory === "BASIC" ? "Basic" : "Full"}
           </span>
         </div>
-
         <p className="text-[10px] text-[#c5a059] font-semibold opacity-80 line-clamp-1 mb-1.5">📍 {prop.location}</p>
-
         <div className="flex flex-wrap gap-1 mb-1.5">
           <span className="text-[7px] bg-white/5 border border-white/8 text-[#888] px-1.5 py-0.5 rounded-full font-bold uppercase">
             {LAYOUT_LABEL[prop.layoutType] ?? prop.layoutType}
@@ -250,13 +225,11 @@ function MobilePropertyCard({ prop, onClick }: { prop: Property; onClick: () => 
             {SUBTYPE_LABEL[prop.subType] ?? prop.subType}
           </span>
         </div>
-
         <div className="flex items-center gap-2 text-[9px] text-[#444] mb-1.5">
           {prop.bedrooms  != null && <span>🛏 {prop.bedrooms}</span>}
           {prop.bathrooms != null && <span>🚿 {prop.bathrooms}</span>}
           {prop.areaSqft  != null && <span>📐 {prop.areaSqft.toLocaleString("en-IN")}</span>}
         </div>
-
         <div className="flex items-end justify-between mt-auto pt-2 border-t border-white/5">
           <div>
             <span className="text-base font-black text-[#d4af37] leading-none">
@@ -282,7 +255,6 @@ function DesktopPropertyCard({ prop, onClick }: { prop: Property; onClick: () =>
     <div onClick={onClick}
       className={`group flex flex-col bg-[#111] border rounded-[24px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_40px_rgba(212,175,55,0.12)] transition-all duration-300 hover:-translate-y-1.5 cursor-pointer
         ${prop.isSoldOut ? "opacity-50 grayscale border-[#1e1e1e]" : "border-[#1e1e1e] hover:border-[#d4af3733]"}`}>
-
       <div className="relative h-[180px] w-full overflow-hidden bg-[#0a0a0a]">
         {img ? (
           <img src={img} alt={prop.title} loading="lazy"
@@ -292,7 +264,6 @@ function DesktopPropertyCard({ prop, onClick }: { prop: Property; onClick: () =>
             <span className="text-[10px] font-bold uppercase tracking-[4px] text-[#333]">No Image</span>
           </div>
         )}
-
         {prop.isSoldOut && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <span className="text-red-400 text-[10px] font-black uppercase tracking-[4px] border border-red-500/50 px-3 py-1.5 rounded-full">Sold Out</span>
@@ -313,7 +284,6 @@ function DesktopPropertyCard({ prop, onClick }: { prop: Property; onClick: () =>
           </div>
         )}
       </div>
-
       <div className="flex flex-col flex-grow p-4">
         <div className="flex flex-wrap gap-1 mb-2.5">
           <span className="text-[8px] bg-white/5 border border-white/8 text-[#888] px-2 py-0.5 rounded-full font-bold uppercase">{LAYOUT_LABEL[prop.layoutType] ?? prop.layoutType}</span>
@@ -383,12 +353,9 @@ function PropertyDetailModal({ prop, onClose }: { prop: Property; onClose: () =>
         onClick={e => e.stopPropagation()}
       >
         <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
-
         <div className="flex justify-center pt-3 pb-1 sm:hidden">
           <div className="w-10 h-1 rounded-full bg-[#333]" />
         </div>
-
-        {/* Image */}
         <div className="relative h-[220px] sm:h-[280px] bg-[#0a0a0a]">
           {images.length > 0 ? (
             <img src={cloudinaryUrl(images[activeImg]?.url ?? "")} alt={prop.title}
@@ -434,8 +401,6 @@ function PropertyDetailModal({ prop, onClose }: { prop: Property; onClose: () =>
             </span>
           </div>
         </div>
-
-        {/* Content */}
         <div className="p-4 sm:p-6 space-y-5">
           <div>
             {prop.isSoldOut && (
@@ -451,15 +416,12 @@ function PropertyDetailModal({ prop, onClose }: { prop: Property; onClose: () =>
               <code className="text-[9px] text-[#444] font-mono bg-white/5 px-2 py-0.5 rounded select-all break-all">{prop.id}</code>
             </div>
           </div>
-
           <div className="flex flex-wrap gap-1.5">
             {[prop.type, SUBTYPE_LABEL[prop.subType] ?? prop.subType, LAYOUT_LABEL[prop.layoutType] ?? prop.layoutType, prop.furnishing].map(t => (
               <span key={t} className="text-[9px] font-bold px-2.5 py-1.5 rounded-full border border-[#d4af3733] text-[#c5a059] bg-[#d4af3708] uppercase tracking-wide">{t}</span>
             ))}
           </div>
-
           <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af3733] to-transparent" />
-
           <div className="flex items-center justify-between bg-[#0d0d0d] border border-[#1a1a1a] rounded-2xl px-4 py-3">
             <div>
               <p className="text-[9px] text-[#444] uppercase font-bold tracking-[2px] mb-0.5">Total Price</p>
@@ -475,9 +437,7 @@ function PropertyDetailModal({ prop, onClose }: { prop: Property; onClose: () =>
               </div>
             )}
           </div>
-
           {prop.description?.trim() && <p className="text-sm text-[#555] leading-relaxed">{prop.description}</p>}
-
           <div>
             <p className="text-[9px] font-bold uppercase tracking-[4px] text-[#c5a059] mb-3">Property Details</p>
             <div className="bg-[#0d0d0d] border border-[#1a1a1a] rounded-2xl px-4 divide-y divide-white/5">
@@ -490,7 +450,6 @@ function PropertyDetailModal({ prop, onClose }: { prop: Property; onClose: () =>
               <StatRow label="Listed"     value={new Date(prop.createdAt).toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" })} />
             </div>
           </div>
-
           {basic.length > 0 && (
             <div>
               <p className="text-[9px] font-bold uppercase tracking-[4px] text-[#60a5fa] mb-3">🛡 Basic Amenities</p>
@@ -501,7 +460,6 @@ function PropertyDetailModal({ prop, onClose }: { prop: Property; onClose: () =>
               </div>
             </div>
           )}
-
           {full.length > 0 && (
             <div>
               <p className="text-[9px] font-bold uppercase tracking-[4px] text-[#a78bfa] mb-3">💎 Full Amenities</p>
@@ -512,7 +470,6 @@ function PropertyDetailModal({ prop, onClose }: { prop: Property; onClose: () =>
               </div>
             </div>
           )}
-
           <button onClick={onClose}
             className="w-full py-3.5 rounded-2xl border border-[#2a2a2a] text-[#555] text-[11px] font-black uppercase tracking-widest hover:border-[#d4af3733] hover:text-[#c5a059] transition-all">
             Close
@@ -562,7 +519,6 @@ function DesktopFilterPanel({
             </div>
           </div>
         ))}
-
         <div className="flex items-center gap-4">
           <p className="text-[9px] font-black uppercase tracking-[3px] text-[#333] w-20 flex-shrink-0">Avail.</p>
           <div className="flex gap-2">
@@ -570,7 +526,6 @@ function DesktopFilterPanel({
             <Chip label="Sold Out"  active={soldOut === "true"}  onClick={() => setSoldOut(soldOut === "true"  ? "" : "true")} />
           </div>
         </div>
-
         <div className="flex items-center gap-4">
           <p className="text-[9px] font-black uppercase tracking-[3px] text-[#333] w-20 flex-shrink-0">Price</p>
           <div className="flex items-center gap-2">
@@ -603,9 +558,7 @@ export default function PropertiesListPage() {
   const [loading,      setLoading]      = useState(true);
   const [selectedProp, setSelectedProp] = useState<Property | null>(null);
 
-  // Desktop inline filter visibility
   const [showDesktopFilters, setShowDesktopFilters] = useState(false);
-  // Mobile filter sheet
   const [showMobileSheet, setShowMobileSheet] = useState(false);
 
   const [query,    setQuery]    = useState("");
@@ -665,212 +618,205 @@ export default function PropertiesListPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
-
-      {/* ── Sticky Top Bar ── */}
-      <div className="sticky top-0 z-40 bg-[#0a0a0a]/97 backdrop-blur-md border-b border-[#1a1a1a]">
-
-        {/* Main bar */}
-        <div className="max-w-[1400px] mx-auto px-3 sm:px-6 py-3">
-
-          {/* Title + filter toggle row */}
-          <div className="flex items-center gap-2.5 mb-3">
-            <button onClick={() => router.back()}
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#2a2a2a] flex items-center justify-center text-[#555] hover:border-[#d4af3744] hover:text-[#c5a059] transition-all flex-shrink-0">
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                <path d="M12 7H2M2 7L7 2M2 7L7 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse flex-shrink-0" />
-                <h1 className="text-base sm:text-lg font-black text-white tracking-tight leading-none truncate">All Properties</h1>
+    <div style={{ display: 'flex' }}>
+      {/* Sidebar - Fixed on the left */}
+      <Sidebar />
+      
+      {/* Main Content - With left margin to account for sidebar */}
+      <main style={{ 
+        marginLeft: 224, 
+        flex: 1, 
+        minHeight: '100vh',
+        backgroundColor: '#0a0a0a'
+      }}>
+        <div className="min-h-screen bg-[#0a0a0a]">
+          {/* ── Sticky Top Bar ── */}
+          <div className="sticky top-0 z-40 bg-[#0a0a0a]/97 backdrop-blur-md border-b border-[#1a1a1a]">
+            <div className="max-w-[1400px] mx-auto px-3 sm:px-6 py-3">
+              <div className="flex items-center gap-2.5 mb-3">
+                <button onClick={() => router.back()}
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#2a2a2a] flex items-center justify-center text-[#555] hover:border-[#d4af3744] hover:text-[#c5a059] transition-all flex-shrink-0">
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                    <path d="M12 7H2M2 7L7 2M2 7L7 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse flex-shrink-0" />
+                    <h1 className="text-base sm:text-lg font-black text-white tracking-tight leading-none truncate">All Properties</h1>
+                  </div>
+                  <p className="text-[9px] sm:text-[10px] text-[#444] font-bold uppercase tracking-[3px] mt-0.5 ml-3.5">
+                    {loading ? "Loading…" : `${total.toLocaleString("en-IN")} listing${total !== 1 ? "s" : ""}`}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowMobileSheet(true)}
+                  className={`sm:hidden flex items-center gap-1.5 px-3 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest transition-all flex-shrink-0
+                    ${activeFiltersCount > 0
+                      ? "bg-[#d4af37] border-[#d4af37] text-black shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                      : "border-[#2a2a2a] text-[#555]"}`}
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="8" y1="12" x2="16" y2="12" />
+                    <line x1="11" y1="18" x2="13" y2="18" />
+                  </svg>
+                  Filter
+                  {activeFiltersCount > 0 && (
+                    <span className="w-4 h-4 rounded-full bg-black text-white text-[8px] font-black flex items-center justify-center">
+                      {activeFiltersCount}
+                    </span>
+                  )}
+                </button>
+                <button
+                  onClick={() => setShowDesktopFilters(p => !p)}
+                  className={`hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full border text-[11px] font-black uppercase tracking-widest transition-all flex-shrink-0
+                    ${showDesktopFilters || activeFiltersCount > 0
+                      ? "bg-[#d4af37] border-[#d4af37] text-black shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                      : "border-[#2a2a2a] text-[#555] hover:border-[#d4af3744] hover:text-[#c5a059]"}`}
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="8" y1="12" x2="16" y2="12" />
+                    <line x1="11" y1="18" x2="13" y2="18" />
+                  </svg>
+                  Filters
+                  {activeFiltersCount > 0 && (
+                    <span className="w-4 h-4 rounded-full bg-black text-white text-[8px] font-black flex items-center justify-center">
+                      {activeFiltersCount}
+                    </span>
+                  )}
+                </button>
               </div>
-              <p className="text-[9px] sm:text-[10px] text-[#444] font-bold uppercase tracking-[3px] mt-0.5 ml-3.5">
-                {loading ? "Loading…" : `${total.toLocaleString("en-IN")} listing${total !== 1 ? "s" : ""}`}
-              </p>
+              <div className="relative">
+                <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#444]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
+                </svg>
+                <input ref={searchRef} type="text" value={query} onChange={e => setQuery(e.target.value)}
+                  placeholder="Search title, location, ID…"
+                  className="w-full pl-10 pr-9 py-2.5 sm:py-3 rounded-2xl border border-[#1e1e1e] bg-[#111] text-sm text-white placeholder-[#333] focus:outline-none focus:border-[#d4af3766] transition-all" />
+                {query && (
+                  <button onClick={() => setQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#1e1e1e] text-[#555] text-xs flex items-center justify-center hover:text-[#888] transition-all">✕</button>
+                )}
+              </div>
             </div>
-
-            {/* Mobile filter button → opens bottom sheet */}
-            <button
-              onClick={() => setShowMobileSheet(true)}
-              className={`sm:hidden flex items-center gap-1.5 px-3 py-2 rounded-full border text-[10px] font-black uppercase tracking-widest transition-all flex-shrink-0
-                ${activeFiltersCount > 0
-                  ? "bg-[#d4af37] border-[#d4af37] text-black shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-                  : "border-[#2a2a2a] text-[#555]"}`}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="4" y1="6" x2="20" y2="6" />
-                <line x1="8" y1="12" x2="16" y2="12" />
-                <line x1="11" y1="18" x2="13" y2="18" />
-              </svg>
-              Filter
-              {activeFiltersCount > 0 && (
-                <span className="w-4 h-4 rounded-full bg-black text-white text-[8px] font-black flex items-center justify-center">
-                  {activeFiltersCount}
-                </span>
-              )}
-            </button>
-
-            {/* Desktop filter button → toggles inline panel */}
-            <button
-              onClick={() => setShowDesktopFilters(p => !p)}
-              className={`hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-full border text-[11px] font-black uppercase tracking-widest transition-all flex-shrink-0
-                ${showDesktopFilters || activeFiltersCount > 0
-                  ? "bg-[#d4af37] border-[#d4af37] text-black shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-                  : "border-[#2a2a2a] text-[#555] hover:border-[#d4af3744] hover:text-[#c5a059]"}`}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="4" y1="6" x2="20" y2="6" />
-                <line x1="8" y1="12" x2="16" y2="12" />
-                <line x1="11" y1="18" x2="13" y2="18" />
-              </svg>
-              Filters
-              {activeFiltersCount > 0 && (
-                <span className="w-4 h-4 rounded-full bg-black text-white text-[8px] font-black flex items-center justify-center">
-                  {activeFiltersCount}
-                </span>
-              )}
-            </button>
+            <DesktopFilterPanel
+              show={showDesktopFilters}
+              type={type} setType={setType}
+              subType={subType} setSubType={setSubType}
+              layout={layout} setLayout={setLayout}
+              furnish={furnish} setFurnish={setFurnish}
+              amenity={amenity} setAmenity={setAmenity}
+              soldOut={soldOut} setSoldOut={setSoldOut}
+              minPrice={minPrice} setMinPrice={setMinPrice}
+              maxPrice={maxPrice} setMaxPrice={setMaxPrice}
+              activeCount={activeFiltersCount} onClear={clearAllFilters}
+            />
           </div>
 
-          {/* Search */}
-          <div className="relative">
-            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#444]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
-            </svg>
-            <input ref={searchRef} type="text" value={query} onChange={e => setQuery(e.target.value)}
-              placeholder="Search title, location, ID…"
-              className="w-full pl-10 pr-9 py-2.5 sm:py-3 rounded-2xl border border-[#1e1e1e] bg-[#111] text-sm text-white placeholder-[#333] focus:outline-none focus:border-[#d4af3766] transition-all" />
-            {query && (
-              <button onClick={() => setQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#1e1e1e] text-[#555] text-xs flex items-center justify-center hover:text-[#888] transition-all">✕</button>
-            )}
-          </div>
-        </div>
-
-        {/* Desktop inline filter panel — lives INSIDE sticky bar so it sticks too */}
-        <DesktopFilterPanel
-          show={showDesktopFilters}
-          type={type} setType={setType}
-          subType={subType} setSubType={setSubType}
-          layout={layout} setLayout={setLayout}
-          furnish={furnish} setFurnish={setFurnish}
-          amenity={amenity} setAmenity={setAmenity}
-          soldOut={soldOut} setSoldOut={setSoldOut}
-          minPrice={minPrice} setMinPrice={setMinPrice}
-          maxPrice={maxPrice} setMaxPrice={setMaxPrice}
-          activeCount={activeFiltersCount} onClear={clearAllFilters}
-        />
-      </div>
-
-      {/* ── Content ── */}
-      <div className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6">
-        {loading ? (
-          <>
-            <div className="sm:hidden space-y-3">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="h-[130px] rounded-[20px] bg-[#111] border border-[#1a1a1a] overflow-hidden relative">
-                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+          <div className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6">
+            {loading ? (
+              <>
+                <div className="sm:hidden space-y-3">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <div key={i} className="h-[130px] rounded-[20px] bg-[#111] border border-[#1a1a1a] overflow-hidden relative">
+                      <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="h-[380px] rounded-[24px] bg-[#111] border border-[#1a1a1a] overflow-hidden relative">
-                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+                <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                  {Array.from({ length: 12 }).map((_, i) => (
+                    <div key={i} className="h-[380px] rounded-[24px] bg-[#111] border border-[#1a1a1a] overflow-hidden relative">
+                      <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </>
-        ) : properties.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-24 gap-4">
-            <div className="w-16 h-16 rounded-full bg-[#111] border border-[#1e1e1e] flex items-center justify-center">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
-              </svg>
-            </div>
-            <p className="text-base font-black text-[#333]">No properties found</p>
-            <p className="text-sm text-[#2a2a2a]">Try adjusting your search or filters</p>
-            {activeFiltersCount > 0 && (
-              <button onClick={clearAllFilters}
-                className="px-6 py-2.5 rounded-full bg-[#d4af37] text-black text-sm font-black uppercase tracking-widest hover:bg-[#c5a059] transition-all">
-                Clear Filters
-              </button>
-            )}
-          </div>
-        ) : (
-          <>
-            <div className="sm:hidden space-y-2.5">
-              {properties.map(prop => (
-                <MobilePropertyCard key={prop.id} prop={prop} onClick={() => setSelectedProp(prop)} />
-              ))}
-            </div>
-            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {properties.map(prop => (
-                <DesktopPropertyCard key={prop.id} prop={prop} onClick={() => setSelectedProp(prop)} />
-              ))}
-            </div>
-          </>
-        )}
-
-        {/* Pagination */}
-        {!loading && pages > 1 && (
-          <div className="flex items-center justify-center gap-1.5 mt-8 sm:mt-12">
-            <button onClick={() => fetchProperties(currentPage - 1)} disabled={currentPage === 1}
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#2a2a2a] flex items-center justify-center text-[#555] disabled:opacity-20 hover:border-[#d4af3744] hover:text-[#c5a059] transition-all">‹</button>
-
-            {Array.from({ length: pages }, (_, i) => i + 1)
-              .filter(p => p === 1 || p === pages || Math.abs(p - currentPage) <= 1)
-              .reduce<(number | "…")[]>((acc, p, idx, arr) => {
-                if (idx > 0 && (p as number) - (arr[idx - 1] as number) > 1) acc.push("…");
-                acc.push(p); return acc;
-              }, [])
-              .map((p, idx) =>
-                p === "…" ? (
-                  <span key={`e-${idx}`} className="text-[#333] px-0.5 text-sm">…</span>
-                ) : (
-                  <button key={p} onClick={() => fetchProperties(p as number)}
-                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full text-[11px] font-black transition-all
-                      ${currentPage === p
-                        ? "bg-[#d4af37] text-black shadow-[0_0_16px_rgba(212,175,55,0.3)]"
-                        : "border border-[#2a2a2a] text-[#555] hover:border-[#d4af3744] hover:text-[#c5a059]"}`}>
-                    {p}
+              </>
+            ) : properties.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-24 gap-4">
+                <div className="w-16 h-16 rounded-full bg-[#111] border border-[#1e1e1e] flex items-center justify-center">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#333" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
+                  </svg>
+                </div>
+                <p className="text-base font-black text-[#333]">No properties found</p>
+                <p className="text-sm text-[#2a2a2a]">Try adjusting your search or filters</p>
+                {activeFiltersCount > 0 && (
+                  <button onClick={clearAllFilters}
+                    className="px-6 py-2.5 rounded-full bg-[#d4af37] text-black text-sm font-black uppercase tracking-widest hover:bg-[#c5a059] transition-all">
+                    Clear Filters
                   </button>
-                )
-              )}
+                )}
+              </div>
+            ) : (
+              <>
+                <div className="sm:hidden space-y-2.5">
+                  {properties.map(prop => (
+                    <MobilePropertyCard key={prop.id} prop={prop} onClick={() => setSelectedProp(prop)} />
+                  ))}
+                </div>
+                <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                  {properties.map(prop => (
+                    <DesktopPropertyCard key={prop.id} prop={prop} onClick={() => setSelectedProp(prop)} />
+                  ))}
+                </div>
+              </>
+            )}
 
-            <button onClick={() => fetchProperties(currentPage + 1)} disabled={currentPage === pages}
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#2a2a2a] flex items-center justify-center text-[#555] disabled:opacity-20 hover:border-[#d4af3744] hover:text-[#c5a059] transition-all">›</button>
+            {!loading && pages > 1 && (
+              <div className="flex items-center justify-center gap-1.5 mt-8 sm:mt-12">
+                <button onClick={() => fetchProperties(currentPage - 1)} disabled={currentPage === 1}
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#2a2a2a] flex items-center justify-center text-[#555] disabled:opacity-20 hover:border-[#d4af3744] hover:text-[#c5a059] transition-all">‹</button>
+                {Array.from({ length: pages }, (_, i) => i + 1)
+                  .filter(p => p === 1 || p === pages || Math.abs(p - currentPage) <= 1)
+                  .reduce<(number | "…")[]>((acc, p, idx, arr) => {
+                    if (idx > 0 && (p as number) - (arr[idx - 1] as number) > 1) acc.push("…");
+                    acc.push(p); return acc;
+                  }, [])
+                  .map((p, idx) =>
+                    p === "…" ? (
+                      <span key={`e-${idx}`} className="text-[#333] px-0.5 text-sm">…</span>
+                    ) : (
+                      <button key={p} onClick={() => fetchProperties(p as number)}
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full text-[11px] font-black transition-all
+                          ${currentPage === p
+                            ? "bg-[#d4af37] text-black shadow-[0_0_16px_rgba(212,175,55,0.3)]"
+                            : "border border-[#2a2a2a] text-[#555] hover:border-[#d4af3744] hover:text-[#c5a059]"}`}>
+                        {p}
+                      </button>
+                    )
+                  )}
+                <button onClick={() => fetchProperties(currentPage + 1)} disabled={currentPage === pages}
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#2a2a2a] flex items-center justify-center text-[#555] disabled:opacity-20 hover:border-[#d4af3744] hover:text-[#c5a059] transition-all">›</button>
+              </div>
+            )}
           </div>
-        )}
-      </div>
 
-      {/* Mobile filter bottom sheet */}
-      <MobileFilterSheet
-        open={showMobileSheet} onClose={() => setShowMobileSheet(false)}
-        type={type} setType={setType}
-        subType={subType} setSubType={setSubType}
-        layout={layout} setLayout={setLayout}
-        furnish={furnish} setFurnish={setFurnish}
-        amenity={amenity} setAmenity={setAmenity}
-        soldOut={soldOut} setSoldOut={setSoldOut}
-        minPrice={minPrice} setMinPrice={setMinPrice}
-        maxPrice={maxPrice} setMaxPrice={setMaxPrice}
-        activeCount={activeFiltersCount} onClear={clearAllFilters}
-      />
+          <MobileFilterSheet
+            open={showMobileSheet} onClose={() => setShowMobileSheet(false)}
+            type={type} setType={setType}
+            subType={subType} setSubType={setSubType}
+            layout={layout} setLayout={setLayout}
+            furnish={furnish} setFurnish={setFurnish}
+            amenity={amenity} setAmenity={setAmenity}
+            soldOut={soldOut} setSoldOut={setSoldOut}
+            minPrice={minPrice} setMinPrice={setMinPrice}
+            maxPrice={maxPrice} setMaxPrice={setMaxPrice}
+            activeCount={activeFiltersCount} onClear={clearAllFilters}
+          />
 
-      {selectedProp && (
-        <PropertyDetailModal prop={selectedProp} onClose={() => setSelectedProp(null)} />
-      )}
+          {selectedProp && (
+            <PropertyDetailModal prop={selectedProp} onClose={() => setSelectedProp(null)} />
+          )}
+        </div>
+      </main>
 
       <style jsx global>{`
         @keyframes shimmer  { 100% { transform: translateX(200%); } }
         @keyframes fadeDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
         @keyframes slideUp  { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
         @keyframes sheetUp  { from { opacity:0; transform:translateY(100%); } to { opacity:1; transform:translateY(0); } }
-        body { background-color: #0a0a0a; }
       `}</style>
     </div>
   );

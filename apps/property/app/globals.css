@@ -42,3 +42,27 @@ body {
 .animate-noise {
   animation: noise 1s steps(2) infinite;
 }
+
+@keyframes moveBackground {
+  from { background-position: 0 bottom; }
+  to { background-position: -1600px bottom; }
+}
+
+.parallax-slow { 
+  animation: moveBackground 150s linear infinite; 
+}
+
+.parallax-mid { 
+  animation: moveBackground 100s linear infinite; 
+}
+
+.parallax-fast { 
+  animation: moveBackground 60s linear infinite; 
+}
+
+.bg-grid-gold {
+  background-image: 
+    linear-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 160, 89, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+}

@@ -1,177 +1,102 @@
-"use client";
+'use client'
+// app/dashboard/page.tsx
+import Sidebar from './components/Sidebar'
+import { useEffect, useState } from 'react'
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import PropertyForm from "./components/PropertyForm";
-import PropertyCard, { Property } from "./components/PropertyCard";
-import PropertyEditModal from "./components/Propertyeditmodal";
-
-interface AmenityModalState {
-  isOpen: boolean;
-  category: "BASIC" | "FULL";
+function StatCard({ label, value, sub, color = 'var(--accent)' }: { label: string; value: number | string; sub?: string; color?: string }) {
+  return (
+    <div style={{
+      background: 'var(--surface)',
+      border: '1px solid var(--border)',
+      borderRadius: 12, padding: '24px 28px',
+      display: 'flex', flexDirection: 'column', gap: 8,
+    }}>
+      <div style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{label}</div>
+      <div style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 800, color, lineHeight: 1 }}>{value}</div>
+      {sub && <div style={{ fontSize: 11, color: 'var(--muted)' }}>{sub}</div>}
+    </div>
+  )
 }
 
-export default function AdminPage() {
-  const router = useRouter();
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [amenityModal, setAmenityModal] = useState<AmenityModalState>({
-    isOpen: false,
-    category: "BASIC",
-  });
-  const [editingProperty, setEditingProperty] = useState<Property | null>(null);
+export default function Dashboard() {
+  const [stats, setStats] = useState<any>(null)
 
   useEffect(() => {
-    const token = localStorage.getItem("admin_token");
-    if (!token) router.replace("/login");
-  }, [router]);
-
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch("/api/property");
-      if (!res.ok) throw new Error("Failed to fetch properties");
-      const data = await res.json();
-      setProperties(data);
-    } catch (err) {
-      console.error("Fetch Error:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => { fetchData(); }, []);
-
-  const handleLogout = async () => {
-    try { await fetch("/api/auth/logout", { method: "POST" }); } catch (_) {}
-    localStorage.removeItem("admin_token");
-    router.push("/login");
-  };
+    fetch('/api/stats').then(r => r.json()).then(d => setStats(d.data))
+  }, [])
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] pb-20 font-mono">
-      {/* HEADER */}
-      <header className="sticky top-0 z-10 w-full border-b border-[#222] bg-[#0f0f0f]/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 py-5 md:flex-row md:items-center md:px-8">
-          <div>
-            <div className="flex items-center gap-3">
-              <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <h1 className="text-xl font-bold tracking-tight text-white md:text-2xl">
-                PROPERTY ADMIN
-              </h1>
-            </div>
-            <p className="mt-1 text-xs text-[#555] uppercase tracking-widest">
-              Manage listings & amenity tiers
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-  <button
-    onClick={() => setIsFormOpen(!isFormOpen)}
-    className={`inline-flex items-center gap-2 rounded px-5 py-2 text-xs font-bold uppercase tracking-widest transition ${
-      isFormOpen
-        ? "border border-[#333] bg-[#1a1a1a] text-white"
-        : "bg-emerald-500 text-black hover:bg-emerald-400"
-    }`}
-  >
-    {isFormOpen ? "✕ CLOSE" : "+ NEW LISTING"}
-  </button>
-
-  {/* ← NEW button */}
-  <button
-    onClick={() => router.push("/propertieslist")}
-    className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-[#60a5fa] uppercase tracking-widest transition hover:border-[#60a5fa]/40 hover:bg-[#60a5fa]/10"
-  >
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" />
-      <rect x="14" y="3" width="7" height="7" />
-      <rect x="14" y="14" width="7" height="7" />
-      <rect x="3" y="14" width="7" height="7" />
-    </svg>
-    ALL LISTINGS
-  </button>
-
-  <button
-    onClick={handleLogout}
-    className="inline-flex items-center gap-2 rounded border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-xs font-bold text-red-400 uppercase tracking-widest transition hover:border-red-500/30 hover:bg-red-500/10"
-  >
-    <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
-    LOGOUT
-  </button>
-</div>
-        </div>
-      </header>
-
-   
-
-      {/* EDIT MODAL */}
-      {editingProperty && (
-        <PropertyEditModal
-          property={editingProperty}
-          onClose={() => setEditingProperty(null)}
-          onSaved={() => {
-            setEditingProperty(null);
-            fetchData();
-          }}
-        />
-      )}
-
-      {/* MAIN */}
-      <main className="mx-auto mt-8 max-w-7xl px-4 md:px-8">
-        {isFormOpen && (
-          <section className="mb-10 overflow-hidden rounded-xl border border-[#222] bg-[#141414]">
-            <PropertyForm
-              onAdded={() => {
-                fetchData();
-                setIsFormOpen(false);
-              }}
-            />
-          </section>
-        )}
-
-        {/* INVENTORY HEADER */}
-        <div className="mb-6 flex items-center justify-between border-b border-[#222] pb-4">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-[#888]">
-            Active Inventory
-          </h2>
-          <div className="flex items-center gap-3">
-            <span className="rounded border border-[#222] bg-[#1a1a1a] px-3 py-1 text-xs font-bold text-[#555] uppercase tracking-wider">
-              {properties.length} properties
-            </span>
-            {properties.some((p) => p.isSoldOut) && (
-              <span className="rounded border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-bold text-red-400 uppercase tracking-wider">
-                {properties.filter((p) => p.isSoldOut).length} sold out
-              </span>
-            )}
-          </div>
+    <div style={{ display: 'flex' }}>
+      <Sidebar />
+      <main style={{ marginLeft: 220, flex: 1, padding: '40px 48px', minHeight: '100vh' }}>
+        <div style={{ marginBottom: 40 }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 800, letterSpacing: '-0.02em' }}>
+            Dashboard
+          </h1>
+          <p style={{ color: 'var(--muted)', marginTop: 6, fontSize: 13 }}>
+            Overview of your messaging platform
+          </p>
         </div>
 
-        {loading ? (
-          <div className="flex h-64 flex-col items-center justify-center gap-4">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-emerald-500 border-t-transparent" />
-            <p className="text-xs text-[#444] uppercase tracking-widest animate-pulse">
-              Loading listings...
-            </p>
-          </div>
-        ) : properties.length === 0 ? (
-          <div className="flex h-64 flex-col items-center justify-center rounded-xl border border-dashed border-[#222]">
-            <p className="text-sm text-[#444]">No properties found.</p>
-            <p className="text-xs text-[#333] mt-1">Start by adding a new listing above.</p>
-          </div>
+        {!stats ? (
+          <div style={{ color: 'var(--muted)', fontSize: 13 }}>Loading stats...</div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {properties.map((p) => (
-              <PropertyCard
-                key={p.id}
-                property={p}
-                onDelete={fetchData}
-                onEdit={(prop) => setEditingProperty(prop)}
-              />
-            ))}
-          </div>
+          <>
+            <div style={{ marginBottom: 12, fontSize: 11, color: 'var(--muted)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+              Templates
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 40 }}>
+              <StatCard label="Total Templates" value={stats.templates.total} />
+              <StatCard label="Approved" value={stats.templates.approved} color="var(--accent)" />
+              <StatCard label="Pending Review" value={stats.templates.pending} color="var(--warn)" />
+              <StatCard label="Rejected" value={stats.templates.rejected} color="var(--danger)" />
+            </div>
+
+            <div style={{ marginBottom: 12, fontSize: 11, color: 'var(--muted)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+              Messages
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 40 }}>
+              <StatCard label="Total Sent" value={stats.messages.total} />
+              <StatCard label="Delivered" value={stats.messages.sent} color="var(--accent)" />
+              <StatCard label="Failed" value={stats.messages.failed} color="var(--danger)" />
+              <StatCard label="Template Msgs" value={stats.messages.template} color="var(--accent2)" />
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 12, padding: 28 }}>
+                <div style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.12em', marginBottom: 20 }}>BULK JOBS</div>
+                <div style={{ display: 'flex', gap: 32 }}>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800 }}>{stats.bulkJobs.total}</div>
+                    <div style={{ fontSize: 11, color: 'var(--muted)' }}>Total Jobs</div>
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800, color: 'var(--warn)' }}>{stats.bulkJobs.running}</div>
+                    <div style={{ fontSize: 11, color: 'var(--muted)' }}>Running</div>
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800, color: 'var(--accent)' }}>{stats.bulkJobs.completed}</div>
+                    <div style={{ fontSize: 11, color: 'var(--muted)' }}>Completed</div>
+                  </div>
+                </div>
+              </div>
+              {/* <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 12, padding: 28 }}>
+                <div style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.12em', marginBottom: 20 }}>AI AGENT</div>
+                <div style={{ display: 'flex', gap: 32 }}>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800, color: 'var(--accent2)' }}>{stats.aiAgent.conversations}</div>
+                    <div style={{ fontSize: 11, color: 'var(--muted)' }}>Conversations</div>
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800 }}>{stats.aiAgent.totalMessages}</div>
+                    <div style={{ fontSize: 11, color: 'var(--muted)' }}>Total Messages</div>
+                  </div>
+                </div>
+              </div> */}
+            </div>
+          </>
         )}
       </main>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AnimatedBackground from "./components/AnimatedBackground";
@@ -54,7 +54,11 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
 
-  // ✅ Theme color (mobile browser UI)
+  // ❌ REMOVED themeColor from here
+};
+
+// ✅ NEW: Viewport export with themeColor
+export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 

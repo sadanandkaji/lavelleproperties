@@ -1,17 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SignJWT } from "jose";
 
-// ─── Hardcoded admin credentials ───────────────────────────────────────────
-const ADMIN_EMAIL = "lavelleventure@gmail.com";
-const ADMIN_PASSWORD = "lavelle@1234";
+// ─── Admin credentials from ENV ───────────────────────────────────────────
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
-// ─── Secret key (store in .env as JWT_SECRET in production) ────────────────
+// ─── Secret key ───────────────────────────────────────────────────────────
 const SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || "lavelle-super-secret-key-change-in-prod"
+  process.env.JWT_SECRET 
 );
 
 export async function POST(req: NextRequest) {
   try {
+    // Check env variables exist
+    if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+      return NextResponse.json(
+        { error: "Admin credentials are not configured." },
+        { status: 500 }
+      );
+    }
+
     const body = await req.json();
     const { email, password } = body;
 
@@ -33,30 +41,39 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Sign a JWT valid for 8 hours
-    const token = await new SignJWT({ email, role: "admin" })
+    // Create JWT token
+    const token = await new SignJWT({
+      email,
+      role: "admin",
+    })
       .setProtectedHeader({ alg: "HS256" })
       .setIssuedAt()
       .setExpirationTime("8h")
       .sign(SECRET);
 
-    // Also set an httpOnly cookie for server-side auth checks
+    // Response
     const response = NextResponse.json(
-      { success: true, token, email },
+      {
+        success: true,
+        token,
+        email,
+      },
       { status: 200 }
     );
 
+    // Set cookie
     response.cookies.set("admin_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       path: "/",
-      maxAge: 60 * 60 * 8, // 8 hours
+      maxAge: 60 * 60 * 8,
     });
 
     return response;
   } catch (err) {
     console.error("[LOGIN ERROR]", err);
+
     return NextResponse.json(
       { error: "Internal server error." },
       { status: 500 }

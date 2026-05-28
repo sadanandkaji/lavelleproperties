@@ -53,6 +53,51 @@ export type CartItem = $Result.DefaultSelection<Prisma.$CartItemPayload>
  * 
  */
 export type Booking = $Result.DefaultSelection<Prisma.$BookingPayload>
+/**
+ * Model WaTemplate
+ * 
+ */
+export type WaTemplate = $Result.DefaultSelection<Prisma.$WaTemplatePayload>
+/**
+ * Model WaTemplateButton
+ * 
+ */
+export type WaTemplateButton = $Result.DefaultSelection<Prisma.$WaTemplateButtonPayload>
+/**
+ * Model WaTemplateMedia
+ * 
+ */
+export type WaTemplateMedia = $Result.DefaultSelection<Prisma.$WaTemplateMediaPayload>
+/**
+ * Model WaContact
+ * 
+ */
+export type WaContact = $Result.DefaultSelection<Prisma.$WaContactPayload>
+/**
+ * Model WaMessage
+ * 
+ */
+export type WaMessage = $Result.DefaultSelection<Prisma.$WaMessagePayload>
+/**
+ * Model WaMessageMedia
+ * 
+ */
+export type WaMessageMedia = $Result.DefaultSelection<Prisma.$WaMessageMediaPayload>
+/**
+ * Model WaBulkJob
+ * 
+ */
+export type WaBulkJob = $Result.DefaultSelection<Prisma.$WaBulkJobPayload>
+/**
+ * Model WaBulkRecipient
+ * 
+ */
+export type WaBulkRecipient = $Result.DefaultSelection<Prisma.$WaBulkRecipientPayload>
+/**
+ * Model CustomTemplate
+ * 
+ */
+export type CustomTemplate = $Result.DefaultSelection<Prisma.$CustomTemplatePayload>
 
 /**
  * Enums
@@ -107,6 +152,122 @@ export const AmenityCategory: {
 
 export type AmenityCategory = (typeof AmenityCategory)[keyof typeof AmenityCategory]
 
+
+export const WaTemplateCategory: {
+  MARKETING: 'MARKETING',
+  UTILITY: 'UTILITY',
+  AUTHENTICATION: 'AUTHENTICATION'
+};
+
+export type WaTemplateCategory = (typeof WaTemplateCategory)[keyof typeof WaTemplateCategory]
+
+
+export const WaTemplateStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  PAUSED: 'PAUSED',
+  DISABLED: 'DISABLED',
+  ARCHIVED: 'ARCHIVED'
+};
+
+export type WaTemplateStatus = (typeof WaTemplateStatus)[keyof typeof WaTemplateStatus]
+
+
+export const WaHeaderFormat: {
+  TEXT: 'TEXT',
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  DOCUMENT: 'DOCUMENT',
+  LOCATION: 'LOCATION'
+};
+
+export type WaHeaderFormat = (typeof WaHeaderFormat)[keyof typeof WaHeaderFormat]
+
+
+export const WaParamFormat: {
+  NAMED: 'NAMED',
+  POSITIONAL: 'POSITIONAL'
+};
+
+export type WaParamFormat = (typeof WaParamFormat)[keyof typeof WaParamFormat]
+
+
+export const WaButtonType: {
+  QUICK_REPLY: 'QUICK_REPLY',
+  URL: 'URL',
+  PHONE_NUMBER: 'PHONE_NUMBER',
+  COPY_CODE: 'COPY_CODE'
+};
+
+export type WaButtonType = (typeof WaButtonType)[keyof typeof WaButtonType]
+
+
+export const WaMediaType: {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  DOCUMENT: 'DOCUMENT',
+  AUDIO: 'AUDIO',
+  STICKER: 'STICKER'
+};
+
+export type WaMediaType = (typeof WaMediaType)[keyof typeof WaMediaType]
+
+
+export const WaMsgDirection: {
+  OUTBOUND: 'OUTBOUND',
+  INBOUND: 'INBOUND'
+};
+
+export type WaMsgDirection = (typeof WaMsgDirection)[keyof typeof WaMsgDirection]
+
+
+export const WaMsgStatus: {
+  QUEUED: 'QUEUED',
+  SENT: 'SENT',
+  DELIVERED: 'DELIVERED',
+  READ: 'READ',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+};
+
+export type WaMsgStatus = (typeof WaMsgStatus)[keyof typeof WaMsgStatus]
+
+
+export const WaMsgType: {
+  TEMPLATE: 'TEMPLATE',
+  TEXT: 'TEXT',
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  DOCUMENT: 'DOCUMENT',
+  AUDIO: 'AUDIO',
+  STICKER: 'STICKER',
+  LOCATION: 'LOCATION',
+  REACTION: 'REACTION',
+  INTERACTIVE: 'INTERACTIVE',
+  UNKNOWN: 'UNKNOWN'
+};
+
+export type WaMsgType = (typeof WaMsgType)[keyof typeof WaMsgType]
+
+
+export const WaBulkType: {
+  TEMPLATE: 'TEMPLATE',
+  SIMPLE: 'SIMPLE'
+};
+
+export type WaBulkType = (typeof WaBulkType)[keyof typeof WaBulkType]
+
+
+export const WaBulkStatus: {
+  RUNNING: 'RUNNING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+};
+
+export type WaBulkStatus = (typeof WaBulkStatus)[keyof typeof WaBulkStatus]
+
 }
 
 export type PropertyType = $Enums.PropertyType
@@ -128,6 +289,50 @@ export const Furnishing: typeof $Enums.Furnishing
 export type AmenityCategory = $Enums.AmenityCategory
 
 export const AmenityCategory: typeof $Enums.AmenityCategory
+
+export type WaTemplateCategory = $Enums.WaTemplateCategory
+
+export const WaTemplateCategory: typeof $Enums.WaTemplateCategory
+
+export type WaTemplateStatus = $Enums.WaTemplateStatus
+
+export const WaTemplateStatus: typeof $Enums.WaTemplateStatus
+
+export type WaHeaderFormat = $Enums.WaHeaderFormat
+
+export const WaHeaderFormat: typeof $Enums.WaHeaderFormat
+
+export type WaParamFormat = $Enums.WaParamFormat
+
+export const WaParamFormat: typeof $Enums.WaParamFormat
+
+export type WaButtonType = $Enums.WaButtonType
+
+export const WaButtonType: typeof $Enums.WaButtonType
+
+export type WaMediaType = $Enums.WaMediaType
+
+export const WaMediaType: typeof $Enums.WaMediaType
+
+export type WaMsgDirection = $Enums.WaMsgDirection
+
+export const WaMsgDirection: typeof $Enums.WaMsgDirection
+
+export type WaMsgStatus = $Enums.WaMsgStatus
+
+export const WaMsgStatus: typeof $Enums.WaMsgStatus
+
+export type WaMsgType = $Enums.WaMsgType
+
+export const WaMsgType: typeof $Enums.WaMsgType
+
+export type WaBulkType = $Enums.WaBulkType
+
+export const WaBulkType: typeof $Enums.WaBulkType
+
+export type WaBulkStatus = $Enums.WaBulkStatus
+
+export const WaBulkStatus: typeof $Enums.WaBulkStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -331,6 +536,96 @@ export class PrismaClient<
     * ```
     */
   get booking(): Prisma.BookingDelegate<ExtArgs>;
+
+  /**
+   * `prisma.waTemplate`: Exposes CRUD operations for the **WaTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WaTemplates
+    * const waTemplates = await prisma.waTemplate.findMany()
+    * ```
+    */
+  get waTemplate(): Prisma.WaTemplateDelegate<ExtArgs>;
+
+  /**
+   * `prisma.waTemplateButton`: Exposes CRUD operations for the **WaTemplateButton** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WaTemplateButtons
+    * const waTemplateButtons = await prisma.waTemplateButton.findMany()
+    * ```
+    */
+  get waTemplateButton(): Prisma.WaTemplateButtonDelegate<ExtArgs>;
+
+  /**
+   * `prisma.waTemplateMedia`: Exposes CRUD operations for the **WaTemplateMedia** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WaTemplateMedias
+    * const waTemplateMedias = await prisma.waTemplateMedia.findMany()
+    * ```
+    */
+  get waTemplateMedia(): Prisma.WaTemplateMediaDelegate<ExtArgs>;
+
+  /**
+   * `prisma.waContact`: Exposes CRUD operations for the **WaContact** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WaContacts
+    * const waContacts = await prisma.waContact.findMany()
+    * ```
+    */
+  get waContact(): Prisma.WaContactDelegate<ExtArgs>;
+
+  /**
+   * `prisma.waMessage`: Exposes CRUD operations for the **WaMessage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WaMessages
+    * const waMessages = await prisma.waMessage.findMany()
+    * ```
+    */
+  get waMessage(): Prisma.WaMessageDelegate<ExtArgs>;
+
+  /**
+   * `prisma.waMessageMedia`: Exposes CRUD operations for the **WaMessageMedia** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WaMessageMedias
+    * const waMessageMedias = await prisma.waMessageMedia.findMany()
+    * ```
+    */
+  get waMessageMedia(): Prisma.WaMessageMediaDelegate<ExtArgs>;
+
+  /**
+   * `prisma.waBulkJob`: Exposes CRUD operations for the **WaBulkJob** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WaBulkJobs
+    * const waBulkJobs = await prisma.waBulkJob.findMany()
+    * ```
+    */
+  get waBulkJob(): Prisma.WaBulkJobDelegate<ExtArgs>;
+
+  /**
+   * `prisma.waBulkRecipient`: Exposes CRUD operations for the **WaBulkRecipient** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WaBulkRecipients
+    * const waBulkRecipients = await prisma.waBulkRecipient.findMany()
+    * ```
+    */
+  get waBulkRecipient(): Prisma.WaBulkRecipientDelegate<ExtArgs>;
+
+  /**
+   * `prisma.customTemplate`: Exposes CRUD operations for the **CustomTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CustomTemplates
+    * const customTemplates = await prisma.customTemplate.findMany()
+    * ```
+    */
+  get customTemplate(): Prisma.CustomTemplateDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -779,7 +1074,16 @@ export namespace Prisma {
     User: 'User',
     Cart: 'Cart',
     CartItem: 'CartItem',
-    Booking: 'Booking'
+    Booking: 'Booking',
+    WaTemplate: 'WaTemplate',
+    WaTemplateButton: 'WaTemplateButton',
+    WaTemplateMedia: 'WaTemplateMedia',
+    WaContact: 'WaContact',
+    WaMessage: 'WaMessage',
+    WaMessageMedia: 'WaMessageMedia',
+    WaBulkJob: 'WaBulkJob',
+    WaBulkRecipient: 'WaBulkRecipient',
+    CustomTemplate: 'CustomTemplate'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -795,7 +1099,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "property" | "propertyImage" | "basicAmenity" | "fullAmenity" | "user" | "cart" | "cartItem" | "booking"
+      modelProps: "property" | "propertyImage" | "basicAmenity" | "fullAmenity" | "user" | "cart" | "cartItem" | "booking" | "waTemplate" | "waTemplateButton" | "waTemplateMedia" | "waContact" | "waMessage" | "waMessageMedia" | "waBulkJob" | "waBulkRecipient" | "customTemplate"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1359,6 +1663,636 @@ export namespace Prisma {
           }
         }
       }
+      WaTemplate: {
+        payload: Prisma.$WaTemplatePayload<ExtArgs>
+        fields: Prisma.WaTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WaTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WaTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.WaTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WaTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.WaTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.WaTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.WaTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WaTemplateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.WaTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload>
+          }
+          update: {
+            args: Prisma.WaTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.WaTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WaTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WaTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.WaTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWaTemplate>
+          }
+          groupBy: {
+            args: Prisma.WaTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WaTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WaTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<WaTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
+      WaTemplateButton: {
+        payload: Prisma.$WaTemplateButtonPayload<ExtArgs>
+        fields: Prisma.WaTemplateButtonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WaTemplateButtonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WaTemplateButtonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload>
+          }
+          findFirst: {
+            args: Prisma.WaTemplateButtonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WaTemplateButtonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload>
+          }
+          findMany: {
+            args: Prisma.WaTemplateButtonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload>[]
+          }
+          create: {
+            args: Prisma.WaTemplateButtonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload>
+          }
+          createMany: {
+            args: Prisma.WaTemplateButtonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WaTemplateButtonCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload>[]
+          }
+          delete: {
+            args: Prisma.WaTemplateButtonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload>
+          }
+          update: {
+            args: Prisma.WaTemplateButtonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload>
+          }
+          deleteMany: {
+            args: Prisma.WaTemplateButtonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WaTemplateButtonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WaTemplateButtonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateButtonPayload>
+          }
+          aggregate: {
+            args: Prisma.WaTemplateButtonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWaTemplateButton>
+          }
+          groupBy: {
+            args: Prisma.WaTemplateButtonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WaTemplateButtonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WaTemplateButtonCountArgs<ExtArgs>
+            result: $Utils.Optional<WaTemplateButtonCountAggregateOutputType> | number
+          }
+        }
+      }
+      WaTemplateMedia: {
+        payload: Prisma.$WaTemplateMediaPayload<ExtArgs>
+        fields: Prisma.WaTemplateMediaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WaTemplateMediaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WaTemplateMediaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload>
+          }
+          findFirst: {
+            args: Prisma.WaTemplateMediaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WaTemplateMediaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload>
+          }
+          findMany: {
+            args: Prisma.WaTemplateMediaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload>[]
+          }
+          create: {
+            args: Prisma.WaTemplateMediaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload>
+          }
+          createMany: {
+            args: Prisma.WaTemplateMediaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WaTemplateMediaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload>[]
+          }
+          delete: {
+            args: Prisma.WaTemplateMediaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload>
+          }
+          update: {
+            args: Prisma.WaTemplateMediaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload>
+          }
+          deleteMany: {
+            args: Prisma.WaTemplateMediaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WaTemplateMediaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WaTemplateMediaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaTemplateMediaPayload>
+          }
+          aggregate: {
+            args: Prisma.WaTemplateMediaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWaTemplateMedia>
+          }
+          groupBy: {
+            args: Prisma.WaTemplateMediaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WaTemplateMediaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WaTemplateMediaCountArgs<ExtArgs>
+            result: $Utils.Optional<WaTemplateMediaCountAggregateOutputType> | number
+          }
+        }
+      }
+      WaContact: {
+        payload: Prisma.$WaContactPayload<ExtArgs>
+        fields: Prisma.WaContactFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WaContactFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WaContactFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload>
+          }
+          findFirst: {
+            args: Prisma.WaContactFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WaContactFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload>
+          }
+          findMany: {
+            args: Prisma.WaContactFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload>[]
+          }
+          create: {
+            args: Prisma.WaContactCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload>
+          }
+          createMany: {
+            args: Prisma.WaContactCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WaContactCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload>[]
+          }
+          delete: {
+            args: Prisma.WaContactDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload>
+          }
+          update: {
+            args: Prisma.WaContactUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload>
+          }
+          deleteMany: {
+            args: Prisma.WaContactDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WaContactUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WaContactUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaContactPayload>
+          }
+          aggregate: {
+            args: Prisma.WaContactAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWaContact>
+          }
+          groupBy: {
+            args: Prisma.WaContactGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WaContactGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WaContactCountArgs<ExtArgs>
+            result: $Utils.Optional<WaContactCountAggregateOutputType> | number
+          }
+        }
+      }
+      WaMessage: {
+        payload: Prisma.$WaMessagePayload<ExtArgs>
+        fields: Prisma.WaMessageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WaMessageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WaMessageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload>
+          }
+          findFirst: {
+            args: Prisma.WaMessageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WaMessageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload>
+          }
+          findMany: {
+            args: Prisma.WaMessageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload>[]
+          }
+          create: {
+            args: Prisma.WaMessageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload>
+          }
+          createMany: {
+            args: Prisma.WaMessageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WaMessageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload>[]
+          }
+          delete: {
+            args: Prisma.WaMessageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload>
+          }
+          update: {
+            args: Prisma.WaMessageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload>
+          }
+          deleteMany: {
+            args: Prisma.WaMessageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WaMessageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WaMessageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessagePayload>
+          }
+          aggregate: {
+            args: Prisma.WaMessageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWaMessage>
+          }
+          groupBy: {
+            args: Prisma.WaMessageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WaMessageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WaMessageCountArgs<ExtArgs>
+            result: $Utils.Optional<WaMessageCountAggregateOutputType> | number
+          }
+        }
+      }
+      WaMessageMedia: {
+        payload: Prisma.$WaMessageMediaPayload<ExtArgs>
+        fields: Prisma.WaMessageMediaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WaMessageMediaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WaMessageMediaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload>
+          }
+          findFirst: {
+            args: Prisma.WaMessageMediaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WaMessageMediaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload>
+          }
+          findMany: {
+            args: Prisma.WaMessageMediaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload>[]
+          }
+          create: {
+            args: Prisma.WaMessageMediaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload>
+          }
+          createMany: {
+            args: Prisma.WaMessageMediaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WaMessageMediaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload>[]
+          }
+          delete: {
+            args: Prisma.WaMessageMediaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload>
+          }
+          update: {
+            args: Prisma.WaMessageMediaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload>
+          }
+          deleteMany: {
+            args: Prisma.WaMessageMediaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WaMessageMediaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WaMessageMediaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaMessageMediaPayload>
+          }
+          aggregate: {
+            args: Prisma.WaMessageMediaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWaMessageMedia>
+          }
+          groupBy: {
+            args: Prisma.WaMessageMediaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WaMessageMediaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WaMessageMediaCountArgs<ExtArgs>
+            result: $Utils.Optional<WaMessageMediaCountAggregateOutputType> | number
+          }
+        }
+      }
+      WaBulkJob: {
+        payload: Prisma.$WaBulkJobPayload<ExtArgs>
+        fields: Prisma.WaBulkJobFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WaBulkJobFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WaBulkJobFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload>
+          }
+          findFirst: {
+            args: Prisma.WaBulkJobFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WaBulkJobFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload>
+          }
+          findMany: {
+            args: Prisma.WaBulkJobFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload>[]
+          }
+          create: {
+            args: Prisma.WaBulkJobCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload>
+          }
+          createMany: {
+            args: Prisma.WaBulkJobCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WaBulkJobCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload>[]
+          }
+          delete: {
+            args: Prisma.WaBulkJobDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload>
+          }
+          update: {
+            args: Prisma.WaBulkJobUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload>
+          }
+          deleteMany: {
+            args: Prisma.WaBulkJobDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WaBulkJobUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WaBulkJobUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkJobPayload>
+          }
+          aggregate: {
+            args: Prisma.WaBulkJobAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWaBulkJob>
+          }
+          groupBy: {
+            args: Prisma.WaBulkJobGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WaBulkJobGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WaBulkJobCountArgs<ExtArgs>
+            result: $Utils.Optional<WaBulkJobCountAggregateOutputType> | number
+          }
+        }
+      }
+      WaBulkRecipient: {
+        payload: Prisma.$WaBulkRecipientPayload<ExtArgs>
+        fields: Prisma.WaBulkRecipientFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WaBulkRecipientFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WaBulkRecipientFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload>
+          }
+          findFirst: {
+            args: Prisma.WaBulkRecipientFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WaBulkRecipientFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload>
+          }
+          findMany: {
+            args: Prisma.WaBulkRecipientFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload>[]
+          }
+          create: {
+            args: Prisma.WaBulkRecipientCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload>
+          }
+          createMany: {
+            args: Prisma.WaBulkRecipientCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WaBulkRecipientCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload>[]
+          }
+          delete: {
+            args: Prisma.WaBulkRecipientDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload>
+          }
+          update: {
+            args: Prisma.WaBulkRecipientUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload>
+          }
+          deleteMany: {
+            args: Prisma.WaBulkRecipientDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WaBulkRecipientUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WaBulkRecipientUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WaBulkRecipientPayload>
+          }
+          aggregate: {
+            args: Prisma.WaBulkRecipientAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWaBulkRecipient>
+          }
+          groupBy: {
+            args: Prisma.WaBulkRecipientGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WaBulkRecipientGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WaBulkRecipientCountArgs<ExtArgs>
+            result: $Utils.Optional<WaBulkRecipientCountAggregateOutputType> | number
+          }
+        }
+      }
+      CustomTemplate: {
+        payload: Prisma.$CustomTemplatePayload<ExtArgs>
+        fields: Prisma.CustomTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CustomTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CustomTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.CustomTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CustomTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.CustomTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.CustomTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.CustomTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CustomTemplateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload>[]
+          }
+          delete: {
+            args: Prisma.CustomTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload>
+          }
+          update: {
+            args: Prisma.CustomTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.CustomTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CustomTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CustomTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.CustomTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCustomTemplate>
+          }
+          groupBy: {
+            args: Prisma.CustomTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CustomTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CustomTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<CustomTemplateCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1426,6 +2360,10 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
+    /**
+     * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
+     */
+    adapter?: runtime.DriverAdapter | null
   }
 
 
@@ -1632,6 +2570,175 @@ export namespace Prisma {
    */
   export type CartCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CartItemWhereInput
+  }
+
+
+  /**
+   * Count Type WaTemplateCountOutputType
+   */
+
+  export type WaTemplateCountOutputType = {
+    buttons: number
+    media: number
+    messages: number
+    bulkJobs: number
+  }
+
+  export type WaTemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    buttons?: boolean | WaTemplateCountOutputTypeCountButtonsArgs
+    media?: boolean | WaTemplateCountOutputTypeCountMediaArgs
+    messages?: boolean | WaTemplateCountOutputTypeCountMessagesArgs
+    bulkJobs?: boolean | WaTemplateCountOutputTypeCountBulkJobsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WaTemplateCountOutputType without action
+   */
+  export type WaTemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateCountOutputType
+     */
+    select?: WaTemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WaTemplateCountOutputType without action
+   */
+  export type WaTemplateCountOutputTypeCountButtonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaTemplateButtonWhereInput
+  }
+
+  /**
+   * WaTemplateCountOutputType without action
+   */
+  export type WaTemplateCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaTemplateMediaWhereInput
+  }
+
+  /**
+   * WaTemplateCountOutputType without action
+   */
+  export type WaTemplateCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaMessageWhereInput
+  }
+
+  /**
+   * WaTemplateCountOutputType without action
+   */
+  export type WaTemplateCountOutputTypeCountBulkJobsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaBulkJobWhereInput
+  }
+
+
+  /**
+   * Count Type WaContactCountOutputType
+   */
+
+  export type WaContactCountOutputType = {
+    messages: number
+    bulkRecipients: number
+  }
+
+  export type WaContactCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    messages?: boolean | WaContactCountOutputTypeCountMessagesArgs
+    bulkRecipients?: boolean | WaContactCountOutputTypeCountBulkRecipientsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WaContactCountOutputType without action
+   */
+  export type WaContactCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContactCountOutputType
+     */
+    select?: WaContactCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WaContactCountOutputType without action
+   */
+  export type WaContactCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaMessageWhereInput
+  }
+
+  /**
+   * WaContactCountOutputType without action
+   */
+  export type WaContactCountOutputTypeCountBulkRecipientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaBulkRecipientWhereInput
+  }
+
+
+  /**
+   * Count Type WaMessageCountOutputType
+   */
+
+  export type WaMessageCountOutputType = {
+    media: number
+  }
+
+  export type WaMessageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    media?: boolean | WaMessageCountOutputTypeCountMediaArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WaMessageCountOutputType without action
+   */
+  export type WaMessageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageCountOutputType
+     */
+    select?: WaMessageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WaMessageCountOutputType without action
+   */
+  export type WaMessageCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaMessageMediaWhereInput
+  }
+
+
+  /**
+   * Count Type WaBulkJobCountOutputType
+   */
+
+  export type WaBulkJobCountOutputType = {
+    recipients: number
+    messages: number
+  }
+
+  export type WaBulkJobCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    recipients?: boolean | WaBulkJobCountOutputTypeCountRecipientsArgs
+    messages?: boolean | WaBulkJobCountOutputTypeCountMessagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WaBulkJobCountOutputType without action
+   */
+  export type WaBulkJobCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJobCountOutputType
+     */
+    select?: WaBulkJobCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WaBulkJobCountOutputType without action
+   */
+  export type WaBulkJobCountOutputTypeCountRecipientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaBulkRecipientWhereInput
+  }
+
+  /**
+   * WaBulkJobCountOutputType without action
+   */
+  export type WaBulkJobCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaMessageWhereInput
   }
 
 
@@ -9740,6 +10847,9639 @@ export namespace Prisma {
 
 
   /**
+   * Model WaTemplate
+   */
+
+  export type AggregateWaTemplate = {
+    _count: WaTemplateCountAggregateOutputType | null
+    _min: WaTemplateMinAggregateOutputType | null
+    _max: WaTemplateMaxAggregateOutputType | null
+  }
+
+  export type WaTemplateMinAggregateOutputType = {
+    id: string | null
+    metaTemplateId: string | null
+    name: string | null
+    category: $Enums.WaTemplateCategory | null
+    language: string | null
+    status: $Enums.WaTemplateStatus | null
+    rejectionReason: string | null
+    body: string | null
+    headerFormat: $Enums.WaHeaderFormat | null
+    headerText: string | null
+    headerMediaId: string | null
+    headerMediaUrl: string | null
+    headerFilename: string | null
+    footer: string | null
+    parameterFormat: $Enums.WaParamFormat | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WaTemplateMaxAggregateOutputType = {
+    id: string | null
+    metaTemplateId: string | null
+    name: string | null
+    category: $Enums.WaTemplateCategory | null
+    language: string | null
+    status: $Enums.WaTemplateStatus | null
+    rejectionReason: string | null
+    body: string | null
+    headerFormat: $Enums.WaHeaderFormat | null
+    headerText: string | null
+    headerMediaId: string | null
+    headerMediaUrl: string | null
+    headerFilename: string | null
+    footer: string | null
+    parameterFormat: $Enums.WaParamFormat | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WaTemplateCountAggregateOutputType = {
+    id: number
+    metaTemplateId: number
+    name: number
+    category: number
+    language: number
+    status: number
+    rejectionReason: number
+    body: number
+    headerFormat: number
+    headerText: number
+    headerMediaId: number
+    headerMediaUrl: number
+    headerFilename: number
+    footer: number
+    components: number
+    variables: number
+    parameterFormat: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type WaTemplateMinAggregateInputType = {
+    id?: true
+    metaTemplateId?: true
+    name?: true
+    category?: true
+    language?: true
+    status?: true
+    rejectionReason?: true
+    body?: true
+    headerFormat?: true
+    headerText?: true
+    headerMediaId?: true
+    headerMediaUrl?: true
+    headerFilename?: true
+    footer?: true
+    parameterFormat?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WaTemplateMaxAggregateInputType = {
+    id?: true
+    metaTemplateId?: true
+    name?: true
+    category?: true
+    language?: true
+    status?: true
+    rejectionReason?: true
+    body?: true
+    headerFormat?: true
+    headerText?: true
+    headerMediaId?: true
+    headerMediaUrl?: true
+    headerFilename?: true
+    footer?: true
+    parameterFormat?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WaTemplateCountAggregateInputType = {
+    id?: true
+    metaTemplateId?: true
+    name?: true
+    category?: true
+    language?: true
+    status?: true
+    rejectionReason?: true
+    body?: true
+    headerFormat?: true
+    headerText?: true
+    headerMediaId?: true
+    headerMediaUrl?: true
+    headerFilename?: true
+    footer?: true
+    components?: true
+    variables?: true
+    parameterFormat?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type WaTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaTemplate to aggregate.
+     */
+    where?: WaTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplates to fetch.
+     */
+    orderBy?: WaTemplateOrderByWithRelationInput | WaTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WaTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WaTemplates
+    **/
+    _count?: true | WaTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WaTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WaTemplateMaxAggregateInputType
+  }
+
+  export type GetWaTemplateAggregateType<T extends WaTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateWaTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWaTemplate[P]>
+      : GetScalarType<T[P], AggregateWaTemplate[P]>
+  }
+
+
+
+
+  export type WaTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaTemplateWhereInput
+    orderBy?: WaTemplateOrderByWithAggregationInput | WaTemplateOrderByWithAggregationInput[]
+    by: WaTemplateScalarFieldEnum[] | WaTemplateScalarFieldEnum
+    having?: WaTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WaTemplateCountAggregateInputType | true
+    _min?: WaTemplateMinAggregateInputType
+    _max?: WaTemplateMaxAggregateInputType
+  }
+
+  export type WaTemplateGroupByOutputType = {
+    id: string
+    metaTemplateId: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status: $Enums.WaTemplateStatus
+    rejectionReason: string | null
+    body: string
+    headerFormat: $Enums.WaHeaderFormat | null
+    headerText: string | null
+    headerMediaId: string | null
+    headerMediaUrl: string | null
+    headerFilename: string | null
+    footer: string | null
+    components: JsonValue
+    variables: string[]
+    parameterFormat: $Enums.WaParamFormat
+    createdAt: Date
+    updatedAt: Date
+    _count: WaTemplateCountAggregateOutputType | null
+    _min: WaTemplateMinAggregateOutputType | null
+    _max: WaTemplateMaxAggregateOutputType | null
+  }
+
+  type GetWaTemplateGroupByPayload<T extends WaTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WaTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WaTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WaTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], WaTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WaTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    metaTemplateId?: boolean
+    name?: boolean
+    category?: boolean
+    language?: boolean
+    status?: boolean
+    rejectionReason?: boolean
+    body?: boolean
+    headerFormat?: boolean
+    headerText?: boolean
+    headerMediaId?: boolean
+    headerMediaUrl?: boolean
+    headerFilename?: boolean
+    footer?: boolean
+    components?: boolean
+    variables?: boolean
+    parameterFormat?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    buttons?: boolean | WaTemplate$buttonsArgs<ExtArgs>
+    media?: boolean | WaTemplate$mediaArgs<ExtArgs>
+    messages?: boolean | WaTemplate$messagesArgs<ExtArgs>
+    bulkJobs?: boolean | WaTemplate$bulkJobsArgs<ExtArgs>
+    _count?: boolean | WaTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waTemplate"]>
+
+  export type WaTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    metaTemplateId?: boolean
+    name?: boolean
+    category?: boolean
+    language?: boolean
+    status?: boolean
+    rejectionReason?: boolean
+    body?: boolean
+    headerFormat?: boolean
+    headerText?: boolean
+    headerMediaId?: boolean
+    headerMediaUrl?: boolean
+    headerFilename?: boolean
+    footer?: boolean
+    components?: boolean
+    variables?: boolean
+    parameterFormat?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["waTemplate"]>
+
+  export type WaTemplateSelectScalar = {
+    id?: boolean
+    metaTemplateId?: boolean
+    name?: boolean
+    category?: boolean
+    language?: boolean
+    status?: boolean
+    rejectionReason?: boolean
+    body?: boolean
+    headerFormat?: boolean
+    headerText?: boolean
+    headerMediaId?: boolean
+    headerMediaUrl?: boolean
+    headerFilename?: boolean
+    footer?: boolean
+    components?: boolean
+    variables?: boolean
+    parameterFormat?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type WaTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    buttons?: boolean | WaTemplate$buttonsArgs<ExtArgs>
+    media?: boolean | WaTemplate$mediaArgs<ExtArgs>
+    messages?: boolean | WaTemplate$messagesArgs<ExtArgs>
+    bulkJobs?: boolean | WaTemplate$bulkJobsArgs<ExtArgs>
+    _count?: boolean | WaTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WaTemplateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $WaTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WaTemplate"
+    objects: {
+      buttons: Prisma.$WaTemplateButtonPayload<ExtArgs>[]
+      media: Prisma.$WaTemplateMediaPayload<ExtArgs>[]
+      messages: Prisma.$WaMessagePayload<ExtArgs>[]
+      bulkJobs: Prisma.$WaBulkJobPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      metaTemplateId: string | null
+      name: string
+      category: $Enums.WaTemplateCategory
+      language: string
+      status: $Enums.WaTemplateStatus
+      rejectionReason: string | null
+      body: string
+      headerFormat: $Enums.WaHeaderFormat | null
+      headerText: string | null
+      headerMediaId: string | null
+      headerMediaUrl: string | null
+      headerFilename: string | null
+      footer: string | null
+      components: Prisma.JsonValue
+      variables: string[]
+      parameterFormat: $Enums.WaParamFormat
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["waTemplate"]>
+    composites: {}
+  }
+
+  type WaTemplateGetPayload<S extends boolean | null | undefined | WaTemplateDefaultArgs> = $Result.GetResult<Prisma.$WaTemplatePayload, S>
+
+  type WaTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WaTemplateFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WaTemplateCountAggregateInputType | true
+    }
+
+  export interface WaTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WaTemplate'], meta: { name: 'WaTemplate' } }
+    /**
+     * Find zero or one WaTemplate that matches the filter.
+     * @param {WaTemplateFindUniqueArgs} args - Arguments to find a WaTemplate
+     * @example
+     * // Get one WaTemplate
+     * const waTemplate = await prisma.waTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WaTemplateFindUniqueArgs>(args: SelectSubset<T, WaTemplateFindUniqueArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WaTemplate that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WaTemplateFindUniqueOrThrowArgs} args - Arguments to find a WaTemplate
+     * @example
+     * // Get one WaTemplate
+     * const waTemplate = await prisma.waTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WaTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, WaTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WaTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateFindFirstArgs} args - Arguments to find a WaTemplate
+     * @example
+     * // Get one WaTemplate
+     * const waTemplate = await prisma.waTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WaTemplateFindFirstArgs>(args?: SelectSubset<T, WaTemplateFindFirstArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WaTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateFindFirstOrThrowArgs} args - Arguments to find a WaTemplate
+     * @example
+     * // Get one WaTemplate
+     * const waTemplate = await prisma.waTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WaTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, WaTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WaTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WaTemplates
+     * const waTemplates = await prisma.waTemplate.findMany()
+     * 
+     * // Get first 10 WaTemplates
+     * const waTemplates = await prisma.waTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const waTemplateWithIdOnly = await prisma.waTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WaTemplateFindManyArgs>(args?: SelectSubset<T, WaTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WaTemplate.
+     * @param {WaTemplateCreateArgs} args - Arguments to create a WaTemplate.
+     * @example
+     * // Create one WaTemplate
+     * const WaTemplate = await prisma.waTemplate.create({
+     *   data: {
+     *     // ... data to create a WaTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends WaTemplateCreateArgs>(args: SelectSubset<T, WaTemplateCreateArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WaTemplates.
+     * @param {WaTemplateCreateManyArgs} args - Arguments to create many WaTemplates.
+     * @example
+     * // Create many WaTemplates
+     * const waTemplate = await prisma.waTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WaTemplateCreateManyArgs>(args?: SelectSubset<T, WaTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WaTemplates and returns the data saved in the database.
+     * @param {WaTemplateCreateManyAndReturnArgs} args - Arguments to create many WaTemplates.
+     * @example
+     * // Create many WaTemplates
+     * const waTemplate = await prisma.waTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WaTemplates and only return the `id`
+     * const waTemplateWithIdOnly = await prisma.waTemplate.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WaTemplateCreateManyAndReturnArgs>(args?: SelectSubset<T, WaTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WaTemplate.
+     * @param {WaTemplateDeleteArgs} args - Arguments to delete one WaTemplate.
+     * @example
+     * // Delete one WaTemplate
+     * const WaTemplate = await prisma.waTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one WaTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WaTemplateDeleteArgs>(args: SelectSubset<T, WaTemplateDeleteArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WaTemplate.
+     * @param {WaTemplateUpdateArgs} args - Arguments to update one WaTemplate.
+     * @example
+     * // Update one WaTemplate
+     * const waTemplate = await prisma.waTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WaTemplateUpdateArgs>(args: SelectSubset<T, WaTemplateUpdateArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WaTemplates.
+     * @param {WaTemplateDeleteManyArgs} args - Arguments to filter WaTemplates to delete.
+     * @example
+     * // Delete a few WaTemplates
+     * const { count } = await prisma.waTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WaTemplateDeleteManyArgs>(args?: SelectSubset<T, WaTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WaTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WaTemplates
+     * const waTemplate = await prisma.waTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WaTemplateUpdateManyArgs>(args: SelectSubset<T, WaTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WaTemplate.
+     * @param {WaTemplateUpsertArgs} args - Arguments to update or create a WaTemplate.
+     * @example
+     * // Update or create a WaTemplate
+     * const waTemplate = await prisma.waTemplate.upsert({
+     *   create: {
+     *     // ... data to create a WaTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WaTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WaTemplateUpsertArgs>(args: SelectSubset<T, WaTemplateUpsertArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WaTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateCountArgs} args - Arguments to filter WaTemplates to count.
+     * @example
+     * // Count the number of WaTemplates
+     * const count = await prisma.waTemplate.count({
+     *   where: {
+     *     // ... the filter for the WaTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends WaTemplateCountArgs>(
+      args?: Subset<T, WaTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WaTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WaTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WaTemplateAggregateArgs>(args: Subset<T, WaTemplateAggregateArgs>): Prisma.PrismaPromise<GetWaTemplateAggregateType<T>>
+
+    /**
+     * Group by WaTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WaTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WaTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: WaTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WaTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWaTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WaTemplate model
+   */
+  readonly fields: WaTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WaTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WaTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    buttons<T extends WaTemplate$buttonsArgs<ExtArgs> = {}>(args?: Subset<T, WaTemplate$buttonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "findMany"> | Null>
+    media<T extends WaTemplate$mediaArgs<ExtArgs> = {}>(args?: Subset<T, WaTemplate$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "findMany"> | Null>
+    messages<T extends WaTemplate$messagesArgs<ExtArgs> = {}>(args?: Subset<T, WaTemplate$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findMany"> | Null>
+    bulkJobs<T extends WaTemplate$bulkJobsArgs<ExtArgs> = {}>(args?: Subset<T, WaTemplate$bulkJobsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WaTemplate model
+   */ 
+  interface WaTemplateFieldRefs {
+    readonly id: FieldRef<"WaTemplate", 'String'>
+    readonly metaTemplateId: FieldRef<"WaTemplate", 'String'>
+    readonly name: FieldRef<"WaTemplate", 'String'>
+    readonly category: FieldRef<"WaTemplate", 'WaTemplateCategory'>
+    readonly language: FieldRef<"WaTemplate", 'String'>
+    readonly status: FieldRef<"WaTemplate", 'WaTemplateStatus'>
+    readonly rejectionReason: FieldRef<"WaTemplate", 'String'>
+    readonly body: FieldRef<"WaTemplate", 'String'>
+    readonly headerFormat: FieldRef<"WaTemplate", 'WaHeaderFormat'>
+    readonly headerText: FieldRef<"WaTemplate", 'String'>
+    readonly headerMediaId: FieldRef<"WaTemplate", 'String'>
+    readonly headerMediaUrl: FieldRef<"WaTemplate", 'String'>
+    readonly headerFilename: FieldRef<"WaTemplate", 'String'>
+    readonly footer: FieldRef<"WaTemplate", 'String'>
+    readonly components: FieldRef<"WaTemplate", 'Json'>
+    readonly variables: FieldRef<"WaTemplate", 'String[]'>
+    readonly parameterFormat: FieldRef<"WaTemplate", 'WaParamFormat'>
+    readonly createdAt: FieldRef<"WaTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"WaTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WaTemplate findUnique
+   */
+  export type WaTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplate to fetch.
+     */
+    where: WaTemplateWhereUniqueInput
+  }
+
+  /**
+   * WaTemplate findUniqueOrThrow
+   */
+  export type WaTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplate to fetch.
+     */
+    where: WaTemplateWhereUniqueInput
+  }
+
+  /**
+   * WaTemplate findFirst
+   */
+  export type WaTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplate to fetch.
+     */
+    where?: WaTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplates to fetch.
+     */
+    orderBy?: WaTemplateOrderByWithRelationInput | WaTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaTemplates.
+     */
+    cursor?: WaTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaTemplates.
+     */
+    distinct?: WaTemplateScalarFieldEnum | WaTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplate findFirstOrThrow
+   */
+  export type WaTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplate to fetch.
+     */
+    where?: WaTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplates to fetch.
+     */
+    orderBy?: WaTemplateOrderByWithRelationInput | WaTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaTemplates.
+     */
+    cursor?: WaTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaTemplates.
+     */
+    distinct?: WaTemplateScalarFieldEnum | WaTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplate findMany
+   */
+  export type WaTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplates to fetch.
+     */
+    where?: WaTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplates to fetch.
+     */
+    orderBy?: WaTemplateOrderByWithRelationInput | WaTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WaTemplates.
+     */
+    cursor?: WaTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplates.
+     */
+    skip?: number
+    distinct?: WaTemplateScalarFieldEnum | WaTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplate create
+   */
+  export type WaTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WaTemplate.
+     */
+    data: XOR<WaTemplateCreateInput, WaTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * WaTemplate createMany
+   */
+  export type WaTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WaTemplates.
+     */
+    data: WaTemplateCreateManyInput | WaTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaTemplate createManyAndReturn
+   */
+  export type WaTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WaTemplates.
+     */
+    data: WaTemplateCreateManyInput | WaTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaTemplate update
+   */
+  export type WaTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WaTemplate.
+     */
+    data: XOR<WaTemplateUpdateInput, WaTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which WaTemplate to update.
+     */
+    where: WaTemplateWhereUniqueInput
+  }
+
+  /**
+   * WaTemplate updateMany
+   */
+  export type WaTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WaTemplates.
+     */
+    data: XOR<WaTemplateUpdateManyMutationInput, WaTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which WaTemplates to update
+     */
+    where?: WaTemplateWhereInput
+  }
+
+  /**
+   * WaTemplate upsert
+   */
+  export type WaTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WaTemplate to update in case it exists.
+     */
+    where: WaTemplateWhereUniqueInput
+    /**
+     * In case the WaTemplate found by the `where` argument doesn't exist, create a new WaTemplate with this data.
+     */
+    create: XOR<WaTemplateCreateInput, WaTemplateUncheckedCreateInput>
+    /**
+     * In case the WaTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WaTemplateUpdateInput, WaTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * WaTemplate delete
+   */
+  export type WaTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which WaTemplate to delete.
+     */
+    where: WaTemplateWhereUniqueInput
+  }
+
+  /**
+   * WaTemplate deleteMany
+   */
+  export type WaTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaTemplates to delete
+     */
+    where?: WaTemplateWhereInput
+  }
+
+  /**
+   * WaTemplate.buttons
+   */
+  export type WaTemplate$buttonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    where?: WaTemplateButtonWhereInput
+    orderBy?: WaTemplateButtonOrderByWithRelationInput | WaTemplateButtonOrderByWithRelationInput[]
+    cursor?: WaTemplateButtonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaTemplateButtonScalarFieldEnum | WaTemplateButtonScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplate.media
+   */
+  export type WaTemplate$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    where?: WaTemplateMediaWhereInput
+    orderBy?: WaTemplateMediaOrderByWithRelationInput | WaTemplateMediaOrderByWithRelationInput[]
+    cursor?: WaTemplateMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaTemplateMediaScalarFieldEnum | WaTemplateMediaScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplate.messages
+   */
+  export type WaTemplate$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    where?: WaMessageWhereInput
+    orderBy?: WaMessageOrderByWithRelationInput | WaMessageOrderByWithRelationInput[]
+    cursor?: WaMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaMessageScalarFieldEnum | WaMessageScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplate.bulkJobs
+   */
+  export type WaTemplate$bulkJobsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    where?: WaBulkJobWhereInput
+    orderBy?: WaBulkJobOrderByWithRelationInput | WaBulkJobOrderByWithRelationInput[]
+    cursor?: WaBulkJobWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaBulkJobScalarFieldEnum | WaBulkJobScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplate without action
+   */
+  export type WaTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WaTemplateButton
+   */
+
+  export type AggregateWaTemplateButton = {
+    _count: WaTemplateButtonCountAggregateOutputType | null
+    _avg: WaTemplateButtonAvgAggregateOutputType | null
+    _sum: WaTemplateButtonSumAggregateOutputType | null
+    _min: WaTemplateButtonMinAggregateOutputType | null
+    _max: WaTemplateButtonMaxAggregateOutputType | null
+  }
+
+  export type WaTemplateButtonAvgAggregateOutputType = {
+    index: number | null
+  }
+
+  export type WaTemplateButtonSumAggregateOutputType = {
+    index: number | null
+  }
+
+  export type WaTemplateButtonMinAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    index: number | null
+    type: $Enums.WaButtonType | null
+    text: string | null
+    url: string | null
+    phone: string | null
+    createdAt: Date | null
+  }
+
+  export type WaTemplateButtonMaxAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    index: number | null
+    type: $Enums.WaButtonType | null
+    text: string | null
+    url: string | null
+    phone: string | null
+    createdAt: Date | null
+  }
+
+  export type WaTemplateButtonCountAggregateOutputType = {
+    id: number
+    templateId: number
+    index: number
+    type: number
+    text: number
+    url: number
+    phone: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type WaTemplateButtonAvgAggregateInputType = {
+    index?: true
+  }
+
+  export type WaTemplateButtonSumAggregateInputType = {
+    index?: true
+  }
+
+  export type WaTemplateButtonMinAggregateInputType = {
+    id?: true
+    templateId?: true
+    index?: true
+    type?: true
+    text?: true
+    url?: true
+    phone?: true
+    createdAt?: true
+  }
+
+  export type WaTemplateButtonMaxAggregateInputType = {
+    id?: true
+    templateId?: true
+    index?: true
+    type?: true
+    text?: true
+    url?: true
+    phone?: true
+    createdAt?: true
+  }
+
+  export type WaTemplateButtonCountAggregateInputType = {
+    id?: true
+    templateId?: true
+    index?: true
+    type?: true
+    text?: true
+    url?: true
+    phone?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type WaTemplateButtonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaTemplateButton to aggregate.
+     */
+    where?: WaTemplateButtonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplateButtons to fetch.
+     */
+    orderBy?: WaTemplateButtonOrderByWithRelationInput | WaTemplateButtonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WaTemplateButtonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplateButtons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplateButtons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WaTemplateButtons
+    **/
+    _count?: true | WaTemplateButtonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WaTemplateButtonAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WaTemplateButtonSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WaTemplateButtonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WaTemplateButtonMaxAggregateInputType
+  }
+
+  export type GetWaTemplateButtonAggregateType<T extends WaTemplateButtonAggregateArgs> = {
+        [P in keyof T & keyof AggregateWaTemplateButton]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWaTemplateButton[P]>
+      : GetScalarType<T[P], AggregateWaTemplateButton[P]>
+  }
+
+
+
+
+  export type WaTemplateButtonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaTemplateButtonWhereInput
+    orderBy?: WaTemplateButtonOrderByWithAggregationInput | WaTemplateButtonOrderByWithAggregationInput[]
+    by: WaTemplateButtonScalarFieldEnum[] | WaTemplateButtonScalarFieldEnum
+    having?: WaTemplateButtonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WaTemplateButtonCountAggregateInputType | true
+    _avg?: WaTemplateButtonAvgAggregateInputType
+    _sum?: WaTemplateButtonSumAggregateInputType
+    _min?: WaTemplateButtonMinAggregateInputType
+    _max?: WaTemplateButtonMaxAggregateInputType
+  }
+
+  export type WaTemplateButtonGroupByOutputType = {
+    id: string
+    templateId: string
+    index: number
+    type: $Enums.WaButtonType
+    text: string
+    url: string | null
+    phone: string | null
+    createdAt: Date
+    _count: WaTemplateButtonCountAggregateOutputType | null
+    _avg: WaTemplateButtonAvgAggregateOutputType | null
+    _sum: WaTemplateButtonSumAggregateOutputType | null
+    _min: WaTemplateButtonMinAggregateOutputType | null
+    _max: WaTemplateButtonMaxAggregateOutputType | null
+  }
+
+  type GetWaTemplateButtonGroupByPayload<T extends WaTemplateButtonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WaTemplateButtonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WaTemplateButtonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WaTemplateButtonGroupByOutputType[P]>
+            : GetScalarType<T[P], WaTemplateButtonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WaTemplateButtonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    index?: boolean
+    type?: boolean
+    text?: boolean
+    url?: boolean
+    phone?: boolean
+    createdAt?: boolean
+    template?: boolean | WaTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waTemplateButton"]>
+
+  export type WaTemplateButtonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    index?: boolean
+    type?: boolean
+    text?: boolean
+    url?: boolean
+    phone?: boolean
+    createdAt?: boolean
+    template?: boolean | WaTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waTemplateButton"]>
+
+  export type WaTemplateButtonSelectScalar = {
+    id?: boolean
+    templateId?: boolean
+    index?: boolean
+    type?: boolean
+    text?: boolean
+    url?: boolean
+    phone?: boolean
+    createdAt?: boolean
+  }
+
+  export type WaTemplateButtonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | WaTemplateDefaultArgs<ExtArgs>
+  }
+  export type WaTemplateButtonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | WaTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $WaTemplateButtonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WaTemplateButton"
+    objects: {
+      template: Prisma.$WaTemplatePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      templateId: string
+      index: number
+      type: $Enums.WaButtonType
+      text: string
+      url: string | null
+      phone: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["waTemplateButton"]>
+    composites: {}
+  }
+
+  type WaTemplateButtonGetPayload<S extends boolean | null | undefined | WaTemplateButtonDefaultArgs> = $Result.GetResult<Prisma.$WaTemplateButtonPayload, S>
+
+  type WaTemplateButtonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WaTemplateButtonFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WaTemplateButtonCountAggregateInputType | true
+    }
+
+  export interface WaTemplateButtonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WaTemplateButton'], meta: { name: 'WaTemplateButton' } }
+    /**
+     * Find zero or one WaTemplateButton that matches the filter.
+     * @param {WaTemplateButtonFindUniqueArgs} args - Arguments to find a WaTemplateButton
+     * @example
+     * // Get one WaTemplateButton
+     * const waTemplateButton = await prisma.waTemplateButton.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WaTemplateButtonFindUniqueArgs>(args: SelectSubset<T, WaTemplateButtonFindUniqueArgs<ExtArgs>>): Prisma__WaTemplateButtonClient<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WaTemplateButton that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WaTemplateButtonFindUniqueOrThrowArgs} args - Arguments to find a WaTemplateButton
+     * @example
+     * // Get one WaTemplateButton
+     * const waTemplateButton = await prisma.waTemplateButton.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WaTemplateButtonFindUniqueOrThrowArgs>(args: SelectSubset<T, WaTemplateButtonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WaTemplateButtonClient<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WaTemplateButton that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateButtonFindFirstArgs} args - Arguments to find a WaTemplateButton
+     * @example
+     * // Get one WaTemplateButton
+     * const waTemplateButton = await prisma.waTemplateButton.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WaTemplateButtonFindFirstArgs>(args?: SelectSubset<T, WaTemplateButtonFindFirstArgs<ExtArgs>>): Prisma__WaTemplateButtonClient<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WaTemplateButton that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateButtonFindFirstOrThrowArgs} args - Arguments to find a WaTemplateButton
+     * @example
+     * // Get one WaTemplateButton
+     * const waTemplateButton = await prisma.waTemplateButton.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WaTemplateButtonFindFirstOrThrowArgs>(args?: SelectSubset<T, WaTemplateButtonFindFirstOrThrowArgs<ExtArgs>>): Prisma__WaTemplateButtonClient<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WaTemplateButtons that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateButtonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WaTemplateButtons
+     * const waTemplateButtons = await prisma.waTemplateButton.findMany()
+     * 
+     * // Get first 10 WaTemplateButtons
+     * const waTemplateButtons = await prisma.waTemplateButton.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const waTemplateButtonWithIdOnly = await prisma.waTemplateButton.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WaTemplateButtonFindManyArgs>(args?: SelectSubset<T, WaTemplateButtonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WaTemplateButton.
+     * @param {WaTemplateButtonCreateArgs} args - Arguments to create a WaTemplateButton.
+     * @example
+     * // Create one WaTemplateButton
+     * const WaTemplateButton = await prisma.waTemplateButton.create({
+     *   data: {
+     *     // ... data to create a WaTemplateButton
+     *   }
+     * })
+     * 
+     */
+    create<T extends WaTemplateButtonCreateArgs>(args: SelectSubset<T, WaTemplateButtonCreateArgs<ExtArgs>>): Prisma__WaTemplateButtonClient<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WaTemplateButtons.
+     * @param {WaTemplateButtonCreateManyArgs} args - Arguments to create many WaTemplateButtons.
+     * @example
+     * // Create many WaTemplateButtons
+     * const waTemplateButton = await prisma.waTemplateButton.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WaTemplateButtonCreateManyArgs>(args?: SelectSubset<T, WaTemplateButtonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WaTemplateButtons and returns the data saved in the database.
+     * @param {WaTemplateButtonCreateManyAndReturnArgs} args - Arguments to create many WaTemplateButtons.
+     * @example
+     * // Create many WaTemplateButtons
+     * const waTemplateButton = await prisma.waTemplateButton.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WaTemplateButtons and only return the `id`
+     * const waTemplateButtonWithIdOnly = await prisma.waTemplateButton.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WaTemplateButtonCreateManyAndReturnArgs>(args?: SelectSubset<T, WaTemplateButtonCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WaTemplateButton.
+     * @param {WaTemplateButtonDeleteArgs} args - Arguments to delete one WaTemplateButton.
+     * @example
+     * // Delete one WaTemplateButton
+     * const WaTemplateButton = await prisma.waTemplateButton.delete({
+     *   where: {
+     *     // ... filter to delete one WaTemplateButton
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WaTemplateButtonDeleteArgs>(args: SelectSubset<T, WaTemplateButtonDeleteArgs<ExtArgs>>): Prisma__WaTemplateButtonClient<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WaTemplateButton.
+     * @param {WaTemplateButtonUpdateArgs} args - Arguments to update one WaTemplateButton.
+     * @example
+     * // Update one WaTemplateButton
+     * const waTemplateButton = await prisma.waTemplateButton.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WaTemplateButtonUpdateArgs>(args: SelectSubset<T, WaTemplateButtonUpdateArgs<ExtArgs>>): Prisma__WaTemplateButtonClient<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WaTemplateButtons.
+     * @param {WaTemplateButtonDeleteManyArgs} args - Arguments to filter WaTemplateButtons to delete.
+     * @example
+     * // Delete a few WaTemplateButtons
+     * const { count } = await prisma.waTemplateButton.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WaTemplateButtonDeleteManyArgs>(args?: SelectSubset<T, WaTemplateButtonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WaTemplateButtons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateButtonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WaTemplateButtons
+     * const waTemplateButton = await prisma.waTemplateButton.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WaTemplateButtonUpdateManyArgs>(args: SelectSubset<T, WaTemplateButtonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WaTemplateButton.
+     * @param {WaTemplateButtonUpsertArgs} args - Arguments to update or create a WaTemplateButton.
+     * @example
+     * // Update or create a WaTemplateButton
+     * const waTemplateButton = await prisma.waTemplateButton.upsert({
+     *   create: {
+     *     // ... data to create a WaTemplateButton
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WaTemplateButton we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WaTemplateButtonUpsertArgs>(args: SelectSubset<T, WaTemplateButtonUpsertArgs<ExtArgs>>): Prisma__WaTemplateButtonClient<$Result.GetResult<Prisma.$WaTemplateButtonPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WaTemplateButtons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateButtonCountArgs} args - Arguments to filter WaTemplateButtons to count.
+     * @example
+     * // Count the number of WaTemplateButtons
+     * const count = await prisma.waTemplateButton.count({
+     *   where: {
+     *     // ... the filter for the WaTemplateButtons we want to count
+     *   }
+     * })
+    **/
+    count<T extends WaTemplateButtonCountArgs>(
+      args?: Subset<T, WaTemplateButtonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WaTemplateButtonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WaTemplateButton.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateButtonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WaTemplateButtonAggregateArgs>(args: Subset<T, WaTemplateButtonAggregateArgs>): Prisma.PrismaPromise<GetWaTemplateButtonAggregateType<T>>
+
+    /**
+     * Group by WaTemplateButton.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateButtonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WaTemplateButtonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WaTemplateButtonGroupByArgs['orderBy'] }
+        : { orderBy?: WaTemplateButtonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WaTemplateButtonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWaTemplateButtonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WaTemplateButton model
+   */
+  readonly fields: WaTemplateButtonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WaTemplateButton.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WaTemplateButtonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    template<T extends WaTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WaTemplateDefaultArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WaTemplateButton model
+   */ 
+  interface WaTemplateButtonFieldRefs {
+    readonly id: FieldRef<"WaTemplateButton", 'String'>
+    readonly templateId: FieldRef<"WaTemplateButton", 'String'>
+    readonly index: FieldRef<"WaTemplateButton", 'Int'>
+    readonly type: FieldRef<"WaTemplateButton", 'WaButtonType'>
+    readonly text: FieldRef<"WaTemplateButton", 'String'>
+    readonly url: FieldRef<"WaTemplateButton", 'String'>
+    readonly phone: FieldRef<"WaTemplateButton", 'String'>
+    readonly createdAt: FieldRef<"WaTemplateButton", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WaTemplateButton findUnique
+   */
+  export type WaTemplateButtonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateButton to fetch.
+     */
+    where: WaTemplateButtonWhereUniqueInput
+  }
+
+  /**
+   * WaTemplateButton findUniqueOrThrow
+   */
+  export type WaTemplateButtonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateButton to fetch.
+     */
+    where: WaTemplateButtonWhereUniqueInput
+  }
+
+  /**
+   * WaTemplateButton findFirst
+   */
+  export type WaTemplateButtonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateButton to fetch.
+     */
+    where?: WaTemplateButtonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplateButtons to fetch.
+     */
+    orderBy?: WaTemplateButtonOrderByWithRelationInput | WaTemplateButtonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaTemplateButtons.
+     */
+    cursor?: WaTemplateButtonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplateButtons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplateButtons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaTemplateButtons.
+     */
+    distinct?: WaTemplateButtonScalarFieldEnum | WaTemplateButtonScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplateButton findFirstOrThrow
+   */
+  export type WaTemplateButtonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateButton to fetch.
+     */
+    where?: WaTemplateButtonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplateButtons to fetch.
+     */
+    orderBy?: WaTemplateButtonOrderByWithRelationInput | WaTemplateButtonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaTemplateButtons.
+     */
+    cursor?: WaTemplateButtonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplateButtons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplateButtons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaTemplateButtons.
+     */
+    distinct?: WaTemplateButtonScalarFieldEnum | WaTemplateButtonScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplateButton findMany
+   */
+  export type WaTemplateButtonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateButtons to fetch.
+     */
+    where?: WaTemplateButtonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplateButtons to fetch.
+     */
+    orderBy?: WaTemplateButtonOrderByWithRelationInput | WaTemplateButtonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WaTemplateButtons.
+     */
+    cursor?: WaTemplateButtonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplateButtons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplateButtons.
+     */
+    skip?: number
+    distinct?: WaTemplateButtonScalarFieldEnum | WaTemplateButtonScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplateButton create
+   */
+  export type WaTemplateButtonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WaTemplateButton.
+     */
+    data: XOR<WaTemplateButtonCreateInput, WaTemplateButtonUncheckedCreateInput>
+  }
+
+  /**
+   * WaTemplateButton createMany
+   */
+  export type WaTemplateButtonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WaTemplateButtons.
+     */
+    data: WaTemplateButtonCreateManyInput | WaTemplateButtonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaTemplateButton createManyAndReturn
+   */
+  export type WaTemplateButtonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WaTemplateButtons.
+     */
+    data: WaTemplateButtonCreateManyInput | WaTemplateButtonCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WaTemplateButton update
+   */
+  export type WaTemplateButtonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WaTemplateButton.
+     */
+    data: XOR<WaTemplateButtonUpdateInput, WaTemplateButtonUncheckedUpdateInput>
+    /**
+     * Choose, which WaTemplateButton to update.
+     */
+    where: WaTemplateButtonWhereUniqueInput
+  }
+
+  /**
+   * WaTemplateButton updateMany
+   */
+  export type WaTemplateButtonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WaTemplateButtons.
+     */
+    data: XOR<WaTemplateButtonUpdateManyMutationInput, WaTemplateButtonUncheckedUpdateManyInput>
+    /**
+     * Filter which WaTemplateButtons to update
+     */
+    where?: WaTemplateButtonWhereInput
+  }
+
+  /**
+   * WaTemplateButton upsert
+   */
+  export type WaTemplateButtonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WaTemplateButton to update in case it exists.
+     */
+    where: WaTemplateButtonWhereUniqueInput
+    /**
+     * In case the WaTemplateButton found by the `where` argument doesn't exist, create a new WaTemplateButton with this data.
+     */
+    create: XOR<WaTemplateButtonCreateInput, WaTemplateButtonUncheckedCreateInput>
+    /**
+     * In case the WaTemplateButton was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WaTemplateButtonUpdateInput, WaTemplateButtonUncheckedUpdateInput>
+  }
+
+  /**
+   * WaTemplateButton delete
+   */
+  export type WaTemplateButtonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+    /**
+     * Filter which WaTemplateButton to delete.
+     */
+    where: WaTemplateButtonWhereUniqueInput
+  }
+
+  /**
+   * WaTemplateButton deleteMany
+   */
+  export type WaTemplateButtonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaTemplateButtons to delete
+     */
+    where?: WaTemplateButtonWhereInput
+  }
+
+  /**
+   * WaTemplateButton without action
+   */
+  export type WaTemplateButtonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateButton
+     */
+    select?: WaTemplateButtonSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateButtonInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WaTemplateMedia
+   */
+
+  export type AggregateWaTemplateMedia = {
+    _count: WaTemplateMediaCountAggregateOutputType | null
+    _avg: WaTemplateMediaAvgAggregateOutputType | null
+    _sum: WaTemplateMediaSumAggregateOutputType | null
+    _min: WaTemplateMediaMinAggregateOutputType | null
+    _max: WaTemplateMediaMaxAggregateOutputType | null
+  }
+
+  export type WaTemplateMediaAvgAggregateOutputType = {
+    sizeBytes: number | null
+  }
+
+  export type WaTemplateMediaSumAggregateOutputType = {
+    sizeBytes: number | null
+  }
+
+  export type WaTemplateMediaMinAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    mediaType: $Enums.WaMediaType | null
+    mediaId: string | null
+    url: string | null
+    filename: string | null
+    mimeType: string | null
+    sizeBytes: number | null
+    caption: string | null
+    isHeader: boolean | null
+    uploadedAt: Date | null
+  }
+
+  export type WaTemplateMediaMaxAggregateOutputType = {
+    id: string | null
+    templateId: string | null
+    mediaType: $Enums.WaMediaType | null
+    mediaId: string | null
+    url: string | null
+    filename: string | null
+    mimeType: string | null
+    sizeBytes: number | null
+    caption: string | null
+    isHeader: boolean | null
+    uploadedAt: Date | null
+  }
+
+  export type WaTemplateMediaCountAggregateOutputType = {
+    id: number
+    templateId: number
+    mediaType: number
+    mediaId: number
+    url: number
+    filename: number
+    mimeType: number
+    sizeBytes: number
+    caption: number
+    isHeader: number
+    uploadedAt: number
+    _all: number
+  }
+
+
+  export type WaTemplateMediaAvgAggregateInputType = {
+    sizeBytes?: true
+  }
+
+  export type WaTemplateMediaSumAggregateInputType = {
+    sizeBytes?: true
+  }
+
+  export type WaTemplateMediaMinAggregateInputType = {
+    id?: true
+    templateId?: true
+    mediaType?: true
+    mediaId?: true
+    url?: true
+    filename?: true
+    mimeType?: true
+    sizeBytes?: true
+    caption?: true
+    isHeader?: true
+    uploadedAt?: true
+  }
+
+  export type WaTemplateMediaMaxAggregateInputType = {
+    id?: true
+    templateId?: true
+    mediaType?: true
+    mediaId?: true
+    url?: true
+    filename?: true
+    mimeType?: true
+    sizeBytes?: true
+    caption?: true
+    isHeader?: true
+    uploadedAt?: true
+  }
+
+  export type WaTemplateMediaCountAggregateInputType = {
+    id?: true
+    templateId?: true
+    mediaType?: true
+    mediaId?: true
+    url?: true
+    filename?: true
+    mimeType?: true
+    sizeBytes?: true
+    caption?: true
+    isHeader?: true
+    uploadedAt?: true
+    _all?: true
+  }
+
+  export type WaTemplateMediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaTemplateMedia to aggregate.
+     */
+    where?: WaTemplateMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplateMedias to fetch.
+     */
+    orderBy?: WaTemplateMediaOrderByWithRelationInput | WaTemplateMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WaTemplateMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplateMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplateMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WaTemplateMedias
+    **/
+    _count?: true | WaTemplateMediaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WaTemplateMediaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WaTemplateMediaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WaTemplateMediaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WaTemplateMediaMaxAggregateInputType
+  }
+
+  export type GetWaTemplateMediaAggregateType<T extends WaTemplateMediaAggregateArgs> = {
+        [P in keyof T & keyof AggregateWaTemplateMedia]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWaTemplateMedia[P]>
+      : GetScalarType<T[P], AggregateWaTemplateMedia[P]>
+  }
+
+
+
+
+  export type WaTemplateMediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaTemplateMediaWhereInput
+    orderBy?: WaTemplateMediaOrderByWithAggregationInput | WaTemplateMediaOrderByWithAggregationInput[]
+    by: WaTemplateMediaScalarFieldEnum[] | WaTemplateMediaScalarFieldEnum
+    having?: WaTemplateMediaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WaTemplateMediaCountAggregateInputType | true
+    _avg?: WaTemplateMediaAvgAggregateInputType
+    _sum?: WaTemplateMediaSumAggregateInputType
+    _min?: WaTemplateMediaMinAggregateInputType
+    _max?: WaTemplateMediaMaxAggregateInputType
+  }
+
+  export type WaTemplateMediaGroupByOutputType = {
+    id: string
+    templateId: string
+    mediaType: $Enums.WaMediaType
+    mediaId: string | null
+    url: string | null
+    filename: string | null
+    mimeType: string | null
+    sizeBytes: number | null
+    caption: string | null
+    isHeader: boolean
+    uploadedAt: Date
+    _count: WaTemplateMediaCountAggregateOutputType | null
+    _avg: WaTemplateMediaAvgAggregateOutputType | null
+    _sum: WaTemplateMediaSumAggregateOutputType | null
+    _min: WaTemplateMediaMinAggregateOutputType | null
+    _max: WaTemplateMediaMaxAggregateOutputType | null
+  }
+
+  type GetWaTemplateMediaGroupByPayload<T extends WaTemplateMediaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WaTemplateMediaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WaTemplateMediaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WaTemplateMediaGroupByOutputType[P]>
+            : GetScalarType<T[P], WaTemplateMediaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WaTemplateMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    mediaType?: boolean
+    mediaId?: boolean
+    url?: boolean
+    filename?: boolean
+    mimeType?: boolean
+    sizeBytes?: boolean
+    caption?: boolean
+    isHeader?: boolean
+    uploadedAt?: boolean
+    template?: boolean | WaTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waTemplateMedia"]>
+
+  export type WaTemplateMediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    templateId?: boolean
+    mediaType?: boolean
+    mediaId?: boolean
+    url?: boolean
+    filename?: boolean
+    mimeType?: boolean
+    sizeBytes?: boolean
+    caption?: boolean
+    isHeader?: boolean
+    uploadedAt?: boolean
+    template?: boolean | WaTemplateDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waTemplateMedia"]>
+
+  export type WaTemplateMediaSelectScalar = {
+    id?: boolean
+    templateId?: boolean
+    mediaType?: boolean
+    mediaId?: boolean
+    url?: boolean
+    filename?: boolean
+    mimeType?: boolean
+    sizeBytes?: boolean
+    caption?: boolean
+    isHeader?: boolean
+    uploadedAt?: boolean
+  }
+
+  export type WaTemplateMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | WaTemplateDefaultArgs<ExtArgs>
+  }
+  export type WaTemplateMediaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | WaTemplateDefaultArgs<ExtArgs>
+  }
+
+  export type $WaTemplateMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WaTemplateMedia"
+    objects: {
+      template: Prisma.$WaTemplatePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      templateId: string
+      mediaType: $Enums.WaMediaType
+      mediaId: string | null
+      url: string | null
+      filename: string | null
+      mimeType: string | null
+      sizeBytes: number | null
+      caption: string | null
+      isHeader: boolean
+      uploadedAt: Date
+    }, ExtArgs["result"]["waTemplateMedia"]>
+    composites: {}
+  }
+
+  type WaTemplateMediaGetPayload<S extends boolean | null | undefined | WaTemplateMediaDefaultArgs> = $Result.GetResult<Prisma.$WaTemplateMediaPayload, S>
+
+  type WaTemplateMediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WaTemplateMediaFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WaTemplateMediaCountAggregateInputType | true
+    }
+
+  export interface WaTemplateMediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WaTemplateMedia'], meta: { name: 'WaTemplateMedia' } }
+    /**
+     * Find zero or one WaTemplateMedia that matches the filter.
+     * @param {WaTemplateMediaFindUniqueArgs} args - Arguments to find a WaTemplateMedia
+     * @example
+     * // Get one WaTemplateMedia
+     * const waTemplateMedia = await prisma.waTemplateMedia.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WaTemplateMediaFindUniqueArgs>(args: SelectSubset<T, WaTemplateMediaFindUniqueArgs<ExtArgs>>): Prisma__WaTemplateMediaClient<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WaTemplateMedia that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WaTemplateMediaFindUniqueOrThrowArgs} args - Arguments to find a WaTemplateMedia
+     * @example
+     * // Get one WaTemplateMedia
+     * const waTemplateMedia = await prisma.waTemplateMedia.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WaTemplateMediaFindUniqueOrThrowArgs>(args: SelectSubset<T, WaTemplateMediaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WaTemplateMediaClient<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WaTemplateMedia that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateMediaFindFirstArgs} args - Arguments to find a WaTemplateMedia
+     * @example
+     * // Get one WaTemplateMedia
+     * const waTemplateMedia = await prisma.waTemplateMedia.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WaTemplateMediaFindFirstArgs>(args?: SelectSubset<T, WaTemplateMediaFindFirstArgs<ExtArgs>>): Prisma__WaTemplateMediaClient<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WaTemplateMedia that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateMediaFindFirstOrThrowArgs} args - Arguments to find a WaTemplateMedia
+     * @example
+     * // Get one WaTemplateMedia
+     * const waTemplateMedia = await prisma.waTemplateMedia.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WaTemplateMediaFindFirstOrThrowArgs>(args?: SelectSubset<T, WaTemplateMediaFindFirstOrThrowArgs<ExtArgs>>): Prisma__WaTemplateMediaClient<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WaTemplateMedias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateMediaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WaTemplateMedias
+     * const waTemplateMedias = await prisma.waTemplateMedia.findMany()
+     * 
+     * // Get first 10 WaTemplateMedias
+     * const waTemplateMedias = await prisma.waTemplateMedia.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const waTemplateMediaWithIdOnly = await prisma.waTemplateMedia.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WaTemplateMediaFindManyArgs>(args?: SelectSubset<T, WaTemplateMediaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WaTemplateMedia.
+     * @param {WaTemplateMediaCreateArgs} args - Arguments to create a WaTemplateMedia.
+     * @example
+     * // Create one WaTemplateMedia
+     * const WaTemplateMedia = await prisma.waTemplateMedia.create({
+     *   data: {
+     *     // ... data to create a WaTemplateMedia
+     *   }
+     * })
+     * 
+     */
+    create<T extends WaTemplateMediaCreateArgs>(args: SelectSubset<T, WaTemplateMediaCreateArgs<ExtArgs>>): Prisma__WaTemplateMediaClient<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WaTemplateMedias.
+     * @param {WaTemplateMediaCreateManyArgs} args - Arguments to create many WaTemplateMedias.
+     * @example
+     * // Create many WaTemplateMedias
+     * const waTemplateMedia = await prisma.waTemplateMedia.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WaTemplateMediaCreateManyArgs>(args?: SelectSubset<T, WaTemplateMediaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WaTemplateMedias and returns the data saved in the database.
+     * @param {WaTemplateMediaCreateManyAndReturnArgs} args - Arguments to create many WaTemplateMedias.
+     * @example
+     * // Create many WaTemplateMedias
+     * const waTemplateMedia = await prisma.waTemplateMedia.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WaTemplateMedias and only return the `id`
+     * const waTemplateMediaWithIdOnly = await prisma.waTemplateMedia.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WaTemplateMediaCreateManyAndReturnArgs>(args?: SelectSubset<T, WaTemplateMediaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WaTemplateMedia.
+     * @param {WaTemplateMediaDeleteArgs} args - Arguments to delete one WaTemplateMedia.
+     * @example
+     * // Delete one WaTemplateMedia
+     * const WaTemplateMedia = await prisma.waTemplateMedia.delete({
+     *   where: {
+     *     // ... filter to delete one WaTemplateMedia
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WaTemplateMediaDeleteArgs>(args: SelectSubset<T, WaTemplateMediaDeleteArgs<ExtArgs>>): Prisma__WaTemplateMediaClient<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WaTemplateMedia.
+     * @param {WaTemplateMediaUpdateArgs} args - Arguments to update one WaTemplateMedia.
+     * @example
+     * // Update one WaTemplateMedia
+     * const waTemplateMedia = await prisma.waTemplateMedia.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WaTemplateMediaUpdateArgs>(args: SelectSubset<T, WaTemplateMediaUpdateArgs<ExtArgs>>): Prisma__WaTemplateMediaClient<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WaTemplateMedias.
+     * @param {WaTemplateMediaDeleteManyArgs} args - Arguments to filter WaTemplateMedias to delete.
+     * @example
+     * // Delete a few WaTemplateMedias
+     * const { count } = await prisma.waTemplateMedia.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WaTemplateMediaDeleteManyArgs>(args?: SelectSubset<T, WaTemplateMediaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WaTemplateMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateMediaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WaTemplateMedias
+     * const waTemplateMedia = await prisma.waTemplateMedia.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WaTemplateMediaUpdateManyArgs>(args: SelectSubset<T, WaTemplateMediaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WaTemplateMedia.
+     * @param {WaTemplateMediaUpsertArgs} args - Arguments to update or create a WaTemplateMedia.
+     * @example
+     * // Update or create a WaTemplateMedia
+     * const waTemplateMedia = await prisma.waTemplateMedia.upsert({
+     *   create: {
+     *     // ... data to create a WaTemplateMedia
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WaTemplateMedia we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WaTemplateMediaUpsertArgs>(args: SelectSubset<T, WaTemplateMediaUpsertArgs<ExtArgs>>): Prisma__WaTemplateMediaClient<$Result.GetResult<Prisma.$WaTemplateMediaPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WaTemplateMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateMediaCountArgs} args - Arguments to filter WaTemplateMedias to count.
+     * @example
+     * // Count the number of WaTemplateMedias
+     * const count = await prisma.waTemplateMedia.count({
+     *   where: {
+     *     // ... the filter for the WaTemplateMedias we want to count
+     *   }
+     * })
+    **/
+    count<T extends WaTemplateMediaCountArgs>(
+      args?: Subset<T, WaTemplateMediaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WaTemplateMediaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WaTemplateMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateMediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WaTemplateMediaAggregateArgs>(args: Subset<T, WaTemplateMediaAggregateArgs>): Prisma.PrismaPromise<GetWaTemplateMediaAggregateType<T>>
+
+    /**
+     * Group by WaTemplateMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaTemplateMediaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WaTemplateMediaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WaTemplateMediaGroupByArgs['orderBy'] }
+        : { orderBy?: WaTemplateMediaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WaTemplateMediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWaTemplateMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WaTemplateMedia model
+   */
+  readonly fields: WaTemplateMediaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WaTemplateMedia.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WaTemplateMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    template<T extends WaTemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WaTemplateDefaultArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WaTemplateMedia model
+   */ 
+  interface WaTemplateMediaFieldRefs {
+    readonly id: FieldRef<"WaTemplateMedia", 'String'>
+    readonly templateId: FieldRef<"WaTemplateMedia", 'String'>
+    readonly mediaType: FieldRef<"WaTemplateMedia", 'WaMediaType'>
+    readonly mediaId: FieldRef<"WaTemplateMedia", 'String'>
+    readonly url: FieldRef<"WaTemplateMedia", 'String'>
+    readonly filename: FieldRef<"WaTemplateMedia", 'String'>
+    readonly mimeType: FieldRef<"WaTemplateMedia", 'String'>
+    readonly sizeBytes: FieldRef<"WaTemplateMedia", 'Int'>
+    readonly caption: FieldRef<"WaTemplateMedia", 'String'>
+    readonly isHeader: FieldRef<"WaTemplateMedia", 'Boolean'>
+    readonly uploadedAt: FieldRef<"WaTemplateMedia", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WaTemplateMedia findUnique
+   */
+  export type WaTemplateMediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateMedia to fetch.
+     */
+    where: WaTemplateMediaWhereUniqueInput
+  }
+
+  /**
+   * WaTemplateMedia findUniqueOrThrow
+   */
+  export type WaTemplateMediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateMedia to fetch.
+     */
+    where: WaTemplateMediaWhereUniqueInput
+  }
+
+  /**
+   * WaTemplateMedia findFirst
+   */
+  export type WaTemplateMediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateMedia to fetch.
+     */
+    where?: WaTemplateMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplateMedias to fetch.
+     */
+    orderBy?: WaTemplateMediaOrderByWithRelationInput | WaTemplateMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaTemplateMedias.
+     */
+    cursor?: WaTemplateMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplateMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplateMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaTemplateMedias.
+     */
+    distinct?: WaTemplateMediaScalarFieldEnum | WaTemplateMediaScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplateMedia findFirstOrThrow
+   */
+  export type WaTemplateMediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateMedia to fetch.
+     */
+    where?: WaTemplateMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplateMedias to fetch.
+     */
+    orderBy?: WaTemplateMediaOrderByWithRelationInput | WaTemplateMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaTemplateMedias.
+     */
+    cursor?: WaTemplateMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplateMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplateMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaTemplateMedias.
+     */
+    distinct?: WaTemplateMediaScalarFieldEnum | WaTemplateMediaScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplateMedia findMany
+   */
+  export type WaTemplateMediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaTemplateMedias to fetch.
+     */
+    where?: WaTemplateMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaTemplateMedias to fetch.
+     */
+    orderBy?: WaTemplateMediaOrderByWithRelationInput | WaTemplateMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WaTemplateMedias.
+     */
+    cursor?: WaTemplateMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaTemplateMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaTemplateMedias.
+     */
+    skip?: number
+    distinct?: WaTemplateMediaScalarFieldEnum | WaTemplateMediaScalarFieldEnum[]
+  }
+
+  /**
+   * WaTemplateMedia create
+   */
+  export type WaTemplateMediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WaTemplateMedia.
+     */
+    data: XOR<WaTemplateMediaCreateInput, WaTemplateMediaUncheckedCreateInput>
+  }
+
+  /**
+   * WaTemplateMedia createMany
+   */
+  export type WaTemplateMediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WaTemplateMedias.
+     */
+    data: WaTemplateMediaCreateManyInput | WaTemplateMediaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaTemplateMedia createManyAndReturn
+   */
+  export type WaTemplateMediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WaTemplateMedias.
+     */
+    data: WaTemplateMediaCreateManyInput | WaTemplateMediaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WaTemplateMedia update
+   */
+  export type WaTemplateMediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WaTemplateMedia.
+     */
+    data: XOR<WaTemplateMediaUpdateInput, WaTemplateMediaUncheckedUpdateInput>
+    /**
+     * Choose, which WaTemplateMedia to update.
+     */
+    where: WaTemplateMediaWhereUniqueInput
+  }
+
+  /**
+   * WaTemplateMedia updateMany
+   */
+  export type WaTemplateMediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WaTemplateMedias.
+     */
+    data: XOR<WaTemplateMediaUpdateManyMutationInput, WaTemplateMediaUncheckedUpdateManyInput>
+    /**
+     * Filter which WaTemplateMedias to update
+     */
+    where?: WaTemplateMediaWhereInput
+  }
+
+  /**
+   * WaTemplateMedia upsert
+   */
+  export type WaTemplateMediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WaTemplateMedia to update in case it exists.
+     */
+    where: WaTemplateMediaWhereUniqueInput
+    /**
+     * In case the WaTemplateMedia found by the `where` argument doesn't exist, create a new WaTemplateMedia with this data.
+     */
+    create: XOR<WaTemplateMediaCreateInput, WaTemplateMediaUncheckedCreateInput>
+    /**
+     * In case the WaTemplateMedia was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WaTemplateMediaUpdateInput, WaTemplateMediaUncheckedUpdateInput>
+  }
+
+  /**
+   * WaTemplateMedia delete
+   */
+  export type WaTemplateMediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+    /**
+     * Filter which WaTemplateMedia to delete.
+     */
+    where: WaTemplateMediaWhereUniqueInput
+  }
+
+  /**
+   * WaTemplateMedia deleteMany
+   */
+  export type WaTemplateMediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaTemplateMedias to delete
+     */
+    where?: WaTemplateMediaWhereInput
+  }
+
+  /**
+   * WaTemplateMedia without action
+   */
+  export type WaTemplateMediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplateMedia
+     */
+    select?: WaTemplateMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateMediaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WaContact
+   */
+
+  export type AggregateWaContact = {
+    _count: WaContactCountAggregateOutputType | null
+    _min: WaContactMinAggregateOutputType | null
+    _max: WaContactMaxAggregateOutputType | null
+  }
+
+  export type WaContactMinAggregateOutputType = {
+    id: string | null
+    phone: string | null
+    name: string | null
+    waId: string | null
+    isValid: boolean | null
+    optedOut: boolean | null
+    notes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WaContactMaxAggregateOutputType = {
+    id: string | null
+    phone: string | null
+    name: string | null
+    waId: string | null
+    isValid: boolean | null
+    optedOut: boolean | null
+    notes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WaContactCountAggregateOutputType = {
+    id: number
+    phone: number
+    name: number
+    waId: number
+    isValid: number
+    optedOut: number
+    notes: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type WaContactMinAggregateInputType = {
+    id?: true
+    phone?: true
+    name?: true
+    waId?: true
+    isValid?: true
+    optedOut?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WaContactMaxAggregateInputType = {
+    id?: true
+    phone?: true
+    name?: true
+    waId?: true
+    isValid?: true
+    optedOut?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WaContactCountAggregateInputType = {
+    id?: true
+    phone?: true
+    name?: true
+    waId?: true
+    isValid?: true
+    optedOut?: true
+    notes?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type WaContactAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaContact to aggregate.
+     */
+    where?: WaContactWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaContacts to fetch.
+     */
+    orderBy?: WaContactOrderByWithRelationInput | WaContactOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WaContactWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaContacts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaContacts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WaContacts
+    **/
+    _count?: true | WaContactCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WaContactMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WaContactMaxAggregateInputType
+  }
+
+  export type GetWaContactAggregateType<T extends WaContactAggregateArgs> = {
+        [P in keyof T & keyof AggregateWaContact]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWaContact[P]>
+      : GetScalarType<T[P], AggregateWaContact[P]>
+  }
+
+
+
+
+  export type WaContactGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaContactWhereInput
+    orderBy?: WaContactOrderByWithAggregationInput | WaContactOrderByWithAggregationInput[]
+    by: WaContactScalarFieldEnum[] | WaContactScalarFieldEnum
+    having?: WaContactScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WaContactCountAggregateInputType | true
+    _min?: WaContactMinAggregateInputType
+    _max?: WaContactMaxAggregateInputType
+  }
+
+  export type WaContactGroupByOutputType = {
+    id: string
+    phone: string
+    name: string | null
+    waId: string | null
+    isValid: boolean
+    optedOut: boolean
+    notes: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: WaContactCountAggregateOutputType | null
+    _min: WaContactMinAggregateOutputType | null
+    _max: WaContactMaxAggregateOutputType | null
+  }
+
+  type GetWaContactGroupByPayload<T extends WaContactGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WaContactGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WaContactGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WaContactGroupByOutputType[P]>
+            : GetScalarType<T[P], WaContactGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WaContactSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phone?: boolean
+    name?: boolean
+    waId?: boolean
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    messages?: boolean | WaContact$messagesArgs<ExtArgs>
+    bulkRecipients?: boolean | WaContact$bulkRecipientsArgs<ExtArgs>
+    _count?: boolean | WaContactCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waContact"]>
+
+  export type WaContactSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phone?: boolean
+    name?: boolean
+    waId?: boolean
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["waContact"]>
+
+  export type WaContactSelectScalar = {
+    id?: boolean
+    phone?: boolean
+    name?: boolean
+    waId?: boolean
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type WaContactInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    messages?: boolean | WaContact$messagesArgs<ExtArgs>
+    bulkRecipients?: boolean | WaContact$bulkRecipientsArgs<ExtArgs>
+    _count?: boolean | WaContactCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WaContactIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $WaContactPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WaContact"
+    objects: {
+      messages: Prisma.$WaMessagePayload<ExtArgs>[]
+      bulkRecipients: Prisma.$WaBulkRecipientPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      phone: string
+      name: string | null
+      waId: string | null
+      isValid: boolean
+      optedOut: boolean
+      notes: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["waContact"]>
+    composites: {}
+  }
+
+  type WaContactGetPayload<S extends boolean | null | undefined | WaContactDefaultArgs> = $Result.GetResult<Prisma.$WaContactPayload, S>
+
+  type WaContactCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WaContactFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WaContactCountAggregateInputType | true
+    }
+
+  export interface WaContactDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WaContact'], meta: { name: 'WaContact' } }
+    /**
+     * Find zero or one WaContact that matches the filter.
+     * @param {WaContactFindUniqueArgs} args - Arguments to find a WaContact
+     * @example
+     * // Get one WaContact
+     * const waContact = await prisma.waContact.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WaContactFindUniqueArgs>(args: SelectSubset<T, WaContactFindUniqueArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WaContact that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WaContactFindUniqueOrThrowArgs} args - Arguments to find a WaContact
+     * @example
+     * // Get one WaContact
+     * const waContact = await prisma.waContact.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WaContactFindUniqueOrThrowArgs>(args: SelectSubset<T, WaContactFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WaContact that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaContactFindFirstArgs} args - Arguments to find a WaContact
+     * @example
+     * // Get one WaContact
+     * const waContact = await prisma.waContact.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WaContactFindFirstArgs>(args?: SelectSubset<T, WaContactFindFirstArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WaContact that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaContactFindFirstOrThrowArgs} args - Arguments to find a WaContact
+     * @example
+     * // Get one WaContact
+     * const waContact = await prisma.waContact.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WaContactFindFirstOrThrowArgs>(args?: SelectSubset<T, WaContactFindFirstOrThrowArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WaContacts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaContactFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WaContacts
+     * const waContacts = await prisma.waContact.findMany()
+     * 
+     * // Get first 10 WaContacts
+     * const waContacts = await prisma.waContact.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const waContactWithIdOnly = await prisma.waContact.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WaContactFindManyArgs>(args?: SelectSubset<T, WaContactFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WaContact.
+     * @param {WaContactCreateArgs} args - Arguments to create a WaContact.
+     * @example
+     * // Create one WaContact
+     * const WaContact = await prisma.waContact.create({
+     *   data: {
+     *     // ... data to create a WaContact
+     *   }
+     * })
+     * 
+     */
+    create<T extends WaContactCreateArgs>(args: SelectSubset<T, WaContactCreateArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WaContacts.
+     * @param {WaContactCreateManyArgs} args - Arguments to create many WaContacts.
+     * @example
+     * // Create many WaContacts
+     * const waContact = await prisma.waContact.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WaContactCreateManyArgs>(args?: SelectSubset<T, WaContactCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WaContacts and returns the data saved in the database.
+     * @param {WaContactCreateManyAndReturnArgs} args - Arguments to create many WaContacts.
+     * @example
+     * // Create many WaContacts
+     * const waContact = await prisma.waContact.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WaContacts and only return the `id`
+     * const waContactWithIdOnly = await prisma.waContact.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WaContactCreateManyAndReturnArgs>(args?: SelectSubset<T, WaContactCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WaContact.
+     * @param {WaContactDeleteArgs} args - Arguments to delete one WaContact.
+     * @example
+     * // Delete one WaContact
+     * const WaContact = await prisma.waContact.delete({
+     *   where: {
+     *     // ... filter to delete one WaContact
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WaContactDeleteArgs>(args: SelectSubset<T, WaContactDeleteArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WaContact.
+     * @param {WaContactUpdateArgs} args - Arguments to update one WaContact.
+     * @example
+     * // Update one WaContact
+     * const waContact = await prisma.waContact.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WaContactUpdateArgs>(args: SelectSubset<T, WaContactUpdateArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WaContacts.
+     * @param {WaContactDeleteManyArgs} args - Arguments to filter WaContacts to delete.
+     * @example
+     * // Delete a few WaContacts
+     * const { count } = await prisma.waContact.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WaContactDeleteManyArgs>(args?: SelectSubset<T, WaContactDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WaContacts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaContactUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WaContacts
+     * const waContact = await prisma.waContact.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WaContactUpdateManyArgs>(args: SelectSubset<T, WaContactUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WaContact.
+     * @param {WaContactUpsertArgs} args - Arguments to update or create a WaContact.
+     * @example
+     * // Update or create a WaContact
+     * const waContact = await prisma.waContact.upsert({
+     *   create: {
+     *     // ... data to create a WaContact
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WaContact we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WaContactUpsertArgs>(args: SelectSubset<T, WaContactUpsertArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WaContacts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaContactCountArgs} args - Arguments to filter WaContacts to count.
+     * @example
+     * // Count the number of WaContacts
+     * const count = await prisma.waContact.count({
+     *   where: {
+     *     // ... the filter for the WaContacts we want to count
+     *   }
+     * })
+    **/
+    count<T extends WaContactCountArgs>(
+      args?: Subset<T, WaContactCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WaContactCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WaContact.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaContactAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WaContactAggregateArgs>(args: Subset<T, WaContactAggregateArgs>): Prisma.PrismaPromise<GetWaContactAggregateType<T>>
+
+    /**
+     * Group by WaContact.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaContactGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WaContactGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WaContactGroupByArgs['orderBy'] }
+        : { orderBy?: WaContactGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WaContactGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWaContactGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WaContact model
+   */
+  readonly fields: WaContactFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WaContact.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WaContactClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    messages<T extends WaContact$messagesArgs<ExtArgs> = {}>(args?: Subset<T, WaContact$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findMany"> | Null>
+    bulkRecipients<T extends WaContact$bulkRecipientsArgs<ExtArgs> = {}>(args?: Subset<T, WaContact$bulkRecipientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WaContact model
+   */ 
+  interface WaContactFieldRefs {
+    readonly id: FieldRef<"WaContact", 'String'>
+    readonly phone: FieldRef<"WaContact", 'String'>
+    readonly name: FieldRef<"WaContact", 'String'>
+    readonly waId: FieldRef<"WaContact", 'String'>
+    readonly isValid: FieldRef<"WaContact", 'Boolean'>
+    readonly optedOut: FieldRef<"WaContact", 'Boolean'>
+    readonly notes: FieldRef<"WaContact", 'String'>
+    readonly createdAt: FieldRef<"WaContact", 'DateTime'>
+    readonly updatedAt: FieldRef<"WaContact", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WaContact findUnique
+   */
+  export type WaContactFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * Filter, which WaContact to fetch.
+     */
+    where: WaContactWhereUniqueInput
+  }
+
+  /**
+   * WaContact findUniqueOrThrow
+   */
+  export type WaContactFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * Filter, which WaContact to fetch.
+     */
+    where: WaContactWhereUniqueInput
+  }
+
+  /**
+   * WaContact findFirst
+   */
+  export type WaContactFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * Filter, which WaContact to fetch.
+     */
+    where?: WaContactWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaContacts to fetch.
+     */
+    orderBy?: WaContactOrderByWithRelationInput | WaContactOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaContacts.
+     */
+    cursor?: WaContactWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaContacts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaContacts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaContacts.
+     */
+    distinct?: WaContactScalarFieldEnum | WaContactScalarFieldEnum[]
+  }
+
+  /**
+   * WaContact findFirstOrThrow
+   */
+  export type WaContactFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * Filter, which WaContact to fetch.
+     */
+    where?: WaContactWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaContacts to fetch.
+     */
+    orderBy?: WaContactOrderByWithRelationInput | WaContactOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaContacts.
+     */
+    cursor?: WaContactWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaContacts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaContacts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaContacts.
+     */
+    distinct?: WaContactScalarFieldEnum | WaContactScalarFieldEnum[]
+  }
+
+  /**
+   * WaContact findMany
+   */
+  export type WaContactFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * Filter, which WaContacts to fetch.
+     */
+    where?: WaContactWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaContacts to fetch.
+     */
+    orderBy?: WaContactOrderByWithRelationInput | WaContactOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WaContacts.
+     */
+    cursor?: WaContactWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaContacts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaContacts.
+     */
+    skip?: number
+    distinct?: WaContactScalarFieldEnum | WaContactScalarFieldEnum[]
+  }
+
+  /**
+   * WaContact create
+   */
+  export type WaContactCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WaContact.
+     */
+    data: XOR<WaContactCreateInput, WaContactUncheckedCreateInput>
+  }
+
+  /**
+   * WaContact createMany
+   */
+  export type WaContactCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WaContacts.
+     */
+    data: WaContactCreateManyInput | WaContactCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaContact createManyAndReturn
+   */
+  export type WaContactCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WaContacts.
+     */
+    data: WaContactCreateManyInput | WaContactCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaContact update
+   */
+  export type WaContactUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WaContact.
+     */
+    data: XOR<WaContactUpdateInput, WaContactUncheckedUpdateInput>
+    /**
+     * Choose, which WaContact to update.
+     */
+    where: WaContactWhereUniqueInput
+  }
+
+  /**
+   * WaContact updateMany
+   */
+  export type WaContactUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WaContacts.
+     */
+    data: XOR<WaContactUpdateManyMutationInput, WaContactUncheckedUpdateManyInput>
+    /**
+     * Filter which WaContacts to update
+     */
+    where?: WaContactWhereInput
+  }
+
+  /**
+   * WaContact upsert
+   */
+  export type WaContactUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WaContact to update in case it exists.
+     */
+    where: WaContactWhereUniqueInput
+    /**
+     * In case the WaContact found by the `where` argument doesn't exist, create a new WaContact with this data.
+     */
+    create: XOR<WaContactCreateInput, WaContactUncheckedCreateInput>
+    /**
+     * In case the WaContact was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WaContactUpdateInput, WaContactUncheckedUpdateInput>
+  }
+
+  /**
+   * WaContact delete
+   */
+  export type WaContactDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    /**
+     * Filter which WaContact to delete.
+     */
+    where: WaContactWhereUniqueInput
+  }
+
+  /**
+   * WaContact deleteMany
+   */
+  export type WaContactDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaContacts to delete
+     */
+    where?: WaContactWhereInput
+  }
+
+  /**
+   * WaContact.messages
+   */
+  export type WaContact$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    where?: WaMessageWhereInput
+    orderBy?: WaMessageOrderByWithRelationInput | WaMessageOrderByWithRelationInput[]
+    cursor?: WaMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaMessageScalarFieldEnum | WaMessageScalarFieldEnum[]
+  }
+
+  /**
+   * WaContact.bulkRecipients
+   */
+  export type WaContact$bulkRecipientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    where?: WaBulkRecipientWhereInput
+    orderBy?: WaBulkRecipientOrderByWithRelationInput | WaBulkRecipientOrderByWithRelationInput[]
+    cursor?: WaBulkRecipientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaBulkRecipientScalarFieldEnum | WaBulkRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * WaContact without action
+   */
+  export type WaContactDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WaMessage
+   */
+
+  export type AggregateWaMessage = {
+    _count: WaMessageCountAggregateOutputType | null
+    _avg: WaMessageAvgAggregateOutputType | null
+    _sum: WaMessageSumAggregateOutputType | null
+    _min: WaMessageMinAggregateOutputType | null
+    _max: WaMessageMaxAggregateOutputType | null
+  }
+
+  export type WaMessageAvgAggregateOutputType = {
+    errorCode: number | null
+  }
+
+  export type WaMessageSumAggregateOutputType = {
+    errorCode: number | null
+  }
+
+  export type WaMessageMinAggregateOutputType = {
+    id: string | null
+    wamid: string | null
+    direction: $Enums.WaMsgDirection | null
+    status: $Enums.WaMsgStatus | null
+    contactId: string | null
+    to: string | null
+    type: $Enums.WaMsgType | null
+    body: string | null
+    templateId: string | null
+    bulkJobId: string | null
+    errorCode: number | null
+    errorMessage: string | null
+    sentAt: Date | null
+    deliveredAt: Date | null
+    readAt: Date | null
+    failedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WaMessageMaxAggregateOutputType = {
+    id: string | null
+    wamid: string | null
+    direction: $Enums.WaMsgDirection | null
+    status: $Enums.WaMsgStatus | null
+    contactId: string | null
+    to: string | null
+    type: $Enums.WaMsgType | null
+    body: string | null
+    templateId: string | null
+    bulkJobId: string | null
+    errorCode: number | null
+    errorMessage: string | null
+    sentAt: Date | null
+    deliveredAt: Date | null
+    readAt: Date | null
+    failedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WaMessageCountAggregateOutputType = {
+    id: number
+    wamid: number
+    direction: number
+    status: number
+    contactId: number
+    to: number
+    type: number
+    body: number
+    templateId: number
+    variablesUsed: number
+    bulkJobId: number
+    errorCode: number
+    errorMessage: number
+    sentAt: number
+    deliveredAt: number
+    readAt: number
+    failedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type WaMessageAvgAggregateInputType = {
+    errorCode?: true
+  }
+
+  export type WaMessageSumAggregateInputType = {
+    errorCode?: true
+  }
+
+  export type WaMessageMinAggregateInputType = {
+    id?: true
+    wamid?: true
+    direction?: true
+    status?: true
+    contactId?: true
+    to?: true
+    type?: true
+    body?: true
+    templateId?: true
+    bulkJobId?: true
+    errorCode?: true
+    errorMessage?: true
+    sentAt?: true
+    deliveredAt?: true
+    readAt?: true
+    failedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WaMessageMaxAggregateInputType = {
+    id?: true
+    wamid?: true
+    direction?: true
+    status?: true
+    contactId?: true
+    to?: true
+    type?: true
+    body?: true
+    templateId?: true
+    bulkJobId?: true
+    errorCode?: true
+    errorMessage?: true
+    sentAt?: true
+    deliveredAt?: true
+    readAt?: true
+    failedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WaMessageCountAggregateInputType = {
+    id?: true
+    wamid?: true
+    direction?: true
+    status?: true
+    contactId?: true
+    to?: true
+    type?: true
+    body?: true
+    templateId?: true
+    variablesUsed?: true
+    bulkJobId?: true
+    errorCode?: true
+    errorMessage?: true
+    sentAt?: true
+    deliveredAt?: true
+    readAt?: true
+    failedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type WaMessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaMessage to aggregate.
+     */
+    where?: WaMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaMessages to fetch.
+     */
+    orderBy?: WaMessageOrderByWithRelationInput | WaMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WaMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WaMessages
+    **/
+    _count?: true | WaMessageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WaMessageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WaMessageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WaMessageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WaMessageMaxAggregateInputType
+  }
+
+  export type GetWaMessageAggregateType<T extends WaMessageAggregateArgs> = {
+        [P in keyof T & keyof AggregateWaMessage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWaMessage[P]>
+      : GetScalarType<T[P], AggregateWaMessage[P]>
+  }
+
+
+
+
+  export type WaMessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaMessageWhereInput
+    orderBy?: WaMessageOrderByWithAggregationInput | WaMessageOrderByWithAggregationInput[]
+    by: WaMessageScalarFieldEnum[] | WaMessageScalarFieldEnum
+    having?: WaMessageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WaMessageCountAggregateInputType | true
+    _avg?: WaMessageAvgAggregateInputType
+    _sum?: WaMessageSumAggregateInputType
+    _min?: WaMessageMinAggregateInputType
+    _max?: WaMessageMaxAggregateInputType
+  }
+
+  export type WaMessageGroupByOutputType = {
+    id: string
+    wamid: string | null
+    direction: $Enums.WaMsgDirection
+    status: $Enums.WaMsgStatus
+    contactId: string | null
+    to: string
+    type: $Enums.WaMsgType
+    body: string | null
+    templateId: string | null
+    variablesUsed: JsonValue | null
+    bulkJobId: string | null
+    errorCode: number | null
+    errorMessage: string | null
+    sentAt: Date | null
+    deliveredAt: Date | null
+    readAt: Date | null
+    failedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: WaMessageCountAggregateOutputType | null
+    _avg: WaMessageAvgAggregateOutputType | null
+    _sum: WaMessageSumAggregateOutputType | null
+    _min: WaMessageMinAggregateOutputType | null
+    _max: WaMessageMaxAggregateOutputType | null
+  }
+
+  type GetWaMessageGroupByPayload<T extends WaMessageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WaMessageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WaMessageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WaMessageGroupByOutputType[P]>
+            : GetScalarType<T[P], WaMessageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WaMessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    wamid?: boolean
+    direction?: boolean
+    status?: boolean
+    contactId?: boolean
+    to?: boolean
+    type?: boolean
+    body?: boolean
+    templateId?: boolean
+    variablesUsed?: boolean
+    bulkJobId?: boolean
+    errorCode?: boolean
+    errorMessage?: boolean
+    sentAt?: boolean
+    deliveredAt?: boolean
+    readAt?: boolean
+    failedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    contact?: boolean | WaMessage$contactArgs<ExtArgs>
+    template?: boolean | WaMessage$templateArgs<ExtArgs>
+    bulkJob?: boolean | WaMessage$bulkJobArgs<ExtArgs>
+    media?: boolean | WaMessage$mediaArgs<ExtArgs>
+    _count?: boolean | WaMessageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waMessage"]>
+
+  export type WaMessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    wamid?: boolean
+    direction?: boolean
+    status?: boolean
+    contactId?: boolean
+    to?: boolean
+    type?: boolean
+    body?: boolean
+    templateId?: boolean
+    variablesUsed?: boolean
+    bulkJobId?: boolean
+    errorCode?: boolean
+    errorMessage?: boolean
+    sentAt?: boolean
+    deliveredAt?: boolean
+    readAt?: boolean
+    failedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    contact?: boolean | WaMessage$contactArgs<ExtArgs>
+    template?: boolean | WaMessage$templateArgs<ExtArgs>
+    bulkJob?: boolean | WaMessage$bulkJobArgs<ExtArgs>
+  }, ExtArgs["result"]["waMessage"]>
+
+  export type WaMessageSelectScalar = {
+    id?: boolean
+    wamid?: boolean
+    direction?: boolean
+    status?: boolean
+    contactId?: boolean
+    to?: boolean
+    type?: boolean
+    body?: boolean
+    templateId?: boolean
+    variablesUsed?: boolean
+    bulkJobId?: boolean
+    errorCode?: boolean
+    errorMessage?: boolean
+    sentAt?: boolean
+    deliveredAt?: boolean
+    readAt?: boolean
+    failedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type WaMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    contact?: boolean | WaMessage$contactArgs<ExtArgs>
+    template?: boolean | WaMessage$templateArgs<ExtArgs>
+    bulkJob?: boolean | WaMessage$bulkJobArgs<ExtArgs>
+    media?: boolean | WaMessage$mediaArgs<ExtArgs>
+    _count?: boolean | WaMessageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WaMessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    contact?: boolean | WaMessage$contactArgs<ExtArgs>
+    template?: boolean | WaMessage$templateArgs<ExtArgs>
+    bulkJob?: boolean | WaMessage$bulkJobArgs<ExtArgs>
+  }
+
+  export type $WaMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WaMessage"
+    objects: {
+      contact: Prisma.$WaContactPayload<ExtArgs> | null
+      template: Prisma.$WaTemplatePayload<ExtArgs> | null
+      bulkJob: Prisma.$WaBulkJobPayload<ExtArgs> | null
+      media: Prisma.$WaMessageMediaPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      wamid: string | null
+      direction: $Enums.WaMsgDirection
+      status: $Enums.WaMsgStatus
+      contactId: string | null
+      to: string
+      type: $Enums.WaMsgType
+      body: string | null
+      templateId: string | null
+      variablesUsed: Prisma.JsonValue | null
+      bulkJobId: string | null
+      errorCode: number | null
+      errorMessage: string | null
+      sentAt: Date | null
+      deliveredAt: Date | null
+      readAt: Date | null
+      failedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["waMessage"]>
+    composites: {}
+  }
+
+  type WaMessageGetPayload<S extends boolean | null | undefined | WaMessageDefaultArgs> = $Result.GetResult<Prisma.$WaMessagePayload, S>
+
+  type WaMessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WaMessageFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WaMessageCountAggregateInputType | true
+    }
+
+  export interface WaMessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WaMessage'], meta: { name: 'WaMessage' } }
+    /**
+     * Find zero or one WaMessage that matches the filter.
+     * @param {WaMessageFindUniqueArgs} args - Arguments to find a WaMessage
+     * @example
+     * // Get one WaMessage
+     * const waMessage = await prisma.waMessage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WaMessageFindUniqueArgs>(args: SelectSubset<T, WaMessageFindUniqueArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WaMessage that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WaMessageFindUniqueOrThrowArgs} args - Arguments to find a WaMessage
+     * @example
+     * // Get one WaMessage
+     * const waMessage = await prisma.waMessage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WaMessageFindUniqueOrThrowArgs>(args: SelectSubset<T, WaMessageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WaMessage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageFindFirstArgs} args - Arguments to find a WaMessage
+     * @example
+     * // Get one WaMessage
+     * const waMessage = await prisma.waMessage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WaMessageFindFirstArgs>(args?: SelectSubset<T, WaMessageFindFirstArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WaMessage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageFindFirstOrThrowArgs} args - Arguments to find a WaMessage
+     * @example
+     * // Get one WaMessage
+     * const waMessage = await prisma.waMessage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WaMessageFindFirstOrThrowArgs>(args?: SelectSubset<T, WaMessageFindFirstOrThrowArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WaMessages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WaMessages
+     * const waMessages = await prisma.waMessage.findMany()
+     * 
+     * // Get first 10 WaMessages
+     * const waMessages = await prisma.waMessage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const waMessageWithIdOnly = await prisma.waMessage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WaMessageFindManyArgs>(args?: SelectSubset<T, WaMessageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WaMessage.
+     * @param {WaMessageCreateArgs} args - Arguments to create a WaMessage.
+     * @example
+     * // Create one WaMessage
+     * const WaMessage = await prisma.waMessage.create({
+     *   data: {
+     *     // ... data to create a WaMessage
+     *   }
+     * })
+     * 
+     */
+    create<T extends WaMessageCreateArgs>(args: SelectSubset<T, WaMessageCreateArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WaMessages.
+     * @param {WaMessageCreateManyArgs} args - Arguments to create many WaMessages.
+     * @example
+     * // Create many WaMessages
+     * const waMessage = await prisma.waMessage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WaMessageCreateManyArgs>(args?: SelectSubset<T, WaMessageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WaMessages and returns the data saved in the database.
+     * @param {WaMessageCreateManyAndReturnArgs} args - Arguments to create many WaMessages.
+     * @example
+     * // Create many WaMessages
+     * const waMessage = await prisma.waMessage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WaMessages and only return the `id`
+     * const waMessageWithIdOnly = await prisma.waMessage.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WaMessageCreateManyAndReturnArgs>(args?: SelectSubset<T, WaMessageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WaMessage.
+     * @param {WaMessageDeleteArgs} args - Arguments to delete one WaMessage.
+     * @example
+     * // Delete one WaMessage
+     * const WaMessage = await prisma.waMessage.delete({
+     *   where: {
+     *     // ... filter to delete one WaMessage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WaMessageDeleteArgs>(args: SelectSubset<T, WaMessageDeleteArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WaMessage.
+     * @param {WaMessageUpdateArgs} args - Arguments to update one WaMessage.
+     * @example
+     * // Update one WaMessage
+     * const waMessage = await prisma.waMessage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WaMessageUpdateArgs>(args: SelectSubset<T, WaMessageUpdateArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WaMessages.
+     * @param {WaMessageDeleteManyArgs} args - Arguments to filter WaMessages to delete.
+     * @example
+     * // Delete a few WaMessages
+     * const { count } = await prisma.waMessage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WaMessageDeleteManyArgs>(args?: SelectSubset<T, WaMessageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WaMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WaMessages
+     * const waMessage = await prisma.waMessage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WaMessageUpdateManyArgs>(args: SelectSubset<T, WaMessageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WaMessage.
+     * @param {WaMessageUpsertArgs} args - Arguments to update or create a WaMessage.
+     * @example
+     * // Update or create a WaMessage
+     * const waMessage = await prisma.waMessage.upsert({
+     *   create: {
+     *     // ... data to create a WaMessage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WaMessage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WaMessageUpsertArgs>(args: SelectSubset<T, WaMessageUpsertArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WaMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageCountArgs} args - Arguments to filter WaMessages to count.
+     * @example
+     * // Count the number of WaMessages
+     * const count = await prisma.waMessage.count({
+     *   where: {
+     *     // ... the filter for the WaMessages we want to count
+     *   }
+     * })
+    **/
+    count<T extends WaMessageCountArgs>(
+      args?: Subset<T, WaMessageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WaMessageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WaMessage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WaMessageAggregateArgs>(args: Subset<T, WaMessageAggregateArgs>): Prisma.PrismaPromise<GetWaMessageAggregateType<T>>
+
+    /**
+     * Group by WaMessage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WaMessageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WaMessageGroupByArgs['orderBy'] }
+        : { orderBy?: WaMessageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WaMessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWaMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WaMessage model
+   */
+  readonly fields: WaMessageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WaMessage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WaMessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    contact<T extends WaMessage$contactArgs<ExtArgs> = {}>(args?: Subset<T, WaMessage$contactArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    template<T extends WaMessage$templateArgs<ExtArgs> = {}>(args?: Subset<T, WaMessage$templateArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    bulkJob<T extends WaMessage$bulkJobArgs<ExtArgs> = {}>(args?: Subset<T, WaMessage$bulkJobArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    media<T extends WaMessage$mediaArgs<ExtArgs> = {}>(args?: Subset<T, WaMessage$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WaMessage model
+   */ 
+  interface WaMessageFieldRefs {
+    readonly id: FieldRef<"WaMessage", 'String'>
+    readonly wamid: FieldRef<"WaMessage", 'String'>
+    readonly direction: FieldRef<"WaMessage", 'WaMsgDirection'>
+    readonly status: FieldRef<"WaMessage", 'WaMsgStatus'>
+    readonly contactId: FieldRef<"WaMessage", 'String'>
+    readonly to: FieldRef<"WaMessage", 'String'>
+    readonly type: FieldRef<"WaMessage", 'WaMsgType'>
+    readonly body: FieldRef<"WaMessage", 'String'>
+    readonly templateId: FieldRef<"WaMessage", 'String'>
+    readonly variablesUsed: FieldRef<"WaMessage", 'Json'>
+    readonly bulkJobId: FieldRef<"WaMessage", 'String'>
+    readonly errorCode: FieldRef<"WaMessage", 'Int'>
+    readonly errorMessage: FieldRef<"WaMessage", 'String'>
+    readonly sentAt: FieldRef<"WaMessage", 'DateTime'>
+    readonly deliveredAt: FieldRef<"WaMessage", 'DateTime'>
+    readonly readAt: FieldRef<"WaMessage", 'DateTime'>
+    readonly failedAt: FieldRef<"WaMessage", 'DateTime'>
+    readonly createdAt: FieldRef<"WaMessage", 'DateTime'>
+    readonly updatedAt: FieldRef<"WaMessage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WaMessage findUnique
+   */
+  export type WaMessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessage to fetch.
+     */
+    where: WaMessageWhereUniqueInput
+  }
+
+  /**
+   * WaMessage findUniqueOrThrow
+   */
+  export type WaMessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessage to fetch.
+     */
+    where: WaMessageWhereUniqueInput
+  }
+
+  /**
+   * WaMessage findFirst
+   */
+  export type WaMessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessage to fetch.
+     */
+    where?: WaMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaMessages to fetch.
+     */
+    orderBy?: WaMessageOrderByWithRelationInput | WaMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaMessages.
+     */
+    cursor?: WaMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaMessages.
+     */
+    distinct?: WaMessageScalarFieldEnum | WaMessageScalarFieldEnum[]
+  }
+
+  /**
+   * WaMessage findFirstOrThrow
+   */
+  export type WaMessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessage to fetch.
+     */
+    where?: WaMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaMessages to fetch.
+     */
+    orderBy?: WaMessageOrderByWithRelationInput | WaMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaMessages.
+     */
+    cursor?: WaMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaMessages.
+     */
+    distinct?: WaMessageScalarFieldEnum | WaMessageScalarFieldEnum[]
+  }
+
+  /**
+   * WaMessage findMany
+   */
+  export type WaMessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessages to fetch.
+     */
+    where?: WaMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaMessages to fetch.
+     */
+    orderBy?: WaMessageOrderByWithRelationInput | WaMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WaMessages.
+     */
+    cursor?: WaMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaMessages.
+     */
+    skip?: number
+    distinct?: WaMessageScalarFieldEnum | WaMessageScalarFieldEnum[]
+  }
+
+  /**
+   * WaMessage create
+   */
+  export type WaMessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WaMessage.
+     */
+    data: XOR<WaMessageCreateInput, WaMessageUncheckedCreateInput>
+  }
+
+  /**
+   * WaMessage createMany
+   */
+  export type WaMessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WaMessages.
+     */
+    data: WaMessageCreateManyInput | WaMessageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaMessage createManyAndReturn
+   */
+  export type WaMessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WaMessages.
+     */
+    data: WaMessageCreateManyInput | WaMessageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WaMessage update
+   */
+  export type WaMessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WaMessage.
+     */
+    data: XOR<WaMessageUpdateInput, WaMessageUncheckedUpdateInput>
+    /**
+     * Choose, which WaMessage to update.
+     */
+    where: WaMessageWhereUniqueInput
+  }
+
+  /**
+   * WaMessage updateMany
+   */
+  export type WaMessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WaMessages.
+     */
+    data: XOR<WaMessageUpdateManyMutationInput, WaMessageUncheckedUpdateManyInput>
+    /**
+     * Filter which WaMessages to update
+     */
+    where?: WaMessageWhereInput
+  }
+
+  /**
+   * WaMessage upsert
+   */
+  export type WaMessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WaMessage to update in case it exists.
+     */
+    where: WaMessageWhereUniqueInput
+    /**
+     * In case the WaMessage found by the `where` argument doesn't exist, create a new WaMessage with this data.
+     */
+    create: XOR<WaMessageCreateInput, WaMessageUncheckedCreateInput>
+    /**
+     * In case the WaMessage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WaMessageUpdateInput, WaMessageUncheckedUpdateInput>
+  }
+
+  /**
+   * WaMessage delete
+   */
+  export type WaMessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    /**
+     * Filter which WaMessage to delete.
+     */
+    where: WaMessageWhereUniqueInput
+  }
+
+  /**
+   * WaMessage deleteMany
+   */
+  export type WaMessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaMessages to delete
+     */
+    where?: WaMessageWhereInput
+  }
+
+  /**
+   * WaMessage.contact
+   */
+  export type WaMessage$contactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    where?: WaContactWhereInput
+  }
+
+  /**
+   * WaMessage.template
+   */
+  export type WaMessage$templateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    where?: WaTemplateWhereInput
+  }
+
+  /**
+   * WaMessage.bulkJob
+   */
+  export type WaMessage$bulkJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    where?: WaBulkJobWhereInput
+  }
+
+  /**
+   * WaMessage.media
+   */
+  export type WaMessage$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    where?: WaMessageMediaWhereInput
+    orderBy?: WaMessageMediaOrderByWithRelationInput | WaMessageMediaOrderByWithRelationInput[]
+    cursor?: WaMessageMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaMessageMediaScalarFieldEnum | WaMessageMediaScalarFieldEnum[]
+  }
+
+  /**
+   * WaMessage without action
+   */
+  export type WaMessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WaMessageMedia
+   */
+
+  export type AggregateWaMessageMedia = {
+    _count: WaMessageMediaCountAggregateOutputType | null
+    _avg: WaMessageMediaAvgAggregateOutputType | null
+    _sum: WaMessageMediaSumAggregateOutputType | null
+    _min: WaMessageMediaMinAggregateOutputType | null
+    _max: WaMessageMediaMaxAggregateOutputType | null
+  }
+
+  export type WaMessageMediaAvgAggregateOutputType = {
+    sizeBytes: number | null
+  }
+
+  export type WaMessageMediaSumAggregateOutputType = {
+    sizeBytes: number | null
+  }
+
+  export type WaMessageMediaMinAggregateOutputType = {
+    id: string | null
+    messageId: string | null
+    mediaType: $Enums.WaMediaType | null
+    mediaId: string | null
+    url: string | null
+    filename: string | null
+    mimeType: string | null
+    sizeBytes: number | null
+    caption: string | null
+    createdAt: Date | null
+  }
+
+  export type WaMessageMediaMaxAggregateOutputType = {
+    id: string | null
+    messageId: string | null
+    mediaType: $Enums.WaMediaType | null
+    mediaId: string | null
+    url: string | null
+    filename: string | null
+    mimeType: string | null
+    sizeBytes: number | null
+    caption: string | null
+    createdAt: Date | null
+  }
+
+  export type WaMessageMediaCountAggregateOutputType = {
+    id: number
+    messageId: number
+    mediaType: number
+    mediaId: number
+    url: number
+    filename: number
+    mimeType: number
+    sizeBytes: number
+    caption: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type WaMessageMediaAvgAggregateInputType = {
+    sizeBytes?: true
+  }
+
+  export type WaMessageMediaSumAggregateInputType = {
+    sizeBytes?: true
+  }
+
+  export type WaMessageMediaMinAggregateInputType = {
+    id?: true
+    messageId?: true
+    mediaType?: true
+    mediaId?: true
+    url?: true
+    filename?: true
+    mimeType?: true
+    sizeBytes?: true
+    caption?: true
+    createdAt?: true
+  }
+
+  export type WaMessageMediaMaxAggregateInputType = {
+    id?: true
+    messageId?: true
+    mediaType?: true
+    mediaId?: true
+    url?: true
+    filename?: true
+    mimeType?: true
+    sizeBytes?: true
+    caption?: true
+    createdAt?: true
+  }
+
+  export type WaMessageMediaCountAggregateInputType = {
+    id?: true
+    messageId?: true
+    mediaType?: true
+    mediaId?: true
+    url?: true
+    filename?: true
+    mimeType?: true
+    sizeBytes?: true
+    caption?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type WaMessageMediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaMessageMedia to aggregate.
+     */
+    where?: WaMessageMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaMessageMedias to fetch.
+     */
+    orderBy?: WaMessageMediaOrderByWithRelationInput | WaMessageMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WaMessageMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaMessageMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaMessageMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WaMessageMedias
+    **/
+    _count?: true | WaMessageMediaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WaMessageMediaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WaMessageMediaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WaMessageMediaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WaMessageMediaMaxAggregateInputType
+  }
+
+  export type GetWaMessageMediaAggregateType<T extends WaMessageMediaAggregateArgs> = {
+        [P in keyof T & keyof AggregateWaMessageMedia]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWaMessageMedia[P]>
+      : GetScalarType<T[P], AggregateWaMessageMedia[P]>
+  }
+
+
+
+
+  export type WaMessageMediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaMessageMediaWhereInput
+    orderBy?: WaMessageMediaOrderByWithAggregationInput | WaMessageMediaOrderByWithAggregationInput[]
+    by: WaMessageMediaScalarFieldEnum[] | WaMessageMediaScalarFieldEnum
+    having?: WaMessageMediaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WaMessageMediaCountAggregateInputType | true
+    _avg?: WaMessageMediaAvgAggregateInputType
+    _sum?: WaMessageMediaSumAggregateInputType
+    _min?: WaMessageMediaMinAggregateInputType
+    _max?: WaMessageMediaMaxAggregateInputType
+  }
+
+  export type WaMessageMediaGroupByOutputType = {
+    id: string
+    messageId: string
+    mediaType: $Enums.WaMediaType
+    mediaId: string | null
+    url: string | null
+    filename: string | null
+    mimeType: string | null
+    sizeBytes: number | null
+    caption: string | null
+    createdAt: Date
+    _count: WaMessageMediaCountAggregateOutputType | null
+    _avg: WaMessageMediaAvgAggregateOutputType | null
+    _sum: WaMessageMediaSumAggregateOutputType | null
+    _min: WaMessageMediaMinAggregateOutputType | null
+    _max: WaMessageMediaMaxAggregateOutputType | null
+  }
+
+  type GetWaMessageMediaGroupByPayload<T extends WaMessageMediaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WaMessageMediaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WaMessageMediaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WaMessageMediaGroupByOutputType[P]>
+            : GetScalarType<T[P], WaMessageMediaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WaMessageMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    messageId?: boolean
+    mediaType?: boolean
+    mediaId?: boolean
+    url?: boolean
+    filename?: boolean
+    mimeType?: boolean
+    sizeBytes?: boolean
+    caption?: boolean
+    createdAt?: boolean
+    message?: boolean | WaMessageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waMessageMedia"]>
+
+  export type WaMessageMediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    messageId?: boolean
+    mediaType?: boolean
+    mediaId?: boolean
+    url?: boolean
+    filename?: boolean
+    mimeType?: boolean
+    sizeBytes?: boolean
+    caption?: boolean
+    createdAt?: boolean
+    message?: boolean | WaMessageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waMessageMedia"]>
+
+  export type WaMessageMediaSelectScalar = {
+    id?: boolean
+    messageId?: boolean
+    mediaType?: boolean
+    mediaId?: boolean
+    url?: boolean
+    filename?: boolean
+    mimeType?: boolean
+    sizeBytes?: boolean
+    caption?: boolean
+    createdAt?: boolean
+  }
+
+  export type WaMessageMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    message?: boolean | WaMessageDefaultArgs<ExtArgs>
+  }
+  export type WaMessageMediaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    message?: boolean | WaMessageDefaultArgs<ExtArgs>
+  }
+
+  export type $WaMessageMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WaMessageMedia"
+    objects: {
+      message: Prisma.$WaMessagePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      messageId: string
+      mediaType: $Enums.WaMediaType
+      mediaId: string | null
+      url: string | null
+      filename: string | null
+      mimeType: string | null
+      sizeBytes: number | null
+      caption: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["waMessageMedia"]>
+    composites: {}
+  }
+
+  type WaMessageMediaGetPayload<S extends boolean | null | undefined | WaMessageMediaDefaultArgs> = $Result.GetResult<Prisma.$WaMessageMediaPayload, S>
+
+  type WaMessageMediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WaMessageMediaFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WaMessageMediaCountAggregateInputType | true
+    }
+
+  export interface WaMessageMediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WaMessageMedia'], meta: { name: 'WaMessageMedia' } }
+    /**
+     * Find zero or one WaMessageMedia that matches the filter.
+     * @param {WaMessageMediaFindUniqueArgs} args - Arguments to find a WaMessageMedia
+     * @example
+     * // Get one WaMessageMedia
+     * const waMessageMedia = await prisma.waMessageMedia.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WaMessageMediaFindUniqueArgs>(args: SelectSubset<T, WaMessageMediaFindUniqueArgs<ExtArgs>>): Prisma__WaMessageMediaClient<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WaMessageMedia that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WaMessageMediaFindUniqueOrThrowArgs} args - Arguments to find a WaMessageMedia
+     * @example
+     * // Get one WaMessageMedia
+     * const waMessageMedia = await prisma.waMessageMedia.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WaMessageMediaFindUniqueOrThrowArgs>(args: SelectSubset<T, WaMessageMediaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WaMessageMediaClient<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WaMessageMedia that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageMediaFindFirstArgs} args - Arguments to find a WaMessageMedia
+     * @example
+     * // Get one WaMessageMedia
+     * const waMessageMedia = await prisma.waMessageMedia.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WaMessageMediaFindFirstArgs>(args?: SelectSubset<T, WaMessageMediaFindFirstArgs<ExtArgs>>): Prisma__WaMessageMediaClient<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WaMessageMedia that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageMediaFindFirstOrThrowArgs} args - Arguments to find a WaMessageMedia
+     * @example
+     * // Get one WaMessageMedia
+     * const waMessageMedia = await prisma.waMessageMedia.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WaMessageMediaFindFirstOrThrowArgs>(args?: SelectSubset<T, WaMessageMediaFindFirstOrThrowArgs<ExtArgs>>): Prisma__WaMessageMediaClient<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WaMessageMedias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageMediaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WaMessageMedias
+     * const waMessageMedias = await prisma.waMessageMedia.findMany()
+     * 
+     * // Get first 10 WaMessageMedias
+     * const waMessageMedias = await prisma.waMessageMedia.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const waMessageMediaWithIdOnly = await prisma.waMessageMedia.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WaMessageMediaFindManyArgs>(args?: SelectSubset<T, WaMessageMediaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WaMessageMedia.
+     * @param {WaMessageMediaCreateArgs} args - Arguments to create a WaMessageMedia.
+     * @example
+     * // Create one WaMessageMedia
+     * const WaMessageMedia = await prisma.waMessageMedia.create({
+     *   data: {
+     *     // ... data to create a WaMessageMedia
+     *   }
+     * })
+     * 
+     */
+    create<T extends WaMessageMediaCreateArgs>(args: SelectSubset<T, WaMessageMediaCreateArgs<ExtArgs>>): Prisma__WaMessageMediaClient<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WaMessageMedias.
+     * @param {WaMessageMediaCreateManyArgs} args - Arguments to create many WaMessageMedias.
+     * @example
+     * // Create many WaMessageMedias
+     * const waMessageMedia = await prisma.waMessageMedia.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WaMessageMediaCreateManyArgs>(args?: SelectSubset<T, WaMessageMediaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WaMessageMedias and returns the data saved in the database.
+     * @param {WaMessageMediaCreateManyAndReturnArgs} args - Arguments to create many WaMessageMedias.
+     * @example
+     * // Create many WaMessageMedias
+     * const waMessageMedia = await prisma.waMessageMedia.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WaMessageMedias and only return the `id`
+     * const waMessageMediaWithIdOnly = await prisma.waMessageMedia.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WaMessageMediaCreateManyAndReturnArgs>(args?: SelectSubset<T, WaMessageMediaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WaMessageMedia.
+     * @param {WaMessageMediaDeleteArgs} args - Arguments to delete one WaMessageMedia.
+     * @example
+     * // Delete one WaMessageMedia
+     * const WaMessageMedia = await prisma.waMessageMedia.delete({
+     *   where: {
+     *     // ... filter to delete one WaMessageMedia
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WaMessageMediaDeleteArgs>(args: SelectSubset<T, WaMessageMediaDeleteArgs<ExtArgs>>): Prisma__WaMessageMediaClient<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WaMessageMedia.
+     * @param {WaMessageMediaUpdateArgs} args - Arguments to update one WaMessageMedia.
+     * @example
+     * // Update one WaMessageMedia
+     * const waMessageMedia = await prisma.waMessageMedia.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WaMessageMediaUpdateArgs>(args: SelectSubset<T, WaMessageMediaUpdateArgs<ExtArgs>>): Prisma__WaMessageMediaClient<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WaMessageMedias.
+     * @param {WaMessageMediaDeleteManyArgs} args - Arguments to filter WaMessageMedias to delete.
+     * @example
+     * // Delete a few WaMessageMedias
+     * const { count } = await prisma.waMessageMedia.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WaMessageMediaDeleteManyArgs>(args?: SelectSubset<T, WaMessageMediaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WaMessageMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageMediaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WaMessageMedias
+     * const waMessageMedia = await prisma.waMessageMedia.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WaMessageMediaUpdateManyArgs>(args: SelectSubset<T, WaMessageMediaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WaMessageMedia.
+     * @param {WaMessageMediaUpsertArgs} args - Arguments to update or create a WaMessageMedia.
+     * @example
+     * // Update or create a WaMessageMedia
+     * const waMessageMedia = await prisma.waMessageMedia.upsert({
+     *   create: {
+     *     // ... data to create a WaMessageMedia
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WaMessageMedia we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WaMessageMediaUpsertArgs>(args: SelectSubset<T, WaMessageMediaUpsertArgs<ExtArgs>>): Prisma__WaMessageMediaClient<$Result.GetResult<Prisma.$WaMessageMediaPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WaMessageMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageMediaCountArgs} args - Arguments to filter WaMessageMedias to count.
+     * @example
+     * // Count the number of WaMessageMedias
+     * const count = await prisma.waMessageMedia.count({
+     *   where: {
+     *     // ... the filter for the WaMessageMedias we want to count
+     *   }
+     * })
+    **/
+    count<T extends WaMessageMediaCountArgs>(
+      args?: Subset<T, WaMessageMediaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WaMessageMediaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WaMessageMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageMediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WaMessageMediaAggregateArgs>(args: Subset<T, WaMessageMediaAggregateArgs>): Prisma.PrismaPromise<GetWaMessageMediaAggregateType<T>>
+
+    /**
+     * Group by WaMessageMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaMessageMediaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WaMessageMediaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WaMessageMediaGroupByArgs['orderBy'] }
+        : { orderBy?: WaMessageMediaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WaMessageMediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWaMessageMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WaMessageMedia model
+   */
+  readonly fields: WaMessageMediaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WaMessageMedia.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WaMessageMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    message<T extends WaMessageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WaMessageDefaultArgs<ExtArgs>>): Prisma__WaMessageClient<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WaMessageMedia model
+   */ 
+  interface WaMessageMediaFieldRefs {
+    readonly id: FieldRef<"WaMessageMedia", 'String'>
+    readonly messageId: FieldRef<"WaMessageMedia", 'String'>
+    readonly mediaType: FieldRef<"WaMessageMedia", 'WaMediaType'>
+    readonly mediaId: FieldRef<"WaMessageMedia", 'String'>
+    readonly url: FieldRef<"WaMessageMedia", 'String'>
+    readonly filename: FieldRef<"WaMessageMedia", 'String'>
+    readonly mimeType: FieldRef<"WaMessageMedia", 'String'>
+    readonly sizeBytes: FieldRef<"WaMessageMedia", 'Int'>
+    readonly caption: FieldRef<"WaMessageMedia", 'String'>
+    readonly createdAt: FieldRef<"WaMessageMedia", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WaMessageMedia findUnique
+   */
+  export type WaMessageMediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessageMedia to fetch.
+     */
+    where: WaMessageMediaWhereUniqueInput
+  }
+
+  /**
+   * WaMessageMedia findUniqueOrThrow
+   */
+  export type WaMessageMediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessageMedia to fetch.
+     */
+    where: WaMessageMediaWhereUniqueInput
+  }
+
+  /**
+   * WaMessageMedia findFirst
+   */
+  export type WaMessageMediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessageMedia to fetch.
+     */
+    where?: WaMessageMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaMessageMedias to fetch.
+     */
+    orderBy?: WaMessageMediaOrderByWithRelationInput | WaMessageMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaMessageMedias.
+     */
+    cursor?: WaMessageMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaMessageMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaMessageMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaMessageMedias.
+     */
+    distinct?: WaMessageMediaScalarFieldEnum | WaMessageMediaScalarFieldEnum[]
+  }
+
+  /**
+   * WaMessageMedia findFirstOrThrow
+   */
+  export type WaMessageMediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessageMedia to fetch.
+     */
+    where?: WaMessageMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaMessageMedias to fetch.
+     */
+    orderBy?: WaMessageMediaOrderByWithRelationInput | WaMessageMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaMessageMedias.
+     */
+    cursor?: WaMessageMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaMessageMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaMessageMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaMessageMedias.
+     */
+    distinct?: WaMessageMediaScalarFieldEnum | WaMessageMediaScalarFieldEnum[]
+  }
+
+  /**
+   * WaMessageMedia findMany
+   */
+  export type WaMessageMediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which WaMessageMedias to fetch.
+     */
+    where?: WaMessageMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaMessageMedias to fetch.
+     */
+    orderBy?: WaMessageMediaOrderByWithRelationInput | WaMessageMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WaMessageMedias.
+     */
+    cursor?: WaMessageMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaMessageMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaMessageMedias.
+     */
+    skip?: number
+    distinct?: WaMessageMediaScalarFieldEnum | WaMessageMediaScalarFieldEnum[]
+  }
+
+  /**
+   * WaMessageMedia create
+   */
+  export type WaMessageMediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WaMessageMedia.
+     */
+    data: XOR<WaMessageMediaCreateInput, WaMessageMediaUncheckedCreateInput>
+  }
+
+  /**
+   * WaMessageMedia createMany
+   */
+  export type WaMessageMediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WaMessageMedias.
+     */
+    data: WaMessageMediaCreateManyInput | WaMessageMediaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaMessageMedia createManyAndReturn
+   */
+  export type WaMessageMediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WaMessageMedias.
+     */
+    data: WaMessageMediaCreateManyInput | WaMessageMediaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WaMessageMedia update
+   */
+  export type WaMessageMediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WaMessageMedia.
+     */
+    data: XOR<WaMessageMediaUpdateInput, WaMessageMediaUncheckedUpdateInput>
+    /**
+     * Choose, which WaMessageMedia to update.
+     */
+    where: WaMessageMediaWhereUniqueInput
+  }
+
+  /**
+   * WaMessageMedia updateMany
+   */
+  export type WaMessageMediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WaMessageMedias.
+     */
+    data: XOR<WaMessageMediaUpdateManyMutationInput, WaMessageMediaUncheckedUpdateManyInput>
+    /**
+     * Filter which WaMessageMedias to update
+     */
+    where?: WaMessageMediaWhereInput
+  }
+
+  /**
+   * WaMessageMedia upsert
+   */
+  export type WaMessageMediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WaMessageMedia to update in case it exists.
+     */
+    where: WaMessageMediaWhereUniqueInput
+    /**
+     * In case the WaMessageMedia found by the `where` argument doesn't exist, create a new WaMessageMedia with this data.
+     */
+    create: XOR<WaMessageMediaCreateInput, WaMessageMediaUncheckedCreateInput>
+    /**
+     * In case the WaMessageMedia was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WaMessageMediaUpdateInput, WaMessageMediaUncheckedUpdateInput>
+  }
+
+  /**
+   * WaMessageMedia delete
+   */
+  export type WaMessageMediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+    /**
+     * Filter which WaMessageMedia to delete.
+     */
+    where: WaMessageMediaWhereUniqueInput
+  }
+
+  /**
+   * WaMessageMedia deleteMany
+   */
+  export type WaMessageMediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaMessageMedias to delete
+     */
+    where?: WaMessageMediaWhereInput
+  }
+
+  /**
+   * WaMessageMedia without action
+   */
+  export type WaMessageMediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessageMedia
+     */
+    select?: WaMessageMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageMediaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WaBulkJob
+   */
+
+  export type AggregateWaBulkJob = {
+    _count: WaBulkJobCountAggregateOutputType | null
+    _avg: WaBulkJobAvgAggregateOutputType | null
+    _sum: WaBulkJobSumAggregateOutputType | null
+    _min: WaBulkJobMinAggregateOutputType | null
+    _max: WaBulkJobMaxAggregateOutputType | null
+  }
+
+  export type WaBulkJobAvgAggregateOutputType = {
+    total: number | null
+    sent: number | null
+    failed: number | null
+    cancelled: number | null
+  }
+
+  export type WaBulkJobSumAggregateOutputType = {
+    total: number | null
+    sent: number | null
+    failed: number | null
+    cancelled: number | null
+  }
+
+  export type WaBulkJobMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    type: $Enums.WaBulkType | null
+    status: $Enums.WaBulkStatus | null
+    templateId: string | null
+    message: string | null
+    total: number | null
+    sent: number | null
+    failed: number | null
+    cancelled: number | null
+    completedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WaBulkJobMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    type: $Enums.WaBulkType | null
+    status: $Enums.WaBulkStatus | null
+    templateId: string | null
+    message: string | null
+    total: number | null
+    sent: number | null
+    failed: number | null
+    cancelled: number | null
+    completedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WaBulkJobCountAggregateOutputType = {
+    id: number
+    label: number
+    type: number
+    status: number
+    templateId: number
+    message: number
+    total: number
+    sent: number
+    failed: number
+    cancelled: number
+    completedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type WaBulkJobAvgAggregateInputType = {
+    total?: true
+    sent?: true
+    failed?: true
+    cancelled?: true
+  }
+
+  export type WaBulkJobSumAggregateInputType = {
+    total?: true
+    sent?: true
+    failed?: true
+    cancelled?: true
+  }
+
+  export type WaBulkJobMinAggregateInputType = {
+    id?: true
+    label?: true
+    type?: true
+    status?: true
+    templateId?: true
+    message?: true
+    total?: true
+    sent?: true
+    failed?: true
+    cancelled?: true
+    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WaBulkJobMaxAggregateInputType = {
+    id?: true
+    label?: true
+    type?: true
+    status?: true
+    templateId?: true
+    message?: true
+    total?: true
+    sent?: true
+    failed?: true
+    cancelled?: true
+    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WaBulkJobCountAggregateInputType = {
+    id?: true
+    label?: true
+    type?: true
+    status?: true
+    templateId?: true
+    message?: true
+    total?: true
+    sent?: true
+    failed?: true
+    cancelled?: true
+    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type WaBulkJobAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaBulkJob to aggregate.
+     */
+    where?: WaBulkJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaBulkJobs to fetch.
+     */
+    orderBy?: WaBulkJobOrderByWithRelationInput | WaBulkJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WaBulkJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaBulkJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaBulkJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WaBulkJobs
+    **/
+    _count?: true | WaBulkJobCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WaBulkJobAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WaBulkJobSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WaBulkJobMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WaBulkJobMaxAggregateInputType
+  }
+
+  export type GetWaBulkJobAggregateType<T extends WaBulkJobAggregateArgs> = {
+        [P in keyof T & keyof AggregateWaBulkJob]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWaBulkJob[P]>
+      : GetScalarType<T[P], AggregateWaBulkJob[P]>
+  }
+
+
+
+
+  export type WaBulkJobGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaBulkJobWhereInput
+    orderBy?: WaBulkJobOrderByWithAggregationInput | WaBulkJobOrderByWithAggregationInput[]
+    by: WaBulkJobScalarFieldEnum[] | WaBulkJobScalarFieldEnum
+    having?: WaBulkJobScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WaBulkJobCountAggregateInputType | true
+    _avg?: WaBulkJobAvgAggregateInputType
+    _sum?: WaBulkJobSumAggregateInputType
+    _min?: WaBulkJobMinAggregateInputType
+    _max?: WaBulkJobMaxAggregateInputType
+  }
+
+  export type WaBulkJobGroupByOutputType = {
+    id: string
+    label: string
+    type: $Enums.WaBulkType
+    status: $Enums.WaBulkStatus
+    templateId: string | null
+    message: string | null
+    total: number
+    sent: number
+    failed: number
+    cancelled: number
+    completedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: WaBulkJobCountAggregateOutputType | null
+    _avg: WaBulkJobAvgAggregateOutputType | null
+    _sum: WaBulkJobSumAggregateOutputType | null
+    _min: WaBulkJobMinAggregateOutputType | null
+    _max: WaBulkJobMaxAggregateOutputType | null
+  }
+
+  type GetWaBulkJobGroupByPayload<T extends WaBulkJobGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WaBulkJobGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WaBulkJobGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WaBulkJobGroupByOutputType[P]>
+            : GetScalarType<T[P], WaBulkJobGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WaBulkJobSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    type?: boolean
+    status?: boolean
+    templateId?: boolean
+    message?: boolean
+    total?: boolean
+    sent?: boolean
+    failed?: boolean
+    cancelled?: boolean
+    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    template?: boolean | WaBulkJob$templateArgs<ExtArgs>
+    recipients?: boolean | WaBulkJob$recipientsArgs<ExtArgs>
+    messages?: boolean | WaBulkJob$messagesArgs<ExtArgs>
+    _count?: boolean | WaBulkJobCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["waBulkJob"]>
+
+  export type WaBulkJobSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    type?: boolean
+    status?: boolean
+    templateId?: boolean
+    message?: boolean
+    total?: boolean
+    sent?: boolean
+    failed?: boolean
+    cancelled?: boolean
+    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    template?: boolean | WaBulkJob$templateArgs<ExtArgs>
+  }, ExtArgs["result"]["waBulkJob"]>
+
+  export type WaBulkJobSelectScalar = {
+    id?: boolean
+    label?: boolean
+    type?: boolean
+    status?: boolean
+    templateId?: boolean
+    message?: boolean
+    total?: boolean
+    sent?: boolean
+    failed?: boolean
+    cancelled?: boolean
+    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type WaBulkJobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | WaBulkJob$templateArgs<ExtArgs>
+    recipients?: boolean | WaBulkJob$recipientsArgs<ExtArgs>
+    messages?: boolean | WaBulkJob$messagesArgs<ExtArgs>
+    _count?: boolean | WaBulkJobCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WaBulkJobIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    template?: boolean | WaBulkJob$templateArgs<ExtArgs>
+  }
+
+  export type $WaBulkJobPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WaBulkJob"
+    objects: {
+      template: Prisma.$WaTemplatePayload<ExtArgs> | null
+      recipients: Prisma.$WaBulkRecipientPayload<ExtArgs>[]
+      messages: Prisma.$WaMessagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      type: $Enums.WaBulkType
+      status: $Enums.WaBulkStatus
+      templateId: string | null
+      message: string | null
+      total: number
+      sent: number
+      failed: number
+      cancelled: number
+      completedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["waBulkJob"]>
+    composites: {}
+  }
+
+  type WaBulkJobGetPayload<S extends boolean | null | undefined | WaBulkJobDefaultArgs> = $Result.GetResult<Prisma.$WaBulkJobPayload, S>
+
+  type WaBulkJobCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WaBulkJobFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WaBulkJobCountAggregateInputType | true
+    }
+
+  export interface WaBulkJobDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WaBulkJob'], meta: { name: 'WaBulkJob' } }
+    /**
+     * Find zero or one WaBulkJob that matches the filter.
+     * @param {WaBulkJobFindUniqueArgs} args - Arguments to find a WaBulkJob
+     * @example
+     * // Get one WaBulkJob
+     * const waBulkJob = await prisma.waBulkJob.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WaBulkJobFindUniqueArgs>(args: SelectSubset<T, WaBulkJobFindUniqueArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WaBulkJob that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WaBulkJobFindUniqueOrThrowArgs} args - Arguments to find a WaBulkJob
+     * @example
+     * // Get one WaBulkJob
+     * const waBulkJob = await prisma.waBulkJob.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WaBulkJobFindUniqueOrThrowArgs>(args: SelectSubset<T, WaBulkJobFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WaBulkJob that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkJobFindFirstArgs} args - Arguments to find a WaBulkJob
+     * @example
+     * // Get one WaBulkJob
+     * const waBulkJob = await prisma.waBulkJob.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WaBulkJobFindFirstArgs>(args?: SelectSubset<T, WaBulkJobFindFirstArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WaBulkJob that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkJobFindFirstOrThrowArgs} args - Arguments to find a WaBulkJob
+     * @example
+     * // Get one WaBulkJob
+     * const waBulkJob = await prisma.waBulkJob.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WaBulkJobFindFirstOrThrowArgs>(args?: SelectSubset<T, WaBulkJobFindFirstOrThrowArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WaBulkJobs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkJobFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WaBulkJobs
+     * const waBulkJobs = await prisma.waBulkJob.findMany()
+     * 
+     * // Get first 10 WaBulkJobs
+     * const waBulkJobs = await prisma.waBulkJob.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const waBulkJobWithIdOnly = await prisma.waBulkJob.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WaBulkJobFindManyArgs>(args?: SelectSubset<T, WaBulkJobFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WaBulkJob.
+     * @param {WaBulkJobCreateArgs} args - Arguments to create a WaBulkJob.
+     * @example
+     * // Create one WaBulkJob
+     * const WaBulkJob = await prisma.waBulkJob.create({
+     *   data: {
+     *     // ... data to create a WaBulkJob
+     *   }
+     * })
+     * 
+     */
+    create<T extends WaBulkJobCreateArgs>(args: SelectSubset<T, WaBulkJobCreateArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WaBulkJobs.
+     * @param {WaBulkJobCreateManyArgs} args - Arguments to create many WaBulkJobs.
+     * @example
+     * // Create many WaBulkJobs
+     * const waBulkJob = await prisma.waBulkJob.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WaBulkJobCreateManyArgs>(args?: SelectSubset<T, WaBulkJobCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WaBulkJobs and returns the data saved in the database.
+     * @param {WaBulkJobCreateManyAndReturnArgs} args - Arguments to create many WaBulkJobs.
+     * @example
+     * // Create many WaBulkJobs
+     * const waBulkJob = await prisma.waBulkJob.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WaBulkJobs and only return the `id`
+     * const waBulkJobWithIdOnly = await prisma.waBulkJob.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WaBulkJobCreateManyAndReturnArgs>(args?: SelectSubset<T, WaBulkJobCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WaBulkJob.
+     * @param {WaBulkJobDeleteArgs} args - Arguments to delete one WaBulkJob.
+     * @example
+     * // Delete one WaBulkJob
+     * const WaBulkJob = await prisma.waBulkJob.delete({
+     *   where: {
+     *     // ... filter to delete one WaBulkJob
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WaBulkJobDeleteArgs>(args: SelectSubset<T, WaBulkJobDeleteArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WaBulkJob.
+     * @param {WaBulkJobUpdateArgs} args - Arguments to update one WaBulkJob.
+     * @example
+     * // Update one WaBulkJob
+     * const waBulkJob = await prisma.waBulkJob.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WaBulkJobUpdateArgs>(args: SelectSubset<T, WaBulkJobUpdateArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WaBulkJobs.
+     * @param {WaBulkJobDeleteManyArgs} args - Arguments to filter WaBulkJobs to delete.
+     * @example
+     * // Delete a few WaBulkJobs
+     * const { count } = await prisma.waBulkJob.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WaBulkJobDeleteManyArgs>(args?: SelectSubset<T, WaBulkJobDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WaBulkJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkJobUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WaBulkJobs
+     * const waBulkJob = await prisma.waBulkJob.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WaBulkJobUpdateManyArgs>(args: SelectSubset<T, WaBulkJobUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WaBulkJob.
+     * @param {WaBulkJobUpsertArgs} args - Arguments to update or create a WaBulkJob.
+     * @example
+     * // Update or create a WaBulkJob
+     * const waBulkJob = await prisma.waBulkJob.upsert({
+     *   create: {
+     *     // ... data to create a WaBulkJob
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WaBulkJob we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WaBulkJobUpsertArgs>(args: SelectSubset<T, WaBulkJobUpsertArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WaBulkJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkJobCountArgs} args - Arguments to filter WaBulkJobs to count.
+     * @example
+     * // Count the number of WaBulkJobs
+     * const count = await prisma.waBulkJob.count({
+     *   where: {
+     *     // ... the filter for the WaBulkJobs we want to count
+     *   }
+     * })
+    **/
+    count<T extends WaBulkJobCountArgs>(
+      args?: Subset<T, WaBulkJobCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WaBulkJobCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WaBulkJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkJobAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WaBulkJobAggregateArgs>(args: Subset<T, WaBulkJobAggregateArgs>): Prisma.PrismaPromise<GetWaBulkJobAggregateType<T>>
+
+    /**
+     * Group by WaBulkJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkJobGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WaBulkJobGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WaBulkJobGroupByArgs['orderBy'] }
+        : { orderBy?: WaBulkJobGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WaBulkJobGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWaBulkJobGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WaBulkJob model
+   */
+  readonly fields: WaBulkJobFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WaBulkJob.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WaBulkJobClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    template<T extends WaBulkJob$templateArgs<ExtArgs> = {}>(args?: Subset<T, WaBulkJob$templateArgs<ExtArgs>>): Prisma__WaTemplateClient<$Result.GetResult<Prisma.$WaTemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    recipients<T extends WaBulkJob$recipientsArgs<ExtArgs> = {}>(args?: Subset<T, WaBulkJob$recipientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "findMany"> | Null>
+    messages<T extends WaBulkJob$messagesArgs<ExtArgs> = {}>(args?: Subset<T, WaBulkJob$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaMessagePayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WaBulkJob model
+   */ 
+  interface WaBulkJobFieldRefs {
+    readonly id: FieldRef<"WaBulkJob", 'String'>
+    readonly label: FieldRef<"WaBulkJob", 'String'>
+    readonly type: FieldRef<"WaBulkJob", 'WaBulkType'>
+    readonly status: FieldRef<"WaBulkJob", 'WaBulkStatus'>
+    readonly templateId: FieldRef<"WaBulkJob", 'String'>
+    readonly message: FieldRef<"WaBulkJob", 'String'>
+    readonly total: FieldRef<"WaBulkJob", 'Int'>
+    readonly sent: FieldRef<"WaBulkJob", 'Int'>
+    readonly failed: FieldRef<"WaBulkJob", 'Int'>
+    readonly cancelled: FieldRef<"WaBulkJob", 'Int'>
+    readonly completedAt: FieldRef<"WaBulkJob", 'DateTime'>
+    readonly createdAt: FieldRef<"WaBulkJob", 'DateTime'>
+    readonly updatedAt: FieldRef<"WaBulkJob", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WaBulkJob findUnique
+   */
+  export type WaBulkJobFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkJob to fetch.
+     */
+    where: WaBulkJobWhereUniqueInput
+  }
+
+  /**
+   * WaBulkJob findUniqueOrThrow
+   */
+  export type WaBulkJobFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkJob to fetch.
+     */
+    where: WaBulkJobWhereUniqueInput
+  }
+
+  /**
+   * WaBulkJob findFirst
+   */
+  export type WaBulkJobFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkJob to fetch.
+     */
+    where?: WaBulkJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaBulkJobs to fetch.
+     */
+    orderBy?: WaBulkJobOrderByWithRelationInput | WaBulkJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaBulkJobs.
+     */
+    cursor?: WaBulkJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaBulkJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaBulkJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaBulkJobs.
+     */
+    distinct?: WaBulkJobScalarFieldEnum | WaBulkJobScalarFieldEnum[]
+  }
+
+  /**
+   * WaBulkJob findFirstOrThrow
+   */
+  export type WaBulkJobFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkJob to fetch.
+     */
+    where?: WaBulkJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaBulkJobs to fetch.
+     */
+    orderBy?: WaBulkJobOrderByWithRelationInput | WaBulkJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaBulkJobs.
+     */
+    cursor?: WaBulkJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaBulkJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaBulkJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaBulkJobs.
+     */
+    distinct?: WaBulkJobScalarFieldEnum | WaBulkJobScalarFieldEnum[]
+  }
+
+  /**
+   * WaBulkJob findMany
+   */
+  export type WaBulkJobFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkJobs to fetch.
+     */
+    where?: WaBulkJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaBulkJobs to fetch.
+     */
+    orderBy?: WaBulkJobOrderByWithRelationInput | WaBulkJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WaBulkJobs.
+     */
+    cursor?: WaBulkJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaBulkJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaBulkJobs.
+     */
+    skip?: number
+    distinct?: WaBulkJobScalarFieldEnum | WaBulkJobScalarFieldEnum[]
+  }
+
+  /**
+   * WaBulkJob create
+   */
+  export type WaBulkJobCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WaBulkJob.
+     */
+    data: XOR<WaBulkJobCreateInput, WaBulkJobUncheckedCreateInput>
+  }
+
+  /**
+   * WaBulkJob createMany
+   */
+  export type WaBulkJobCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WaBulkJobs.
+     */
+    data: WaBulkJobCreateManyInput | WaBulkJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaBulkJob createManyAndReturn
+   */
+  export type WaBulkJobCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WaBulkJobs.
+     */
+    data: WaBulkJobCreateManyInput | WaBulkJobCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WaBulkJob update
+   */
+  export type WaBulkJobUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WaBulkJob.
+     */
+    data: XOR<WaBulkJobUpdateInput, WaBulkJobUncheckedUpdateInput>
+    /**
+     * Choose, which WaBulkJob to update.
+     */
+    where: WaBulkJobWhereUniqueInput
+  }
+
+  /**
+   * WaBulkJob updateMany
+   */
+  export type WaBulkJobUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WaBulkJobs.
+     */
+    data: XOR<WaBulkJobUpdateManyMutationInput, WaBulkJobUncheckedUpdateManyInput>
+    /**
+     * Filter which WaBulkJobs to update
+     */
+    where?: WaBulkJobWhereInput
+  }
+
+  /**
+   * WaBulkJob upsert
+   */
+  export type WaBulkJobUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WaBulkJob to update in case it exists.
+     */
+    where: WaBulkJobWhereUniqueInput
+    /**
+     * In case the WaBulkJob found by the `where` argument doesn't exist, create a new WaBulkJob with this data.
+     */
+    create: XOR<WaBulkJobCreateInput, WaBulkJobUncheckedCreateInput>
+    /**
+     * In case the WaBulkJob was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WaBulkJobUpdateInput, WaBulkJobUncheckedUpdateInput>
+  }
+
+  /**
+   * WaBulkJob delete
+   */
+  export type WaBulkJobDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+    /**
+     * Filter which WaBulkJob to delete.
+     */
+    where: WaBulkJobWhereUniqueInput
+  }
+
+  /**
+   * WaBulkJob deleteMany
+   */
+  export type WaBulkJobDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaBulkJobs to delete
+     */
+    where?: WaBulkJobWhereInput
+  }
+
+  /**
+   * WaBulkJob.template
+   */
+  export type WaBulkJob$templateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaTemplate
+     */
+    select?: WaTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaTemplateInclude<ExtArgs> | null
+    where?: WaTemplateWhereInput
+  }
+
+  /**
+   * WaBulkJob.recipients
+   */
+  export type WaBulkJob$recipientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    where?: WaBulkRecipientWhereInput
+    orderBy?: WaBulkRecipientOrderByWithRelationInput | WaBulkRecipientOrderByWithRelationInput[]
+    cursor?: WaBulkRecipientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaBulkRecipientScalarFieldEnum | WaBulkRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * WaBulkJob.messages
+   */
+  export type WaBulkJob$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaMessage
+     */
+    select?: WaMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaMessageInclude<ExtArgs> | null
+    where?: WaMessageWhereInput
+    orderBy?: WaMessageOrderByWithRelationInput | WaMessageOrderByWithRelationInput[]
+    cursor?: WaMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WaMessageScalarFieldEnum | WaMessageScalarFieldEnum[]
+  }
+
+  /**
+   * WaBulkJob without action
+   */
+  export type WaBulkJobDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkJob
+     */
+    select?: WaBulkJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkJobInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WaBulkRecipient
+   */
+
+  export type AggregateWaBulkRecipient = {
+    _count: WaBulkRecipientCountAggregateOutputType | null
+    _min: WaBulkRecipientMinAggregateOutputType | null
+    _max: WaBulkRecipientMaxAggregateOutputType | null
+  }
+
+  export type WaBulkRecipientMinAggregateOutputType = {
+    id: string | null
+    bulkJobId: string | null
+    contactId: string | null
+    phone: string | null
+    name: string | null
+    status: $Enums.WaMsgStatus | null
+    wamid: string | null
+    errorMsg: string | null
+    sentAt: Date | null
+  }
+
+  export type WaBulkRecipientMaxAggregateOutputType = {
+    id: string | null
+    bulkJobId: string | null
+    contactId: string | null
+    phone: string | null
+    name: string | null
+    status: $Enums.WaMsgStatus | null
+    wamid: string | null
+    errorMsg: string | null
+    sentAt: Date | null
+  }
+
+  export type WaBulkRecipientCountAggregateOutputType = {
+    id: number
+    bulkJobId: number
+    contactId: number
+    phone: number
+    name: number
+    variables: number
+    status: number
+    wamid: number
+    errorMsg: number
+    sentAt: number
+    _all: number
+  }
+
+
+  export type WaBulkRecipientMinAggregateInputType = {
+    id?: true
+    bulkJobId?: true
+    contactId?: true
+    phone?: true
+    name?: true
+    status?: true
+    wamid?: true
+    errorMsg?: true
+    sentAt?: true
+  }
+
+  export type WaBulkRecipientMaxAggregateInputType = {
+    id?: true
+    bulkJobId?: true
+    contactId?: true
+    phone?: true
+    name?: true
+    status?: true
+    wamid?: true
+    errorMsg?: true
+    sentAt?: true
+  }
+
+  export type WaBulkRecipientCountAggregateInputType = {
+    id?: true
+    bulkJobId?: true
+    contactId?: true
+    phone?: true
+    name?: true
+    variables?: true
+    status?: true
+    wamid?: true
+    errorMsg?: true
+    sentAt?: true
+    _all?: true
+  }
+
+  export type WaBulkRecipientAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaBulkRecipient to aggregate.
+     */
+    where?: WaBulkRecipientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaBulkRecipients to fetch.
+     */
+    orderBy?: WaBulkRecipientOrderByWithRelationInput | WaBulkRecipientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WaBulkRecipientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaBulkRecipients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaBulkRecipients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WaBulkRecipients
+    **/
+    _count?: true | WaBulkRecipientCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WaBulkRecipientMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WaBulkRecipientMaxAggregateInputType
+  }
+
+  export type GetWaBulkRecipientAggregateType<T extends WaBulkRecipientAggregateArgs> = {
+        [P in keyof T & keyof AggregateWaBulkRecipient]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWaBulkRecipient[P]>
+      : GetScalarType<T[P], AggregateWaBulkRecipient[P]>
+  }
+
+
+
+
+  export type WaBulkRecipientGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WaBulkRecipientWhereInput
+    orderBy?: WaBulkRecipientOrderByWithAggregationInput | WaBulkRecipientOrderByWithAggregationInput[]
+    by: WaBulkRecipientScalarFieldEnum[] | WaBulkRecipientScalarFieldEnum
+    having?: WaBulkRecipientScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WaBulkRecipientCountAggregateInputType | true
+    _min?: WaBulkRecipientMinAggregateInputType
+    _max?: WaBulkRecipientMaxAggregateInputType
+  }
+
+  export type WaBulkRecipientGroupByOutputType = {
+    id: string
+    bulkJobId: string
+    contactId: string | null
+    phone: string
+    name: string | null
+    variables: JsonValue | null
+    status: $Enums.WaMsgStatus
+    wamid: string | null
+    errorMsg: string | null
+    sentAt: Date | null
+    _count: WaBulkRecipientCountAggregateOutputType | null
+    _min: WaBulkRecipientMinAggregateOutputType | null
+    _max: WaBulkRecipientMaxAggregateOutputType | null
+  }
+
+  type GetWaBulkRecipientGroupByPayload<T extends WaBulkRecipientGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WaBulkRecipientGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WaBulkRecipientGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WaBulkRecipientGroupByOutputType[P]>
+            : GetScalarType<T[P], WaBulkRecipientGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WaBulkRecipientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bulkJobId?: boolean
+    contactId?: boolean
+    phone?: boolean
+    name?: boolean
+    variables?: boolean
+    status?: boolean
+    wamid?: boolean
+    errorMsg?: boolean
+    sentAt?: boolean
+    bulkJob?: boolean | WaBulkJobDefaultArgs<ExtArgs>
+    contact?: boolean | WaBulkRecipient$contactArgs<ExtArgs>
+  }, ExtArgs["result"]["waBulkRecipient"]>
+
+  export type WaBulkRecipientSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bulkJobId?: boolean
+    contactId?: boolean
+    phone?: boolean
+    name?: boolean
+    variables?: boolean
+    status?: boolean
+    wamid?: boolean
+    errorMsg?: boolean
+    sentAt?: boolean
+    bulkJob?: boolean | WaBulkJobDefaultArgs<ExtArgs>
+    contact?: boolean | WaBulkRecipient$contactArgs<ExtArgs>
+  }, ExtArgs["result"]["waBulkRecipient"]>
+
+  export type WaBulkRecipientSelectScalar = {
+    id?: boolean
+    bulkJobId?: boolean
+    contactId?: boolean
+    phone?: boolean
+    name?: boolean
+    variables?: boolean
+    status?: boolean
+    wamid?: boolean
+    errorMsg?: boolean
+    sentAt?: boolean
+  }
+
+  export type WaBulkRecipientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bulkJob?: boolean | WaBulkJobDefaultArgs<ExtArgs>
+    contact?: boolean | WaBulkRecipient$contactArgs<ExtArgs>
+  }
+  export type WaBulkRecipientIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bulkJob?: boolean | WaBulkJobDefaultArgs<ExtArgs>
+    contact?: boolean | WaBulkRecipient$contactArgs<ExtArgs>
+  }
+
+  export type $WaBulkRecipientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WaBulkRecipient"
+    objects: {
+      bulkJob: Prisma.$WaBulkJobPayload<ExtArgs>
+      contact: Prisma.$WaContactPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      bulkJobId: string
+      contactId: string | null
+      phone: string
+      name: string | null
+      variables: Prisma.JsonValue | null
+      status: $Enums.WaMsgStatus
+      wamid: string | null
+      errorMsg: string | null
+      sentAt: Date | null
+    }, ExtArgs["result"]["waBulkRecipient"]>
+    composites: {}
+  }
+
+  type WaBulkRecipientGetPayload<S extends boolean | null | undefined | WaBulkRecipientDefaultArgs> = $Result.GetResult<Prisma.$WaBulkRecipientPayload, S>
+
+  type WaBulkRecipientCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WaBulkRecipientFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WaBulkRecipientCountAggregateInputType | true
+    }
+
+  export interface WaBulkRecipientDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WaBulkRecipient'], meta: { name: 'WaBulkRecipient' } }
+    /**
+     * Find zero or one WaBulkRecipient that matches the filter.
+     * @param {WaBulkRecipientFindUniqueArgs} args - Arguments to find a WaBulkRecipient
+     * @example
+     * // Get one WaBulkRecipient
+     * const waBulkRecipient = await prisma.waBulkRecipient.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WaBulkRecipientFindUniqueArgs>(args: SelectSubset<T, WaBulkRecipientFindUniqueArgs<ExtArgs>>): Prisma__WaBulkRecipientClient<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WaBulkRecipient that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WaBulkRecipientFindUniqueOrThrowArgs} args - Arguments to find a WaBulkRecipient
+     * @example
+     * // Get one WaBulkRecipient
+     * const waBulkRecipient = await prisma.waBulkRecipient.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WaBulkRecipientFindUniqueOrThrowArgs>(args: SelectSubset<T, WaBulkRecipientFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WaBulkRecipientClient<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WaBulkRecipient that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkRecipientFindFirstArgs} args - Arguments to find a WaBulkRecipient
+     * @example
+     * // Get one WaBulkRecipient
+     * const waBulkRecipient = await prisma.waBulkRecipient.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WaBulkRecipientFindFirstArgs>(args?: SelectSubset<T, WaBulkRecipientFindFirstArgs<ExtArgs>>): Prisma__WaBulkRecipientClient<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WaBulkRecipient that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkRecipientFindFirstOrThrowArgs} args - Arguments to find a WaBulkRecipient
+     * @example
+     * // Get one WaBulkRecipient
+     * const waBulkRecipient = await prisma.waBulkRecipient.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WaBulkRecipientFindFirstOrThrowArgs>(args?: SelectSubset<T, WaBulkRecipientFindFirstOrThrowArgs<ExtArgs>>): Prisma__WaBulkRecipientClient<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WaBulkRecipients that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkRecipientFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WaBulkRecipients
+     * const waBulkRecipients = await prisma.waBulkRecipient.findMany()
+     * 
+     * // Get first 10 WaBulkRecipients
+     * const waBulkRecipients = await prisma.waBulkRecipient.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const waBulkRecipientWithIdOnly = await prisma.waBulkRecipient.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WaBulkRecipientFindManyArgs>(args?: SelectSubset<T, WaBulkRecipientFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WaBulkRecipient.
+     * @param {WaBulkRecipientCreateArgs} args - Arguments to create a WaBulkRecipient.
+     * @example
+     * // Create one WaBulkRecipient
+     * const WaBulkRecipient = await prisma.waBulkRecipient.create({
+     *   data: {
+     *     // ... data to create a WaBulkRecipient
+     *   }
+     * })
+     * 
+     */
+    create<T extends WaBulkRecipientCreateArgs>(args: SelectSubset<T, WaBulkRecipientCreateArgs<ExtArgs>>): Prisma__WaBulkRecipientClient<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WaBulkRecipients.
+     * @param {WaBulkRecipientCreateManyArgs} args - Arguments to create many WaBulkRecipients.
+     * @example
+     * // Create many WaBulkRecipients
+     * const waBulkRecipient = await prisma.waBulkRecipient.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WaBulkRecipientCreateManyArgs>(args?: SelectSubset<T, WaBulkRecipientCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WaBulkRecipients and returns the data saved in the database.
+     * @param {WaBulkRecipientCreateManyAndReturnArgs} args - Arguments to create many WaBulkRecipients.
+     * @example
+     * // Create many WaBulkRecipients
+     * const waBulkRecipient = await prisma.waBulkRecipient.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WaBulkRecipients and only return the `id`
+     * const waBulkRecipientWithIdOnly = await prisma.waBulkRecipient.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WaBulkRecipientCreateManyAndReturnArgs>(args?: SelectSubset<T, WaBulkRecipientCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WaBulkRecipient.
+     * @param {WaBulkRecipientDeleteArgs} args - Arguments to delete one WaBulkRecipient.
+     * @example
+     * // Delete one WaBulkRecipient
+     * const WaBulkRecipient = await prisma.waBulkRecipient.delete({
+     *   where: {
+     *     // ... filter to delete one WaBulkRecipient
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WaBulkRecipientDeleteArgs>(args: SelectSubset<T, WaBulkRecipientDeleteArgs<ExtArgs>>): Prisma__WaBulkRecipientClient<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WaBulkRecipient.
+     * @param {WaBulkRecipientUpdateArgs} args - Arguments to update one WaBulkRecipient.
+     * @example
+     * // Update one WaBulkRecipient
+     * const waBulkRecipient = await prisma.waBulkRecipient.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WaBulkRecipientUpdateArgs>(args: SelectSubset<T, WaBulkRecipientUpdateArgs<ExtArgs>>): Prisma__WaBulkRecipientClient<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WaBulkRecipients.
+     * @param {WaBulkRecipientDeleteManyArgs} args - Arguments to filter WaBulkRecipients to delete.
+     * @example
+     * // Delete a few WaBulkRecipients
+     * const { count } = await prisma.waBulkRecipient.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WaBulkRecipientDeleteManyArgs>(args?: SelectSubset<T, WaBulkRecipientDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WaBulkRecipients.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkRecipientUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WaBulkRecipients
+     * const waBulkRecipient = await prisma.waBulkRecipient.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WaBulkRecipientUpdateManyArgs>(args: SelectSubset<T, WaBulkRecipientUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WaBulkRecipient.
+     * @param {WaBulkRecipientUpsertArgs} args - Arguments to update or create a WaBulkRecipient.
+     * @example
+     * // Update or create a WaBulkRecipient
+     * const waBulkRecipient = await prisma.waBulkRecipient.upsert({
+     *   create: {
+     *     // ... data to create a WaBulkRecipient
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WaBulkRecipient we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WaBulkRecipientUpsertArgs>(args: SelectSubset<T, WaBulkRecipientUpsertArgs<ExtArgs>>): Prisma__WaBulkRecipientClient<$Result.GetResult<Prisma.$WaBulkRecipientPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WaBulkRecipients.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkRecipientCountArgs} args - Arguments to filter WaBulkRecipients to count.
+     * @example
+     * // Count the number of WaBulkRecipients
+     * const count = await prisma.waBulkRecipient.count({
+     *   where: {
+     *     // ... the filter for the WaBulkRecipients we want to count
+     *   }
+     * })
+    **/
+    count<T extends WaBulkRecipientCountArgs>(
+      args?: Subset<T, WaBulkRecipientCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WaBulkRecipientCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WaBulkRecipient.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkRecipientAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WaBulkRecipientAggregateArgs>(args: Subset<T, WaBulkRecipientAggregateArgs>): Prisma.PrismaPromise<GetWaBulkRecipientAggregateType<T>>
+
+    /**
+     * Group by WaBulkRecipient.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WaBulkRecipientGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WaBulkRecipientGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WaBulkRecipientGroupByArgs['orderBy'] }
+        : { orderBy?: WaBulkRecipientGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WaBulkRecipientGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWaBulkRecipientGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WaBulkRecipient model
+   */
+  readonly fields: WaBulkRecipientFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WaBulkRecipient.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WaBulkRecipientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bulkJob<T extends WaBulkJobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WaBulkJobDefaultArgs<ExtArgs>>): Prisma__WaBulkJobClient<$Result.GetResult<Prisma.$WaBulkJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    contact<T extends WaBulkRecipient$contactArgs<ExtArgs> = {}>(args?: Subset<T, WaBulkRecipient$contactArgs<ExtArgs>>): Prisma__WaContactClient<$Result.GetResult<Prisma.$WaContactPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WaBulkRecipient model
+   */ 
+  interface WaBulkRecipientFieldRefs {
+    readonly id: FieldRef<"WaBulkRecipient", 'String'>
+    readonly bulkJobId: FieldRef<"WaBulkRecipient", 'String'>
+    readonly contactId: FieldRef<"WaBulkRecipient", 'String'>
+    readonly phone: FieldRef<"WaBulkRecipient", 'String'>
+    readonly name: FieldRef<"WaBulkRecipient", 'String'>
+    readonly variables: FieldRef<"WaBulkRecipient", 'Json'>
+    readonly status: FieldRef<"WaBulkRecipient", 'WaMsgStatus'>
+    readonly wamid: FieldRef<"WaBulkRecipient", 'String'>
+    readonly errorMsg: FieldRef<"WaBulkRecipient", 'String'>
+    readonly sentAt: FieldRef<"WaBulkRecipient", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WaBulkRecipient findUnique
+   */
+  export type WaBulkRecipientFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkRecipient to fetch.
+     */
+    where: WaBulkRecipientWhereUniqueInput
+  }
+
+  /**
+   * WaBulkRecipient findUniqueOrThrow
+   */
+  export type WaBulkRecipientFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkRecipient to fetch.
+     */
+    where: WaBulkRecipientWhereUniqueInput
+  }
+
+  /**
+   * WaBulkRecipient findFirst
+   */
+  export type WaBulkRecipientFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkRecipient to fetch.
+     */
+    where?: WaBulkRecipientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaBulkRecipients to fetch.
+     */
+    orderBy?: WaBulkRecipientOrderByWithRelationInput | WaBulkRecipientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaBulkRecipients.
+     */
+    cursor?: WaBulkRecipientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaBulkRecipients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaBulkRecipients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaBulkRecipients.
+     */
+    distinct?: WaBulkRecipientScalarFieldEnum | WaBulkRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * WaBulkRecipient findFirstOrThrow
+   */
+  export type WaBulkRecipientFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkRecipient to fetch.
+     */
+    where?: WaBulkRecipientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaBulkRecipients to fetch.
+     */
+    orderBy?: WaBulkRecipientOrderByWithRelationInput | WaBulkRecipientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WaBulkRecipients.
+     */
+    cursor?: WaBulkRecipientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaBulkRecipients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaBulkRecipients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WaBulkRecipients.
+     */
+    distinct?: WaBulkRecipientScalarFieldEnum | WaBulkRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * WaBulkRecipient findMany
+   */
+  export type WaBulkRecipientFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which WaBulkRecipients to fetch.
+     */
+    where?: WaBulkRecipientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WaBulkRecipients to fetch.
+     */
+    orderBy?: WaBulkRecipientOrderByWithRelationInput | WaBulkRecipientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WaBulkRecipients.
+     */
+    cursor?: WaBulkRecipientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WaBulkRecipients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WaBulkRecipients.
+     */
+    skip?: number
+    distinct?: WaBulkRecipientScalarFieldEnum | WaBulkRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * WaBulkRecipient create
+   */
+  export type WaBulkRecipientCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WaBulkRecipient.
+     */
+    data: XOR<WaBulkRecipientCreateInput, WaBulkRecipientUncheckedCreateInput>
+  }
+
+  /**
+   * WaBulkRecipient createMany
+   */
+  export type WaBulkRecipientCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WaBulkRecipients.
+     */
+    data: WaBulkRecipientCreateManyInput | WaBulkRecipientCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WaBulkRecipient createManyAndReturn
+   */
+  export type WaBulkRecipientCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WaBulkRecipients.
+     */
+    data: WaBulkRecipientCreateManyInput | WaBulkRecipientCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WaBulkRecipient update
+   */
+  export type WaBulkRecipientUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WaBulkRecipient.
+     */
+    data: XOR<WaBulkRecipientUpdateInput, WaBulkRecipientUncheckedUpdateInput>
+    /**
+     * Choose, which WaBulkRecipient to update.
+     */
+    where: WaBulkRecipientWhereUniqueInput
+  }
+
+  /**
+   * WaBulkRecipient updateMany
+   */
+  export type WaBulkRecipientUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WaBulkRecipients.
+     */
+    data: XOR<WaBulkRecipientUpdateManyMutationInput, WaBulkRecipientUncheckedUpdateManyInput>
+    /**
+     * Filter which WaBulkRecipients to update
+     */
+    where?: WaBulkRecipientWhereInput
+  }
+
+  /**
+   * WaBulkRecipient upsert
+   */
+  export type WaBulkRecipientUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WaBulkRecipient to update in case it exists.
+     */
+    where: WaBulkRecipientWhereUniqueInput
+    /**
+     * In case the WaBulkRecipient found by the `where` argument doesn't exist, create a new WaBulkRecipient with this data.
+     */
+    create: XOR<WaBulkRecipientCreateInput, WaBulkRecipientUncheckedCreateInput>
+    /**
+     * In case the WaBulkRecipient was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WaBulkRecipientUpdateInput, WaBulkRecipientUncheckedUpdateInput>
+  }
+
+  /**
+   * WaBulkRecipient delete
+   */
+  export type WaBulkRecipientDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+    /**
+     * Filter which WaBulkRecipient to delete.
+     */
+    where: WaBulkRecipientWhereUniqueInput
+  }
+
+  /**
+   * WaBulkRecipient deleteMany
+   */
+  export type WaBulkRecipientDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WaBulkRecipients to delete
+     */
+    where?: WaBulkRecipientWhereInput
+  }
+
+  /**
+   * WaBulkRecipient.contact
+   */
+  export type WaBulkRecipient$contactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaContact
+     */
+    select?: WaContactSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaContactInclude<ExtArgs> | null
+    where?: WaContactWhereInput
+  }
+
+  /**
+   * WaBulkRecipient without action
+   */
+  export type WaBulkRecipientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WaBulkRecipient
+     */
+    select?: WaBulkRecipientSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WaBulkRecipientInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CustomTemplate
+   */
+
+  export type AggregateCustomTemplate = {
+    _count: CustomTemplateCountAggregateOutputType | null
+    _avg: CustomTemplateAvgAggregateOutputType | null
+    _sum: CustomTemplateSumAggregateOutputType | null
+    _min: CustomTemplateMinAggregateOutputType | null
+    _max: CustomTemplateMaxAggregateOutputType | null
+  }
+
+  export type CustomTemplateAvgAggregateOutputType = {
+    usageCount: number | null
+  }
+
+  export type CustomTemplateSumAggregateOutputType = {
+    usageCount: number | null
+  }
+
+  export type CustomTemplateMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    body: string | null
+    category: string | null
+    emoji: string | null
+    usageCount: number | null
+    mediaType: string | null
+    mediaUrl: string | null
+    mediaCaption: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CustomTemplateMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    body: string | null
+    category: string | null
+    emoji: string | null
+    usageCount: number | null
+    mediaType: string | null
+    mediaUrl: string | null
+    mediaCaption: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CustomTemplateCountAggregateOutputType = {
+    id: number
+    name: number
+    body: number
+    category: number
+    emoji: number
+    usageCount: number
+    mediaType: number
+    mediaUrl: number
+    mediaCaption: number
+    buttons: number
+    quickReplies: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CustomTemplateAvgAggregateInputType = {
+    usageCount?: true
+  }
+
+  export type CustomTemplateSumAggregateInputType = {
+    usageCount?: true
+  }
+
+  export type CustomTemplateMinAggregateInputType = {
+    id?: true
+    name?: true
+    body?: true
+    category?: true
+    emoji?: true
+    usageCount?: true
+    mediaType?: true
+    mediaUrl?: true
+    mediaCaption?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CustomTemplateMaxAggregateInputType = {
+    id?: true
+    name?: true
+    body?: true
+    category?: true
+    emoji?: true
+    usageCount?: true
+    mediaType?: true
+    mediaUrl?: true
+    mediaCaption?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CustomTemplateCountAggregateInputType = {
+    id?: true
+    name?: true
+    body?: true
+    category?: true
+    emoji?: true
+    usageCount?: true
+    mediaType?: true
+    mediaUrl?: true
+    mediaCaption?: true
+    buttons?: true
+    quickReplies?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CustomTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustomTemplate to aggregate.
+     */
+    where?: CustomTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomTemplates to fetch.
+     */
+    orderBy?: CustomTemplateOrderByWithRelationInput | CustomTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CustomTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CustomTemplates
+    **/
+    _count?: true | CustomTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CustomTemplateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CustomTemplateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CustomTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CustomTemplateMaxAggregateInputType
+  }
+
+  export type GetCustomTemplateAggregateType<T extends CustomTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateCustomTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCustomTemplate[P]>
+      : GetScalarType<T[P], AggregateCustomTemplate[P]>
+  }
+
+
+
+
+  export type CustomTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CustomTemplateWhereInput
+    orderBy?: CustomTemplateOrderByWithAggregationInput | CustomTemplateOrderByWithAggregationInput[]
+    by: CustomTemplateScalarFieldEnum[] | CustomTemplateScalarFieldEnum
+    having?: CustomTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CustomTemplateCountAggregateInputType | true
+    _avg?: CustomTemplateAvgAggregateInputType
+    _sum?: CustomTemplateSumAggregateInputType
+    _min?: CustomTemplateMinAggregateInputType
+    _max?: CustomTemplateMaxAggregateInputType
+  }
+
+  export type CustomTemplateGroupByOutputType = {
+    id: string
+    name: string
+    body: string
+    category: string
+    emoji: string
+    usageCount: number
+    mediaType: string | null
+    mediaUrl: string | null
+    mediaCaption: string | null
+    buttons: JsonValue
+    quickReplies: JsonValue
+    createdAt: Date
+    updatedAt: Date
+    _count: CustomTemplateCountAggregateOutputType | null
+    _avg: CustomTemplateAvgAggregateOutputType | null
+    _sum: CustomTemplateSumAggregateOutputType | null
+    _min: CustomTemplateMinAggregateOutputType | null
+    _max: CustomTemplateMaxAggregateOutputType | null
+  }
+
+  type GetCustomTemplateGroupByPayload<T extends CustomTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CustomTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CustomTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CustomTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], CustomTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CustomTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    body?: boolean
+    category?: boolean
+    emoji?: boolean
+    usageCount?: boolean
+    mediaType?: boolean
+    mediaUrl?: boolean
+    mediaCaption?: boolean
+    buttons?: boolean
+    quickReplies?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["customTemplate"]>
+
+  export type CustomTemplateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    body?: boolean
+    category?: boolean
+    emoji?: boolean
+    usageCount?: boolean
+    mediaType?: boolean
+    mediaUrl?: boolean
+    mediaCaption?: boolean
+    buttons?: boolean
+    quickReplies?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["customTemplate"]>
+
+  export type CustomTemplateSelectScalar = {
+    id?: boolean
+    name?: boolean
+    body?: boolean
+    category?: boolean
+    emoji?: boolean
+    usageCount?: boolean
+    mediaType?: boolean
+    mediaUrl?: boolean
+    mediaCaption?: boolean
+    buttons?: boolean
+    quickReplies?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $CustomTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CustomTemplate"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      body: string
+      category: string
+      emoji: string
+      usageCount: number
+      mediaType: string | null
+      mediaUrl: string | null
+      mediaCaption: string | null
+      buttons: Prisma.JsonValue
+      quickReplies: Prisma.JsonValue
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["customTemplate"]>
+    composites: {}
+  }
+
+  type CustomTemplateGetPayload<S extends boolean | null | undefined | CustomTemplateDefaultArgs> = $Result.GetResult<Prisma.$CustomTemplatePayload, S>
+
+  type CustomTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CustomTemplateFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CustomTemplateCountAggregateInputType | true
+    }
+
+  export interface CustomTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CustomTemplate'], meta: { name: 'CustomTemplate' } }
+    /**
+     * Find zero or one CustomTemplate that matches the filter.
+     * @param {CustomTemplateFindUniqueArgs} args - Arguments to find a CustomTemplate
+     * @example
+     * // Get one CustomTemplate
+     * const customTemplate = await prisma.customTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CustomTemplateFindUniqueArgs>(args: SelectSubset<T, CustomTemplateFindUniqueArgs<ExtArgs>>): Prisma__CustomTemplateClient<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one CustomTemplate that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {CustomTemplateFindUniqueOrThrowArgs} args - Arguments to find a CustomTemplate
+     * @example
+     * // Get one CustomTemplate
+     * const customTemplate = await prisma.customTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CustomTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, CustomTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CustomTemplateClient<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first CustomTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomTemplateFindFirstArgs} args - Arguments to find a CustomTemplate
+     * @example
+     * // Get one CustomTemplate
+     * const customTemplate = await prisma.customTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CustomTemplateFindFirstArgs>(args?: SelectSubset<T, CustomTemplateFindFirstArgs<ExtArgs>>): Prisma__CustomTemplateClient<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first CustomTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomTemplateFindFirstOrThrowArgs} args - Arguments to find a CustomTemplate
+     * @example
+     * // Get one CustomTemplate
+     * const customTemplate = await prisma.customTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CustomTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, CustomTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__CustomTemplateClient<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more CustomTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CustomTemplates
+     * const customTemplates = await prisma.customTemplate.findMany()
+     * 
+     * // Get first 10 CustomTemplates
+     * const customTemplates = await prisma.customTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const customTemplateWithIdOnly = await prisma.customTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CustomTemplateFindManyArgs>(args?: SelectSubset<T, CustomTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a CustomTemplate.
+     * @param {CustomTemplateCreateArgs} args - Arguments to create a CustomTemplate.
+     * @example
+     * // Create one CustomTemplate
+     * const CustomTemplate = await prisma.customTemplate.create({
+     *   data: {
+     *     // ... data to create a CustomTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends CustomTemplateCreateArgs>(args: SelectSubset<T, CustomTemplateCreateArgs<ExtArgs>>): Prisma__CustomTemplateClient<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many CustomTemplates.
+     * @param {CustomTemplateCreateManyArgs} args - Arguments to create many CustomTemplates.
+     * @example
+     * // Create many CustomTemplates
+     * const customTemplate = await prisma.customTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CustomTemplateCreateManyArgs>(args?: SelectSubset<T, CustomTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CustomTemplates and returns the data saved in the database.
+     * @param {CustomTemplateCreateManyAndReturnArgs} args - Arguments to create many CustomTemplates.
+     * @example
+     * // Create many CustomTemplates
+     * const customTemplate = await prisma.customTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CustomTemplates and only return the `id`
+     * const customTemplateWithIdOnly = await prisma.customTemplate.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CustomTemplateCreateManyAndReturnArgs>(args?: SelectSubset<T, CustomTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a CustomTemplate.
+     * @param {CustomTemplateDeleteArgs} args - Arguments to delete one CustomTemplate.
+     * @example
+     * // Delete one CustomTemplate
+     * const CustomTemplate = await prisma.customTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one CustomTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CustomTemplateDeleteArgs>(args: SelectSubset<T, CustomTemplateDeleteArgs<ExtArgs>>): Prisma__CustomTemplateClient<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one CustomTemplate.
+     * @param {CustomTemplateUpdateArgs} args - Arguments to update one CustomTemplate.
+     * @example
+     * // Update one CustomTemplate
+     * const customTemplate = await prisma.customTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CustomTemplateUpdateArgs>(args: SelectSubset<T, CustomTemplateUpdateArgs<ExtArgs>>): Prisma__CustomTemplateClient<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more CustomTemplates.
+     * @param {CustomTemplateDeleteManyArgs} args - Arguments to filter CustomTemplates to delete.
+     * @example
+     * // Delete a few CustomTemplates
+     * const { count } = await prisma.customTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CustomTemplateDeleteManyArgs>(args?: SelectSubset<T, CustomTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CustomTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CustomTemplates
+     * const customTemplate = await prisma.customTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CustomTemplateUpdateManyArgs>(args: SelectSubset<T, CustomTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CustomTemplate.
+     * @param {CustomTemplateUpsertArgs} args - Arguments to update or create a CustomTemplate.
+     * @example
+     * // Update or create a CustomTemplate
+     * const customTemplate = await prisma.customTemplate.upsert({
+     *   create: {
+     *     // ... data to create a CustomTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CustomTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CustomTemplateUpsertArgs>(args: SelectSubset<T, CustomTemplateUpsertArgs<ExtArgs>>): Prisma__CustomTemplateClient<$Result.GetResult<Prisma.$CustomTemplatePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of CustomTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomTemplateCountArgs} args - Arguments to filter CustomTemplates to count.
+     * @example
+     * // Count the number of CustomTemplates
+     * const count = await prisma.customTemplate.count({
+     *   where: {
+     *     // ... the filter for the CustomTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends CustomTemplateCountArgs>(
+      args?: Subset<T, CustomTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CustomTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CustomTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CustomTemplateAggregateArgs>(args: Subset<T, CustomTemplateAggregateArgs>): Prisma.PrismaPromise<GetCustomTemplateAggregateType<T>>
+
+    /**
+     * Group by CustomTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CustomTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CustomTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: CustomTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CustomTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCustomTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CustomTemplate model
+   */
+  readonly fields: CustomTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CustomTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CustomTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CustomTemplate model
+   */ 
+  interface CustomTemplateFieldRefs {
+    readonly id: FieldRef<"CustomTemplate", 'String'>
+    readonly name: FieldRef<"CustomTemplate", 'String'>
+    readonly body: FieldRef<"CustomTemplate", 'String'>
+    readonly category: FieldRef<"CustomTemplate", 'String'>
+    readonly emoji: FieldRef<"CustomTemplate", 'String'>
+    readonly usageCount: FieldRef<"CustomTemplate", 'Int'>
+    readonly mediaType: FieldRef<"CustomTemplate", 'String'>
+    readonly mediaUrl: FieldRef<"CustomTemplate", 'String'>
+    readonly mediaCaption: FieldRef<"CustomTemplate", 'String'>
+    readonly buttons: FieldRef<"CustomTemplate", 'Json'>
+    readonly quickReplies: FieldRef<"CustomTemplate", 'Json'>
+    readonly createdAt: FieldRef<"CustomTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"CustomTemplate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CustomTemplate findUnique
+   */
+  export type CustomTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * Filter, which CustomTemplate to fetch.
+     */
+    where: CustomTemplateWhereUniqueInput
+  }
+
+  /**
+   * CustomTemplate findUniqueOrThrow
+   */
+  export type CustomTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * Filter, which CustomTemplate to fetch.
+     */
+    where: CustomTemplateWhereUniqueInput
+  }
+
+  /**
+   * CustomTemplate findFirst
+   */
+  export type CustomTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * Filter, which CustomTemplate to fetch.
+     */
+    where?: CustomTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomTemplates to fetch.
+     */
+    orderBy?: CustomTemplateOrderByWithRelationInput | CustomTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustomTemplates.
+     */
+    cursor?: CustomTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustomTemplates.
+     */
+    distinct?: CustomTemplateScalarFieldEnum | CustomTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * CustomTemplate findFirstOrThrow
+   */
+  export type CustomTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * Filter, which CustomTemplate to fetch.
+     */
+    where?: CustomTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomTemplates to fetch.
+     */
+    orderBy?: CustomTemplateOrderByWithRelationInput | CustomTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustomTemplates.
+     */
+    cursor?: CustomTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustomTemplates.
+     */
+    distinct?: CustomTemplateScalarFieldEnum | CustomTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * CustomTemplate findMany
+   */
+  export type CustomTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * Filter, which CustomTemplates to fetch.
+     */
+    where?: CustomTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomTemplates to fetch.
+     */
+    orderBy?: CustomTemplateOrderByWithRelationInput | CustomTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CustomTemplates.
+     */
+    cursor?: CustomTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomTemplates.
+     */
+    skip?: number
+    distinct?: CustomTemplateScalarFieldEnum | CustomTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * CustomTemplate create
+   */
+  export type CustomTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * The data needed to create a CustomTemplate.
+     */
+    data: XOR<CustomTemplateCreateInput, CustomTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * CustomTemplate createMany
+   */
+  export type CustomTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CustomTemplates.
+     */
+    data: CustomTemplateCreateManyInput | CustomTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CustomTemplate createManyAndReturn
+   */
+  export type CustomTemplateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many CustomTemplates.
+     */
+    data: CustomTemplateCreateManyInput | CustomTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CustomTemplate update
+   */
+  export type CustomTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * The data needed to update a CustomTemplate.
+     */
+    data: XOR<CustomTemplateUpdateInput, CustomTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which CustomTemplate to update.
+     */
+    where: CustomTemplateWhereUniqueInput
+  }
+
+  /**
+   * CustomTemplate updateMany
+   */
+  export type CustomTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CustomTemplates.
+     */
+    data: XOR<CustomTemplateUpdateManyMutationInput, CustomTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which CustomTemplates to update
+     */
+    where?: CustomTemplateWhereInput
+  }
+
+  /**
+   * CustomTemplate upsert
+   */
+  export type CustomTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * The filter to search for the CustomTemplate to update in case it exists.
+     */
+    where: CustomTemplateWhereUniqueInput
+    /**
+     * In case the CustomTemplate found by the `where` argument doesn't exist, create a new CustomTemplate with this data.
+     */
+    create: XOR<CustomTemplateCreateInput, CustomTemplateUncheckedCreateInput>
+    /**
+     * In case the CustomTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CustomTemplateUpdateInput, CustomTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * CustomTemplate delete
+   */
+  export type CustomTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+    /**
+     * Filter which CustomTemplate to delete.
+     */
+    where: CustomTemplateWhereUniqueInput
+  }
+
+  /**
+   * CustomTemplate deleteMany
+   */
+  export type CustomTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustomTemplates to delete
+     */
+    where?: CustomTemplateWhereInput
+  }
+
+  /**
+   * CustomTemplate without action
+   */
+  export type CustomTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomTemplate
+     */
+    select?: CustomTemplateSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -9872,12 +20612,193 @@ export namespace Prisma {
   export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
 
 
+  export const WaTemplateScalarFieldEnum: {
+    id: 'id',
+    metaTemplateId: 'metaTemplateId',
+    name: 'name',
+    category: 'category',
+    language: 'language',
+    status: 'status',
+    rejectionReason: 'rejectionReason',
+    body: 'body',
+    headerFormat: 'headerFormat',
+    headerText: 'headerText',
+    headerMediaId: 'headerMediaId',
+    headerMediaUrl: 'headerMediaUrl',
+    headerFilename: 'headerFilename',
+    footer: 'footer',
+    components: 'components',
+    variables: 'variables',
+    parameterFormat: 'parameterFormat',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type WaTemplateScalarFieldEnum = (typeof WaTemplateScalarFieldEnum)[keyof typeof WaTemplateScalarFieldEnum]
+
+
+  export const WaTemplateButtonScalarFieldEnum: {
+    id: 'id',
+    templateId: 'templateId',
+    index: 'index',
+    type: 'type',
+    text: 'text',
+    url: 'url',
+    phone: 'phone',
+    createdAt: 'createdAt'
+  };
+
+  export type WaTemplateButtonScalarFieldEnum = (typeof WaTemplateButtonScalarFieldEnum)[keyof typeof WaTemplateButtonScalarFieldEnum]
+
+
+  export const WaTemplateMediaScalarFieldEnum: {
+    id: 'id',
+    templateId: 'templateId',
+    mediaType: 'mediaType',
+    mediaId: 'mediaId',
+    url: 'url',
+    filename: 'filename',
+    mimeType: 'mimeType',
+    sizeBytes: 'sizeBytes',
+    caption: 'caption',
+    isHeader: 'isHeader',
+    uploadedAt: 'uploadedAt'
+  };
+
+  export type WaTemplateMediaScalarFieldEnum = (typeof WaTemplateMediaScalarFieldEnum)[keyof typeof WaTemplateMediaScalarFieldEnum]
+
+
+  export const WaContactScalarFieldEnum: {
+    id: 'id',
+    phone: 'phone',
+    name: 'name',
+    waId: 'waId',
+    isValid: 'isValid',
+    optedOut: 'optedOut',
+    notes: 'notes',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type WaContactScalarFieldEnum = (typeof WaContactScalarFieldEnum)[keyof typeof WaContactScalarFieldEnum]
+
+
+  export const WaMessageScalarFieldEnum: {
+    id: 'id',
+    wamid: 'wamid',
+    direction: 'direction',
+    status: 'status',
+    contactId: 'contactId',
+    to: 'to',
+    type: 'type',
+    body: 'body',
+    templateId: 'templateId',
+    variablesUsed: 'variablesUsed',
+    bulkJobId: 'bulkJobId',
+    errorCode: 'errorCode',
+    errorMessage: 'errorMessage',
+    sentAt: 'sentAt',
+    deliveredAt: 'deliveredAt',
+    readAt: 'readAt',
+    failedAt: 'failedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type WaMessageScalarFieldEnum = (typeof WaMessageScalarFieldEnum)[keyof typeof WaMessageScalarFieldEnum]
+
+
+  export const WaMessageMediaScalarFieldEnum: {
+    id: 'id',
+    messageId: 'messageId',
+    mediaType: 'mediaType',
+    mediaId: 'mediaId',
+    url: 'url',
+    filename: 'filename',
+    mimeType: 'mimeType',
+    sizeBytes: 'sizeBytes',
+    caption: 'caption',
+    createdAt: 'createdAt'
+  };
+
+  export type WaMessageMediaScalarFieldEnum = (typeof WaMessageMediaScalarFieldEnum)[keyof typeof WaMessageMediaScalarFieldEnum]
+
+
+  export const WaBulkJobScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    type: 'type',
+    status: 'status',
+    templateId: 'templateId',
+    message: 'message',
+    total: 'total',
+    sent: 'sent',
+    failed: 'failed',
+    cancelled: 'cancelled',
+    completedAt: 'completedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type WaBulkJobScalarFieldEnum = (typeof WaBulkJobScalarFieldEnum)[keyof typeof WaBulkJobScalarFieldEnum]
+
+
+  export const WaBulkRecipientScalarFieldEnum: {
+    id: 'id',
+    bulkJobId: 'bulkJobId',
+    contactId: 'contactId',
+    phone: 'phone',
+    name: 'name',
+    variables: 'variables',
+    status: 'status',
+    wamid: 'wamid',
+    errorMsg: 'errorMsg',
+    sentAt: 'sentAt'
+  };
+
+  export type WaBulkRecipientScalarFieldEnum = (typeof WaBulkRecipientScalarFieldEnum)[keyof typeof WaBulkRecipientScalarFieldEnum]
+
+
+  export const CustomTemplateScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    body: 'body',
+    category: 'category',
+    emoji: 'emoji',
+    usageCount: 'usageCount',
+    mediaType: 'mediaType',
+    mediaUrl: 'mediaUrl',
+    mediaCaption: 'mediaCaption',
+    buttons: 'buttons',
+    quickReplies: 'quickReplies',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CustomTemplateScalarFieldEnum = (typeof CustomTemplateScalarFieldEnum)[keyof typeof CustomTemplateScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -9894,6 +20815,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -10017,6 +20947,167 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaTemplateCategory'
+   */
+  export type EnumWaTemplateCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaTemplateCategory'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaTemplateCategory[]'
+   */
+  export type ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaTemplateCategory[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaTemplateStatus'
+   */
+  export type EnumWaTemplateStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaTemplateStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaTemplateStatus[]'
+   */
+  export type ListEnumWaTemplateStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaTemplateStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaHeaderFormat'
+   */
+  export type EnumWaHeaderFormatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaHeaderFormat'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaHeaderFormat[]'
+   */
+  export type ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaHeaderFormat[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaParamFormat'
+   */
+  export type EnumWaParamFormatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaParamFormat'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaParamFormat[]'
+   */
+  export type ListEnumWaParamFormatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaParamFormat[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaButtonType'
+   */
+  export type EnumWaButtonTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaButtonType'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaButtonType[]'
+   */
+  export type ListEnumWaButtonTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaButtonType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaMediaType'
+   */
+  export type EnumWaMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaMediaType'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaMediaType[]'
+   */
+  export type ListEnumWaMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaMediaType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaMsgDirection'
+   */
+  export type EnumWaMsgDirectionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaMsgDirection'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaMsgDirection[]'
+   */
+  export type ListEnumWaMsgDirectionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaMsgDirection[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaMsgStatus'
+   */
+  export type EnumWaMsgStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaMsgStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaMsgStatus[]'
+   */
+  export type ListEnumWaMsgStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaMsgStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaMsgType'
+   */
+  export type EnumWaMsgTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaMsgType'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaMsgType[]'
+   */
+  export type ListEnumWaMsgTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaMsgType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaBulkType'
+   */
+  export type EnumWaBulkTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaBulkType'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaBulkType[]'
+   */
+  export type ListEnumWaBulkTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaBulkType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaBulkStatus'
+   */
+  export type EnumWaBulkStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaBulkStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'WaBulkStatus[]'
+   */
+  export type ListEnumWaBulkStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaBulkStatus[]'>
     
 
 
@@ -10655,6 +21746,875 @@ export namespace Prisma {
     propertyId?: StringWithAggregatesFilter<"Booking"> | string
     userId?: StringNullableWithAggregatesFilter<"Booking"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
+  }
+
+  export type WaTemplateWhereInput = {
+    AND?: WaTemplateWhereInput | WaTemplateWhereInput[]
+    OR?: WaTemplateWhereInput[]
+    NOT?: WaTemplateWhereInput | WaTemplateWhereInput[]
+    id?: StringFilter<"WaTemplate"> | string
+    metaTemplateId?: StringNullableFilter<"WaTemplate"> | string | null
+    name?: StringFilter<"WaTemplate"> | string
+    category?: EnumWaTemplateCategoryFilter<"WaTemplate"> | $Enums.WaTemplateCategory
+    language?: StringFilter<"WaTemplate"> | string
+    status?: EnumWaTemplateStatusFilter<"WaTemplate"> | $Enums.WaTemplateStatus
+    rejectionReason?: StringNullableFilter<"WaTemplate"> | string | null
+    body?: StringFilter<"WaTemplate"> | string
+    headerFormat?: EnumWaHeaderFormatNullableFilter<"WaTemplate"> | $Enums.WaHeaderFormat | null
+    headerText?: StringNullableFilter<"WaTemplate"> | string | null
+    headerMediaId?: StringNullableFilter<"WaTemplate"> | string | null
+    headerMediaUrl?: StringNullableFilter<"WaTemplate"> | string | null
+    headerFilename?: StringNullableFilter<"WaTemplate"> | string | null
+    footer?: StringNullableFilter<"WaTemplate"> | string | null
+    components?: JsonFilter<"WaTemplate">
+    variables?: StringNullableListFilter<"WaTemplate">
+    parameterFormat?: EnumWaParamFormatFilter<"WaTemplate"> | $Enums.WaParamFormat
+    createdAt?: DateTimeFilter<"WaTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"WaTemplate"> | Date | string
+    buttons?: WaTemplateButtonListRelationFilter
+    media?: WaTemplateMediaListRelationFilter
+    messages?: WaMessageListRelationFilter
+    bulkJobs?: WaBulkJobListRelationFilter
+  }
+
+  export type WaTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    metaTemplateId?: SortOrderInput | SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    language?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrderInput | SortOrder
+    body?: SortOrder
+    headerFormat?: SortOrderInput | SortOrder
+    headerText?: SortOrderInput | SortOrder
+    headerMediaId?: SortOrderInput | SortOrder
+    headerMediaUrl?: SortOrderInput | SortOrder
+    headerFilename?: SortOrderInput | SortOrder
+    footer?: SortOrderInput | SortOrder
+    components?: SortOrder
+    variables?: SortOrder
+    parameterFormat?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    buttons?: WaTemplateButtonOrderByRelationAggregateInput
+    media?: WaTemplateMediaOrderByRelationAggregateInput
+    messages?: WaMessageOrderByRelationAggregateInput
+    bulkJobs?: WaBulkJobOrderByRelationAggregateInput
+  }
+
+  export type WaTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    metaTemplateId?: string
+    AND?: WaTemplateWhereInput | WaTemplateWhereInput[]
+    OR?: WaTemplateWhereInput[]
+    NOT?: WaTemplateWhereInput | WaTemplateWhereInput[]
+    name?: StringFilter<"WaTemplate"> | string
+    category?: EnumWaTemplateCategoryFilter<"WaTemplate"> | $Enums.WaTemplateCategory
+    language?: StringFilter<"WaTemplate"> | string
+    status?: EnumWaTemplateStatusFilter<"WaTemplate"> | $Enums.WaTemplateStatus
+    rejectionReason?: StringNullableFilter<"WaTemplate"> | string | null
+    body?: StringFilter<"WaTemplate"> | string
+    headerFormat?: EnumWaHeaderFormatNullableFilter<"WaTemplate"> | $Enums.WaHeaderFormat | null
+    headerText?: StringNullableFilter<"WaTemplate"> | string | null
+    headerMediaId?: StringNullableFilter<"WaTemplate"> | string | null
+    headerMediaUrl?: StringNullableFilter<"WaTemplate"> | string | null
+    headerFilename?: StringNullableFilter<"WaTemplate"> | string | null
+    footer?: StringNullableFilter<"WaTemplate"> | string | null
+    components?: JsonFilter<"WaTemplate">
+    variables?: StringNullableListFilter<"WaTemplate">
+    parameterFormat?: EnumWaParamFormatFilter<"WaTemplate"> | $Enums.WaParamFormat
+    createdAt?: DateTimeFilter<"WaTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"WaTemplate"> | Date | string
+    buttons?: WaTemplateButtonListRelationFilter
+    media?: WaTemplateMediaListRelationFilter
+    messages?: WaMessageListRelationFilter
+    bulkJobs?: WaBulkJobListRelationFilter
+  }, "id" | "metaTemplateId">
+
+  export type WaTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    metaTemplateId?: SortOrderInput | SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    language?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrderInput | SortOrder
+    body?: SortOrder
+    headerFormat?: SortOrderInput | SortOrder
+    headerText?: SortOrderInput | SortOrder
+    headerMediaId?: SortOrderInput | SortOrder
+    headerMediaUrl?: SortOrderInput | SortOrder
+    headerFilename?: SortOrderInput | SortOrder
+    footer?: SortOrderInput | SortOrder
+    components?: SortOrder
+    variables?: SortOrder
+    parameterFormat?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: WaTemplateCountOrderByAggregateInput
+    _max?: WaTemplateMaxOrderByAggregateInput
+    _min?: WaTemplateMinOrderByAggregateInput
+  }
+
+  export type WaTemplateScalarWhereWithAggregatesInput = {
+    AND?: WaTemplateScalarWhereWithAggregatesInput | WaTemplateScalarWhereWithAggregatesInput[]
+    OR?: WaTemplateScalarWhereWithAggregatesInput[]
+    NOT?: WaTemplateScalarWhereWithAggregatesInput | WaTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WaTemplate"> | string
+    metaTemplateId?: StringNullableWithAggregatesFilter<"WaTemplate"> | string | null
+    name?: StringWithAggregatesFilter<"WaTemplate"> | string
+    category?: EnumWaTemplateCategoryWithAggregatesFilter<"WaTemplate"> | $Enums.WaTemplateCategory
+    language?: StringWithAggregatesFilter<"WaTemplate"> | string
+    status?: EnumWaTemplateStatusWithAggregatesFilter<"WaTemplate"> | $Enums.WaTemplateStatus
+    rejectionReason?: StringNullableWithAggregatesFilter<"WaTemplate"> | string | null
+    body?: StringWithAggregatesFilter<"WaTemplate"> | string
+    headerFormat?: EnumWaHeaderFormatNullableWithAggregatesFilter<"WaTemplate"> | $Enums.WaHeaderFormat | null
+    headerText?: StringNullableWithAggregatesFilter<"WaTemplate"> | string | null
+    headerMediaId?: StringNullableWithAggregatesFilter<"WaTemplate"> | string | null
+    headerMediaUrl?: StringNullableWithAggregatesFilter<"WaTemplate"> | string | null
+    headerFilename?: StringNullableWithAggregatesFilter<"WaTemplate"> | string | null
+    footer?: StringNullableWithAggregatesFilter<"WaTemplate"> | string | null
+    components?: JsonWithAggregatesFilter<"WaTemplate">
+    variables?: StringNullableListFilter<"WaTemplate">
+    parameterFormat?: EnumWaParamFormatWithAggregatesFilter<"WaTemplate"> | $Enums.WaParamFormat
+    createdAt?: DateTimeWithAggregatesFilter<"WaTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"WaTemplate"> | Date | string
+  }
+
+  export type WaTemplateButtonWhereInput = {
+    AND?: WaTemplateButtonWhereInput | WaTemplateButtonWhereInput[]
+    OR?: WaTemplateButtonWhereInput[]
+    NOT?: WaTemplateButtonWhereInput | WaTemplateButtonWhereInput[]
+    id?: StringFilter<"WaTemplateButton"> | string
+    templateId?: StringFilter<"WaTemplateButton"> | string
+    index?: IntFilter<"WaTemplateButton"> | number
+    type?: EnumWaButtonTypeFilter<"WaTemplateButton"> | $Enums.WaButtonType
+    text?: StringFilter<"WaTemplateButton"> | string
+    url?: StringNullableFilter<"WaTemplateButton"> | string | null
+    phone?: StringNullableFilter<"WaTemplateButton"> | string | null
+    createdAt?: DateTimeFilter<"WaTemplateButton"> | Date | string
+    template?: XOR<WaTemplateRelationFilter, WaTemplateWhereInput>
+  }
+
+  export type WaTemplateButtonOrderByWithRelationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    index?: SortOrder
+    type?: SortOrder
+    text?: SortOrder
+    url?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    template?: WaTemplateOrderByWithRelationInput
+  }
+
+  export type WaTemplateButtonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WaTemplateButtonWhereInput | WaTemplateButtonWhereInput[]
+    OR?: WaTemplateButtonWhereInput[]
+    NOT?: WaTemplateButtonWhereInput | WaTemplateButtonWhereInput[]
+    templateId?: StringFilter<"WaTemplateButton"> | string
+    index?: IntFilter<"WaTemplateButton"> | number
+    type?: EnumWaButtonTypeFilter<"WaTemplateButton"> | $Enums.WaButtonType
+    text?: StringFilter<"WaTemplateButton"> | string
+    url?: StringNullableFilter<"WaTemplateButton"> | string | null
+    phone?: StringNullableFilter<"WaTemplateButton"> | string | null
+    createdAt?: DateTimeFilter<"WaTemplateButton"> | Date | string
+    template?: XOR<WaTemplateRelationFilter, WaTemplateWhereInput>
+  }, "id">
+
+  export type WaTemplateButtonOrderByWithAggregationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    index?: SortOrder
+    type?: SortOrder
+    text?: SortOrder
+    url?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: WaTemplateButtonCountOrderByAggregateInput
+    _avg?: WaTemplateButtonAvgOrderByAggregateInput
+    _max?: WaTemplateButtonMaxOrderByAggregateInput
+    _min?: WaTemplateButtonMinOrderByAggregateInput
+    _sum?: WaTemplateButtonSumOrderByAggregateInput
+  }
+
+  export type WaTemplateButtonScalarWhereWithAggregatesInput = {
+    AND?: WaTemplateButtonScalarWhereWithAggregatesInput | WaTemplateButtonScalarWhereWithAggregatesInput[]
+    OR?: WaTemplateButtonScalarWhereWithAggregatesInput[]
+    NOT?: WaTemplateButtonScalarWhereWithAggregatesInput | WaTemplateButtonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WaTemplateButton"> | string
+    templateId?: StringWithAggregatesFilter<"WaTemplateButton"> | string
+    index?: IntWithAggregatesFilter<"WaTemplateButton"> | number
+    type?: EnumWaButtonTypeWithAggregatesFilter<"WaTemplateButton"> | $Enums.WaButtonType
+    text?: StringWithAggregatesFilter<"WaTemplateButton"> | string
+    url?: StringNullableWithAggregatesFilter<"WaTemplateButton"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"WaTemplateButton"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"WaTemplateButton"> | Date | string
+  }
+
+  export type WaTemplateMediaWhereInput = {
+    AND?: WaTemplateMediaWhereInput | WaTemplateMediaWhereInput[]
+    OR?: WaTemplateMediaWhereInput[]
+    NOT?: WaTemplateMediaWhereInput | WaTemplateMediaWhereInput[]
+    id?: StringFilter<"WaTemplateMedia"> | string
+    templateId?: StringFilter<"WaTemplateMedia"> | string
+    mediaType?: EnumWaMediaTypeFilter<"WaTemplateMedia"> | $Enums.WaMediaType
+    mediaId?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    url?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    filename?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    mimeType?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    sizeBytes?: IntNullableFilter<"WaTemplateMedia"> | number | null
+    caption?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    isHeader?: BoolFilter<"WaTemplateMedia"> | boolean
+    uploadedAt?: DateTimeFilter<"WaTemplateMedia"> | Date | string
+    template?: XOR<WaTemplateRelationFilter, WaTemplateWhereInput>
+  }
+
+  export type WaTemplateMediaOrderByWithRelationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    filename?: SortOrderInput | SortOrder
+    mimeType?: SortOrderInput | SortOrder
+    sizeBytes?: SortOrderInput | SortOrder
+    caption?: SortOrderInput | SortOrder
+    isHeader?: SortOrder
+    uploadedAt?: SortOrder
+    template?: WaTemplateOrderByWithRelationInput
+  }
+
+  export type WaTemplateMediaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WaTemplateMediaWhereInput | WaTemplateMediaWhereInput[]
+    OR?: WaTemplateMediaWhereInput[]
+    NOT?: WaTemplateMediaWhereInput | WaTemplateMediaWhereInput[]
+    templateId?: StringFilter<"WaTemplateMedia"> | string
+    mediaType?: EnumWaMediaTypeFilter<"WaTemplateMedia"> | $Enums.WaMediaType
+    mediaId?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    url?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    filename?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    mimeType?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    sizeBytes?: IntNullableFilter<"WaTemplateMedia"> | number | null
+    caption?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    isHeader?: BoolFilter<"WaTemplateMedia"> | boolean
+    uploadedAt?: DateTimeFilter<"WaTemplateMedia"> | Date | string
+    template?: XOR<WaTemplateRelationFilter, WaTemplateWhereInput>
+  }, "id">
+
+  export type WaTemplateMediaOrderByWithAggregationInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    filename?: SortOrderInput | SortOrder
+    mimeType?: SortOrderInput | SortOrder
+    sizeBytes?: SortOrderInput | SortOrder
+    caption?: SortOrderInput | SortOrder
+    isHeader?: SortOrder
+    uploadedAt?: SortOrder
+    _count?: WaTemplateMediaCountOrderByAggregateInput
+    _avg?: WaTemplateMediaAvgOrderByAggregateInput
+    _max?: WaTemplateMediaMaxOrderByAggregateInput
+    _min?: WaTemplateMediaMinOrderByAggregateInput
+    _sum?: WaTemplateMediaSumOrderByAggregateInput
+  }
+
+  export type WaTemplateMediaScalarWhereWithAggregatesInput = {
+    AND?: WaTemplateMediaScalarWhereWithAggregatesInput | WaTemplateMediaScalarWhereWithAggregatesInput[]
+    OR?: WaTemplateMediaScalarWhereWithAggregatesInput[]
+    NOT?: WaTemplateMediaScalarWhereWithAggregatesInput | WaTemplateMediaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WaTemplateMedia"> | string
+    templateId?: StringWithAggregatesFilter<"WaTemplateMedia"> | string
+    mediaType?: EnumWaMediaTypeWithAggregatesFilter<"WaTemplateMedia"> | $Enums.WaMediaType
+    mediaId?: StringNullableWithAggregatesFilter<"WaTemplateMedia"> | string | null
+    url?: StringNullableWithAggregatesFilter<"WaTemplateMedia"> | string | null
+    filename?: StringNullableWithAggregatesFilter<"WaTemplateMedia"> | string | null
+    mimeType?: StringNullableWithAggregatesFilter<"WaTemplateMedia"> | string | null
+    sizeBytes?: IntNullableWithAggregatesFilter<"WaTemplateMedia"> | number | null
+    caption?: StringNullableWithAggregatesFilter<"WaTemplateMedia"> | string | null
+    isHeader?: BoolWithAggregatesFilter<"WaTemplateMedia"> | boolean
+    uploadedAt?: DateTimeWithAggregatesFilter<"WaTemplateMedia"> | Date | string
+  }
+
+  export type WaContactWhereInput = {
+    AND?: WaContactWhereInput | WaContactWhereInput[]
+    OR?: WaContactWhereInput[]
+    NOT?: WaContactWhereInput | WaContactWhereInput[]
+    id?: StringFilter<"WaContact"> | string
+    phone?: StringFilter<"WaContact"> | string
+    name?: StringNullableFilter<"WaContact"> | string | null
+    waId?: StringNullableFilter<"WaContact"> | string | null
+    isValid?: BoolFilter<"WaContact"> | boolean
+    optedOut?: BoolFilter<"WaContact"> | boolean
+    notes?: StringNullableFilter<"WaContact"> | string | null
+    createdAt?: DateTimeFilter<"WaContact"> | Date | string
+    updatedAt?: DateTimeFilter<"WaContact"> | Date | string
+    messages?: WaMessageListRelationFilter
+    bulkRecipients?: WaBulkRecipientListRelationFilter
+  }
+
+  export type WaContactOrderByWithRelationInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    name?: SortOrderInput | SortOrder
+    waId?: SortOrderInput | SortOrder
+    isValid?: SortOrder
+    optedOut?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    messages?: WaMessageOrderByRelationAggregateInput
+    bulkRecipients?: WaBulkRecipientOrderByRelationAggregateInput
+  }
+
+  export type WaContactWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    phone?: string
+    AND?: WaContactWhereInput | WaContactWhereInput[]
+    OR?: WaContactWhereInput[]
+    NOT?: WaContactWhereInput | WaContactWhereInput[]
+    name?: StringNullableFilter<"WaContact"> | string | null
+    waId?: StringNullableFilter<"WaContact"> | string | null
+    isValid?: BoolFilter<"WaContact"> | boolean
+    optedOut?: BoolFilter<"WaContact"> | boolean
+    notes?: StringNullableFilter<"WaContact"> | string | null
+    createdAt?: DateTimeFilter<"WaContact"> | Date | string
+    updatedAt?: DateTimeFilter<"WaContact"> | Date | string
+    messages?: WaMessageListRelationFilter
+    bulkRecipients?: WaBulkRecipientListRelationFilter
+  }, "id" | "phone">
+
+  export type WaContactOrderByWithAggregationInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    name?: SortOrderInput | SortOrder
+    waId?: SortOrderInput | SortOrder
+    isValid?: SortOrder
+    optedOut?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: WaContactCountOrderByAggregateInput
+    _max?: WaContactMaxOrderByAggregateInput
+    _min?: WaContactMinOrderByAggregateInput
+  }
+
+  export type WaContactScalarWhereWithAggregatesInput = {
+    AND?: WaContactScalarWhereWithAggregatesInput | WaContactScalarWhereWithAggregatesInput[]
+    OR?: WaContactScalarWhereWithAggregatesInput[]
+    NOT?: WaContactScalarWhereWithAggregatesInput | WaContactScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WaContact"> | string
+    phone?: StringWithAggregatesFilter<"WaContact"> | string
+    name?: StringNullableWithAggregatesFilter<"WaContact"> | string | null
+    waId?: StringNullableWithAggregatesFilter<"WaContact"> | string | null
+    isValid?: BoolWithAggregatesFilter<"WaContact"> | boolean
+    optedOut?: BoolWithAggregatesFilter<"WaContact"> | boolean
+    notes?: StringNullableWithAggregatesFilter<"WaContact"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"WaContact"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"WaContact"> | Date | string
+  }
+
+  export type WaMessageWhereInput = {
+    AND?: WaMessageWhereInput | WaMessageWhereInput[]
+    OR?: WaMessageWhereInput[]
+    NOT?: WaMessageWhereInput | WaMessageWhereInput[]
+    id?: StringFilter<"WaMessage"> | string
+    wamid?: StringNullableFilter<"WaMessage"> | string | null
+    direction?: EnumWaMsgDirectionFilter<"WaMessage"> | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFilter<"WaMessage"> | $Enums.WaMsgStatus
+    contactId?: StringNullableFilter<"WaMessage"> | string | null
+    to?: StringFilter<"WaMessage"> | string
+    type?: EnumWaMsgTypeFilter<"WaMessage"> | $Enums.WaMsgType
+    body?: StringNullableFilter<"WaMessage"> | string | null
+    templateId?: StringNullableFilter<"WaMessage"> | string | null
+    variablesUsed?: JsonNullableFilter<"WaMessage">
+    bulkJobId?: StringNullableFilter<"WaMessage"> | string | null
+    errorCode?: IntNullableFilter<"WaMessage"> | number | null
+    errorMessage?: StringNullableFilter<"WaMessage"> | string | null
+    sentAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    deliveredAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    readAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    failedAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    createdAt?: DateTimeFilter<"WaMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"WaMessage"> | Date | string
+    contact?: XOR<WaContactNullableRelationFilter, WaContactWhereInput> | null
+    template?: XOR<WaTemplateNullableRelationFilter, WaTemplateWhereInput> | null
+    bulkJob?: XOR<WaBulkJobNullableRelationFilter, WaBulkJobWhereInput> | null
+    media?: WaMessageMediaListRelationFilter
+  }
+
+  export type WaMessageOrderByWithRelationInput = {
+    id?: SortOrder
+    wamid?: SortOrderInput | SortOrder
+    direction?: SortOrder
+    status?: SortOrder
+    contactId?: SortOrderInput | SortOrder
+    to?: SortOrder
+    type?: SortOrder
+    body?: SortOrderInput | SortOrder
+    templateId?: SortOrderInput | SortOrder
+    variablesUsed?: SortOrderInput | SortOrder
+    bulkJobId?: SortOrderInput | SortOrder
+    errorCode?: SortOrderInput | SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    sentAt?: SortOrderInput | SortOrder
+    deliveredAt?: SortOrderInput | SortOrder
+    readAt?: SortOrderInput | SortOrder
+    failedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    contact?: WaContactOrderByWithRelationInput
+    template?: WaTemplateOrderByWithRelationInput
+    bulkJob?: WaBulkJobOrderByWithRelationInput
+    media?: WaMessageMediaOrderByRelationAggregateInput
+  }
+
+  export type WaMessageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    wamid?: string
+    AND?: WaMessageWhereInput | WaMessageWhereInput[]
+    OR?: WaMessageWhereInput[]
+    NOT?: WaMessageWhereInput | WaMessageWhereInput[]
+    direction?: EnumWaMsgDirectionFilter<"WaMessage"> | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFilter<"WaMessage"> | $Enums.WaMsgStatus
+    contactId?: StringNullableFilter<"WaMessage"> | string | null
+    to?: StringFilter<"WaMessage"> | string
+    type?: EnumWaMsgTypeFilter<"WaMessage"> | $Enums.WaMsgType
+    body?: StringNullableFilter<"WaMessage"> | string | null
+    templateId?: StringNullableFilter<"WaMessage"> | string | null
+    variablesUsed?: JsonNullableFilter<"WaMessage">
+    bulkJobId?: StringNullableFilter<"WaMessage"> | string | null
+    errorCode?: IntNullableFilter<"WaMessage"> | number | null
+    errorMessage?: StringNullableFilter<"WaMessage"> | string | null
+    sentAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    deliveredAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    readAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    failedAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    createdAt?: DateTimeFilter<"WaMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"WaMessage"> | Date | string
+    contact?: XOR<WaContactNullableRelationFilter, WaContactWhereInput> | null
+    template?: XOR<WaTemplateNullableRelationFilter, WaTemplateWhereInput> | null
+    bulkJob?: XOR<WaBulkJobNullableRelationFilter, WaBulkJobWhereInput> | null
+    media?: WaMessageMediaListRelationFilter
+  }, "id" | "wamid">
+
+  export type WaMessageOrderByWithAggregationInput = {
+    id?: SortOrder
+    wamid?: SortOrderInput | SortOrder
+    direction?: SortOrder
+    status?: SortOrder
+    contactId?: SortOrderInput | SortOrder
+    to?: SortOrder
+    type?: SortOrder
+    body?: SortOrderInput | SortOrder
+    templateId?: SortOrderInput | SortOrder
+    variablesUsed?: SortOrderInput | SortOrder
+    bulkJobId?: SortOrderInput | SortOrder
+    errorCode?: SortOrderInput | SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    sentAt?: SortOrderInput | SortOrder
+    deliveredAt?: SortOrderInput | SortOrder
+    readAt?: SortOrderInput | SortOrder
+    failedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: WaMessageCountOrderByAggregateInput
+    _avg?: WaMessageAvgOrderByAggregateInput
+    _max?: WaMessageMaxOrderByAggregateInput
+    _min?: WaMessageMinOrderByAggregateInput
+    _sum?: WaMessageSumOrderByAggregateInput
+  }
+
+  export type WaMessageScalarWhereWithAggregatesInput = {
+    AND?: WaMessageScalarWhereWithAggregatesInput | WaMessageScalarWhereWithAggregatesInput[]
+    OR?: WaMessageScalarWhereWithAggregatesInput[]
+    NOT?: WaMessageScalarWhereWithAggregatesInput | WaMessageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WaMessage"> | string
+    wamid?: StringNullableWithAggregatesFilter<"WaMessage"> | string | null
+    direction?: EnumWaMsgDirectionWithAggregatesFilter<"WaMessage"> | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusWithAggregatesFilter<"WaMessage"> | $Enums.WaMsgStatus
+    contactId?: StringNullableWithAggregatesFilter<"WaMessage"> | string | null
+    to?: StringWithAggregatesFilter<"WaMessage"> | string
+    type?: EnumWaMsgTypeWithAggregatesFilter<"WaMessage"> | $Enums.WaMsgType
+    body?: StringNullableWithAggregatesFilter<"WaMessage"> | string | null
+    templateId?: StringNullableWithAggregatesFilter<"WaMessage"> | string | null
+    variablesUsed?: JsonNullableWithAggregatesFilter<"WaMessage">
+    bulkJobId?: StringNullableWithAggregatesFilter<"WaMessage"> | string | null
+    errorCode?: IntNullableWithAggregatesFilter<"WaMessage"> | number | null
+    errorMessage?: StringNullableWithAggregatesFilter<"WaMessage"> | string | null
+    sentAt?: DateTimeNullableWithAggregatesFilter<"WaMessage"> | Date | string | null
+    deliveredAt?: DateTimeNullableWithAggregatesFilter<"WaMessage"> | Date | string | null
+    readAt?: DateTimeNullableWithAggregatesFilter<"WaMessage"> | Date | string | null
+    failedAt?: DateTimeNullableWithAggregatesFilter<"WaMessage"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"WaMessage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"WaMessage"> | Date | string
+  }
+
+  export type WaMessageMediaWhereInput = {
+    AND?: WaMessageMediaWhereInput | WaMessageMediaWhereInput[]
+    OR?: WaMessageMediaWhereInput[]
+    NOT?: WaMessageMediaWhereInput | WaMessageMediaWhereInput[]
+    id?: StringFilter<"WaMessageMedia"> | string
+    messageId?: StringFilter<"WaMessageMedia"> | string
+    mediaType?: EnumWaMediaTypeFilter<"WaMessageMedia"> | $Enums.WaMediaType
+    mediaId?: StringNullableFilter<"WaMessageMedia"> | string | null
+    url?: StringNullableFilter<"WaMessageMedia"> | string | null
+    filename?: StringNullableFilter<"WaMessageMedia"> | string | null
+    mimeType?: StringNullableFilter<"WaMessageMedia"> | string | null
+    sizeBytes?: IntNullableFilter<"WaMessageMedia"> | number | null
+    caption?: StringNullableFilter<"WaMessageMedia"> | string | null
+    createdAt?: DateTimeFilter<"WaMessageMedia"> | Date | string
+    message?: XOR<WaMessageRelationFilter, WaMessageWhereInput>
+  }
+
+  export type WaMessageMediaOrderByWithRelationInput = {
+    id?: SortOrder
+    messageId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    filename?: SortOrderInput | SortOrder
+    mimeType?: SortOrderInput | SortOrder
+    sizeBytes?: SortOrderInput | SortOrder
+    caption?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    message?: WaMessageOrderByWithRelationInput
+  }
+
+  export type WaMessageMediaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WaMessageMediaWhereInput | WaMessageMediaWhereInput[]
+    OR?: WaMessageMediaWhereInput[]
+    NOT?: WaMessageMediaWhereInput | WaMessageMediaWhereInput[]
+    messageId?: StringFilter<"WaMessageMedia"> | string
+    mediaType?: EnumWaMediaTypeFilter<"WaMessageMedia"> | $Enums.WaMediaType
+    mediaId?: StringNullableFilter<"WaMessageMedia"> | string | null
+    url?: StringNullableFilter<"WaMessageMedia"> | string | null
+    filename?: StringNullableFilter<"WaMessageMedia"> | string | null
+    mimeType?: StringNullableFilter<"WaMessageMedia"> | string | null
+    sizeBytes?: IntNullableFilter<"WaMessageMedia"> | number | null
+    caption?: StringNullableFilter<"WaMessageMedia"> | string | null
+    createdAt?: DateTimeFilter<"WaMessageMedia"> | Date | string
+    message?: XOR<WaMessageRelationFilter, WaMessageWhereInput>
+  }, "id">
+
+  export type WaMessageMediaOrderByWithAggregationInput = {
+    id?: SortOrder
+    messageId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrderInput | SortOrder
+    url?: SortOrderInput | SortOrder
+    filename?: SortOrderInput | SortOrder
+    mimeType?: SortOrderInput | SortOrder
+    sizeBytes?: SortOrderInput | SortOrder
+    caption?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: WaMessageMediaCountOrderByAggregateInput
+    _avg?: WaMessageMediaAvgOrderByAggregateInput
+    _max?: WaMessageMediaMaxOrderByAggregateInput
+    _min?: WaMessageMediaMinOrderByAggregateInput
+    _sum?: WaMessageMediaSumOrderByAggregateInput
+  }
+
+  export type WaMessageMediaScalarWhereWithAggregatesInput = {
+    AND?: WaMessageMediaScalarWhereWithAggregatesInput | WaMessageMediaScalarWhereWithAggregatesInput[]
+    OR?: WaMessageMediaScalarWhereWithAggregatesInput[]
+    NOT?: WaMessageMediaScalarWhereWithAggregatesInput | WaMessageMediaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WaMessageMedia"> | string
+    messageId?: StringWithAggregatesFilter<"WaMessageMedia"> | string
+    mediaType?: EnumWaMediaTypeWithAggregatesFilter<"WaMessageMedia"> | $Enums.WaMediaType
+    mediaId?: StringNullableWithAggregatesFilter<"WaMessageMedia"> | string | null
+    url?: StringNullableWithAggregatesFilter<"WaMessageMedia"> | string | null
+    filename?: StringNullableWithAggregatesFilter<"WaMessageMedia"> | string | null
+    mimeType?: StringNullableWithAggregatesFilter<"WaMessageMedia"> | string | null
+    sizeBytes?: IntNullableWithAggregatesFilter<"WaMessageMedia"> | number | null
+    caption?: StringNullableWithAggregatesFilter<"WaMessageMedia"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"WaMessageMedia"> | Date | string
+  }
+
+  export type WaBulkJobWhereInput = {
+    AND?: WaBulkJobWhereInput | WaBulkJobWhereInput[]
+    OR?: WaBulkJobWhereInput[]
+    NOT?: WaBulkJobWhereInput | WaBulkJobWhereInput[]
+    id?: StringFilter<"WaBulkJob"> | string
+    label?: StringFilter<"WaBulkJob"> | string
+    type?: EnumWaBulkTypeFilter<"WaBulkJob"> | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFilter<"WaBulkJob"> | $Enums.WaBulkStatus
+    templateId?: StringNullableFilter<"WaBulkJob"> | string | null
+    message?: StringNullableFilter<"WaBulkJob"> | string | null
+    total?: IntFilter<"WaBulkJob"> | number
+    sent?: IntFilter<"WaBulkJob"> | number
+    failed?: IntFilter<"WaBulkJob"> | number
+    cancelled?: IntFilter<"WaBulkJob"> | number
+    completedAt?: DateTimeNullableFilter<"WaBulkJob"> | Date | string | null
+    createdAt?: DateTimeFilter<"WaBulkJob"> | Date | string
+    updatedAt?: DateTimeFilter<"WaBulkJob"> | Date | string
+    template?: XOR<WaTemplateNullableRelationFilter, WaTemplateWhereInput> | null
+    recipients?: WaBulkRecipientListRelationFilter
+    messages?: WaMessageListRelationFilter
+  }
+
+  export type WaBulkJobOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    templateId?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    total?: SortOrder
+    sent?: SortOrder
+    failed?: SortOrder
+    cancelled?: SortOrder
+    completedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    template?: WaTemplateOrderByWithRelationInput
+    recipients?: WaBulkRecipientOrderByRelationAggregateInput
+    messages?: WaMessageOrderByRelationAggregateInput
+  }
+
+  export type WaBulkJobWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WaBulkJobWhereInput | WaBulkJobWhereInput[]
+    OR?: WaBulkJobWhereInput[]
+    NOT?: WaBulkJobWhereInput | WaBulkJobWhereInput[]
+    label?: StringFilter<"WaBulkJob"> | string
+    type?: EnumWaBulkTypeFilter<"WaBulkJob"> | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFilter<"WaBulkJob"> | $Enums.WaBulkStatus
+    templateId?: StringNullableFilter<"WaBulkJob"> | string | null
+    message?: StringNullableFilter<"WaBulkJob"> | string | null
+    total?: IntFilter<"WaBulkJob"> | number
+    sent?: IntFilter<"WaBulkJob"> | number
+    failed?: IntFilter<"WaBulkJob"> | number
+    cancelled?: IntFilter<"WaBulkJob"> | number
+    completedAt?: DateTimeNullableFilter<"WaBulkJob"> | Date | string | null
+    createdAt?: DateTimeFilter<"WaBulkJob"> | Date | string
+    updatedAt?: DateTimeFilter<"WaBulkJob"> | Date | string
+    template?: XOR<WaTemplateNullableRelationFilter, WaTemplateWhereInput> | null
+    recipients?: WaBulkRecipientListRelationFilter
+    messages?: WaMessageListRelationFilter
+  }, "id">
+
+  export type WaBulkJobOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    templateId?: SortOrderInput | SortOrder
+    message?: SortOrderInput | SortOrder
+    total?: SortOrder
+    sent?: SortOrder
+    failed?: SortOrder
+    cancelled?: SortOrder
+    completedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: WaBulkJobCountOrderByAggregateInput
+    _avg?: WaBulkJobAvgOrderByAggregateInput
+    _max?: WaBulkJobMaxOrderByAggregateInput
+    _min?: WaBulkJobMinOrderByAggregateInput
+    _sum?: WaBulkJobSumOrderByAggregateInput
+  }
+
+  export type WaBulkJobScalarWhereWithAggregatesInput = {
+    AND?: WaBulkJobScalarWhereWithAggregatesInput | WaBulkJobScalarWhereWithAggregatesInput[]
+    OR?: WaBulkJobScalarWhereWithAggregatesInput[]
+    NOT?: WaBulkJobScalarWhereWithAggregatesInput | WaBulkJobScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WaBulkJob"> | string
+    label?: StringWithAggregatesFilter<"WaBulkJob"> | string
+    type?: EnumWaBulkTypeWithAggregatesFilter<"WaBulkJob"> | $Enums.WaBulkType
+    status?: EnumWaBulkStatusWithAggregatesFilter<"WaBulkJob"> | $Enums.WaBulkStatus
+    templateId?: StringNullableWithAggregatesFilter<"WaBulkJob"> | string | null
+    message?: StringNullableWithAggregatesFilter<"WaBulkJob"> | string | null
+    total?: IntWithAggregatesFilter<"WaBulkJob"> | number
+    sent?: IntWithAggregatesFilter<"WaBulkJob"> | number
+    failed?: IntWithAggregatesFilter<"WaBulkJob"> | number
+    cancelled?: IntWithAggregatesFilter<"WaBulkJob"> | number
+    completedAt?: DateTimeNullableWithAggregatesFilter<"WaBulkJob"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"WaBulkJob"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"WaBulkJob"> | Date | string
+  }
+
+  export type WaBulkRecipientWhereInput = {
+    AND?: WaBulkRecipientWhereInput | WaBulkRecipientWhereInput[]
+    OR?: WaBulkRecipientWhereInput[]
+    NOT?: WaBulkRecipientWhereInput | WaBulkRecipientWhereInput[]
+    id?: StringFilter<"WaBulkRecipient"> | string
+    bulkJobId?: StringFilter<"WaBulkRecipient"> | string
+    contactId?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    phone?: StringFilter<"WaBulkRecipient"> | string
+    name?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    variables?: JsonNullableFilter<"WaBulkRecipient">
+    status?: EnumWaMsgStatusFilter<"WaBulkRecipient"> | $Enums.WaMsgStatus
+    wamid?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    errorMsg?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    sentAt?: DateTimeNullableFilter<"WaBulkRecipient"> | Date | string | null
+    bulkJob?: XOR<WaBulkJobRelationFilter, WaBulkJobWhereInput>
+    contact?: XOR<WaContactNullableRelationFilter, WaContactWhereInput> | null
+  }
+
+  export type WaBulkRecipientOrderByWithRelationInput = {
+    id?: SortOrder
+    bulkJobId?: SortOrder
+    contactId?: SortOrderInput | SortOrder
+    phone?: SortOrder
+    name?: SortOrderInput | SortOrder
+    variables?: SortOrderInput | SortOrder
+    status?: SortOrder
+    wamid?: SortOrderInput | SortOrder
+    errorMsg?: SortOrderInput | SortOrder
+    sentAt?: SortOrderInput | SortOrder
+    bulkJob?: WaBulkJobOrderByWithRelationInput
+    contact?: WaContactOrderByWithRelationInput
+  }
+
+  export type WaBulkRecipientWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WaBulkRecipientWhereInput | WaBulkRecipientWhereInput[]
+    OR?: WaBulkRecipientWhereInput[]
+    NOT?: WaBulkRecipientWhereInput | WaBulkRecipientWhereInput[]
+    bulkJobId?: StringFilter<"WaBulkRecipient"> | string
+    contactId?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    phone?: StringFilter<"WaBulkRecipient"> | string
+    name?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    variables?: JsonNullableFilter<"WaBulkRecipient">
+    status?: EnumWaMsgStatusFilter<"WaBulkRecipient"> | $Enums.WaMsgStatus
+    wamid?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    errorMsg?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    sentAt?: DateTimeNullableFilter<"WaBulkRecipient"> | Date | string | null
+    bulkJob?: XOR<WaBulkJobRelationFilter, WaBulkJobWhereInput>
+    contact?: XOR<WaContactNullableRelationFilter, WaContactWhereInput> | null
+  }, "id">
+
+  export type WaBulkRecipientOrderByWithAggregationInput = {
+    id?: SortOrder
+    bulkJobId?: SortOrder
+    contactId?: SortOrderInput | SortOrder
+    phone?: SortOrder
+    name?: SortOrderInput | SortOrder
+    variables?: SortOrderInput | SortOrder
+    status?: SortOrder
+    wamid?: SortOrderInput | SortOrder
+    errorMsg?: SortOrderInput | SortOrder
+    sentAt?: SortOrderInput | SortOrder
+    _count?: WaBulkRecipientCountOrderByAggregateInput
+    _max?: WaBulkRecipientMaxOrderByAggregateInput
+    _min?: WaBulkRecipientMinOrderByAggregateInput
+  }
+
+  export type WaBulkRecipientScalarWhereWithAggregatesInput = {
+    AND?: WaBulkRecipientScalarWhereWithAggregatesInput | WaBulkRecipientScalarWhereWithAggregatesInput[]
+    OR?: WaBulkRecipientScalarWhereWithAggregatesInput[]
+    NOT?: WaBulkRecipientScalarWhereWithAggregatesInput | WaBulkRecipientScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WaBulkRecipient"> | string
+    bulkJobId?: StringWithAggregatesFilter<"WaBulkRecipient"> | string
+    contactId?: StringNullableWithAggregatesFilter<"WaBulkRecipient"> | string | null
+    phone?: StringWithAggregatesFilter<"WaBulkRecipient"> | string
+    name?: StringNullableWithAggregatesFilter<"WaBulkRecipient"> | string | null
+    variables?: JsonNullableWithAggregatesFilter<"WaBulkRecipient">
+    status?: EnumWaMsgStatusWithAggregatesFilter<"WaBulkRecipient"> | $Enums.WaMsgStatus
+    wamid?: StringNullableWithAggregatesFilter<"WaBulkRecipient"> | string | null
+    errorMsg?: StringNullableWithAggregatesFilter<"WaBulkRecipient"> | string | null
+    sentAt?: DateTimeNullableWithAggregatesFilter<"WaBulkRecipient"> | Date | string | null
+  }
+
+  export type CustomTemplateWhereInput = {
+    AND?: CustomTemplateWhereInput | CustomTemplateWhereInput[]
+    OR?: CustomTemplateWhereInput[]
+    NOT?: CustomTemplateWhereInput | CustomTemplateWhereInput[]
+    id?: StringFilter<"CustomTemplate"> | string
+    name?: StringFilter<"CustomTemplate"> | string
+    body?: StringFilter<"CustomTemplate"> | string
+    category?: StringFilter<"CustomTemplate"> | string
+    emoji?: StringFilter<"CustomTemplate"> | string
+    usageCount?: IntFilter<"CustomTemplate"> | number
+    mediaType?: StringNullableFilter<"CustomTemplate"> | string | null
+    mediaUrl?: StringNullableFilter<"CustomTemplate"> | string | null
+    mediaCaption?: StringNullableFilter<"CustomTemplate"> | string | null
+    buttons?: JsonFilter<"CustomTemplate">
+    quickReplies?: JsonFilter<"CustomTemplate">
+    createdAt?: DateTimeFilter<"CustomTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"CustomTemplate"> | Date | string
+  }
+
+  export type CustomTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    body?: SortOrder
+    category?: SortOrder
+    emoji?: SortOrder
+    usageCount?: SortOrder
+    mediaType?: SortOrderInput | SortOrder
+    mediaUrl?: SortOrderInput | SortOrder
+    mediaCaption?: SortOrderInput | SortOrder
+    buttons?: SortOrder
+    quickReplies?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CustomTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: CustomTemplateWhereInput | CustomTemplateWhereInput[]
+    OR?: CustomTemplateWhereInput[]
+    NOT?: CustomTemplateWhereInput | CustomTemplateWhereInput[]
+    body?: StringFilter<"CustomTemplate"> | string
+    category?: StringFilter<"CustomTemplate"> | string
+    emoji?: StringFilter<"CustomTemplate"> | string
+    usageCount?: IntFilter<"CustomTemplate"> | number
+    mediaType?: StringNullableFilter<"CustomTemplate"> | string | null
+    mediaUrl?: StringNullableFilter<"CustomTemplate"> | string | null
+    mediaCaption?: StringNullableFilter<"CustomTemplate"> | string | null
+    buttons?: JsonFilter<"CustomTemplate">
+    quickReplies?: JsonFilter<"CustomTemplate">
+    createdAt?: DateTimeFilter<"CustomTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"CustomTemplate"> | Date | string
+  }, "id" | "name">
+
+  export type CustomTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    body?: SortOrder
+    category?: SortOrder
+    emoji?: SortOrder
+    usageCount?: SortOrder
+    mediaType?: SortOrderInput | SortOrder
+    mediaUrl?: SortOrderInput | SortOrder
+    mediaCaption?: SortOrderInput | SortOrder
+    buttons?: SortOrder
+    quickReplies?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CustomTemplateCountOrderByAggregateInput
+    _avg?: CustomTemplateAvgOrderByAggregateInput
+    _max?: CustomTemplateMaxOrderByAggregateInput
+    _min?: CustomTemplateMinOrderByAggregateInput
+    _sum?: CustomTemplateSumOrderByAggregateInput
+  }
+
+  export type CustomTemplateScalarWhereWithAggregatesInput = {
+    AND?: CustomTemplateScalarWhereWithAggregatesInput | CustomTemplateScalarWhereWithAggregatesInput[]
+    OR?: CustomTemplateScalarWhereWithAggregatesInput[]
+    NOT?: CustomTemplateScalarWhereWithAggregatesInput | CustomTemplateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CustomTemplate"> | string
+    name?: StringWithAggregatesFilter<"CustomTemplate"> | string
+    body?: StringWithAggregatesFilter<"CustomTemplate"> | string
+    category?: StringWithAggregatesFilter<"CustomTemplate"> | string
+    emoji?: StringWithAggregatesFilter<"CustomTemplate"> | string
+    usageCount?: IntWithAggregatesFilter<"CustomTemplate"> | number
+    mediaType?: StringNullableWithAggregatesFilter<"CustomTemplate"> | string | null
+    mediaUrl?: StringNullableWithAggregatesFilter<"CustomTemplate"> | string | null
+    mediaCaption?: StringNullableWithAggregatesFilter<"CustomTemplate"> | string | null
+    buttons?: JsonWithAggregatesFilter<"CustomTemplate">
+    quickReplies?: JsonWithAggregatesFilter<"CustomTemplate">
+    createdAt?: DateTimeWithAggregatesFilter<"CustomTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CustomTemplate"> | Date | string
   }
 
   export type PropertyCreateInput = {
@@ -11343,6 +23303,1006 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type WaTemplateCreateInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    buttons?: WaTemplateButtonCreateNestedManyWithoutTemplateInput
+    media?: WaTemplateMediaCreateNestedManyWithoutTemplateInput
+    messages?: WaMessageCreateNestedManyWithoutTemplateInput
+    bulkJobs?: WaBulkJobCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateUncheckedCreateInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    buttons?: WaTemplateButtonUncheckedCreateNestedManyWithoutTemplateInput
+    media?: WaTemplateMediaUncheckedCreateNestedManyWithoutTemplateInput
+    messages?: WaMessageUncheckedCreateNestedManyWithoutTemplateInput
+    bulkJobs?: WaBulkJobUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buttons?: WaTemplateButtonUpdateManyWithoutTemplateNestedInput
+    media?: WaTemplateMediaUpdateManyWithoutTemplateNestedInput
+    messages?: WaMessageUpdateManyWithoutTemplateNestedInput
+    bulkJobs?: WaBulkJobUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buttons?: WaTemplateButtonUncheckedUpdateManyWithoutTemplateNestedInput
+    media?: WaTemplateMediaUncheckedUpdateManyWithoutTemplateNestedInput
+    messages?: WaMessageUncheckedUpdateManyWithoutTemplateNestedInput
+    bulkJobs?: WaBulkJobUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaTemplateCreateManyInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateButtonCreateInput = {
+    id?: string
+    index: number
+    type: $Enums.WaButtonType
+    text: string
+    url?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    template: WaTemplateCreateNestedOneWithoutButtonsInput
+  }
+
+  export type WaTemplateButtonUncheckedCreateInput = {
+    id?: string
+    templateId: string
+    index: number
+    type: $Enums.WaButtonType
+    text: string
+    url?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaTemplateButtonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    type?: EnumWaButtonTypeFieldUpdateOperationsInput | $Enums.WaButtonType
+    text?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: WaTemplateUpdateOneRequiredWithoutButtonsNestedInput
+  }
+
+  export type WaTemplateButtonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    type?: EnumWaButtonTypeFieldUpdateOperationsInput | $Enums.WaButtonType
+    text?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateButtonCreateManyInput = {
+    id?: string
+    templateId: string
+    index: number
+    type: $Enums.WaButtonType
+    text: string
+    url?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaTemplateButtonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    type?: EnumWaButtonTypeFieldUpdateOperationsInput | $Enums.WaButtonType
+    text?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateButtonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    type?: EnumWaButtonTypeFieldUpdateOperationsInput | $Enums.WaButtonType
+    text?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateMediaCreateInput = {
+    id?: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    isHeader?: boolean
+    uploadedAt?: Date | string
+    template: WaTemplateCreateNestedOneWithoutMediaInput
+  }
+
+  export type WaTemplateMediaUncheckedCreateInput = {
+    id?: string
+    templateId: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    isHeader?: boolean
+    uploadedAt?: Date | string
+  }
+
+  export type WaTemplateMediaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    isHeader?: BoolFieldUpdateOperationsInput | boolean
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: WaTemplateUpdateOneRequiredWithoutMediaNestedInput
+  }
+
+  export type WaTemplateMediaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    isHeader?: BoolFieldUpdateOperationsInput | boolean
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateMediaCreateManyInput = {
+    id?: string
+    templateId: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    isHeader?: boolean
+    uploadedAt?: Date | string
+  }
+
+  export type WaTemplateMediaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    isHeader?: BoolFieldUpdateOperationsInput | boolean
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateMediaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    templateId?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    isHeader?: BoolFieldUpdateOperationsInput | boolean
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaContactCreateInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    waId?: string | null
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: WaMessageCreateNestedManyWithoutContactInput
+    bulkRecipients?: WaBulkRecipientCreateNestedManyWithoutContactInput
+  }
+
+  export type WaContactUncheckedCreateInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    waId?: string | null
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: WaMessageUncheckedCreateNestedManyWithoutContactInput
+    bulkRecipients?: WaBulkRecipientUncheckedCreateNestedManyWithoutContactInput
+  }
+
+  export type WaContactUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    waId?: NullableStringFieldUpdateOperationsInput | string | null
+    isValid?: BoolFieldUpdateOperationsInput | boolean
+    optedOut?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: WaMessageUpdateManyWithoutContactNestedInput
+    bulkRecipients?: WaBulkRecipientUpdateManyWithoutContactNestedInput
+  }
+
+  export type WaContactUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    waId?: NullableStringFieldUpdateOperationsInput | string | null
+    isValid?: BoolFieldUpdateOperationsInput | boolean
+    optedOut?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: WaMessageUncheckedUpdateManyWithoutContactNestedInput
+    bulkRecipients?: WaBulkRecipientUncheckedUpdateManyWithoutContactNestedInput
+  }
+
+  export type WaContactCreateManyInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    waId?: string | null
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaContactUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    waId?: NullableStringFieldUpdateOperationsInput | string | null
+    isValid?: BoolFieldUpdateOperationsInput | boolean
+    optedOut?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaContactUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    waId?: NullableStringFieldUpdateOperationsInput | string | null
+    isValid?: BoolFieldUpdateOperationsInput | boolean
+    optedOut?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageCreateInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contact?: WaContactCreateNestedOneWithoutMessagesInput
+    template?: WaTemplateCreateNestedOneWithoutMessagesInput
+    bulkJob?: WaBulkJobCreateNestedOneWithoutMessagesInput
+    media?: WaMessageMediaCreateNestedManyWithoutMessageInput
+  }
+
+  export type WaMessageUncheckedCreateInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    contactId?: string | null
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    templateId?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: string | null
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    media?: WaMessageMediaUncheckedCreateNestedManyWithoutMessageInput
+  }
+
+  export type WaMessageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: WaContactUpdateOneWithoutMessagesNestedInput
+    template?: WaTemplateUpdateOneWithoutMessagesNestedInput
+    bulkJob?: WaBulkJobUpdateOneWithoutMessagesNestedInput
+    media?: WaMessageMediaUpdateManyWithoutMessageNestedInput
+  }
+
+  export type WaMessageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: WaMessageMediaUncheckedUpdateManyWithoutMessageNestedInput
+  }
+
+  export type WaMessageCreateManyInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    contactId?: string | null
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    templateId?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: string | null
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaMessageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageMediaCreateInput = {
+    id?: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    createdAt?: Date | string
+    message: WaMessageCreateNestedOneWithoutMediaInput
+  }
+
+  export type WaMessageMediaUncheckedCreateInput = {
+    id?: string
+    messageId: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaMessageMediaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    message?: WaMessageUpdateOneRequiredWithoutMediaNestedInput
+  }
+
+  export type WaMessageMediaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    messageId?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageMediaCreateManyInput = {
+    id?: string
+    messageId: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaMessageMediaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageMediaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    messageId?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaBulkJobCreateInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    template?: WaTemplateCreateNestedOneWithoutBulkJobsInput
+    recipients?: WaBulkRecipientCreateNestedManyWithoutBulkJobInput
+    messages?: WaMessageCreateNestedManyWithoutBulkJobInput
+  }
+
+  export type WaBulkJobUncheckedCreateInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    templateId?: string | null
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    recipients?: WaBulkRecipientUncheckedCreateNestedManyWithoutBulkJobInput
+    messages?: WaMessageUncheckedCreateNestedManyWithoutBulkJobInput
+  }
+
+  export type WaBulkJobUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: WaTemplateUpdateOneWithoutBulkJobsNestedInput
+    recipients?: WaBulkRecipientUpdateManyWithoutBulkJobNestedInput
+    messages?: WaMessageUpdateManyWithoutBulkJobNestedInput
+  }
+
+  export type WaBulkJobUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recipients?: WaBulkRecipientUncheckedUpdateManyWithoutBulkJobNestedInput
+    messages?: WaMessageUncheckedUpdateManyWithoutBulkJobNestedInput
+  }
+
+  export type WaBulkJobCreateManyInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    templateId?: string | null
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaBulkJobUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaBulkJobUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaBulkRecipientCreateInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+    bulkJob: WaBulkJobCreateNestedOneWithoutRecipientsInput
+    contact?: WaContactCreateNestedOneWithoutBulkRecipientsInput
+  }
+
+  export type WaBulkRecipientUncheckedCreateInput = {
+    id?: string
+    bulkJobId: string
+    contactId?: string | null
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+  }
+
+  export type WaBulkRecipientUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bulkJob?: WaBulkJobUpdateOneRequiredWithoutRecipientsNestedInput
+    contact?: WaContactUpdateOneWithoutBulkRecipientsNestedInput
+  }
+
+  export type WaBulkRecipientUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bulkJobId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type WaBulkRecipientCreateManyInput = {
+    id?: string
+    bulkJobId: string
+    contactId?: string | null
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+  }
+
+  export type WaBulkRecipientUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type WaBulkRecipientUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bulkJobId?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CustomTemplateCreateInput = {
+    id?: string
+    name: string
+    body?: string
+    category?: string
+    emoji?: string
+    usageCount?: number
+    mediaType?: string | null
+    mediaUrl?: string | null
+    mediaCaption?: string | null
+    buttons?: JsonNullValueInput | InputJsonValue
+    quickReplies?: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CustomTemplateUncheckedCreateInput = {
+    id?: string
+    name: string
+    body?: string
+    category?: string
+    emoji?: string
+    usageCount?: number
+    mediaType?: string | null
+    mediaUrl?: string | null
+    mediaCaption?: string | null
+    buttons?: JsonNullValueInput | InputJsonValue
+    quickReplies?: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CustomTemplateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    emoji?: StringFieldUpdateOperationsInput | string
+    usageCount?: IntFieldUpdateOperationsInput | number
+    mediaType?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaCaption?: NullableStringFieldUpdateOperationsInput | string | null
+    buttons?: JsonNullValueInput | InputJsonValue
+    quickReplies?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CustomTemplateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    emoji?: StringFieldUpdateOperationsInput | string
+    usageCount?: IntFieldUpdateOperationsInput | number
+    mediaType?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaCaption?: NullableStringFieldUpdateOperationsInput | string | null
+    buttons?: JsonNullValueInput | InputJsonValue
+    quickReplies?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CustomTemplateCreateManyInput = {
+    id?: string
+    name: string
+    body?: string
+    category?: string
+    emoji?: string
+    usageCount?: number
+    mediaType?: string | null
+    mediaUrl?: string | null
+    mediaCaption?: string | null
+    buttons?: JsonNullValueInput | InputJsonValue
+    quickReplies?: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CustomTemplateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    emoji?: StringFieldUpdateOperationsInput | string
+    usageCount?: IntFieldUpdateOperationsInput | number
+    mediaType?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaCaption?: NullableStringFieldUpdateOperationsInput | string | null
+    buttons?: JsonNullValueInput | InputJsonValue
+    quickReplies?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CustomTemplateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    body?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    emoji?: StringFieldUpdateOperationsInput | string
+    usageCount?: IntFieldUpdateOperationsInput | number
+    mediaType?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaCaption?: NullableStringFieldUpdateOperationsInput | string | null
+    buttons?: JsonNullValueInput | InputJsonValue
+    quickReplies?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12004,6 +24964,861 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type EnumWaTemplateCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaTemplateCategory | EnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.WaTemplateCategory[] | ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaTemplateCategory[] | ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaTemplateCategoryFilter<$PrismaModel> | $Enums.WaTemplateCategory
+  }
+
+  export type EnumWaTemplateStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaTemplateStatus | EnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaTemplateStatus[] | ListEnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaTemplateStatus[] | ListEnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaTemplateStatusFilter<$PrismaModel> | $Enums.WaTemplateStatus
+  }
+
+  export type EnumWaHeaderFormatNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaHeaderFormat | EnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    in?: $Enums.WaHeaderFormat[] | ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.WaHeaderFormat[] | ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumWaHeaderFormatNullableFilter<$PrismaModel> | $Enums.WaHeaderFormat | null
+  }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type EnumWaParamFormatFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaParamFormat | EnumWaParamFormatFieldRefInput<$PrismaModel>
+    in?: $Enums.WaParamFormat[] | ListEnumWaParamFormatFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaParamFormat[] | ListEnumWaParamFormatFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaParamFormatFilter<$PrismaModel> | $Enums.WaParamFormat
+  }
+
+  export type WaTemplateButtonListRelationFilter = {
+    every?: WaTemplateButtonWhereInput
+    some?: WaTemplateButtonWhereInput
+    none?: WaTemplateButtonWhereInput
+  }
+
+  export type WaTemplateMediaListRelationFilter = {
+    every?: WaTemplateMediaWhereInput
+    some?: WaTemplateMediaWhereInput
+    none?: WaTemplateMediaWhereInput
+  }
+
+  export type WaMessageListRelationFilter = {
+    every?: WaMessageWhereInput
+    some?: WaMessageWhereInput
+    none?: WaMessageWhereInput
+  }
+
+  export type WaBulkJobListRelationFilter = {
+    every?: WaBulkJobWhereInput
+    some?: WaBulkJobWhereInput
+    none?: WaBulkJobWhereInput
+  }
+
+  export type WaTemplateButtonOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WaTemplateMediaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WaMessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WaBulkJobOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WaTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    metaTemplateId?: SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    language?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrder
+    body?: SortOrder
+    headerFormat?: SortOrder
+    headerText?: SortOrder
+    headerMediaId?: SortOrder
+    headerMediaUrl?: SortOrder
+    headerFilename?: SortOrder
+    footer?: SortOrder
+    components?: SortOrder
+    variables?: SortOrder
+    parameterFormat?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    metaTemplateId?: SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    language?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrder
+    body?: SortOrder
+    headerFormat?: SortOrder
+    headerText?: SortOrder
+    headerMediaId?: SortOrder
+    headerMediaUrl?: SortOrder
+    headerFilename?: SortOrder
+    footer?: SortOrder
+    parameterFormat?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    metaTemplateId?: SortOrder
+    name?: SortOrder
+    category?: SortOrder
+    language?: SortOrder
+    status?: SortOrder
+    rejectionReason?: SortOrder
+    body?: SortOrder
+    headerFormat?: SortOrder
+    headerText?: SortOrder
+    headerMediaId?: SortOrder
+    headerMediaUrl?: SortOrder
+    headerFilename?: SortOrder
+    footer?: SortOrder
+    parameterFormat?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumWaTemplateCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaTemplateCategory | EnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.WaTemplateCategory[] | ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaTemplateCategory[] | ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaTemplateCategoryWithAggregatesFilter<$PrismaModel> | $Enums.WaTemplateCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaTemplateCategoryFilter<$PrismaModel>
+    _max?: NestedEnumWaTemplateCategoryFilter<$PrismaModel>
+  }
+
+  export type EnumWaTemplateStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaTemplateStatus | EnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaTemplateStatus[] | ListEnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaTemplateStatus[] | ListEnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaTemplateStatusWithAggregatesFilter<$PrismaModel> | $Enums.WaTemplateStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaTemplateStatusFilter<$PrismaModel>
+    _max?: NestedEnumWaTemplateStatusFilter<$PrismaModel>
+  }
+
+  export type EnumWaHeaderFormatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaHeaderFormat | EnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    in?: $Enums.WaHeaderFormat[] | ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.WaHeaderFormat[] | ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumWaHeaderFormatNullableWithAggregatesFilter<$PrismaModel> | $Enums.WaHeaderFormat | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumWaHeaderFormatNullableFilter<$PrismaModel>
+    _max?: NestedEnumWaHeaderFormatNullableFilter<$PrismaModel>
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type EnumWaParamFormatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaParamFormat | EnumWaParamFormatFieldRefInput<$PrismaModel>
+    in?: $Enums.WaParamFormat[] | ListEnumWaParamFormatFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaParamFormat[] | ListEnumWaParamFormatFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaParamFormatWithAggregatesFilter<$PrismaModel> | $Enums.WaParamFormat
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaParamFormatFilter<$PrismaModel>
+    _max?: NestedEnumWaParamFormatFilter<$PrismaModel>
+  }
+
+  export type EnumWaButtonTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaButtonType | EnumWaButtonTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaButtonType[] | ListEnumWaButtonTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaButtonType[] | ListEnumWaButtonTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaButtonTypeFilter<$PrismaModel> | $Enums.WaButtonType
+  }
+
+  export type WaTemplateRelationFilter = {
+    is?: WaTemplateWhereInput
+    isNot?: WaTemplateWhereInput
+  }
+
+  export type WaTemplateButtonCountOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    index?: SortOrder
+    type?: SortOrder
+    text?: SortOrder
+    url?: SortOrder
+    phone?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WaTemplateButtonAvgOrderByAggregateInput = {
+    index?: SortOrder
+  }
+
+  export type WaTemplateButtonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    index?: SortOrder
+    type?: SortOrder
+    text?: SortOrder
+    url?: SortOrder
+    phone?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WaTemplateButtonMinOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    index?: SortOrder
+    type?: SortOrder
+    text?: SortOrder
+    url?: SortOrder
+    phone?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WaTemplateButtonSumOrderByAggregateInput = {
+    index?: SortOrder
+  }
+
+  export type EnumWaButtonTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaButtonType | EnumWaButtonTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaButtonType[] | ListEnumWaButtonTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaButtonType[] | ListEnumWaButtonTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaButtonTypeWithAggregatesFilter<$PrismaModel> | $Enums.WaButtonType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaButtonTypeFilter<$PrismaModel>
+    _max?: NestedEnumWaButtonTypeFilter<$PrismaModel>
+  }
+
+  export type EnumWaMediaTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMediaType | EnumWaMediaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMediaType[] | ListEnumWaMediaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMediaType[] | ListEnumWaMediaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMediaTypeFilter<$PrismaModel> | $Enums.WaMediaType
+  }
+
+  export type WaTemplateMediaCountOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrder
+    url?: SortOrder
+    filename?: SortOrder
+    mimeType?: SortOrder
+    sizeBytes?: SortOrder
+    caption?: SortOrder
+    isHeader?: SortOrder
+    uploadedAt?: SortOrder
+  }
+
+  export type WaTemplateMediaAvgOrderByAggregateInput = {
+    sizeBytes?: SortOrder
+  }
+
+  export type WaTemplateMediaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrder
+    url?: SortOrder
+    filename?: SortOrder
+    mimeType?: SortOrder
+    sizeBytes?: SortOrder
+    caption?: SortOrder
+    isHeader?: SortOrder
+    uploadedAt?: SortOrder
+  }
+
+  export type WaTemplateMediaMinOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrder
+    url?: SortOrder
+    filename?: SortOrder
+    mimeType?: SortOrder
+    sizeBytes?: SortOrder
+    caption?: SortOrder
+    isHeader?: SortOrder
+    uploadedAt?: SortOrder
+  }
+
+  export type WaTemplateMediaSumOrderByAggregateInput = {
+    sizeBytes?: SortOrder
+  }
+
+  export type EnumWaMediaTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMediaType | EnumWaMediaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMediaType[] | ListEnumWaMediaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMediaType[] | ListEnumWaMediaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMediaTypeWithAggregatesFilter<$PrismaModel> | $Enums.WaMediaType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaMediaTypeFilter<$PrismaModel>
+    _max?: NestedEnumWaMediaTypeFilter<$PrismaModel>
+  }
+
+  export type WaBulkRecipientListRelationFilter = {
+    every?: WaBulkRecipientWhereInput
+    some?: WaBulkRecipientWhereInput
+    none?: WaBulkRecipientWhereInput
+  }
+
+  export type WaBulkRecipientOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WaContactCountOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    name?: SortOrder
+    waId?: SortOrder
+    isValid?: SortOrder
+    optedOut?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaContactMaxOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    name?: SortOrder
+    waId?: SortOrder
+    isValid?: SortOrder
+    optedOut?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaContactMinOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    name?: SortOrder
+    waId?: SortOrder
+    isValid?: SortOrder
+    optedOut?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumWaMsgDirectionFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgDirection | EnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgDirection[] | ListEnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgDirection[] | ListEnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgDirectionFilter<$PrismaModel> | $Enums.WaMsgDirection
+  }
+
+  export type EnumWaMsgStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgStatus | EnumWaMsgStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgStatus[] | ListEnumWaMsgStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgStatus[] | ListEnumWaMsgStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgStatusFilter<$PrismaModel> | $Enums.WaMsgStatus
+  }
+
+  export type EnumWaMsgTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgType | EnumWaMsgTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgType[] | ListEnumWaMsgTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgType[] | ListEnumWaMsgTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgTypeFilter<$PrismaModel> | $Enums.WaMsgType
+  }
+  export type JsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type WaContactNullableRelationFilter = {
+    is?: WaContactWhereInput | null
+    isNot?: WaContactWhereInput | null
+  }
+
+  export type WaTemplateNullableRelationFilter = {
+    is?: WaTemplateWhereInput | null
+    isNot?: WaTemplateWhereInput | null
+  }
+
+  export type WaBulkJobNullableRelationFilter = {
+    is?: WaBulkJobWhereInput | null
+    isNot?: WaBulkJobWhereInput | null
+  }
+
+  export type WaMessageMediaListRelationFilter = {
+    every?: WaMessageMediaWhereInput
+    some?: WaMessageMediaWhereInput
+    none?: WaMessageMediaWhereInput
+  }
+
+  export type WaMessageMediaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WaMessageCountOrderByAggregateInput = {
+    id?: SortOrder
+    wamid?: SortOrder
+    direction?: SortOrder
+    status?: SortOrder
+    contactId?: SortOrder
+    to?: SortOrder
+    type?: SortOrder
+    body?: SortOrder
+    templateId?: SortOrder
+    variablesUsed?: SortOrder
+    bulkJobId?: SortOrder
+    errorCode?: SortOrder
+    errorMessage?: SortOrder
+    sentAt?: SortOrder
+    deliveredAt?: SortOrder
+    readAt?: SortOrder
+    failedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaMessageAvgOrderByAggregateInput = {
+    errorCode?: SortOrder
+  }
+
+  export type WaMessageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    wamid?: SortOrder
+    direction?: SortOrder
+    status?: SortOrder
+    contactId?: SortOrder
+    to?: SortOrder
+    type?: SortOrder
+    body?: SortOrder
+    templateId?: SortOrder
+    bulkJobId?: SortOrder
+    errorCode?: SortOrder
+    errorMessage?: SortOrder
+    sentAt?: SortOrder
+    deliveredAt?: SortOrder
+    readAt?: SortOrder
+    failedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaMessageMinOrderByAggregateInput = {
+    id?: SortOrder
+    wamid?: SortOrder
+    direction?: SortOrder
+    status?: SortOrder
+    contactId?: SortOrder
+    to?: SortOrder
+    type?: SortOrder
+    body?: SortOrder
+    templateId?: SortOrder
+    bulkJobId?: SortOrder
+    errorCode?: SortOrder
+    errorMessage?: SortOrder
+    sentAt?: SortOrder
+    deliveredAt?: SortOrder
+    readAt?: SortOrder
+    failedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaMessageSumOrderByAggregateInput = {
+    errorCode?: SortOrder
+  }
+
+  export type EnumWaMsgDirectionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgDirection | EnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgDirection[] | ListEnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgDirection[] | ListEnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgDirectionWithAggregatesFilter<$PrismaModel> | $Enums.WaMsgDirection
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaMsgDirectionFilter<$PrismaModel>
+    _max?: NestedEnumWaMsgDirectionFilter<$PrismaModel>
+  }
+
+  export type EnumWaMsgStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgStatus | EnumWaMsgStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgStatus[] | ListEnumWaMsgStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgStatus[] | ListEnumWaMsgStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgStatusWithAggregatesFilter<$PrismaModel> | $Enums.WaMsgStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaMsgStatusFilter<$PrismaModel>
+    _max?: NestedEnumWaMsgStatusFilter<$PrismaModel>
+  }
+
+  export type EnumWaMsgTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgType | EnumWaMsgTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgType[] | ListEnumWaMsgTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgType[] | ListEnumWaMsgTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgTypeWithAggregatesFilter<$PrismaModel> | $Enums.WaMsgType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaMsgTypeFilter<$PrismaModel>
+    _max?: NestedEnumWaMsgTypeFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type WaMessageRelationFilter = {
+    is?: WaMessageWhereInput
+    isNot?: WaMessageWhereInput
+  }
+
+  export type WaMessageMediaCountOrderByAggregateInput = {
+    id?: SortOrder
+    messageId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrder
+    url?: SortOrder
+    filename?: SortOrder
+    mimeType?: SortOrder
+    sizeBytes?: SortOrder
+    caption?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WaMessageMediaAvgOrderByAggregateInput = {
+    sizeBytes?: SortOrder
+  }
+
+  export type WaMessageMediaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    messageId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrder
+    url?: SortOrder
+    filename?: SortOrder
+    mimeType?: SortOrder
+    sizeBytes?: SortOrder
+    caption?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WaMessageMediaMinOrderByAggregateInput = {
+    id?: SortOrder
+    messageId?: SortOrder
+    mediaType?: SortOrder
+    mediaId?: SortOrder
+    url?: SortOrder
+    filename?: SortOrder
+    mimeType?: SortOrder
+    sizeBytes?: SortOrder
+    caption?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WaMessageMediaSumOrderByAggregateInput = {
+    sizeBytes?: SortOrder
+  }
+
+  export type EnumWaBulkTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaBulkType | EnumWaBulkTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaBulkType[] | ListEnumWaBulkTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaBulkType[] | ListEnumWaBulkTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaBulkTypeFilter<$PrismaModel> | $Enums.WaBulkType
+  }
+
+  export type EnumWaBulkStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaBulkStatus | EnumWaBulkStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaBulkStatus[] | ListEnumWaBulkStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaBulkStatus[] | ListEnumWaBulkStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaBulkStatusFilter<$PrismaModel> | $Enums.WaBulkStatus
+  }
+
+  export type WaBulkJobCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    templateId?: SortOrder
+    message?: SortOrder
+    total?: SortOrder
+    sent?: SortOrder
+    failed?: SortOrder
+    cancelled?: SortOrder
+    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaBulkJobAvgOrderByAggregateInput = {
+    total?: SortOrder
+    sent?: SortOrder
+    failed?: SortOrder
+    cancelled?: SortOrder
+  }
+
+  export type WaBulkJobMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    templateId?: SortOrder
+    message?: SortOrder
+    total?: SortOrder
+    sent?: SortOrder
+    failed?: SortOrder
+    cancelled?: SortOrder
+    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaBulkJobMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    templateId?: SortOrder
+    message?: SortOrder
+    total?: SortOrder
+    sent?: SortOrder
+    failed?: SortOrder
+    cancelled?: SortOrder
+    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WaBulkJobSumOrderByAggregateInput = {
+    total?: SortOrder
+    sent?: SortOrder
+    failed?: SortOrder
+    cancelled?: SortOrder
+  }
+
+  export type EnumWaBulkTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaBulkType | EnumWaBulkTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaBulkType[] | ListEnumWaBulkTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaBulkType[] | ListEnumWaBulkTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaBulkTypeWithAggregatesFilter<$PrismaModel> | $Enums.WaBulkType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaBulkTypeFilter<$PrismaModel>
+    _max?: NestedEnumWaBulkTypeFilter<$PrismaModel>
+  }
+
+  export type EnumWaBulkStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaBulkStatus | EnumWaBulkStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaBulkStatus[] | ListEnumWaBulkStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaBulkStatus[] | ListEnumWaBulkStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaBulkStatusWithAggregatesFilter<$PrismaModel> | $Enums.WaBulkStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaBulkStatusFilter<$PrismaModel>
+    _max?: NestedEnumWaBulkStatusFilter<$PrismaModel>
+  }
+
+  export type WaBulkJobRelationFilter = {
+    is?: WaBulkJobWhereInput
+    isNot?: WaBulkJobWhereInput
+  }
+
+  export type WaBulkRecipientCountOrderByAggregateInput = {
+    id?: SortOrder
+    bulkJobId?: SortOrder
+    contactId?: SortOrder
+    phone?: SortOrder
+    name?: SortOrder
+    variables?: SortOrder
+    status?: SortOrder
+    wamid?: SortOrder
+    errorMsg?: SortOrder
+    sentAt?: SortOrder
+  }
+
+  export type WaBulkRecipientMaxOrderByAggregateInput = {
+    id?: SortOrder
+    bulkJobId?: SortOrder
+    contactId?: SortOrder
+    phone?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    wamid?: SortOrder
+    errorMsg?: SortOrder
+    sentAt?: SortOrder
+  }
+
+  export type WaBulkRecipientMinOrderByAggregateInput = {
+    id?: SortOrder
+    bulkJobId?: SortOrder
+    contactId?: SortOrder
+    phone?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    wamid?: SortOrder
+    errorMsg?: SortOrder
+    sentAt?: SortOrder
+  }
+
+  export type CustomTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    body?: SortOrder
+    category?: SortOrder
+    emoji?: SortOrder
+    usageCount?: SortOrder
+    mediaType?: SortOrder
+    mediaUrl?: SortOrder
+    mediaCaption?: SortOrder
+    buttons?: SortOrder
+    quickReplies?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CustomTemplateAvgOrderByAggregateInput = {
+    usageCount?: SortOrder
+  }
+
+  export type CustomTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    body?: SortOrder
+    category?: SortOrder
+    emoji?: SortOrder
+    usageCount?: SortOrder
+    mediaType?: SortOrder
+    mediaUrl?: SortOrder
+    mediaCaption?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CustomTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    body?: SortOrder
+    category?: SortOrder
+    emoji?: SortOrder
+    usageCount?: SortOrder
+    mediaType?: SortOrder
+    mediaUrl?: SortOrder
+    mediaCaption?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CustomTemplateSumOrderByAggregateInput = {
+    usageCount?: SortOrder
+  }
+
   export type PropertyCreaterentPeriodsInput = {
     set: string[]
   }
@@ -12476,6 +26291,577 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookingsInput, UserUpdateWithoutBookingsInput>, UserUncheckedUpdateWithoutBookingsInput>
   }
 
+  export type WaTemplateCreatevariablesInput = {
+    set: string[]
+  }
+
+  export type WaTemplateButtonCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<WaTemplateButtonCreateWithoutTemplateInput, WaTemplateButtonUncheckedCreateWithoutTemplateInput> | WaTemplateButtonCreateWithoutTemplateInput[] | WaTemplateButtonUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaTemplateButtonCreateOrConnectWithoutTemplateInput | WaTemplateButtonCreateOrConnectWithoutTemplateInput[]
+    createMany?: WaTemplateButtonCreateManyTemplateInputEnvelope
+    connect?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+  }
+
+  export type WaTemplateMediaCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<WaTemplateMediaCreateWithoutTemplateInput, WaTemplateMediaUncheckedCreateWithoutTemplateInput> | WaTemplateMediaCreateWithoutTemplateInput[] | WaTemplateMediaUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaTemplateMediaCreateOrConnectWithoutTemplateInput | WaTemplateMediaCreateOrConnectWithoutTemplateInput[]
+    createMany?: WaTemplateMediaCreateManyTemplateInputEnvelope
+    connect?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+  }
+
+  export type WaMessageCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<WaMessageCreateWithoutTemplateInput, WaMessageUncheckedCreateWithoutTemplateInput> | WaMessageCreateWithoutTemplateInput[] | WaMessageUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutTemplateInput | WaMessageCreateOrConnectWithoutTemplateInput[]
+    createMany?: WaMessageCreateManyTemplateInputEnvelope
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+  }
+
+  export type WaBulkJobCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<WaBulkJobCreateWithoutTemplateInput, WaBulkJobUncheckedCreateWithoutTemplateInput> | WaBulkJobCreateWithoutTemplateInput[] | WaBulkJobUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaBulkJobCreateOrConnectWithoutTemplateInput | WaBulkJobCreateOrConnectWithoutTemplateInput[]
+    createMany?: WaBulkJobCreateManyTemplateInputEnvelope
+    connect?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+  }
+
+  export type WaTemplateButtonUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<WaTemplateButtonCreateWithoutTemplateInput, WaTemplateButtonUncheckedCreateWithoutTemplateInput> | WaTemplateButtonCreateWithoutTemplateInput[] | WaTemplateButtonUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaTemplateButtonCreateOrConnectWithoutTemplateInput | WaTemplateButtonCreateOrConnectWithoutTemplateInput[]
+    createMany?: WaTemplateButtonCreateManyTemplateInputEnvelope
+    connect?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+  }
+
+  export type WaTemplateMediaUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<WaTemplateMediaCreateWithoutTemplateInput, WaTemplateMediaUncheckedCreateWithoutTemplateInput> | WaTemplateMediaCreateWithoutTemplateInput[] | WaTemplateMediaUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaTemplateMediaCreateOrConnectWithoutTemplateInput | WaTemplateMediaCreateOrConnectWithoutTemplateInput[]
+    createMany?: WaTemplateMediaCreateManyTemplateInputEnvelope
+    connect?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+  }
+
+  export type WaMessageUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<WaMessageCreateWithoutTemplateInput, WaMessageUncheckedCreateWithoutTemplateInput> | WaMessageCreateWithoutTemplateInput[] | WaMessageUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutTemplateInput | WaMessageCreateOrConnectWithoutTemplateInput[]
+    createMany?: WaMessageCreateManyTemplateInputEnvelope
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+  }
+
+  export type WaBulkJobUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<WaBulkJobCreateWithoutTemplateInput, WaBulkJobUncheckedCreateWithoutTemplateInput> | WaBulkJobCreateWithoutTemplateInput[] | WaBulkJobUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaBulkJobCreateOrConnectWithoutTemplateInput | WaBulkJobCreateOrConnectWithoutTemplateInput[]
+    createMany?: WaBulkJobCreateManyTemplateInputEnvelope
+    connect?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+  }
+
+  export type EnumWaTemplateCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.WaTemplateCategory
+  }
+
+  export type EnumWaTemplateStatusFieldUpdateOperationsInput = {
+    set?: $Enums.WaTemplateStatus
+  }
+
+  export type NullableEnumWaHeaderFormatFieldUpdateOperationsInput = {
+    set?: $Enums.WaHeaderFormat | null
+  }
+
+  export type WaTemplateUpdatevariablesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type EnumWaParamFormatFieldUpdateOperationsInput = {
+    set?: $Enums.WaParamFormat
+  }
+
+  export type WaTemplateButtonUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<WaTemplateButtonCreateWithoutTemplateInput, WaTemplateButtonUncheckedCreateWithoutTemplateInput> | WaTemplateButtonCreateWithoutTemplateInput[] | WaTemplateButtonUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaTemplateButtonCreateOrConnectWithoutTemplateInput | WaTemplateButtonCreateOrConnectWithoutTemplateInput[]
+    upsert?: WaTemplateButtonUpsertWithWhereUniqueWithoutTemplateInput | WaTemplateButtonUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: WaTemplateButtonCreateManyTemplateInputEnvelope
+    set?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+    disconnect?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+    delete?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+    connect?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+    update?: WaTemplateButtonUpdateWithWhereUniqueWithoutTemplateInput | WaTemplateButtonUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: WaTemplateButtonUpdateManyWithWhereWithoutTemplateInput | WaTemplateButtonUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: WaTemplateButtonScalarWhereInput | WaTemplateButtonScalarWhereInput[]
+  }
+
+  export type WaTemplateMediaUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<WaTemplateMediaCreateWithoutTemplateInput, WaTemplateMediaUncheckedCreateWithoutTemplateInput> | WaTemplateMediaCreateWithoutTemplateInput[] | WaTemplateMediaUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaTemplateMediaCreateOrConnectWithoutTemplateInput | WaTemplateMediaCreateOrConnectWithoutTemplateInput[]
+    upsert?: WaTemplateMediaUpsertWithWhereUniqueWithoutTemplateInput | WaTemplateMediaUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: WaTemplateMediaCreateManyTemplateInputEnvelope
+    set?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+    disconnect?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+    delete?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+    connect?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+    update?: WaTemplateMediaUpdateWithWhereUniqueWithoutTemplateInput | WaTemplateMediaUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: WaTemplateMediaUpdateManyWithWhereWithoutTemplateInput | WaTemplateMediaUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: WaTemplateMediaScalarWhereInput | WaTemplateMediaScalarWhereInput[]
+  }
+
+  export type WaMessageUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<WaMessageCreateWithoutTemplateInput, WaMessageUncheckedCreateWithoutTemplateInput> | WaMessageCreateWithoutTemplateInput[] | WaMessageUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutTemplateInput | WaMessageCreateOrConnectWithoutTemplateInput[]
+    upsert?: WaMessageUpsertWithWhereUniqueWithoutTemplateInput | WaMessageUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: WaMessageCreateManyTemplateInputEnvelope
+    set?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    disconnect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    delete?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    update?: WaMessageUpdateWithWhereUniqueWithoutTemplateInput | WaMessageUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: WaMessageUpdateManyWithWhereWithoutTemplateInput | WaMessageUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: WaMessageScalarWhereInput | WaMessageScalarWhereInput[]
+  }
+
+  export type WaBulkJobUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<WaBulkJobCreateWithoutTemplateInput, WaBulkJobUncheckedCreateWithoutTemplateInput> | WaBulkJobCreateWithoutTemplateInput[] | WaBulkJobUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaBulkJobCreateOrConnectWithoutTemplateInput | WaBulkJobCreateOrConnectWithoutTemplateInput[]
+    upsert?: WaBulkJobUpsertWithWhereUniqueWithoutTemplateInput | WaBulkJobUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: WaBulkJobCreateManyTemplateInputEnvelope
+    set?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+    disconnect?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+    delete?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+    connect?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+    update?: WaBulkJobUpdateWithWhereUniqueWithoutTemplateInput | WaBulkJobUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: WaBulkJobUpdateManyWithWhereWithoutTemplateInput | WaBulkJobUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: WaBulkJobScalarWhereInput | WaBulkJobScalarWhereInput[]
+  }
+
+  export type WaTemplateButtonUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<WaTemplateButtonCreateWithoutTemplateInput, WaTemplateButtonUncheckedCreateWithoutTemplateInput> | WaTemplateButtonCreateWithoutTemplateInput[] | WaTemplateButtonUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaTemplateButtonCreateOrConnectWithoutTemplateInput | WaTemplateButtonCreateOrConnectWithoutTemplateInput[]
+    upsert?: WaTemplateButtonUpsertWithWhereUniqueWithoutTemplateInput | WaTemplateButtonUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: WaTemplateButtonCreateManyTemplateInputEnvelope
+    set?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+    disconnect?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+    delete?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+    connect?: WaTemplateButtonWhereUniqueInput | WaTemplateButtonWhereUniqueInput[]
+    update?: WaTemplateButtonUpdateWithWhereUniqueWithoutTemplateInput | WaTemplateButtonUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: WaTemplateButtonUpdateManyWithWhereWithoutTemplateInput | WaTemplateButtonUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: WaTemplateButtonScalarWhereInput | WaTemplateButtonScalarWhereInput[]
+  }
+
+  export type WaTemplateMediaUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<WaTemplateMediaCreateWithoutTemplateInput, WaTemplateMediaUncheckedCreateWithoutTemplateInput> | WaTemplateMediaCreateWithoutTemplateInput[] | WaTemplateMediaUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaTemplateMediaCreateOrConnectWithoutTemplateInput | WaTemplateMediaCreateOrConnectWithoutTemplateInput[]
+    upsert?: WaTemplateMediaUpsertWithWhereUniqueWithoutTemplateInput | WaTemplateMediaUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: WaTemplateMediaCreateManyTemplateInputEnvelope
+    set?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+    disconnect?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+    delete?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+    connect?: WaTemplateMediaWhereUniqueInput | WaTemplateMediaWhereUniqueInput[]
+    update?: WaTemplateMediaUpdateWithWhereUniqueWithoutTemplateInput | WaTemplateMediaUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: WaTemplateMediaUpdateManyWithWhereWithoutTemplateInput | WaTemplateMediaUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: WaTemplateMediaScalarWhereInput | WaTemplateMediaScalarWhereInput[]
+  }
+
+  export type WaMessageUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<WaMessageCreateWithoutTemplateInput, WaMessageUncheckedCreateWithoutTemplateInput> | WaMessageCreateWithoutTemplateInput[] | WaMessageUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutTemplateInput | WaMessageCreateOrConnectWithoutTemplateInput[]
+    upsert?: WaMessageUpsertWithWhereUniqueWithoutTemplateInput | WaMessageUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: WaMessageCreateManyTemplateInputEnvelope
+    set?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    disconnect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    delete?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    update?: WaMessageUpdateWithWhereUniqueWithoutTemplateInput | WaMessageUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: WaMessageUpdateManyWithWhereWithoutTemplateInput | WaMessageUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: WaMessageScalarWhereInput | WaMessageScalarWhereInput[]
+  }
+
+  export type WaBulkJobUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<WaBulkJobCreateWithoutTemplateInput, WaBulkJobUncheckedCreateWithoutTemplateInput> | WaBulkJobCreateWithoutTemplateInput[] | WaBulkJobUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: WaBulkJobCreateOrConnectWithoutTemplateInput | WaBulkJobCreateOrConnectWithoutTemplateInput[]
+    upsert?: WaBulkJobUpsertWithWhereUniqueWithoutTemplateInput | WaBulkJobUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: WaBulkJobCreateManyTemplateInputEnvelope
+    set?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+    disconnect?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+    delete?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+    connect?: WaBulkJobWhereUniqueInput | WaBulkJobWhereUniqueInput[]
+    update?: WaBulkJobUpdateWithWhereUniqueWithoutTemplateInput | WaBulkJobUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: WaBulkJobUpdateManyWithWhereWithoutTemplateInput | WaBulkJobUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: WaBulkJobScalarWhereInput | WaBulkJobScalarWhereInput[]
+  }
+
+  export type WaTemplateCreateNestedOneWithoutButtonsInput = {
+    create?: XOR<WaTemplateCreateWithoutButtonsInput, WaTemplateUncheckedCreateWithoutButtonsInput>
+    connectOrCreate?: WaTemplateCreateOrConnectWithoutButtonsInput
+    connect?: WaTemplateWhereUniqueInput
+  }
+
+  export type EnumWaButtonTypeFieldUpdateOperationsInput = {
+    set?: $Enums.WaButtonType
+  }
+
+  export type WaTemplateUpdateOneRequiredWithoutButtonsNestedInput = {
+    create?: XOR<WaTemplateCreateWithoutButtonsInput, WaTemplateUncheckedCreateWithoutButtonsInput>
+    connectOrCreate?: WaTemplateCreateOrConnectWithoutButtonsInput
+    upsert?: WaTemplateUpsertWithoutButtonsInput
+    connect?: WaTemplateWhereUniqueInput
+    update?: XOR<XOR<WaTemplateUpdateToOneWithWhereWithoutButtonsInput, WaTemplateUpdateWithoutButtonsInput>, WaTemplateUncheckedUpdateWithoutButtonsInput>
+  }
+
+  export type WaTemplateCreateNestedOneWithoutMediaInput = {
+    create?: XOR<WaTemplateCreateWithoutMediaInput, WaTemplateUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: WaTemplateCreateOrConnectWithoutMediaInput
+    connect?: WaTemplateWhereUniqueInput
+  }
+
+  export type EnumWaMediaTypeFieldUpdateOperationsInput = {
+    set?: $Enums.WaMediaType
+  }
+
+  export type WaTemplateUpdateOneRequiredWithoutMediaNestedInput = {
+    create?: XOR<WaTemplateCreateWithoutMediaInput, WaTemplateUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: WaTemplateCreateOrConnectWithoutMediaInput
+    upsert?: WaTemplateUpsertWithoutMediaInput
+    connect?: WaTemplateWhereUniqueInput
+    update?: XOR<XOR<WaTemplateUpdateToOneWithWhereWithoutMediaInput, WaTemplateUpdateWithoutMediaInput>, WaTemplateUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type WaMessageCreateNestedManyWithoutContactInput = {
+    create?: XOR<WaMessageCreateWithoutContactInput, WaMessageUncheckedCreateWithoutContactInput> | WaMessageCreateWithoutContactInput[] | WaMessageUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutContactInput | WaMessageCreateOrConnectWithoutContactInput[]
+    createMany?: WaMessageCreateManyContactInputEnvelope
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+  }
+
+  export type WaBulkRecipientCreateNestedManyWithoutContactInput = {
+    create?: XOR<WaBulkRecipientCreateWithoutContactInput, WaBulkRecipientUncheckedCreateWithoutContactInput> | WaBulkRecipientCreateWithoutContactInput[] | WaBulkRecipientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: WaBulkRecipientCreateOrConnectWithoutContactInput | WaBulkRecipientCreateOrConnectWithoutContactInput[]
+    createMany?: WaBulkRecipientCreateManyContactInputEnvelope
+    connect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+  }
+
+  export type WaMessageUncheckedCreateNestedManyWithoutContactInput = {
+    create?: XOR<WaMessageCreateWithoutContactInput, WaMessageUncheckedCreateWithoutContactInput> | WaMessageCreateWithoutContactInput[] | WaMessageUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutContactInput | WaMessageCreateOrConnectWithoutContactInput[]
+    createMany?: WaMessageCreateManyContactInputEnvelope
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+  }
+
+  export type WaBulkRecipientUncheckedCreateNestedManyWithoutContactInput = {
+    create?: XOR<WaBulkRecipientCreateWithoutContactInput, WaBulkRecipientUncheckedCreateWithoutContactInput> | WaBulkRecipientCreateWithoutContactInput[] | WaBulkRecipientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: WaBulkRecipientCreateOrConnectWithoutContactInput | WaBulkRecipientCreateOrConnectWithoutContactInput[]
+    createMany?: WaBulkRecipientCreateManyContactInputEnvelope
+    connect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+  }
+
+  export type WaMessageUpdateManyWithoutContactNestedInput = {
+    create?: XOR<WaMessageCreateWithoutContactInput, WaMessageUncheckedCreateWithoutContactInput> | WaMessageCreateWithoutContactInput[] | WaMessageUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutContactInput | WaMessageCreateOrConnectWithoutContactInput[]
+    upsert?: WaMessageUpsertWithWhereUniqueWithoutContactInput | WaMessageUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: WaMessageCreateManyContactInputEnvelope
+    set?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    disconnect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    delete?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    update?: WaMessageUpdateWithWhereUniqueWithoutContactInput | WaMessageUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: WaMessageUpdateManyWithWhereWithoutContactInput | WaMessageUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: WaMessageScalarWhereInput | WaMessageScalarWhereInput[]
+  }
+
+  export type WaBulkRecipientUpdateManyWithoutContactNestedInput = {
+    create?: XOR<WaBulkRecipientCreateWithoutContactInput, WaBulkRecipientUncheckedCreateWithoutContactInput> | WaBulkRecipientCreateWithoutContactInput[] | WaBulkRecipientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: WaBulkRecipientCreateOrConnectWithoutContactInput | WaBulkRecipientCreateOrConnectWithoutContactInput[]
+    upsert?: WaBulkRecipientUpsertWithWhereUniqueWithoutContactInput | WaBulkRecipientUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: WaBulkRecipientCreateManyContactInputEnvelope
+    set?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    disconnect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    delete?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    connect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    update?: WaBulkRecipientUpdateWithWhereUniqueWithoutContactInput | WaBulkRecipientUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: WaBulkRecipientUpdateManyWithWhereWithoutContactInput | WaBulkRecipientUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: WaBulkRecipientScalarWhereInput | WaBulkRecipientScalarWhereInput[]
+  }
+
+  export type WaMessageUncheckedUpdateManyWithoutContactNestedInput = {
+    create?: XOR<WaMessageCreateWithoutContactInput, WaMessageUncheckedCreateWithoutContactInput> | WaMessageCreateWithoutContactInput[] | WaMessageUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutContactInput | WaMessageCreateOrConnectWithoutContactInput[]
+    upsert?: WaMessageUpsertWithWhereUniqueWithoutContactInput | WaMessageUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: WaMessageCreateManyContactInputEnvelope
+    set?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    disconnect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    delete?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    update?: WaMessageUpdateWithWhereUniqueWithoutContactInput | WaMessageUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: WaMessageUpdateManyWithWhereWithoutContactInput | WaMessageUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: WaMessageScalarWhereInput | WaMessageScalarWhereInput[]
+  }
+
+  export type WaBulkRecipientUncheckedUpdateManyWithoutContactNestedInput = {
+    create?: XOR<WaBulkRecipientCreateWithoutContactInput, WaBulkRecipientUncheckedCreateWithoutContactInput> | WaBulkRecipientCreateWithoutContactInput[] | WaBulkRecipientUncheckedCreateWithoutContactInput[]
+    connectOrCreate?: WaBulkRecipientCreateOrConnectWithoutContactInput | WaBulkRecipientCreateOrConnectWithoutContactInput[]
+    upsert?: WaBulkRecipientUpsertWithWhereUniqueWithoutContactInput | WaBulkRecipientUpsertWithWhereUniqueWithoutContactInput[]
+    createMany?: WaBulkRecipientCreateManyContactInputEnvelope
+    set?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    disconnect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    delete?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    connect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    update?: WaBulkRecipientUpdateWithWhereUniqueWithoutContactInput | WaBulkRecipientUpdateWithWhereUniqueWithoutContactInput[]
+    updateMany?: WaBulkRecipientUpdateManyWithWhereWithoutContactInput | WaBulkRecipientUpdateManyWithWhereWithoutContactInput[]
+    deleteMany?: WaBulkRecipientScalarWhereInput | WaBulkRecipientScalarWhereInput[]
+  }
+
+  export type WaContactCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<WaContactCreateWithoutMessagesInput, WaContactUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: WaContactCreateOrConnectWithoutMessagesInput
+    connect?: WaContactWhereUniqueInput
+  }
+
+  export type WaTemplateCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<WaTemplateCreateWithoutMessagesInput, WaTemplateUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: WaTemplateCreateOrConnectWithoutMessagesInput
+    connect?: WaTemplateWhereUniqueInput
+  }
+
+  export type WaBulkJobCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<WaBulkJobCreateWithoutMessagesInput, WaBulkJobUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: WaBulkJobCreateOrConnectWithoutMessagesInput
+    connect?: WaBulkJobWhereUniqueInput
+  }
+
+  export type WaMessageMediaCreateNestedManyWithoutMessageInput = {
+    create?: XOR<WaMessageMediaCreateWithoutMessageInput, WaMessageMediaUncheckedCreateWithoutMessageInput> | WaMessageMediaCreateWithoutMessageInput[] | WaMessageMediaUncheckedCreateWithoutMessageInput[]
+    connectOrCreate?: WaMessageMediaCreateOrConnectWithoutMessageInput | WaMessageMediaCreateOrConnectWithoutMessageInput[]
+    createMany?: WaMessageMediaCreateManyMessageInputEnvelope
+    connect?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+  }
+
+  export type WaMessageMediaUncheckedCreateNestedManyWithoutMessageInput = {
+    create?: XOR<WaMessageMediaCreateWithoutMessageInput, WaMessageMediaUncheckedCreateWithoutMessageInput> | WaMessageMediaCreateWithoutMessageInput[] | WaMessageMediaUncheckedCreateWithoutMessageInput[]
+    connectOrCreate?: WaMessageMediaCreateOrConnectWithoutMessageInput | WaMessageMediaCreateOrConnectWithoutMessageInput[]
+    createMany?: WaMessageMediaCreateManyMessageInputEnvelope
+    connect?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+  }
+
+  export type EnumWaMsgDirectionFieldUpdateOperationsInput = {
+    set?: $Enums.WaMsgDirection
+  }
+
+  export type EnumWaMsgStatusFieldUpdateOperationsInput = {
+    set?: $Enums.WaMsgStatus
+  }
+
+  export type EnumWaMsgTypeFieldUpdateOperationsInput = {
+    set?: $Enums.WaMsgType
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type WaContactUpdateOneWithoutMessagesNestedInput = {
+    create?: XOR<WaContactCreateWithoutMessagesInput, WaContactUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: WaContactCreateOrConnectWithoutMessagesInput
+    upsert?: WaContactUpsertWithoutMessagesInput
+    disconnect?: WaContactWhereInput | boolean
+    delete?: WaContactWhereInput | boolean
+    connect?: WaContactWhereUniqueInput
+    update?: XOR<XOR<WaContactUpdateToOneWithWhereWithoutMessagesInput, WaContactUpdateWithoutMessagesInput>, WaContactUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type WaTemplateUpdateOneWithoutMessagesNestedInput = {
+    create?: XOR<WaTemplateCreateWithoutMessagesInput, WaTemplateUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: WaTemplateCreateOrConnectWithoutMessagesInput
+    upsert?: WaTemplateUpsertWithoutMessagesInput
+    disconnect?: WaTemplateWhereInput | boolean
+    delete?: WaTemplateWhereInput | boolean
+    connect?: WaTemplateWhereUniqueInput
+    update?: XOR<XOR<WaTemplateUpdateToOneWithWhereWithoutMessagesInput, WaTemplateUpdateWithoutMessagesInput>, WaTemplateUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type WaBulkJobUpdateOneWithoutMessagesNestedInput = {
+    create?: XOR<WaBulkJobCreateWithoutMessagesInput, WaBulkJobUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: WaBulkJobCreateOrConnectWithoutMessagesInput
+    upsert?: WaBulkJobUpsertWithoutMessagesInput
+    disconnect?: WaBulkJobWhereInput | boolean
+    delete?: WaBulkJobWhereInput | boolean
+    connect?: WaBulkJobWhereUniqueInput
+    update?: XOR<XOR<WaBulkJobUpdateToOneWithWhereWithoutMessagesInput, WaBulkJobUpdateWithoutMessagesInput>, WaBulkJobUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type WaMessageMediaUpdateManyWithoutMessageNestedInput = {
+    create?: XOR<WaMessageMediaCreateWithoutMessageInput, WaMessageMediaUncheckedCreateWithoutMessageInput> | WaMessageMediaCreateWithoutMessageInput[] | WaMessageMediaUncheckedCreateWithoutMessageInput[]
+    connectOrCreate?: WaMessageMediaCreateOrConnectWithoutMessageInput | WaMessageMediaCreateOrConnectWithoutMessageInput[]
+    upsert?: WaMessageMediaUpsertWithWhereUniqueWithoutMessageInput | WaMessageMediaUpsertWithWhereUniqueWithoutMessageInput[]
+    createMany?: WaMessageMediaCreateManyMessageInputEnvelope
+    set?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+    disconnect?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+    delete?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+    connect?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+    update?: WaMessageMediaUpdateWithWhereUniqueWithoutMessageInput | WaMessageMediaUpdateWithWhereUniqueWithoutMessageInput[]
+    updateMany?: WaMessageMediaUpdateManyWithWhereWithoutMessageInput | WaMessageMediaUpdateManyWithWhereWithoutMessageInput[]
+    deleteMany?: WaMessageMediaScalarWhereInput | WaMessageMediaScalarWhereInput[]
+  }
+
+  export type WaMessageMediaUncheckedUpdateManyWithoutMessageNestedInput = {
+    create?: XOR<WaMessageMediaCreateWithoutMessageInput, WaMessageMediaUncheckedCreateWithoutMessageInput> | WaMessageMediaCreateWithoutMessageInput[] | WaMessageMediaUncheckedCreateWithoutMessageInput[]
+    connectOrCreate?: WaMessageMediaCreateOrConnectWithoutMessageInput | WaMessageMediaCreateOrConnectWithoutMessageInput[]
+    upsert?: WaMessageMediaUpsertWithWhereUniqueWithoutMessageInput | WaMessageMediaUpsertWithWhereUniqueWithoutMessageInput[]
+    createMany?: WaMessageMediaCreateManyMessageInputEnvelope
+    set?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+    disconnect?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+    delete?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+    connect?: WaMessageMediaWhereUniqueInput | WaMessageMediaWhereUniqueInput[]
+    update?: WaMessageMediaUpdateWithWhereUniqueWithoutMessageInput | WaMessageMediaUpdateWithWhereUniqueWithoutMessageInput[]
+    updateMany?: WaMessageMediaUpdateManyWithWhereWithoutMessageInput | WaMessageMediaUpdateManyWithWhereWithoutMessageInput[]
+    deleteMany?: WaMessageMediaScalarWhereInput | WaMessageMediaScalarWhereInput[]
+  }
+
+  export type WaMessageCreateNestedOneWithoutMediaInput = {
+    create?: XOR<WaMessageCreateWithoutMediaInput, WaMessageUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: WaMessageCreateOrConnectWithoutMediaInput
+    connect?: WaMessageWhereUniqueInput
+  }
+
+  export type WaMessageUpdateOneRequiredWithoutMediaNestedInput = {
+    create?: XOR<WaMessageCreateWithoutMediaInput, WaMessageUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: WaMessageCreateOrConnectWithoutMediaInput
+    upsert?: WaMessageUpsertWithoutMediaInput
+    connect?: WaMessageWhereUniqueInput
+    update?: XOR<XOR<WaMessageUpdateToOneWithWhereWithoutMediaInput, WaMessageUpdateWithoutMediaInput>, WaMessageUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type WaTemplateCreateNestedOneWithoutBulkJobsInput = {
+    create?: XOR<WaTemplateCreateWithoutBulkJobsInput, WaTemplateUncheckedCreateWithoutBulkJobsInput>
+    connectOrCreate?: WaTemplateCreateOrConnectWithoutBulkJobsInput
+    connect?: WaTemplateWhereUniqueInput
+  }
+
+  export type WaBulkRecipientCreateNestedManyWithoutBulkJobInput = {
+    create?: XOR<WaBulkRecipientCreateWithoutBulkJobInput, WaBulkRecipientUncheckedCreateWithoutBulkJobInput> | WaBulkRecipientCreateWithoutBulkJobInput[] | WaBulkRecipientUncheckedCreateWithoutBulkJobInput[]
+    connectOrCreate?: WaBulkRecipientCreateOrConnectWithoutBulkJobInput | WaBulkRecipientCreateOrConnectWithoutBulkJobInput[]
+    createMany?: WaBulkRecipientCreateManyBulkJobInputEnvelope
+    connect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+  }
+
+  export type WaMessageCreateNestedManyWithoutBulkJobInput = {
+    create?: XOR<WaMessageCreateWithoutBulkJobInput, WaMessageUncheckedCreateWithoutBulkJobInput> | WaMessageCreateWithoutBulkJobInput[] | WaMessageUncheckedCreateWithoutBulkJobInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutBulkJobInput | WaMessageCreateOrConnectWithoutBulkJobInput[]
+    createMany?: WaMessageCreateManyBulkJobInputEnvelope
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+  }
+
+  export type WaBulkRecipientUncheckedCreateNestedManyWithoutBulkJobInput = {
+    create?: XOR<WaBulkRecipientCreateWithoutBulkJobInput, WaBulkRecipientUncheckedCreateWithoutBulkJobInput> | WaBulkRecipientCreateWithoutBulkJobInput[] | WaBulkRecipientUncheckedCreateWithoutBulkJobInput[]
+    connectOrCreate?: WaBulkRecipientCreateOrConnectWithoutBulkJobInput | WaBulkRecipientCreateOrConnectWithoutBulkJobInput[]
+    createMany?: WaBulkRecipientCreateManyBulkJobInputEnvelope
+    connect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+  }
+
+  export type WaMessageUncheckedCreateNestedManyWithoutBulkJobInput = {
+    create?: XOR<WaMessageCreateWithoutBulkJobInput, WaMessageUncheckedCreateWithoutBulkJobInput> | WaMessageCreateWithoutBulkJobInput[] | WaMessageUncheckedCreateWithoutBulkJobInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutBulkJobInput | WaMessageCreateOrConnectWithoutBulkJobInput[]
+    createMany?: WaMessageCreateManyBulkJobInputEnvelope
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+  }
+
+  export type EnumWaBulkTypeFieldUpdateOperationsInput = {
+    set?: $Enums.WaBulkType
+  }
+
+  export type EnumWaBulkStatusFieldUpdateOperationsInput = {
+    set?: $Enums.WaBulkStatus
+  }
+
+  export type WaTemplateUpdateOneWithoutBulkJobsNestedInput = {
+    create?: XOR<WaTemplateCreateWithoutBulkJobsInput, WaTemplateUncheckedCreateWithoutBulkJobsInput>
+    connectOrCreate?: WaTemplateCreateOrConnectWithoutBulkJobsInput
+    upsert?: WaTemplateUpsertWithoutBulkJobsInput
+    disconnect?: WaTemplateWhereInput | boolean
+    delete?: WaTemplateWhereInput | boolean
+    connect?: WaTemplateWhereUniqueInput
+    update?: XOR<XOR<WaTemplateUpdateToOneWithWhereWithoutBulkJobsInput, WaTemplateUpdateWithoutBulkJobsInput>, WaTemplateUncheckedUpdateWithoutBulkJobsInput>
+  }
+
+  export type WaBulkRecipientUpdateManyWithoutBulkJobNestedInput = {
+    create?: XOR<WaBulkRecipientCreateWithoutBulkJobInput, WaBulkRecipientUncheckedCreateWithoutBulkJobInput> | WaBulkRecipientCreateWithoutBulkJobInput[] | WaBulkRecipientUncheckedCreateWithoutBulkJobInput[]
+    connectOrCreate?: WaBulkRecipientCreateOrConnectWithoutBulkJobInput | WaBulkRecipientCreateOrConnectWithoutBulkJobInput[]
+    upsert?: WaBulkRecipientUpsertWithWhereUniqueWithoutBulkJobInput | WaBulkRecipientUpsertWithWhereUniqueWithoutBulkJobInput[]
+    createMany?: WaBulkRecipientCreateManyBulkJobInputEnvelope
+    set?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    disconnect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    delete?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    connect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    update?: WaBulkRecipientUpdateWithWhereUniqueWithoutBulkJobInput | WaBulkRecipientUpdateWithWhereUniqueWithoutBulkJobInput[]
+    updateMany?: WaBulkRecipientUpdateManyWithWhereWithoutBulkJobInput | WaBulkRecipientUpdateManyWithWhereWithoutBulkJobInput[]
+    deleteMany?: WaBulkRecipientScalarWhereInput | WaBulkRecipientScalarWhereInput[]
+  }
+
+  export type WaMessageUpdateManyWithoutBulkJobNestedInput = {
+    create?: XOR<WaMessageCreateWithoutBulkJobInput, WaMessageUncheckedCreateWithoutBulkJobInput> | WaMessageCreateWithoutBulkJobInput[] | WaMessageUncheckedCreateWithoutBulkJobInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutBulkJobInput | WaMessageCreateOrConnectWithoutBulkJobInput[]
+    upsert?: WaMessageUpsertWithWhereUniqueWithoutBulkJobInput | WaMessageUpsertWithWhereUniqueWithoutBulkJobInput[]
+    createMany?: WaMessageCreateManyBulkJobInputEnvelope
+    set?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    disconnect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    delete?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    update?: WaMessageUpdateWithWhereUniqueWithoutBulkJobInput | WaMessageUpdateWithWhereUniqueWithoutBulkJobInput[]
+    updateMany?: WaMessageUpdateManyWithWhereWithoutBulkJobInput | WaMessageUpdateManyWithWhereWithoutBulkJobInput[]
+    deleteMany?: WaMessageScalarWhereInput | WaMessageScalarWhereInput[]
+  }
+
+  export type WaBulkRecipientUncheckedUpdateManyWithoutBulkJobNestedInput = {
+    create?: XOR<WaBulkRecipientCreateWithoutBulkJobInput, WaBulkRecipientUncheckedCreateWithoutBulkJobInput> | WaBulkRecipientCreateWithoutBulkJobInput[] | WaBulkRecipientUncheckedCreateWithoutBulkJobInput[]
+    connectOrCreate?: WaBulkRecipientCreateOrConnectWithoutBulkJobInput | WaBulkRecipientCreateOrConnectWithoutBulkJobInput[]
+    upsert?: WaBulkRecipientUpsertWithWhereUniqueWithoutBulkJobInput | WaBulkRecipientUpsertWithWhereUniqueWithoutBulkJobInput[]
+    createMany?: WaBulkRecipientCreateManyBulkJobInputEnvelope
+    set?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    disconnect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    delete?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    connect?: WaBulkRecipientWhereUniqueInput | WaBulkRecipientWhereUniqueInput[]
+    update?: WaBulkRecipientUpdateWithWhereUniqueWithoutBulkJobInput | WaBulkRecipientUpdateWithWhereUniqueWithoutBulkJobInput[]
+    updateMany?: WaBulkRecipientUpdateManyWithWhereWithoutBulkJobInput | WaBulkRecipientUpdateManyWithWhereWithoutBulkJobInput[]
+    deleteMany?: WaBulkRecipientScalarWhereInput | WaBulkRecipientScalarWhereInput[]
+  }
+
+  export type WaMessageUncheckedUpdateManyWithoutBulkJobNestedInput = {
+    create?: XOR<WaMessageCreateWithoutBulkJobInput, WaMessageUncheckedCreateWithoutBulkJobInput> | WaMessageCreateWithoutBulkJobInput[] | WaMessageUncheckedCreateWithoutBulkJobInput[]
+    connectOrCreate?: WaMessageCreateOrConnectWithoutBulkJobInput | WaMessageCreateOrConnectWithoutBulkJobInput[]
+    upsert?: WaMessageUpsertWithWhereUniqueWithoutBulkJobInput | WaMessageUpsertWithWhereUniqueWithoutBulkJobInput[]
+    createMany?: WaMessageCreateManyBulkJobInputEnvelope
+    set?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    disconnect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    delete?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    connect?: WaMessageWhereUniqueInput | WaMessageWhereUniqueInput[]
+    update?: WaMessageUpdateWithWhereUniqueWithoutBulkJobInput | WaMessageUpdateWithWhereUniqueWithoutBulkJobInput[]
+    updateMany?: WaMessageUpdateManyWithWhereWithoutBulkJobInput | WaMessageUpdateManyWithWhereWithoutBulkJobInput[]
+    deleteMany?: WaMessageScalarWhereInput | WaMessageScalarWhereInput[]
+  }
+
+  export type WaBulkJobCreateNestedOneWithoutRecipientsInput = {
+    create?: XOR<WaBulkJobCreateWithoutRecipientsInput, WaBulkJobUncheckedCreateWithoutRecipientsInput>
+    connectOrCreate?: WaBulkJobCreateOrConnectWithoutRecipientsInput
+    connect?: WaBulkJobWhereUniqueInput
+  }
+
+  export type WaContactCreateNestedOneWithoutBulkRecipientsInput = {
+    create?: XOR<WaContactCreateWithoutBulkRecipientsInput, WaContactUncheckedCreateWithoutBulkRecipientsInput>
+    connectOrCreate?: WaContactCreateOrConnectWithoutBulkRecipientsInput
+    connect?: WaContactWhereUniqueInput
+  }
+
+  export type WaBulkJobUpdateOneRequiredWithoutRecipientsNestedInput = {
+    create?: XOR<WaBulkJobCreateWithoutRecipientsInput, WaBulkJobUncheckedCreateWithoutRecipientsInput>
+    connectOrCreate?: WaBulkJobCreateOrConnectWithoutRecipientsInput
+    upsert?: WaBulkJobUpsertWithoutRecipientsInput
+    connect?: WaBulkJobWhereUniqueInput
+    update?: XOR<XOR<WaBulkJobUpdateToOneWithWhereWithoutRecipientsInput, WaBulkJobUpdateWithoutRecipientsInput>, WaBulkJobUncheckedUpdateWithoutRecipientsInput>
+  }
+
+  export type WaContactUpdateOneWithoutBulkRecipientsNestedInput = {
+    create?: XOR<WaContactCreateWithoutBulkRecipientsInput, WaContactUncheckedCreateWithoutBulkRecipientsInput>
+    connectOrCreate?: WaContactCreateOrConnectWithoutBulkRecipientsInput
+    upsert?: WaContactUpsertWithoutBulkRecipientsInput
+    disconnect?: WaContactWhereInput | boolean
+    delete?: WaContactWhereInput | boolean
+    connect?: WaContactWhereUniqueInput
+    update?: XOR<XOR<WaContactUpdateToOneWithWhereWithoutBulkRecipientsInput, WaContactUpdateWithoutBulkRecipientsInput>, WaContactUncheckedUpdateWithoutBulkRecipientsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12735,6 +27121,262 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaTemplateCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaTemplateCategory | EnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.WaTemplateCategory[] | ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaTemplateCategory[] | ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaTemplateCategoryFilter<$PrismaModel> | $Enums.WaTemplateCategory
+  }
+
+  export type NestedEnumWaTemplateStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaTemplateStatus | EnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaTemplateStatus[] | ListEnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaTemplateStatus[] | ListEnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaTemplateStatusFilter<$PrismaModel> | $Enums.WaTemplateStatus
+  }
+
+  export type NestedEnumWaHeaderFormatNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaHeaderFormat | EnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    in?: $Enums.WaHeaderFormat[] | ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.WaHeaderFormat[] | ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumWaHeaderFormatNullableFilter<$PrismaModel> | $Enums.WaHeaderFormat | null
+  }
+
+  export type NestedEnumWaParamFormatFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaParamFormat | EnumWaParamFormatFieldRefInput<$PrismaModel>
+    in?: $Enums.WaParamFormat[] | ListEnumWaParamFormatFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaParamFormat[] | ListEnumWaParamFormatFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaParamFormatFilter<$PrismaModel> | $Enums.WaParamFormat
+  }
+
+  export type NestedEnumWaTemplateCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaTemplateCategory | EnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.WaTemplateCategory[] | ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaTemplateCategory[] | ListEnumWaTemplateCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaTemplateCategoryWithAggregatesFilter<$PrismaModel> | $Enums.WaTemplateCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaTemplateCategoryFilter<$PrismaModel>
+    _max?: NestedEnumWaTemplateCategoryFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaTemplateStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaTemplateStatus | EnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaTemplateStatus[] | ListEnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaTemplateStatus[] | ListEnumWaTemplateStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaTemplateStatusWithAggregatesFilter<$PrismaModel> | $Enums.WaTemplateStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaTemplateStatusFilter<$PrismaModel>
+    _max?: NestedEnumWaTemplateStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaHeaderFormatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaHeaderFormat | EnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    in?: $Enums.WaHeaderFormat[] | ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.WaHeaderFormat[] | ListEnumWaHeaderFormatFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumWaHeaderFormatNullableWithAggregatesFilter<$PrismaModel> | $Enums.WaHeaderFormat | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumWaHeaderFormatNullableFilter<$PrismaModel>
+    _max?: NestedEnumWaHeaderFormatNullableFilter<$PrismaModel>
+  }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedEnumWaParamFormatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaParamFormat | EnumWaParamFormatFieldRefInput<$PrismaModel>
+    in?: $Enums.WaParamFormat[] | ListEnumWaParamFormatFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaParamFormat[] | ListEnumWaParamFormatFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaParamFormatWithAggregatesFilter<$PrismaModel> | $Enums.WaParamFormat
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaParamFormatFilter<$PrismaModel>
+    _max?: NestedEnumWaParamFormatFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaButtonTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaButtonType | EnumWaButtonTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaButtonType[] | ListEnumWaButtonTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaButtonType[] | ListEnumWaButtonTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaButtonTypeFilter<$PrismaModel> | $Enums.WaButtonType
+  }
+
+  export type NestedEnumWaButtonTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaButtonType | EnumWaButtonTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaButtonType[] | ListEnumWaButtonTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaButtonType[] | ListEnumWaButtonTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaButtonTypeWithAggregatesFilter<$PrismaModel> | $Enums.WaButtonType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaButtonTypeFilter<$PrismaModel>
+    _max?: NestedEnumWaButtonTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaMediaTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMediaType | EnumWaMediaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMediaType[] | ListEnumWaMediaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMediaType[] | ListEnumWaMediaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMediaTypeFilter<$PrismaModel> | $Enums.WaMediaType
+  }
+
+  export type NestedEnumWaMediaTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMediaType | EnumWaMediaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMediaType[] | ListEnumWaMediaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMediaType[] | ListEnumWaMediaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMediaTypeWithAggregatesFilter<$PrismaModel> | $Enums.WaMediaType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaMediaTypeFilter<$PrismaModel>
+    _max?: NestedEnumWaMediaTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaMsgDirectionFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgDirection | EnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgDirection[] | ListEnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgDirection[] | ListEnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgDirectionFilter<$PrismaModel> | $Enums.WaMsgDirection
+  }
+
+  export type NestedEnumWaMsgStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgStatus | EnumWaMsgStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgStatus[] | ListEnumWaMsgStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgStatus[] | ListEnumWaMsgStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgStatusFilter<$PrismaModel> | $Enums.WaMsgStatus
+  }
+
+  export type NestedEnumWaMsgTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgType | EnumWaMsgTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgType[] | ListEnumWaMsgTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgType[] | ListEnumWaMsgTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgTypeFilter<$PrismaModel> | $Enums.WaMsgType
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedEnumWaMsgDirectionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgDirection | EnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgDirection[] | ListEnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgDirection[] | ListEnumWaMsgDirectionFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgDirectionWithAggregatesFilter<$PrismaModel> | $Enums.WaMsgDirection
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaMsgDirectionFilter<$PrismaModel>
+    _max?: NestedEnumWaMsgDirectionFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaMsgStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgStatus | EnumWaMsgStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgStatus[] | ListEnumWaMsgStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgStatus[] | ListEnumWaMsgStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgStatusWithAggregatesFilter<$PrismaModel> | $Enums.WaMsgStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaMsgStatusFilter<$PrismaModel>
+    _max?: NestedEnumWaMsgStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaMsgTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaMsgType | EnumWaMsgTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaMsgType[] | ListEnumWaMsgTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaMsgType[] | ListEnumWaMsgTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaMsgTypeWithAggregatesFilter<$PrismaModel> | $Enums.WaMsgType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaMsgTypeFilter<$PrismaModel>
+    _max?: NestedEnumWaMsgTypeFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaBulkTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaBulkType | EnumWaBulkTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaBulkType[] | ListEnumWaBulkTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaBulkType[] | ListEnumWaBulkTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaBulkTypeFilter<$PrismaModel> | $Enums.WaBulkType
+  }
+
+  export type NestedEnumWaBulkStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaBulkStatus | EnumWaBulkStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaBulkStatus[] | ListEnumWaBulkStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaBulkStatus[] | ListEnumWaBulkStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaBulkStatusFilter<$PrismaModel> | $Enums.WaBulkStatus
+  }
+
+  export type NestedEnumWaBulkTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaBulkType | EnumWaBulkTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.WaBulkType[] | ListEnumWaBulkTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaBulkType[] | ListEnumWaBulkTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaBulkTypeWithAggregatesFilter<$PrismaModel> | $Enums.WaBulkType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaBulkTypeFilter<$PrismaModel>
+    _max?: NestedEnumWaBulkTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWaBulkStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WaBulkStatus | EnumWaBulkStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WaBulkStatus[] | ListEnumWaBulkStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WaBulkStatus[] | ListEnumWaBulkStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWaBulkStatusWithAggregatesFilter<$PrismaModel> | $Enums.WaBulkStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWaBulkStatusFilter<$PrismaModel>
+    _max?: NestedEnumWaBulkStatusFilter<$PrismaModel>
   }
 
   export type PropertyImageCreateWithoutPropertyInput = {
@@ -13893,6 +28535,1503 @@ export namespace Prisma {
     cart?: CartUncheckedUpdateOneWithoutUserNestedInput
   }
 
+  export type WaTemplateButtonCreateWithoutTemplateInput = {
+    id?: string
+    index: number
+    type: $Enums.WaButtonType
+    text: string
+    url?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaTemplateButtonUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    index: number
+    type: $Enums.WaButtonType
+    text: string
+    url?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaTemplateButtonCreateOrConnectWithoutTemplateInput = {
+    where: WaTemplateButtonWhereUniqueInput
+    create: XOR<WaTemplateButtonCreateWithoutTemplateInput, WaTemplateButtonUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type WaTemplateButtonCreateManyTemplateInputEnvelope = {
+    data: WaTemplateButtonCreateManyTemplateInput | WaTemplateButtonCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaTemplateMediaCreateWithoutTemplateInput = {
+    id?: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    isHeader?: boolean
+    uploadedAt?: Date | string
+  }
+
+  export type WaTemplateMediaUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    isHeader?: boolean
+    uploadedAt?: Date | string
+  }
+
+  export type WaTemplateMediaCreateOrConnectWithoutTemplateInput = {
+    where: WaTemplateMediaWhereUniqueInput
+    create: XOR<WaTemplateMediaCreateWithoutTemplateInput, WaTemplateMediaUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type WaTemplateMediaCreateManyTemplateInputEnvelope = {
+    data: WaTemplateMediaCreateManyTemplateInput | WaTemplateMediaCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaMessageCreateWithoutTemplateInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contact?: WaContactCreateNestedOneWithoutMessagesInput
+    bulkJob?: WaBulkJobCreateNestedOneWithoutMessagesInput
+    media?: WaMessageMediaCreateNestedManyWithoutMessageInput
+  }
+
+  export type WaMessageUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    contactId?: string | null
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: string | null
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    media?: WaMessageMediaUncheckedCreateNestedManyWithoutMessageInput
+  }
+
+  export type WaMessageCreateOrConnectWithoutTemplateInput = {
+    where: WaMessageWhereUniqueInput
+    create: XOR<WaMessageCreateWithoutTemplateInput, WaMessageUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type WaMessageCreateManyTemplateInputEnvelope = {
+    data: WaMessageCreateManyTemplateInput | WaMessageCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaBulkJobCreateWithoutTemplateInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    recipients?: WaBulkRecipientCreateNestedManyWithoutBulkJobInput
+    messages?: WaMessageCreateNestedManyWithoutBulkJobInput
+  }
+
+  export type WaBulkJobUncheckedCreateWithoutTemplateInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    recipients?: WaBulkRecipientUncheckedCreateNestedManyWithoutBulkJobInput
+    messages?: WaMessageUncheckedCreateNestedManyWithoutBulkJobInput
+  }
+
+  export type WaBulkJobCreateOrConnectWithoutTemplateInput = {
+    where: WaBulkJobWhereUniqueInput
+    create: XOR<WaBulkJobCreateWithoutTemplateInput, WaBulkJobUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type WaBulkJobCreateManyTemplateInputEnvelope = {
+    data: WaBulkJobCreateManyTemplateInput | WaBulkJobCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaTemplateButtonUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: WaTemplateButtonWhereUniqueInput
+    update: XOR<WaTemplateButtonUpdateWithoutTemplateInput, WaTemplateButtonUncheckedUpdateWithoutTemplateInput>
+    create: XOR<WaTemplateButtonCreateWithoutTemplateInput, WaTemplateButtonUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type WaTemplateButtonUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: WaTemplateButtonWhereUniqueInput
+    data: XOR<WaTemplateButtonUpdateWithoutTemplateInput, WaTemplateButtonUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type WaTemplateButtonUpdateManyWithWhereWithoutTemplateInput = {
+    where: WaTemplateButtonScalarWhereInput
+    data: XOR<WaTemplateButtonUpdateManyMutationInput, WaTemplateButtonUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type WaTemplateButtonScalarWhereInput = {
+    AND?: WaTemplateButtonScalarWhereInput | WaTemplateButtonScalarWhereInput[]
+    OR?: WaTemplateButtonScalarWhereInput[]
+    NOT?: WaTemplateButtonScalarWhereInput | WaTemplateButtonScalarWhereInput[]
+    id?: StringFilter<"WaTemplateButton"> | string
+    templateId?: StringFilter<"WaTemplateButton"> | string
+    index?: IntFilter<"WaTemplateButton"> | number
+    type?: EnumWaButtonTypeFilter<"WaTemplateButton"> | $Enums.WaButtonType
+    text?: StringFilter<"WaTemplateButton"> | string
+    url?: StringNullableFilter<"WaTemplateButton"> | string | null
+    phone?: StringNullableFilter<"WaTemplateButton"> | string | null
+    createdAt?: DateTimeFilter<"WaTemplateButton"> | Date | string
+  }
+
+  export type WaTemplateMediaUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: WaTemplateMediaWhereUniqueInput
+    update: XOR<WaTemplateMediaUpdateWithoutTemplateInput, WaTemplateMediaUncheckedUpdateWithoutTemplateInput>
+    create: XOR<WaTemplateMediaCreateWithoutTemplateInput, WaTemplateMediaUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type WaTemplateMediaUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: WaTemplateMediaWhereUniqueInput
+    data: XOR<WaTemplateMediaUpdateWithoutTemplateInput, WaTemplateMediaUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type WaTemplateMediaUpdateManyWithWhereWithoutTemplateInput = {
+    where: WaTemplateMediaScalarWhereInput
+    data: XOR<WaTemplateMediaUpdateManyMutationInput, WaTemplateMediaUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type WaTemplateMediaScalarWhereInput = {
+    AND?: WaTemplateMediaScalarWhereInput | WaTemplateMediaScalarWhereInput[]
+    OR?: WaTemplateMediaScalarWhereInput[]
+    NOT?: WaTemplateMediaScalarWhereInput | WaTemplateMediaScalarWhereInput[]
+    id?: StringFilter<"WaTemplateMedia"> | string
+    templateId?: StringFilter<"WaTemplateMedia"> | string
+    mediaType?: EnumWaMediaTypeFilter<"WaTemplateMedia"> | $Enums.WaMediaType
+    mediaId?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    url?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    filename?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    mimeType?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    sizeBytes?: IntNullableFilter<"WaTemplateMedia"> | number | null
+    caption?: StringNullableFilter<"WaTemplateMedia"> | string | null
+    isHeader?: BoolFilter<"WaTemplateMedia"> | boolean
+    uploadedAt?: DateTimeFilter<"WaTemplateMedia"> | Date | string
+  }
+
+  export type WaMessageUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: WaMessageWhereUniqueInput
+    update: XOR<WaMessageUpdateWithoutTemplateInput, WaMessageUncheckedUpdateWithoutTemplateInput>
+    create: XOR<WaMessageCreateWithoutTemplateInput, WaMessageUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type WaMessageUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: WaMessageWhereUniqueInput
+    data: XOR<WaMessageUpdateWithoutTemplateInput, WaMessageUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type WaMessageUpdateManyWithWhereWithoutTemplateInput = {
+    where: WaMessageScalarWhereInput
+    data: XOR<WaMessageUpdateManyMutationInput, WaMessageUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type WaMessageScalarWhereInput = {
+    AND?: WaMessageScalarWhereInput | WaMessageScalarWhereInput[]
+    OR?: WaMessageScalarWhereInput[]
+    NOT?: WaMessageScalarWhereInput | WaMessageScalarWhereInput[]
+    id?: StringFilter<"WaMessage"> | string
+    wamid?: StringNullableFilter<"WaMessage"> | string | null
+    direction?: EnumWaMsgDirectionFilter<"WaMessage"> | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFilter<"WaMessage"> | $Enums.WaMsgStatus
+    contactId?: StringNullableFilter<"WaMessage"> | string | null
+    to?: StringFilter<"WaMessage"> | string
+    type?: EnumWaMsgTypeFilter<"WaMessage"> | $Enums.WaMsgType
+    body?: StringNullableFilter<"WaMessage"> | string | null
+    templateId?: StringNullableFilter<"WaMessage"> | string | null
+    variablesUsed?: JsonNullableFilter<"WaMessage">
+    bulkJobId?: StringNullableFilter<"WaMessage"> | string | null
+    errorCode?: IntNullableFilter<"WaMessage"> | number | null
+    errorMessage?: StringNullableFilter<"WaMessage"> | string | null
+    sentAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    deliveredAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    readAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    failedAt?: DateTimeNullableFilter<"WaMessage"> | Date | string | null
+    createdAt?: DateTimeFilter<"WaMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"WaMessage"> | Date | string
+  }
+
+  export type WaBulkJobUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: WaBulkJobWhereUniqueInput
+    update: XOR<WaBulkJobUpdateWithoutTemplateInput, WaBulkJobUncheckedUpdateWithoutTemplateInput>
+    create: XOR<WaBulkJobCreateWithoutTemplateInput, WaBulkJobUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type WaBulkJobUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: WaBulkJobWhereUniqueInput
+    data: XOR<WaBulkJobUpdateWithoutTemplateInput, WaBulkJobUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type WaBulkJobUpdateManyWithWhereWithoutTemplateInput = {
+    where: WaBulkJobScalarWhereInput
+    data: XOR<WaBulkJobUpdateManyMutationInput, WaBulkJobUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type WaBulkJobScalarWhereInput = {
+    AND?: WaBulkJobScalarWhereInput | WaBulkJobScalarWhereInput[]
+    OR?: WaBulkJobScalarWhereInput[]
+    NOT?: WaBulkJobScalarWhereInput | WaBulkJobScalarWhereInput[]
+    id?: StringFilter<"WaBulkJob"> | string
+    label?: StringFilter<"WaBulkJob"> | string
+    type?: EnumWaBulkTypeFilter<"WaBulkJob"> | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFilter<"WaBulkJob"> | $Enums.WaBulkStatus
+    templateId?: StringNullableFilter<"WaBulkJob"> | string | null
+    message?: StringNullableFilter<"WaBulkJob"> | string | null
+    total?: IntFilter<"WaBulkJob"> | number
+    sent?: IntFilter<"WaBulkJob"> | number
+    failed?: IntFilter<"WaBulkJob"> | number
+    cancelled?: IntFilter<"WaBulkJob"> | number
+    completedAt?: DateTimeNullableFilter<"WaBulkJob"> | Date | string | null
+    createdAt?: DateTimeFilter<"WaBulkJob"> | Date | string
+    updatedAt?: DateTimeFilter<"WaBulkJob"> | Date | string
+  }
+
+  export type WaTemplateCreateWithoutButtonsInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    media?: WaTemplateMediaCreateNestedManyWithoutTemplateInput
+    messages?: WaMessageCreateNestedManyWithoutTemplateInput
+    bulkJobs?: WaBulkJobCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateUncheckedCreateWithoutButtonsInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    media?: WaTemplateMediaUncheckedCreateNestedManyWithoutTemplateInput
+    messages?: WaMessageUncheckedCreateNestedManyWithoutTemplateInput
+    bulkJobs?: WaBulkJobUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateCreateOrConnectWithoutButtonsInput = {
+    where: WaTemplateWhereUniqueInput
+    create: XOR<WaTemplateCreateWithoutButtonsInput, WaTemplateUncheckedCreateWithoutButtonsInput>
+  }
+
+  export type WaTemplateUpsertWithoutButtonsInput = {
+    update: XOR<WaTemplateUpdateWithoutButtonsInput, WaTemplateUncheckedUpdateWithoutButtonsInput>
+    create: XOR<WaTemplateCreateWithoutButtonsInput, WaTemplateUncheckedCreateWithoutButtonsInput>
+    where?: WaTemplateWhereInput
+  }
+
+  export type WaTemplateUpdateToOneWithWhereWithoutButtonsInput = {
+    where?: WaTemplateWhereInput
+    data: XOR<WaTemplateUpdateWithoutButtonsInput, WaTemplateUncheckedUpdateWithoutButtonsInput>
+  }
+
+  export type WaTemplateUpdateWithoutButtonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: WaTemplateMediaUpdateManyWithoutTemplateNestedInput
+    messages?: WaMessageUpdateManyWithoutTemplateNestedInput
+    bulkJobs?: WaBulkJobUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaTemplateUncheckedUpdateWithoutButtonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: WaTemplateMediaUncheckedUpdateManyWithoutTemplateNestedInput
+    messages?: WaMessageUncheckedUpdateManyWithoutTemplateNestedInput
+    bulkJobs?: WaBulkJobUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaTemplateCreateWithoutMediaInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    buttons?: WaTemplateButtonCreateNestedManyWithoutTemplateInput
+    messages?: WaMessageCreateNestedManyWithoutTemplateInput
+    bulkJobs?: WaBulkJobCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateUncheckedCreateWithoutMediaInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    buttons?: WaTemplateButtonUncheckedCreateNestedManyWithoutTemplateInput
+    messages?: WaMessageUncheckedCreateNestedManyWithoutTemplateInput
+    bulkJobs?: WaBulkJobUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateCreateOrConnectWithoutMediaInput = {
+    where: WaTemplateWhereUniqueInput
+    create: XOR<WaTemplateCreateWithoutMediaInput, WaTemplateUncheckedCreateWithoutMediaInput>
+  }
+
+  export type WaTemplateUpsertWithoutMediaInput = {
+    update: XOR<WaTemplateUpdateWithoutMediaInput, WaTemplateUncheckedUpdateWithoutMediaInput>
+    create: XOR<WaTemplateCreateWithoutMediaInput, WaTemplateUncheckedCreateWithoutMediaInput>
+    where?: WaTemplateWhereInput
+  }
+
+  export type WaTemplateUpdateToOneWithWhereWithoutMediaInput = {
+    where?: WaTemplateWhereInput
+    data: XOR<WaTemplateUpdateWithoutMediaInput, WaTemplateUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type WaTemplateUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buttons?: WaTemplateButtonUpdateManyWithoutTemplateNestedInput
+    messages?: WaMessageUpdateManyWithoutTemplateNestedInput
+    bulkJobs?: WaBulkJobUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaTemplateUncheckedUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buttons?: WaTemplateButtonUncheckedUpdateManyWithoutTemplateNestedInput
+    messages?: WaMessageUncheckedUpdateManyWithoutTemplateNestedInput
+    bulkJobs?: WaBulkJobUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaMessageCreateWithoutContactInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    template?: WaTemplateCreateNestedOneWithoutMessagesInput
+    bulkJob?: WaBulkJobCreateNestedOneWithoutMessagesInput
+    media?: WaMessageMediaCreateNestedManyWithoutMessageInput
+  }
+
+  export type WaMessageUncheckedCreateWithoutContactInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    templateId?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: string | null
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    media?: WaMessageMediaUncheckedCreateNestedManyWithoutMessageInput
+  }
+
+  export type WaMessageCreateOrConnectWithoutContactInput = {
+    where: WaMessageWhereUniqueInput
+    create: XOR<WaMessageCreateWithoutContactInput, WaMessageUncheckedCreateWithoutContactInput>
+  }
+
+  export type WaMessageCreateManyContactInputEnvelope = {
+    data: WaMessageCreateManyContactInput | WaMessageCreateManyContactInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaBulkRecipientCreateWithoutContactInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+    bulkJob: WaBulkJobCreateNestedOneWithoutRecipientsInput
+  }
+
+  export type WaBulkRecipientUncheckedCreateWithoutContactInput = {
+    id?: string
+    bulkJobId: string
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+  }
+
+  export type WaBulkRecipientCreateOrConnectWithoutContactInput = {
+    where: WaBulkRecipientWhereUniqueInput
+    create: XOR<WaBulkRecipientCreateWithoutContactInput, WaBulkRecipientUncheckedCreateWithoutContactInput>
+  }
+
+  export type WaBulkRecipientCreateManyContactInputEnvelope = {
+    data: WaBulkRecipientCreateManyContactInput | WaBulkRecipientCreateManyContactInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaMessageUpsertWithWhereUniqueWithoutContactInput = {
+    where: WaMessageWhereUniqueInput
+    update: XOR<WaMessageUpdateWithoutContactInput, WaMessageUncheckedUpdateWithoutContactInput>
+    create: XOR<WaMessageCreateWithoutContactInput, WaMessageUncheckedCreateWithoutContactInput>
+  }
+
+  export type WaMessageUpdateWithWhereUniqueWithoutContactInput = {
+    where: WaMessageWhereUniqueInput
+    data: XOR<WaMessageUpdateWithoutContactInput, WaMessageUncheckedUpdateWithoutContactInput>
+  }
+
+  export type WaMessageUpdateManyWithWhereWithoutContactInput = {
+    where: WaMessageScalarWhereInput
+    data: XOR<WaMessageUpdateManyMutationInput, WaMessageUncheckedUpdateManyWithoutContactInput>
+  }
+
+  export type WaBulkRecipientUpsertWithWhereUniqueWithoutContactInput = {
+    where: WaBulkRecipientWhereUniqueInput
+    update: XOR<WaBulkRecipientUpdateWithoutContactInput, WaBulkRecipientUncheckedUpdateWithoutContactInput>
+    create: XOR<WaBulkRecipientCreateWithoutContactInput, WaBulkRecipientUncheckedCreateWithoutContactInput>
+  }
+
+  export type WaBulkRecipientUpdateWithWhereUniqueWithoutContactInput = {
+    where: WaBulkRecipientWhereUniqueInput
+    data: XOR<WaBulkRecipientUpdateWithoutContactInput, WaBulkRecipientUncheckedUpdateWithoutContactInput>
+  }
+
+  export type WaBulkRecipientUpdateManyWithWhereWithoutContactInput = {
+    where: WaBulkRecipientScalarWhereInput
+    data: XOR<WaBulkRecipientUpdateManyMutationInput, WaBulkRecipientUncheckedUpdateManyWithoutContactInput>
+  }
+
+  export type WaBulkRecipientScalarWhereInput = {
+    AND?: WaBulkRecipientScalarWhereInput | WaBulkRecipientScalarWhereInput[]
+    OR?: WaBulkRecipientScalarWhereInput[]
+    NOT?: WaBulkRecipientScalarWhereInput | WaBulkRecipientScalarWhereInput[]
+    id?: StringFilter<"WaBulkRecipient"> | string
+    bulkJobId?: StringFilter<"WaBulkRecipient"> | string
+    contactId?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    phone?: StringFilter<"WaBulkRecipient"> | string
+    name?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    variables?: JsonNullableFilter<"WaBulkRecipient">
+    status?: EnumWaMsgStatusFilter<"WaBulkRecipient"> | $Enums.WaMsgStatus
+    wamid?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    errorMsg?: StringNullableFilter<"WaBulkRecipient"> | string | null
+    sentAt?: DateTimeNullableFilter<"WaBulkRecipient"> | Date | string | null
+  }
+
+  export type WaContactCreateWithoutMessagesInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    waId?: string | null
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bulkRecipients?: WaBulkRecipientCreateNestedManyWithoutContactInput
+  }
+
+  export type WaContactUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    waId?: string | null
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bulkRecipients?: WaBulkRecipientUncheckedCreateNestedManyWithoutContactInput
+  }
+
+  export type WaContactCreateOrConnectWithoutMessagesInput = {
+    where: WaContactWhereUniqueInput
+    create: XOR<WaContactCreateWithoutMessagesInput, WaContactUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type WaTemplateCreateWithoutMessagesInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    buttons?: WaTemplateButtonCreateNestedManyWithoutTemplateInput
+    media?: WaTemplateMediaCreateNestedManyWithoutTemplateInput
+    bulkJobs?: WaBulkJobCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    buttons?: WaTemplateButtonUncheckedCreateNestedManyWithoutTemplateInput
+    media?: WaTemplateMediaUncheckedCreateNestedManyWithoutTemplateInput
+    bulkJobs?: WaBulkJobUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateCreateOrConnectWithoutMessagesInput = {
+    where: WaTemplateWhereUniqueInput
+    create: XOR<WaTemplateCreateWithoutMessagesInput, WaTemplateUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type WaBulkJobCreateWithoutMessagesInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    template?: WaTemplateCreateNestedOneWithoutBulkJobsInput
+    recipients?: WaBulkRecipientCreateNestedManyWithoutBulkJobInput
+  }
+
+  export type WaBulkJobUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    templateId?: string | null
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    recipients?: WaBulkRecipientUncheckedCreateNestedManyWithoutBulkJobInput
+  }
+
+  export type WaBulkJobCreateOrConnectWithoutMessagesInput = {
+    where: WaBulkJobWhereUniqueInput
+    create: XOR<WaBulkJobCreateWithoutMessagesInput, WaBulkJobUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type WaMessageMediaCreateWithoutMessageInput = {
+    id?: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaMessageMediaUncheckedCreateWithoutMessageInput = {
+    id?: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaMessageMediaCreateOrConnectWithoutMessageInput = {
+    where: WaMessageMediaWhereUniqueInput
+    create: XOR<WaMessageMediaCreateWithoutMessageInput, WaMessageMediaUncheckedCreateWithoutMessageInput>
+  }
+
+  export type WaMessageMediaCreateManyMessageInputEnvelope = {
+    data: WaMessageMediaCreateManyMessageInput | WaMessageMediaCreateManyMessageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaContactUpsertWithoutMessagesInput = {
+    update: XOR<WaContactUpdateWithoutMessagesInput, WaContactUncheckedUpdateWithoutMessagesInput>
+    create: XOR<WaContactCreateWithoutMessagesInput, WaContactUncheckedCreateWithoutMessagesInput>
+    where?: WaContactWhereInput
+  }
+
+  export type WaContactUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: WaContactWhereInput
+    data: XOR<WaContactUpdateWithoutMessagesInput, WaContactUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type WaContactUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    waId?: NullableStringFieldUpdateOperationsInput | string | null
+    isValid?: BoolFieldUpdateOperationsInput | boolean
+    optedOut?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bulkRecipients?: WaBulkRecipientUpdateManyWithoutContactNestedInput
+  }
+
+  export type WaContactUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    waId?: NullableStringFieldUpdateOperationsInput | string | null
+    isValid?: BoolFieldUpdateOperationsInput | boolean
+    optedOut?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bulkRecipients?: WaBulkRecipientUncheckedUpdateManyWithoutContactNestedInput
+  }
+
+  export type WaTemplateUpsertWithoutMessagesInput = {
+    update: XOR<WaTemplateUpdateWithoutMessagesInput, WaTemplateUncheckedUpdateWithoutMessagesInput>
+    create: XOR<WaTemplateCreateWithoutMessagesInput, WaTemplateUncheckedCreateWithoutMessagesInput>
+    where?: WaTemplateWhereInput
+  }
+
+  export type WaTemplateUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: WaTemplateWhereInput
+    data: XOR<WaTemplateUpdateWithoutMessagesInput, WaTemplateUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type WaTemplateUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buttons?: WaTemplateButtonUpdateManyWithoutTemplateNestedInput
+    media?: WaTemplateMediaUpdateManyWithoutTemplateNestedInput
+    bulkJobs?: WaBulkJobUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaTemplateUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buttons?: WaTemplateButtonUncheckedUpdateManyWithoutTemplateNestedInput
+    media?: WaTemplateMediaUncheckedUpdateManyWithoutTemplateNestedInput
+    bulkJobs?: WaBulkJobUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaBulkJobUpsertWithoutMessagesInput = {
+    update: XOR<WaBulkJobUpdateWithoutMessagesInput, WaBulkJobUncheckedUpdateWithoutMessagesInput>
+    create: XOR<WaBulkJobCreateWithoutMessagesInput, WaBulkJobUncheckedCreateWithoutMessagesInput>
+    where?: WaBulkJobWhereInput
+  }
+
+  export type WaBulkJobUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: WaBulkJobWhereInput
+    data: XOR<WaBulkJobUpdateWithoutMessagesInput, WaBulkJobUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type WaBulkJobUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: WaTemplateUpdateOneWithoutBulkJobsNestedInput
+    recipients?: WaBulkRecipientUpdateManyWithoutBulkJobNestedInput
+  }
+
+  export type WaBulkJobUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recipients?: WaBulkRecipientUncheckedUpdateManyWithoutBulkJobNestedInput
+  }
+
+  export type WaMessageMediaUpsertWithWhereUniqueWithoutMessageInput = {
+    where: WaMessageMediaWhereUniqueInput
+    update: XOR<WaMessageMediaUpdateWithoutMessageInput, WaMessageMediaUncheckedUpdateWithoutMessageInput>
+    create: XOR<WaMessageMediaCreateWithoutMessageInput, WaMessageMediaUncheckedCreateWithoutMessageInput>
+  }
+
+  export type WaMessageMediaUpdateWithWhereUniqueWithoutMessageInput = {
+    where: WaMessageMediaWhereUniqueInput
+    data: XOR<WaMessageMediaUpdateWithoutMessageInput, WaMessageMediaUncheckedUpdateWithoutMessageInput>
+  }
+
+  export type WaMessageMediaUpdateManyWithWhereWithoutMessageInput = {
+    where: WaMessageMediaScalarWhereInput
+    data: XOR<WaMessageMediaUpdateManyMutationInput, WaMessageMediaUncheckedUpdateManyWithoutMessageInput>
+  }
+
+  export type WaMessageMediaScalarWhereInput = {
+    AND?: WaMessageMediaScalarWhereInput | WaMessageMediaScalarWhereInput[]
+    OR?: WaMessageMediaScalarWhereInput[]
+    NOT?: WaMessageMediaScalarWhereInput | WaMessageMediaScalarWhereInput[]
+    id?: StringFilter<"WaMessageMedia"> | string
+    messageId?: StringFilter<"WaMessageMedia"> | string
+    mediaType?: EnumWaMediaTypeFilter<"WaMessageMedia"> | $Enums.WaMediaType
+    mediaId?: StringNullableFilter<"WaMessageMedia"> | string | null
+    url?: StringNullableFilter<"WaMessageMedia"> | string | null
+    filename?: StringNullableFilter<"WaMessageMedia"> | string | null
+    mimeType?: StringNullableFilter<"WaMessageMedia"> | string | null
+    sizeBytes?: IntNullableFilter<"WaMessageMedia"> | number | null
+    caption?: StringNullableFilter<"WaMessageMedia"> | string | null
+    createdAt?: DateTimeFilter<"WaMessageMedia"> | Date | string
+  }
+
+  export type WaMessageCreateWithoutMediaInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contact?: WaContactCreateNestedOneWithoutMessagesInput
+    template?: WaTemplateCreateNestedOneWithoutMessagesInput
+    bulkJob?: WaBulkJobCreateNestedOneWithoutMessagesInput
+  }
+
+  export type WaMessageUncheckedCreateWithoutMediaInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    contactId?: string | null
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    templateId?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: string | null
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaMessageCreateOrConnectWithoutMediaInput = {
+    where: WaMessageWhereUniqueInput
+    create: XOR<WaMessageCreateWithoutMediaInput, WaMessageUncheckedCreateWithoutMediaInput>
+  }
+
+  export type WaMessageUpsertWithoutMediaInput = {
+    update: XOR<WaMessageUpdateWithoutMediaInput, WaMessageUncheckedUpdateWithoutMediaInput>
+    create: XOR<WaMessageCreateWithoutMediaInput, WaMessageUncheckedCreateWithoutMediaInput>
+    where?: WaMessageWhereInput
+  }
+
+  export type WaMessageUpdateToOneWithWhereWithoutMediaInput = {
+    where?: WaMessageWhereInput
+    data: XOR<WaMessageUpdateWithoutMediaInput, WaMessageUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type WaMessageUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: WaContactUpdateOneWithoutMessagesNestedInput
+    template?: WaTemplateUpdateOneWithoutMessagesNestedInput
+    bulkJob?: WaBulkJobUpdateOneWithoutMessagesNestedInput
+  }
+
+  export type WaMessageUncheckedUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateCreateWithoutBulkJobsInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    buttons?: WaTemplateButtonCreateNestedManyWithoutTemplateInput
+    media?: WaTemplateMediaCreateNestedManyWithoutTemplateInput
+    messages?: WaMessageCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateUncheckedCreateWithoutBulkJobsInput = {
+    id?: string
+    metaTemplateId?: string | null
+    name: string
+    category: $Enums.WaTemplateCategory
+    language: string
+    status?: $Enums.WaTemplateStatus
+    rejectionReason?: string | null
+    body: string
+    headerFormat?: $Enums.WaHeaderFormat | null
+    headerText?: string | null
+    headerMediaId?: string | null
+    headerMediaUrl?: string | null
+    headerFilename?: string | null
+    footer?: string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateCreatevariablesInput | string[]
+    parameterFormat?: $Enums.WaParamFormat
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    buttons?: WaTemplateButtonUncheckedCreateNestedManyWithoutTemplateInput
+    media?: WaTemplateMediaUncheckedCreateNestedManyWithoutTemplateInput
+    messages?: WaMessageUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type WaTemplateCreateOrConnectWithoutBulkJobsInput = {
+    where: WaTemplateWhereUniqueInput
+    create: XOR<WaTemplateCreateWithoutBulkJobsInput, WaTemplateUncheckedCreateWithoutBulkJobsInput>
+  }
+
+  export type WaBulkRecipientCreateWithoutBulkJobInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+    contact?: WaContactCreateNestedOneWithoutBulkRecipientsInput
+  }
+
+  export type WaBulkRecipientUncheckedCreateWithoutBulkJobInput = {
+    id?: string
+    contactId?: string | null
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+  }
+
+  export type WaBulkRecipientCreateOrConnectWithoutBulkJobInput = {
+    where: WaBulkRecipientWhereUniqueInput
+    create: XOR<WaBulkRecipientCreateWithoutBulkJobInput, WaBulkRecipientUncheckedCreateWithoutBulkJobInput>
+  }
+
+  export type WaBulkRecipientCreateManyBulkJobInputEnvelope = {
+    data: WaBulkRecipientCreateManyBulkJobInput | WaBulkRecipientCreateManyBulkJobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaMessageCreateWithoutBulkJobInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contact?: WaContactCreateNestedOneWithoutMessagesInput
+    template?: WaTemplateCreateNestedOneWithoutMessagesInput
+    media?: WaMessageMediaCreateNestedManyWithoutMessageInput
+  }
+
+  export type WaMessageUncheckedCreateWithoutBulkJobInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    contactId?: string | null
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    templateId?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    media?: WaMessageMediaUncheckedCreateNestedManyWithoutMessageInput
+  }
+
+  export type WaMessageCreateOrConnectWithoutBulkJobInput = {
+    where: WaMessageWhereUniqueInput
+    create: XOR<WaMessageCreateWithoutBulkJobInput, WaMessageUncheckedCreateWithoutBulkJobInput>
+  }
+
+  export type WaMessageCreateManyBulkJobInputEnvelope = {
+    data: WaMessageCreateManyBulkJobInput | WaMessageCreateManyBulkJobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WaTemplateUpsertWithoutBulkJobsInput = {
+    update: XOR<WaTemplateUpdateWithoutBulkJobsInput, WaTemplateUncheckedUpdateWithoutBulkJobsInput>
+    create: XOR<WaTemplateCreateWithoutBulkJobsInput, WaTemplateUncheckedCreateWithoutBulkJobsInput>
+    where?: WaTemplateWhereInput
+  }
+
+  export type WaTemplateUpdateToOneWithWhereWithoutBulkJobsInput = {
+    where?: WaTemplateWhereInput
+    data: XOR<WaTemplateUpdateWithoutBulkJobsInput, WaTemplateUncheckedUpdateWithoutBulkJobsInput>
+  }
+
+  export type WaTemplateUpdateWithoutBulkJobsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buttons?: WaTemplateButtonUpdateManyWithoutTemplateNestedInput
+    media?: WaTemplateMediaUpdateManyWithoutTemplateNestedInput
+    messages?: WaMessageUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaTemplateUncheckedUpdateWithoutBulkJobsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    metaTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    category?: EnumWaTemplateCategoryFieldUpdateOperationsInput | $Enums.WaTemplateCategory
+    language?: StringFieldUpdateOperationsInput | string
+    status?: EnumWaTemplateStatusFieldUpdateOperationsInput | $Enums.WaTemplateStatus
+    rejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    body?: StringFieldUpdateOperationsInput | string
+    headerFormat?: NullableEnumWaHeaderFormatFieldUpdateOperationsInput | $Enums.WaHeaderFormat | null
+    headerText?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    headerMediaUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    headerFilename?: NullableStringFieldUpdateOperationsInput | string | null
+    footer?: NullableStringFieldUpdateOperationsInput | string | null
+    components?: JsonNullValueInput | InputJsonValue
+    variables?: WaTemplateUpdatevariablesInput | string[]
+    parameterFormat?: EnumWaParamFormatFieldUpdateOperationsInput | $Enums.WaParamFormat
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    buttons?: WaTemplateButtonUncheckedUpdateManyWithoutTemplateNestedInput
+    media?: WaTemplateMediaUncheckedUpdateManyWithoutTemplateNestedInput
+    messages?: WaMessageUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type WaBulkRecipientUpsertWithWhereUniqueWithoutBulkJobInput = {
+    where: WaBulkRecipientWhereUniqueInput
+    update: XOR<WaBulkRecipientUpdateWithoutBulkJobInput, WaBulkRecipientUncheckedUpdateWithoutBulkJobInput>
+    create: XOR<WaBulkRecipientCreateWithoutBulkJobInput, WaBulkRecipientUncheckedCreateWithoutBulkJobInput>
+  }
+
+  export type WaBulkRecipientUpdateWithWhereUniqueWithoutBulkJobInput = {
+    where: WaBulkRecipientWhereUniqueInput
+    data: XOR<WaBulkRecipientUpdateWithoutBulkJobInput, WaBulkRecipientUncheckedUpdateWithoutBulkJobInput>
+  }
+
+  export type WaBulkRecipientUpdateManyWithWhereWithoutBulkJobInput = {
+    where: WaBulkRecipientScalarWhereInput
+    data: XOR<WaBulkRecipientUpdateManyMutationInput, WaBulkRecipientUncheckedUpdateManyWithoutBulkJobInput>
+  }
+
+  export type WaMessageUpsertWithWhereUniqueWithoutBulkJobInput = {
+    where: WaMessageWhereUniqueInput
+    update: XOR<WaMessageUpdateWithoutBulkJobInput, WaMessageUncheckedUpdateWithoutBulkJobInput>
+    create: XOR<WaMessageCreateWithoutBulkJobInput, WaMessageUncheckedCreateWithoutBulkJobInput>
+  }
+
+  export type WaMessageUpdateWithWhereUniqueWithoutBulkJobInput = {
+    where: WaMessageWhereUniqueInput
+    data: XOR<WaMessageUpdateWithoutBulkJobInput, WaMessageUncheckedUpdateWithoutBulkJobInput>
+  }
+
+  export type WaMessageUpdateManyWithWhereWithoutBulkJobInput = {
+    where: WaMessageScalarWhereInput
+    data: XOR<WaMessageUpdateManyMutationInput, WaMessageUncheckedUpdateManyWithoutBulkJobInput>
+  }
+
+  export type WaBulkJobCreateWithoutRecipientsInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    template?: WaTemplateCreateNestedOneWithoutBulkJobsInput
+    messages?: WaMessageCreateNestedManyWithoutBulkJobInput
+  }
+
+  export type WaBulkJobUncheckedCreateWithoutRecipientsInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    templateId?: string | null
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: WaMessageUncheckedCreateNestedManyWithoutBulkJobInput
+  }
+
+  export type WaBulkJobCreateOrConnectWithoutRecipientsInput = {
+    where: WaBulkJobWhereUniqueInput
+    create: XOR<WaBulkJobCreateWithoutRecipientsInput, WaBulkJobUncheckedCreateWithoutRecipientsInput>
+  }
+
+  export type WaContactCreateWithoutBulkRecipientsInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    waId?: string | null
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: WaMessageCreateNestedManyWithoutContactInput
+  }
+
+  export type WaContactUncheckedCreateWithoutBulkRecipientsInput = {
+    id?: string
+    phone: string
+    name?: string | null
+    waId?: string | null
+    isValid?: boolean
+    optedOut?: boolean
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: WaMessageUncheckedCreateNestedManyWithoutContactInput
+  }
+
+  export type WaContactCreateOrConnectWithoutBulkRecipientsInput = {
+    where: WaContactWhereUniqueInput
+    create: XOR<WaContactCreateWithoutBulkRecipientsInput, WaContactUncheckedCreateWithoutBulkRecipientsInput>
+  }
+
+  export type WaBulkJobUpsertWithoutRecipientsInput = {
+    update: XOR<WaBulkJobUpdateWithoutRecipientsInput, WaBulkJobUncheckedUpdateWithoutRecipientsInput>
+    create: XOR<WaBulkJobCreateWithoutRecipientsInput, WaBulkJobUncheckedCreateWithoutRecipientsInput>
+    where?: WaBulkJobWhereInput
+  }
+
+  export type WaBulkJobUpdateToOneWithWhereWithoutRecipientsInput = {
+    where?: WaBulkJobWhereInput
+    data: XOR<WaBulkJobUpdateWithoutRecipientsInput, WaBulkJobUncheckedUpdateWithoutRecipientsInput>
+  }
+
+  export type WaBulkJobUpdateWithoutRecipientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: WaTemplateUpdateOneWithoutBulkJobsNestedInput
+    messages?: WaMessageUpdateManyWithoutBulkJobNestedInput
+  }
+
+  export type WaBulkJobUncheckedUpdateWithoutRecipientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: WaMessageUncheckedUpdateManyWithoutBulkJobNestedInput
+  }
+
+  export type WaContactUpsertWithoutBulkRecipientsInput = {
+    update: XOR<WaContactUpdateWithoutBulkRecipientsInput, WaContactUncheckedUpdateWithoutBulkRecipientsInput>
+    create: XOR<WaContactCreateWithoutBulkRecipientsInput, WaContactUncheckedCreateWithoutBulkRecipientsInput>
+    where?: WaContactWhereInput
+  }
+
+  export type WaContactUpdateToOneWithWhereWithoutBulkRecipientsInput = {
+    where?: WaContactWhereInput
+    data: XOR<WaContactUpdateWithoutBulkRecipientsInput, WaContactUncheckedUpdateWithoutBulkRecipientsInput>
+  }
+
+  export type WaContactUpdateWithoutBulkRecipientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    waId?: NullableStringFieldUpdateOperationsInput | string | null
+    isValid?: BoolFieldUpdateOperationsInput | boolean
+    optedOut?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: WaMessageUpdateManyWithoutContactNestedInput
+  }
+
+  export type WaContactUncheckedUpdateWithoutBulkRecipientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    waId?: NullableStringFieldUpdateOperationsInput | string | null
+    isValid?: BoolFieldUpdateOperationsInput | boolean
+    optedOut?: BoolFieldUpdateOperationsInput | boolean
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: WaMessageUncheckedUpdateManyWithoutContactNestedInput
+  }
+
   export type PropertyImageCreateManyPropertyInput = {
     id?: string
     url: string
@@ -14077,6 +30216,564 @@ export namespace Prisma {
     addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type WaTemplateButtonCreateManyTemplateInput = {
+    id?: string
+    index: number
+    type: $Enums.WaButtonType
+    text: string
+    url?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaTemplateMediaCreateManyTemplateInput = {
+    id?: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    isHeader?: boolean
+    uploadedAt?: Date | string
+  }
+
+  export type WaMessageCreateManyTemplateInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    contactId?: string | null
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: string | null
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaBulkJobCreateManyTemplateInput = {
+    id?: string
+    label: string
+    type: $Enums.WaBulkType
+    status?: $Enums.WaBulkStatus
+    message?: string | null
+    total?: number
+    sent?: number
+    failed?: number
+    cancelled?: number
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaTemplateButtonUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    type?: EnumWaButtonTypeFieldUpdateOperationsInput | $Enums.WaButtonType
+    text?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateButtonUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    type?: EnumWaButtonTypeFieldUpdateOperationsInput | $Enums.WaButtonType
+    text?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateButtonUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    type?: EnumWaButtonTypeFieldUpdateOperationsInput | $Enums.WaButtonType
+    text?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateMediaUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    isHeader?: BoolFieldUpdateOperationsInput | boolean
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateMediaUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    isHeader?: BoolFieldUpdateOperationsInput | boolean
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaTemplateMediaUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    isHeader?: BoolFieldUpdateOperationsInput | boolean
+    uploadedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: WaContactUpdateOneWithoutMessagesNestedInput
+    bulkJob?: WaBulkJobUpdateOneWithoutMessagesNestedInput
+    media?: WaMessageMediaUpdateManyWithoutMessageNestedInput
+  }
+
+  export type WaMessageUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: WaMessageMediaUncheckedUpdateManyWithoutMessageNestedInput
+  }
+
+  export type WaMessageUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaBulkJobUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recipients?: WaBulkRecipientUpdateManyWithoutBulkJobNestedInput
+    messages?: WaMessageUpdateManyWithoutBulkJobNestedInput
+  }
+
+  export type WaBulkJobUncheckedUpdateWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recipients?: WaBulkRecipientUncheckedUpdateManyWithoutBulkJobNestedInput
+    messages?: WaMessageUncheckedUpdateManyWithoutBulkJobNestedInput
+  }
+
+  export type WaBulkJobUncheckedUpdateManyWithoutTemplateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaBulkTypeFieldUpdateOperationsInput | $Enums.WaBulkType
+    status?: EnumWaBulkStatusFieldUpdateOperationsInput | $Enums.WaBulkStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    total?: IntFieldUpdateOperationsInput | number
+    sent?: IntFieldUpdateOperationsInput | number
+    failed?: IntFieldUpdateOperationsInput | number
+    cancelled?: IntFieldUpdateOperationsInput | number
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageCreateManyContactInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    templateId?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: string | null
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaBulkRecipientCreateManyContactInput = {
+    id?: string
+    bulkJobId: string
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+  }
+
+  export type WaMessageUpdateWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    template?: WaTemplateUpdateOneWithoutMessagesNestedInput
+    bulkJob?: WaBulkJobUpdateOneWithoutMessagesNestedInput
+    media?: WaMessageMediaUpdateManyWithoutMessageNestedInput
+  }
+
+  export type WaMessageUncheckedUpdateWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: WaMessageMediaUncheckedUpdateManyWithoutMessageNestedInput
+  }
+
+  export type WaMessageUncheckedUpdateManyWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    bulkJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaBulkRecipientUpdateWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bulkJob?: WaBulkJobUpdateOneRequiredWithoutRecipientsNestedInput
+  }
+
+  export type WaBulkRecipientUncheckedUpdateWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bulkJobId?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type WaBulkRecipientUncheckedUpdateManyWithoutContactInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bulkJobId?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type WaMessageMediaCreateManyMessageInput = {
+    id?: string
+    mediaType: $Enums.WaMediaType
+    mediaId?: string | null
+    url?: string | null
+    filename?: string | null
+    mimeType?: string | null
+    sizeBytes?: number | null
+    caption?: string | null
+    createdAt?: Date | string
+  }
+
+  export type WaMessageMediaUpdateWithoutMessageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageMediaUncheckedUpdateWithoutMessageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaMessageMediaUncheckedUpdateManyWithoutMessageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mediaType?: EnumWaMediaTypeFieldUpdateOperationsInput | $Enums.WaMediaType
+    mediaId?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    filename?: NullableStringFieldUpdateOperationsInput | string | null
+    mimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    sizeBytes?: NullableIntFieldUpdateOperationsInput | number | null
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WaBulkRecipientCreateManyBulkJobInput = {
+    id?: string
+    contactId?: string | null
+    phone: string
+    name?: string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: $Enums.WaMsgStatus
+    wamid?: string | null
+    errorMsg?: string | null
+    sentAt?: Date | string | null
+  }
+
+  export type WaMessageCreateManyBulkJobInput = {
+    id?: string
+    wamid?: string | null
+    direction?: $Enums.WaMsgDirection
+    status?: $Enums.WaMsgStatus
+    contactId?: string | null
+    to: string
+    type?: $Enums.WaMsgType
+    body?: string | null
+    templateId?: string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: number | null
+    errorMessage?: string | null
+    sentAt?: Date | string | null
+    deliveredAt?: Date | string | null
+    readAt?: Date | string | null
+    failedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WaBulkRecipientUpdateWithoutBulkJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    contact?: WaContactUpdateOneWithoutBulkRecipientsNestedInput
+  }
+
+  export type WaBulkRecipientUncheckedUpdateWithoutBulkJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type WaBulkRecipientUncheckedUpdateManyWithoutBulkJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    variables?: NullableJsonNullValueInput | InputJsonValue
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMsg?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type WaMessageUpdateWithoutBulkJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contact?: WaContactUpdateOneWithoutMessagesNestedInput
+    template?: WaTemplateUpdateOneWithoutMessagesNestedInput
+    media?: WaMessageMediaUpdateManyWithoutMessageNestedInput
+  }
+
+  export type WaMessageUncheckedUpdateWithoutBulkJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: WaMessageMediaUncheckedUpdateManyWithoutMessageNestedInput
+  }
+
+  export type WaMessageUncheckedUpdateManyWithoutBulkJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    wamid?: NullableStringFieldUpdateOperationsInput | string | null
+    direction?: EnumWaMsgDirectionFieldUpdateOperationsInput | $Enums.WaMsgDirection
+    status?: EnumWaMsgStatusFieldUpdateOperationsInput | $Enums.WaMsgStatus
+    contactId?: NullableStringFieldUpdateOperationsInput | string | null
+    to?: StringFieldUpdateOperationsInput | string
+    type?: EnumWaMsgTypeFieldUpdateOperationsInput | $Enums.WaMsgType
+    body?: NullableStringFieldUpdateOperationsInput | string | null
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    variablesUsed?: NullableJsonNullValueInput | InputJsonValue
+    errorCode?: NullableIntFieldUpdateOperationsInput | number | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    sentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    readAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
 
 
   /**
@@ -14094,6 +30791,22 @@ export namespace Prisma {
      * @deprecated Use CartCountOutputTypeDefaultArgs instead
      */
     export type CartCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CartCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaTemplateCountOutputTypeDefaultArgs instead
+     */
+    export type WaTemplateCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaTemplateCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaContactCountOutputTypeDefaultArgs instead
+     */
+    export type WaContactCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaContactCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaMessageCountOutputTypeDefaultArgs instead
+     */
+    export type WaMessageCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaMessageCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaBulkJobCountOutputTypeDefaultArgs instead
+     */
+    export type WaBulkJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaBulkJobCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PropertyDefaultArgs instead
      */
@@ -14126,6 +30839,42 @@ export namespace Prisma {
      * @deprecated Use BookingDefaultArgs instead
      */
     export type BookingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BookingDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaTemplateDefaultArgs instead
+     */
+    export type WaTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaTemplateDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaTemplateButtonDefaultArgs instead
+     */
+    export type WaTemplateButtonArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaTemplateButtonDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaTemplateMediaDefaultArgs instead
+     */
+    export type WaTemplateMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaTemplateMediaDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaContactDefaultArgs instead
+     */
+    export type WaContactArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaContactDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaMessageDefaultArgs instead
+     */
+    export type WaMessageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaMessageDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaMessageMediaDefaultArgs instead
+     */
+    export type WaMessageMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaMessageMediaDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaBulkJobDefaultArgs instead
+     */
+    export type WaBulkJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaBulkJobDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WaBulkRecipientDefaultArgs instead
+     */
+    export type WaBulkRecipientArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WaBulkRecipientDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CustomTemplateDefaultArgs instead
+     */
+    export type CustomTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CustomTemplateDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

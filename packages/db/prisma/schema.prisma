@@ -1,13 +1,15 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "./generated"
-  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  provider        = "prisma-client-js"
+  output          = "./generated"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// ── Existing models (unchanged) ───────────────────────────────────────────────
 
 model Property {
   id            String   @id @default(uuid())
@@ -84,20 +86,18 @@ model FullAmenity {
   @@unique([propertyId, normalized])
 }
 
-// ── User (for future auth) ───────────────────────────────────────────────────
 model User {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   name      String?
-  email     String   @unique
+  email     String    @unique
   phone     String?
-  password  String?  // hashed, optional — for email/password auth later
+  password  String?
   cart      Cart?
   bookings  Booking[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
-// ── Cart (one per user) ───────────────────────────────────────────────────────
 model Cart {
   id        String     @id @default(uuid())
   user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -118,7 +118,6 @@ model CartItem {
   @@unique([cartId, propertyId])
 }
 
-// ── Booking ───────────────────────────────────────────────────────────────────
 model Booking {
   id            String   @id @default(uuid())
   name          String
@@ -132,6 +131,345 @@ model Booking {
   userId        String?
   createdAt     DateTime @default(now())
 }
+
+// ── WhatsApp Messaging ────────────────────────────────────────────────────────
+
+// Stores WhatsApp message templates synced from Meta or created locally
+model WaTemplate {
+  id              String            @id @default(uuid())  // internal UUID
+  metaTemplateId  String?           @unique               // Meta's numeric template ID e.g. "1727809288586265"
+  name            String                                  // e.g. "lavelle_wlcm"
+  category        WaTemplateCategory
+  language        String                                  // e.g. "en_US"
+  status          WaTemplateStatus  @default(PENDING)
+  rejectionReason String?
+
+  // Body text (extracted from BODY component for quick access)
+  body            String
+
+  // Header info
+  headerFormat    WaHeaderFormat?                         // TEXT | IMAGE | VIDEO | DOCUMENT | null
+  headerText      String?                                 // if headerFormat = TEXT
+  headerMediaId   String?                                 // Meta media object ID (uploaded via Resumable Upload API)
+  headerMediaUrl  String?                                 // public CDN/S3 URL for the header image/video/doc
+  headerFilename  String?                                 // for DOCUMENT headers
+
+  // Footer text
+  footer          String?
+
+  // Full components JSON as returned by Meta API (for sending)
+  components      Json              @default("[]")
+
+  // Variables extracted from body e.g. ["{{1}}", "{{name}}"]
+  variables       String[]          @default([])
+
+  // Parameter format: named ({{name}}) or positional ({{1}})
+  parameterFormat WaParamFormat     @default(NAMED)
+
+  // Relations
+  buttons         WaTemplateButton[]
+  media           WaTemplateMedia[]
+  messages        WaMessage[]
+  bulkJobs        WaBulkJob[]
+
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  @@index([status])
+  @@index([category])
+  @@index([name])
+  @@map("wa_templates")
+}
+
+// Template buttons stored separately for queryability
+model WaTemplateButton {
+  id         String     @id @default(uuid())
+  template   WaTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  templateId String
+  index      Int                                          // button order (0-based)
+  type       WaButtonType
+  text       String
+  url        String?                                      // for URL buttons
+  phone      String?                                      // for PHONE_NUMBER buttons
+  createdAt  DateTime   @default(now())
+
+  @@index([templateId])
+  @@map("wa_template_buttons")
+}
+
+// Media assets attached to templates (header image/video/doc)
+model WaTemplateMedia {
+  id          String          @id @default(uuid())
+  template    WaTemplate      @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  templateId  String
+  mediaType   WaMediaType                                 // IMAGE | VIDEO | DOCUMENT | AUDIO | STICKER
+  mediaId     String?                                     // Meta media object ID (from Resumable Upload API)
+  url         String?                                     // public CDN/S3 URL
+  filename    String?                                     // original filename
+  mimeType    String?                                     // e.g. "image/jpeg", "video/mp4"
+  sizeBytes   Int?                                        // file size
+  caption     String?                                     // optional caption (image/video/doc only)
+  isHeader    Boolean         @default(true)              // true = template header media
+  uploadedAt  DateTime        @default(now())
+
+  @@index([templateId])
+  @@index([mediaType])
+  @@map("wa_template_media") 
+}
+
+// Individual WhatsApp contacts / recipients
+model WaContact {
+  id        String      @id @default(uuid())
+  phone     String      @unique                          // E.164 format e.g. "917892358529"
+  name      String?                                      // display name (optional)
+  waId      String?                                      // WhatsApp's wa_id (may differ from phone)
+  isValid   Boolean     @default(true)                   // false if number not on WhatsApp
+  optedOut  Boolean     @default(false)                  // true if user replied STOP
+  notes     String?
+
+  messages  WaMessage[]
+  bulkRecipients WaBulkRecipient[]
+
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@index([phone])
+  @@index([optedOut])
+   @@map("wa_contacts")
+}
+
+// Individual messages sent or received
+model WaMessage {
+  id              String         @id @default(uuid())
+  wamid           String?        @unique                 // WhatsApp message ID e.g. "wamid.HBgM..."
+  direction       WaMsgDirection @default(OUTBOUND)
+  status          WaMsgStatus    @default(QUEUED)
+
+  // Recipient
+  contact         WaContact?     @relation(fields: [contactId], references: [id])
+  contactId       String?
+  to              String                                  // phone number (denormalized for speed)
+
+  // Content
+  type            WaMsgType      @default(TEMPLATE)
+  body            String?                                 // rendered message body
+  templateId      String?
+  template        WaTemplate?    @relation(fields: [templateId], references: [id])
+
+  // Variables used when sending (snapshot)
+  variablesUsed   Json?                                   // { "1": "Raj", "name": "Raj" }
+
+  // Bulk job reference
+  bulkJobId       String?
+  bulkJob         WaBulkJob?     @relation(fields: [bulkJobId], references: [id])
+
+  // Media (for incoming messages or outgoing with media)
+  media           WaMessageMedia[]
+
+  // Delivery tracking
+  errorCode       Int?
+  errorMessage    String?
+  sentAt          DateTime?
+  deliveredAt     DateTime?
+  readAt          DateTime?
+  failedAt        DateTime?
+
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@index([to])
+  @@index([status])
+  @@index([templateId])
+  @@index([bulkJobId])
+  @@index([wamid])
+  @@index([direction])
+  @@map("wa_messages")
+}
+
+// Media attached to individual messages (incoming or outgoing)
+model WaMessageMedia {
+  id          String      @id @default(uuid())
+  message     WaMessage   @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  messageId   String
+  mediaType   WaMediaType
+  mediaId     String?                                     // Meta media object ID
+  url         String?                                     // public URL (after download/upload)
+  filename    String?
+  mimeType    String?
+  sizeBytes   Int?
+  caption     String?
+  createdAt   DateTime    @default(now())
+
+  @@index([messageId])
+  @@map("wa_message_media") 
+}
+
+// Bulk send jobs
+model WaBulkJob {
+  id           String          @id @default(uuid())
+  label        String                                     // human name e.g. "Diwali campaign"
+  type         WaBulkType
+  status       WaBulkStatus    @default(RUNNING)
+
+  // Template (for template jobs)
+  templateId   String?
+  template     WaTemplate?     @relation(fields: [templateId], references: [id])
+
+  // Simple message (for simple text jobs)
+  message      String?
+
+  // Counters
+  total        Int             @default(0)
+  sent         Int             @default(0)
+  failed       Int             @default(0)
+  cancelled    Int             @default(0)
+
+  // Per-recipient tracking
+  recipients   WaBulkRecipient[]
+  messages     WaMessage[]
+
+  completedAt  DateTime?
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([status])
+  @@index([templateId])
+  @@map("wa_bulk_jobs")
+}
+
+// Each recipient row in a bulk job
+model WaBulkRecipient {
+  id         String      @id @default(uuid())
+  bulkJob    WaBulkJob   @relation(fields: [bulkJobId], references: [id], onDelete: Cascade)
+  bulkJobId  String
+  contact    WaContact?  @relation(fields: [contactId], references: [id])
+  contactId  String?
+  phone      String                                       // denormalized
+  name       String?
+  variables  Json?                                        // per-recipient variable values
+  status     WaMsgStatus @default(QUEUED)
+  wamid      String?                                      // WhatsApp message ID after send
+  errorMsg   String?
+  sentAt     DateTime?
+
+  @@index([bulkJobId])
+  @@index([phone])
+  @@index([status])
+  @@map("wa_bulk_recipients")  
+}
+
+model CustomTemplate {
+  id           String   @id @default(uuid())
+  name         String   @unique
+  body         String   @default("")
+  category     String   @default("General")
+  emoji        String   @default("💬")
+  usageCount   Int      @default(0)
+  
+  // Rich media support
+  mediaType    String?   @map("media_type")    // 'image', 'video', 'document'
+  mediaUrl     String?   @map("media_url")     // CDN/Storage URL
+  mediaCaption String?   @map("media_caption") // Optional caption text
+  
+  // Interactive elements (stored as JSON)
+  buttons      Json      @default("[]")        // Array of button objects
+  quickReplies Json      @default("[]")        // Array of quick reply objects
+  
+  // Timestamps
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  @@index([category])
+  @@index([mediaType])
+  @@index([usageCount])
+  @@map("custom_templates")
+}
+// ── Enums ─────────────────────────────────────────────────────────────────────
+
+enum WaTemplateCategory {
+  MARKETING
+  UTILITY
+  AUTHENTICATION
+}
+
+enum WaTemplateStatus {
+  PENDING      // submitted, under Meta review
+  APPROVED     // active, can be sent
+  REJECTED     // rejected by Meta
+  PAUSED       // paused due to low quality
+  DISABLED     // disabled by Meta
+  ARCHIVED     // inactive > 12 months
+}
+
+enum WaParamFormat {
+  NAMED        // {{first_name}}
+  POSITIONAL   // {{1}}, {{2}}
+}
+
+enum WaHeaderFormat {
+  TEXT
+  IMAGE
+  VIDEO
+  DOCUMENT
+  LOCATION
+}
+
+enum WaButtonType {
+  QUICK_REPLY
+  URL
+  PHONE_NUMBER
+  COPY_CODE
+}
+
+enum WaMediaType {
+  IMAGE
+  VIDEO
+  DOCUMENT
+  AUDIO
+  STICKER
+}
+
+enum WaMsgDirection {
+  OUTBOUND     // sent by your business
+  INBOUND      // received from customer
+}
+
+enum WaMsgStatus {
+  QUEUED
+  SENT
+  DELIVERED
+  READ
+  FAILED
+  CANCELLED
+}
+
+enum WaMsgType {
+  TEMPLATE
+  TEXT
+  IMAGE
+  VIDEO
+  DOCUMENT
+  AUDIO
+  STICKER
+  LOCATION
+  REACTION
+  INTERACTIVE
+  UNKNOWN
+}
+
+enum WaBulkType {
+  TEMPLATE
+  SIMPLE
+}
+
+enum WaBulkStatus {
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+// ── Existing enums (unchanged) ─────────────────────────────────────────────────
 
 enum AmenityCategory {
   BASIC

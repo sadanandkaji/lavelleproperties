@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -52,7 +52,10 @@ export const metadata: Metadata = {
     images: ["/lavellelogo.svg"],
   },
 
-  // ✅ Mobile theme color
+};
+
+// ✅ ADD this new export for viewport (including themeColor)
+export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 

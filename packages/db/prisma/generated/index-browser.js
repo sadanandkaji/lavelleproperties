@@ -217,9 +217,157 @@ exports.Prisma.BookingScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.WaTemplateScalarFieldEnum = {
+  id: 'id',
+  metaTemplateId: 'metaTemplateId',
+  name: 'name',
+  category: 'category',
+  language: 'language',
+  status: 'status',
+  rejectionReason: 'rejectionReason',
+  body: 'body',
+  headerFormat: 'headerFormat',
+  headerText: 'headerText',
+  headerMediaId: 'headerMediaId',
+  headerMediaUrl: 'headerMediaUrl',
+  headerFilename: 'headerFilename',
+  footer: 'footer',
+  components: 'components',
+  variables: 'variables',
+  parameterFormat: 'parameterFormat',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WaTemplateButtonScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  index: 'index',
+  type: 'type',
+  text: 'text',
+  url: 'url',
+  phone: 'phone',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.WaTemplateMediaScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  mediaType: 'mediaType',
+  mediaId: 'mediaId',
+  url: 'url',
+  filename: 'filename',
+  mimeType: 'mimeType',
+  sizeBytes: 'sizeBytes',
+  caption: 'caption',
+  isHeader: 'isHeader',
+  uploadedAt: 'uploadedAt'
+};
+
+exports.Prisma.WaContactScalarFieldEnum = {
+  id: 'id',
+  phone: 'phone',
+  name: 'name',
+  waId: 'waId',
+  isValid: 'isValid',
+  optedOut: 'optedOut',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WaMessageScalarFieldEnum = {
+  id: 'id',
+  wamid: 'wamid',
+  direction: 'direction',
+  status: 'status',
+  contactId: 'contactId',
+  to: 'to',
+  type: 'type',
+  body: 'body',
+  templateId: 'templateId',
+  variablesUsed: 'variablesUsed',
+  bulkJobId: 'bulkJobId',
+  errorCode: 'errorCode',
+  errorMessage: 'errorMessage',
+  sentAt: 'sentAt',
+  deliveredAt: 'deliveredAt',
+  readAt: 'readAt',
+  failedAt: 'failedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WaMessageMediaScalarFieldEnum = {
+  id: 'id',
+  messageId: 'messageId',
+  mediaType: 'mediaType',
+  mediaId: 'mediaId',
+  url: 'url',
+  filename: 'filename',
+  mimeType: 'mimeType',
+  sizeBytes: 'sizeBytes',
+  caption: 'caption',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.WaBulkJobScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  type: 'type',
+  status: 'status',
+  templateId: 'templateId',
+  message: 'message',
+  total: 'total',
+  sent: 'sent',
+  failed: 'failed',
+  cancelled: 'cancelled',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WaBulkRecipientScalarFieldEnum = {
+  id: 'id',
+  bulkJobId: 'bulkJobId',
+  contactId: 'contactId',
+  phone: 'phone',
+  name: 'name',
+  variables: 'variables',
+  status: 'status',
+  wamid: 'wamid',
+  errorMsg: 'errorMsg',
+  sentAt: 'sentAt'
+};
+
+exports.Prisma.CustomTemplateScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  body: 'body',
+  category: 'category',
+  emoji: 'emoji',
+  usageCount: 'usageCount',
+  mediaType: 'mediaType',
+  mediaUrl: 'mediaUrl',
+  mediaCaption: 'mediaCaption',
+  buttons: 'buttons',
+  quickReplies: 'quickReplies',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -230,6 +378,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.PropertyType = exports.$Enums.PropertyType = {
   RENT: 'RENT',
@@ -266,6 +420,89 @@ exports.AmenityCategory = exports.$Enums.AmenityCategory = {
   FULL: 'FULL'
 };
 
+exports.WaTemplateCategory = exports.$Enums.WaTemplateCategory = {
+  MARKETING: 'MARKETING',
+  UTILITY: 'UTILITY',
+  AUTHENTICATION: 'AUTHENTICATION'
+};
+
+exports.WaTemplateStatus = exports.$Enums.WaTemplateStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  PAUSED: 'PAUSED',
+  DISABLED: 'DISABLED',
+  ARCHIVED: 'ARCHIVED'
+};
+
+exports.WaHeaderFormat = exports.$Enums.WaHeaderFormat = {
+  TEXT: 'TEXT',
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  DOCUMENT: 'DOCUMENT',
+  LOCATION: 'LOCATION'
+};
+
+exports.WaParamFormat = exports.$Enums.WaParamFormat = {
+  NAMED: 'NAMED',
+  POSITIONAL: 'POSITIONAL'
+};
+
+exports.WaButtonType = exports.$Enums.WaButtonType = {
+  QUICK_REPLY: 'QUICK_REPLY',
+  URL: 'URL',
+  PHONE_NUMBER: 'PHONE_NUMBER',
+  COPY_CODE: 'COPY_CODE'
+};
+
+exports.WaMediaType = exports.$Enums.WaMediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  DOCUMENT: 'DOCUMENT',
+  AUDIO: 'AUDIO',
+  STICKER: 'STICKER'
+};
+
+exports.WaMsgDirection = exports.$Enums.WaMsgDirection = {
+  OUTBOUND: 'OUTBOUND',
+  INBOUND: 'INBOUND'
+};
+
+exports.WaMsgStatus = exports.$Enums.WaMsgStatus = {
+  QUEUED: 'QUEUED',
+  SENT: 'SENT',
+  DELIVERED: 'DELIVERED',
+  READ: 'READ',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.WaMsgType = exports.$Enums.WaMsgType = {
+  TEMPLATE: 'TEMPLATE',
+  TEXT: 'TEXT',
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  DOCUMENT: 'DOCUMENT',
+  AUDIO: 'AUDIO',
+  STICKER: 'STICKER',
+  LOCATION: 'LOCATION',
+  REACTION: 'REACTION',
+  INTERACTIVE: 'INTERACTIVE',
+  UNKNOWN: 'UNKNOWN'
+};
+
+exports.WaBulkType = exports.$Enums.WaBulkType = {
+  TEMPLATE: 'TEMPLATE',
+  SIMPLE: 'SIMPLE'
+};
+
+exports.WaBulkStatus = exports.$Enums.WaBulkStatus = {
+  RUNNING: 'RUNNING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+};
+
 exports.Prisma.ModelName = {
   Property: 'Property',
   PropertyImage: 'PropertyImage',
@@ -274,7 +511,16 @@ exports.Prisma.ModelName = {
   User: 'User',
   Cart: 'Cart',
   CartItem: 'CartItem',
-  Booking: 'Booking'
+  Booking: 'Booking',
+  WaTemplate: 'WaTemplate',
+  WaTemplateButton: 'WaTemplateButton',
+  WaTemplateMedia: 'WaTemplateMedia',
+  WaContact: 'WaContact',
+  WaMessage: 'WaMessage',
+  WaMessageMedia: 'WaMessageMedia',
+  WaBulkJob: 'WaBulkJob',
+  WaBulkRecipient: 'WaBulkRecipient',
+  CustomTemplate: 'CustomTemplate'
 };
 
 /**
