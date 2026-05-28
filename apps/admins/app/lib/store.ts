@@ -13,6 +13,8 @@ export interface Template {
   status:           'pending' | 'approved' | 'rejected'
   reason?:          string
   rejectionReason?: string
+  rejectionInfo?: any
+
   createdAt:        string
   updatedAt:        string
 }
