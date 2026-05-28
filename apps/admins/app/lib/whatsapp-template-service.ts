@@ -186,8 +186,8 @@ export async function createTemplateInMeta(
   console.log('📤 Submitting to Meta:', JSON.stringify(payload, null, 2))
 
   try {
-    const res = await fetch(`${BASE}/${WABA_ID}/message_templates`, {
-      method: 'POST',
+const res: Response = await fetch(`${BASE}/${WABA_ID}/message_templates`, {
+        method: 'POST',
       headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
@@ -216,7 +216,7 @@ export async function syncApprovedFromMeta(): Promise<ServiceResult<any[]>> {
 
     while (url) {
       const res  = await fetch(url, { headers: { Authorization: `Bearer ${TOKEN}` }, cache: 'no-store' })
-      const data = await res.json()
+const data: any = await res.json()
       if (!res.ok) return { success: false, error: data.error?.message ?? 'Meta API error', metaError: data.error }
       all = all.concat(data.data ?? [])
       url = data.paging?.next ?? null
