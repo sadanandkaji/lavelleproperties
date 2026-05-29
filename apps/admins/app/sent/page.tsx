@@ -3,59 +3,179 @@ import useAdminAuth from '@/hooks/useAdminAuth'
 import Sidebar from '../components/Sidebar'
 import { useEffect, useState, useCallback } from 'react'
 
-const S: Record<string, React.CSSProperties> = {
-  surface: { background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 12 },
-  label:   { fontSize: 11, color: 'var(--muted)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: 6 },
-  input:   { width: '100%', background: 'var(--surface2)', border: '1px solid var(--border)', borderRadius: 8, padding: '10px 14px', color: 'var(--text)', fontFamily: 'var(--font-mono)', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const },
-}
+// ── Shared classes ────────────────────────────────────────────────────────────
+const INP = 'w-full bg-[var(--surface2)] border border-[var(--border)] rounded-lg px-3.5 py-2.5 text-[var(--text)] font-mono text-[13px] outline-none focus:border-[var(--accent)] transition-colors'
+const LBL = 'block text-[11px] text-[var(--muted)] tracking-[0.12em] uppercase font-mono mb-1.5'
 
+// ── Badge ─────────────────────────────────────────────────────────────────────
 function Badge({ status }: { status: string }) {
-  const map: any = {
-    sent:    { bg: '#00e5a015', border: '#00e5a040', text: '#00e5a0' },
-    failed:  { bg: '#ef444415', border: '#ef444440', text: '#ef4444' },
-    pending: { bg: '#f59e0b15', border: '#f59e0b40', text: '#f59e0b' },
+  const map: Record<string, string> = {
+    sent:    'bg-[#00e5a015] border-[#00e5a040] text-[#00e5a0]',
+    failed:  'bg-[#ef444415] border-[#ef444440] text-[#ef4444]',
+    pending: 'bg-[#f59e0b15] border-[#f59e0b40] text-[#f59e0b]',
   }
-  const c = map[status] ?? map.pending
   return (
-    <span style={{ fontSize: 10, padding: '3px 10px', borderRadius: 100, fontWeight: 700,
-      letterSpacing: '0.12em', background: c.bg, border: `1px solid ${c.border}`, color: c.text }}>
+    <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold tracking-[0.12em] uppercase font-mono border inline-block ${map[status] ?? map.pending}`}>
       {status.toUpperCase()}
     </span>
   )
 }
 
-function StatCard({ label, value, color }: { label: string; value: number | string; color?: string }) {
+// ── Stat card ─────────────────────────────────────────────────────────────────
+function StatCard({ label, value, color }: { label: string; value: string | number; color?: string }) {
   return (
-    <div style={{ background: 'var(--surface2)', border: '1px solid var(--border)', borderRadius: 10, padding: '16px 20px' }}>
-      <div style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.12em', marginBottom: 8 }}>{label}</div>
-      <div style={{ fontSize: 28, fontWeight: 700, color: color ?? 'var(--text)', fontFamily: 'var(--font-display)' }}>{value}</div>
+    <div className="bg-[var(--surface2)] border border-[var(--border)] rounded-xl px-4 py-3.5 md:px-5 md:py-4">
+      <div className="text-[10px] md:text-[11px] text-[var(--muted)] tracking-[0.12em] uppercase font-mono mb-2">{label}</div>
+      <div className="text-[22px] md:text-[28px] font-bold font-[var(--font-display)]" style={{ color: color ?? 'var(--text)' }}>
+        {value}
+      </div>
     </div>
   )
 }
 
-export default function SentMessagesPage() {
-    useAdminAuth()
+// ── Mobile message card ───────────────────────────────────────────────────────
+function MessageCard({ msg, expanded, onToggle, fmt }: {
+  msg: any; expanded: boolean; onToggle: () => void
+  fmt: (iso: string) => string
+}) {
+  return (
+    <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl overflow-hidden">
+      {/* Summary row */}
+      <div onClick={onToggle} className="flex items-start justify-between gap-3 px-4 py-3.5 cursor-pointer active:bg-[var(--surface2)]">
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
+            <span className="text-[13px] font-mono font-bold text-[var(--text)]">+{msg.to}</span>
+            <Badge status={msg.status} />
+            <span className={`text-[10px] px-2 py-0.5 rounded font-mono border
+              ${msg.type === 'template'
+                ? 'bg-[#7c3aed15] border-[#7c3aed30] text-[#a78bfa]'
+                : 'bg-[var(--surface2)] border-[var(--border)] text-[var(--muted)]'}`}>
+              {msg.type === 'template' ? '◈ template' : '✉ simple'}
+            </span>
+          </div>
+          <div className="text-[11px] text-[var(--muted)] mb-1">{fmt(msg.sentAt ?? msg.createdAt)}</div>
+          <div className="text-[12px] text-[var(--muted)] truncate">{msg.body || msg.templateId || '—'}</div>
+        </div>
+        <span className={`text-[var(--muted)] text-[13px] flex-shrink-0 mt-0.5 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}>▼</span>
+      </div>
 
-  const [messages, setMessages]     = useState<any[]>([])
-  const [total, setTotal]           = useState(0)
-  const [page, setPage]             = useState(1)
-  const [pages, setPages]           = useState(1)
-  const [loading, setLoading]       = useState(false)
-  const [search, setSearch]         = useState('')
-  const [statusFilter, setStatus]   = useState('')
-  const [typeFilter, setType]       = useState('')
-  const [expanded, setExpanded]     = useState<string | null>(null)
-  const [stats, setStats]           = useState({ total: 0, sent: 0, failed: 0, templates: 0 })
+      {/* Expanded detail */}
+      {expanded && (
+        <div className="px-4 pb-4 pt-3 bg-[var(--surface2)] border-t border-[var(--border)]">
+          <div className="grid grid-cols-1 gap-3 mb-3">
+            <div>
+              <label className={LBL}>Message ID</label>
+              <span className="text-[11px] font-mono text-[var(--muted)] break-all">{msg.id}</span>
+            </div>
+            {msg.whatsappMessageId && (
+              <div>
+                <label className={LBL}>WhatsApp ID</label>
+                <span className="text-[11px] font-mono text-[var(--muted)] break-all">{msg.whatsappMessageId}</span>
+              </div>
+            )}
+            {msg.templateId && (
+              <div>
+                <label className={LBL}>Template ID</label>
+                <span className="text-[11px] font-mono text-[#a78bfa] break-all">{msg.templateId}</span>
+              </div>
+            )}
+            {msg.error && (
+              <div>
+                <label className={LBL}>Error</label>
+                <span className="text-[12px] text-[#ef4444]">{msg.error}</span>
+              </div>
+            )}
+          </div>
+
+          {msg.body && (
+            <div className="mb-3">
+              <label className={LBL}>Full Message</label>
+              <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg px-3.5 py-3 text-[13px] text-[var(--text)] leading-relaxed whitespace-pre-wrap">
+                {msg.body}
+              </div>
+            </div>
+          )}
+
+          {msg.variables && Object.keys(msg.variables).length > 0 && (
+            <div>
+              <label className={LBL}>Variables Used</label>
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(msg.variables).map(([k, v]: any) => (
+                  <span key={k} className="text-[11px] px-2.5 py-1 rounded bg-[#7c3aed15] border border-[#7c3aed30] text-[#a78bfa] font-mono">
+                    {k}: {v}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Pagination ────────────────────────────────────────────────────────────────
+function Pagination({ page, pages, goPage }: { page: number; pages: number; goPage: (p: number) => void }) {
+  if (pages <= 1) return null
+  const nums = Array.from({ length: pages }, (_, i) => i + 1)
+    .filter(p => p === 1 || p === pages || Math.abs(p - page) <= 1)
+
+  return (
+    <div className="flex items-center justify-center gap-2 flex-wrap">
+      <button onClick={() => goPage(page - 1)} disabled={page === 1}
+        className="px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] text-[12px] font-mono cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
+        ← Prev
+      </button>
+
+      {nums.map((p, idx, arr) => (
+        <div key={p} className="flex items-center gap-2">
+          {idx > 0 && arr[idx - 1] !== p - 1 && (
+            <span className="text-[var(--muted)] text-[12px]">…</span>
+          )}
+          <button onClick={() => goPage(p)}
+            className={`w-9 h-9 rounded-lg border text-[12px] font-mono cursor-pointer transition-colors
+              ${p === page
+                ? 'bg-[#00e5a015] border-[#00e5a050] text-[#00e5a0]'
+                : 'bg-[var(--surface2)] border-[var(--border)] text-[var(--muted)] hover:border-[#00e5a030]'}`}>
+            {p}
+          </button>
+        </div>
+      ))}
+
+      <button onClick={() => goPage(page + 1)} disabled={page === pages}
+        className="px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] text-[12px] font-mono cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed">
+        Next →
+      </button>
+    </div>
+  )
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// MAIN PAGE
+// ══════════════════════════════════════════════════════════════════════════════
+export default function SentMessagesPage() {
+  useAdminAuth()
+
+  const [messages, setMessages]   = useState<any[]>([])
+  const [total, setTotal]         = useState(0)
+  const [page, setPage]           = useState(1)
+  const [pages, setPages]         = useState(1)
+  const [loading, setLoading]     = useState(false)
+  const [search, setSearch]       = useState('')
+  const [statusFilter, setStatus] = useState('')
+  const [typeFilter, setType]     = useState('')
+  const [expanded, setExpanded]   = useState<string | null>(null)
+  const [stats, setStats]         = useState({ total: 0, sent: 0, failed: 0, templates: 0 })
+  const [showFilters, setShowFilters] = useState(false)
 
   const fetchMessages = useCallback(async (p = 1) => {
     setLoading(true)
     try {
       const params = new URLSearchParams({
-        page: String(p),
-        limit: '20',
-        ...(search       ? { phone: search }   : {}),
-        ...(statusFilter ? { status: statusFilter } : {}),
-        ...(typeFilter   ? { type: typeFilter } : {}),
+        page: String(p), limit: '20',
+        ...(search       ? { phone: search }          : {}),
+        ...(statusFilter ? { status: statusFilter }   : {}),
+        ...(typeFilter   ? { type: typeFilter }       : {}),
       })
       const res  = await fetch(`/api/messages/sent?${params}`)
       const data = await res.json()
@@ -63,14 +183,13 @@ export default function SentMessagesPage() {
         setMessages(data.data ?? [])
         setTotal(data.total ?? 0)
         setPages(data.pages ?? 1)
-        // compute stats from all messages (unfiltered call)
-        const all = await fetch('/api/messages/sent?limit=9999').then(r => r.json())
-        const allMsgs: any[] = all.data ?? []
+        const all    = await fetch('/api/messages/sent?limit=9999').then(r => r.json())
+        const allMsg: any[] = all.data ?? []
         setStats({
-          total:     allMsgs.length,
-          sent:      allMsgs.filter((m: any) => m.status === 'sent').length,
-          failed:    allMsgs.filter((m: any) => m.status === 'failed').length,
-          templates: allMsgs.filter((m: any) => m.type === 'template').length,
+          total:     allMsg.length,
+          sent:      allMsg.filter((m: any) => m.status === 'sent').length,
+          failed:    allMsg.filter((m: any) => m.status === 'failed').length,
+          templates: allMsg.filter((m: any) => m.type === 'template').length,
         })
       }
     } finally {
@@ -89,276 +208,236 @@ export default function SentMessagesPage() {
 
   const goPage = (p: number) => { setPage(p); fetchMessages(p) }
 
+  const activeFilters = [search, statusFilter, typeFilter].filter(Boolean).length
+
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="min-h-screen bg-[var(--bg)] md:pl-[224px]">
       <Sidebar />
-      <main style={{ marginLeft: 220, flex: 1, padding: '40px 48px', minHeight: '100vh' }}>
 
-        {/* Header */}
-        <div style={{ marginBottom: 32 }}>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 800, letterSpacing: '-0.02em', margin: 0 }}>
-            Sent Messages
-          </h1>
-          <p style={{ color: 'var(--muted)', fontSize: 13, marginTop: 6 }}>
-            View all messages sent to your contacts
-          </p>
-        </div>
+      <main className="min-w-0 overflow-x-hidden">
+        <div className="px-4 py-6 sm:px-6 md:px-10 md:py-10 max-w-[1400px] w-full mx-auto">
 
-        {/* Stats */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 32 }}>
-          <StatCard label="TOTAL SENT"      value={stats.total.toLocaleString()} />
-          <StatCard label="DELIVERED"       value={stats.sent.toLocaleString()}      color="#00e5a0" />
-          <StatCard label="FAILED"          value={stats.failed.toLocaleString()}    color="#ef4444" />
-          <StatCard label="TEMPLATES USED"  value={stats.templates.toLocaleString()} color="#a78bfa" />
-        </div>
-
-        {/* Filters */}
-        <div style={{ ...S.surface, padding: 20, marginBottom: 24, display: 'flex', gap: 12, alignItems: 'flex-end', flexWrap: 'wrap' }}>
-          <div style={{ flex: 2, minWidth: 200 }}>
-            <label style={S.label}>SEARCH BY PHONE</label>
-            <input
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              placeholder="e.g. 917892358529"
-              style={S.input}
-            />
-          </div>
-
-          <div style={{ flex: 1, minWidth: 140 }}>
-            <label style={S.label}>STATUS</label>
-            <select value={statusFilter} onChange={e => setStatus(e.target.value)} style={S.input}>
-              <option value="">All statuses</option>
-              <option value="sent">Sent</option>
-              <option value="failed">Failed</option>
-              <option value="pending">Pending</option>
-            </select>
-          </div>
-
-          <div style={{ flex: 1, minWidth: 140 }}>
-            <label style={S.label}>TYPE</label>
-            <select value={typeFilter} onChange={e => setType(e.target.value)} style={S.input}>
-              <option value="">All types</option>
-              <option value="template">Template</option>
-              <option value="simple">Simple</option>
-            </select>
-          </div>
-
-          <button
-            onClick={() => { setSearch(''); setStatus(''); setType('') }}
-            style={{ padding: '10px 18px', borderRadius: 8, border: '1px solid var(--border)',
-              background: 'var(--surface2)', color: 'var(--muted)', fontSize: 12,
-              fontFamily: 'var(--font-mono)', cursor: 'pointer' }}>
-            Reset
-          </button>
-
-          <button
-            onClick={() => fetchMessages(page)}
-            style={{ padding: '10px 18px', borderRadius: 8, border: '1px solid #00e5a050',
-              background: '#00e5a010', color: '#00e5a0', fontSize: 12,
-              fontFamily: 'var(--font-mono)', cursor: 'pointer' }}>
-            ↻ Refresh
-          </button>
-        </div>
-
-        {/* Results count */}
-        <div style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 12, fontFamily: 'var(--font-mono)' }}>
-          {loading ? 'Loading…' : `${total.toLocaleString()} message${total !== 1 ? 's' : ''} found`}
-        </div>
-
-        {/* Table */}
-        <div style={{ ...S.surface, overflow: 'hidden', marginBottom: 24 }}>
-          {/* Table header */}
-          <div style={{ display: 'grid', gridTemplateColumns: '180px 130px 90px 80px 1fr 36px',
-            gap: 12, padding: '12px 20px',
-            background: 'var(--surface2)', borderBottom: '1px solid var(--border)',
-            fontSize: 11, color: 'var(--muted)', letterSpacing: '0.1em' }}>
-            <span>TO (PHONE)</span>
-            <span>SENT AT</span>
-            <span>TYPE</span>
-            <span>STATUS</span>
-            <span>MESSAGE</span>
-            <span></span>
-          </div>
-
-          {/* Rows */}
-          {messages.length === 0 && !loading && (
-            <div style={{ padding: 40, textAlign: 'center', color: 'var(--muted)', fontSize: 13 }}>
-              No messages found.
+          {/* ── Page header ── */}
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between mb-6 md:mb-8">
+            <div>
+              <h1 className="font-[var(--font-display)] text-2xl md:text-[32px] font-extrabold tracking-tight text-[var(--text)] mb-1">
+                Sent Messages
+              </h1>
+              <p className="text-sm text-[var(--muted)]">View all messages sent to your contacts</p>
             </div>
-          )}
+            <button onClick={() => fetchMessages(page)}
+              className="self-start sm:self-auto bg-[#00e5a010] border border-[#00e5a050] text-[#00e5a0] rounded-xl px-4 py-2 text-[12px] font-mono cursor-pointer flex-shrink-0">
+              ↻ Refresh
+            </button>
+          </div>
 
-          {messages.map((msg: any) => {
-            const isExp = expanded === msg.id
-            return (
-              <div key={msg.id} style={{ borderBottom: '1px solid var(--border)' }}>
-                {/* Main row */}
-                <div
-                  onClick={() => setExpanded(isExp ? null : msg.id)}
-                  style={{ display: 'grid', gridTemplateColumns: '180px 130px 90px 80px 1fr 36px',
-                    gap: 12, padding: '14px 20px', alignItems: 'center',
-                    cursor: 'pointer', transition: 'background 0.1s',
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.background = 'var(--surface2)')}
-                  onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-                >
-                  {/* Phone */}
-                  <span style={{ fontSize: 13, fontFamily: 'var(--font-mono)', color: 'var(--text)' }}>
-                    +{msg.to}
+          {/* ── Stats grid — 2-col mobile, 4-col desktop ── */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 md:mb-8">
+            <StatCard label="Total Sent"     value={stats.total.toLocaleString()} />
+            <StatCard label="Delivered"      value={stats.sent.toLocaleString()}      color="#00e5a0" />
+            <StatCard label="Failed"         value={stats.failed.toLocaleString()}    color="#ef4444" />
+            <StatCard label="Templates Used" value={stats.templates.toLocaleString()} color="#a78bfa" />
+          </div>
+
+          {/* ── Filters ── */}
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-xl mb-5">
+
+            {/* Mobile: collapsible filter toggle */}
+            <button
+              onClick={() => setShowFilters(v => !v)}
+              className="md:hidden w-full flex items-center justify-between px-4 py-3.5 text-left bg-transparent border-none cursor-pointer"
+            >
+              <span className="text-[13px] font-bold text-[var(--text)]">
+                Filters
+                {activeFilters > 0 && (
+                  <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-[#00e5a015] border border-[#00e5a040] text-[#00e5a0] font-mono">
+                    {activeFilters} active
                   </span>
+                )}
+              </span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                strokeLinecap="round" strokeLinejoin="round"
+                className={`text-[var(--muted)] transition-transform duration-200 ${showFilters ? 'rotate-90' : 'rotate-0'}`}>
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
 
-                  {/* Time */}
-                  <span style={{ fontSize: 11, color: 'var(--muted)' }}>
-                    {fmt(msg.sentAt ?? msg.createdAt)}
-                  </span>
+            {/* Filter body — always visible on desktop, toggle on mobile */}
+            <div className={`md:block ${showFilters ? 'block' : 'hidden'}`}>
+              <div className="px-4 pb-4 pt-1 md:pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr_auto_auto] gap-3 items-end">
 
-                  {/* Type */}
-                  <span style={{ fontSize: 11, padding: '3px 8px', borderRadius: 4,
-                    background: msg.type === 'template' ? '#7c3aed15' : 'var(--surface2)',
-                    color: msg.type === 'template' ? '#a78bfa' : 'var(--muted)',
-                    border: msg.type === 'template' ? '1px solid #7c3aed30' : '1px solid var(--border)',
-                    width: 'fit-content' }}>
-                    {msg.type === 'template' ? '◈ template' : '✉ simple'}
-                  </span>
-
-                  {/* Status */}
-                  <Badge status={msg.status} />
-
-                  {/* Message preview */}
-                  <span style={{ fontSize: 12, color: 'var(--muted)', overflow: 'hidden',
-                    textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {msg.body || msg.templateId || '—'}
-                  </span>
-
-                  {/* Expand arrow */}
-                  <span style={{ color: 'var(--muted)', fontSize: 14, textAlign: 'center' }}>
-                    {isExp ? '▲' : '▼'}
-                  </span>
+                <div>
+                  <label className={LBL}>Search by phone</label>
+                  <input value={search} onChange={e => setSearch(e.target.value)}
+                    placeholder="e.g. 917892358529" className={INP} inputMode="tel" />
                 </div>
 
-                {/* Expanded detail */}
-                {isExp && (
-                  <div style={{ padding: '16px 20px 20px', background: 'var(--surface2)',
-                    borderTop: '1px solid var(--border)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
-                      <div>
-                        <label style={S.label}>MESSAGE ID</label>
-                        <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--muted)' }}>{msg.id}</span>
+                <div>
+                  <label className={LBL}>Status</label>
+                  <select value={statusFilter} onChange={e => setStatus(e.target.value)} className={INP}>
+                    <option value="">All statuses</option>
+                    <option value="sent">Sent</option>
+                    <option value="failed">Failed</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className={LBL}>Type</label>
+                  <select value={typeFilter} onChange={e => setType(e.target.value)} className={INP}>
+                    <option value="">All types</option>
+                    <option value="template">Template</option>
+                    <option value="simple">Simple</option>
+                  </select>
+                </div>
+
+                {/* Buttons: stack on mobile, row on desktop */}
+                <div className="flex gap-2 sm:col-span-2 md:col-span-1 md:flex-row">
+                  <button onClick={() => { setSearch(''); setStatus(''); setType('') }}
+                    className="flex-1 md:flex-none px-4 py-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] text-[12px] font-mono cursor-pointer min-h-[42px]">
+                    Reset
+                  </button>
+                  <button onClick={() => fetchMessages(page)}
+                    className="flex-1 md:flex-none px-4 py-2.5 rounded-lg border border-[#00e5a050] bg-[#00e5a010] text-[#00e5a0] text-[12px] font-mono cursor-pointer min-h-[42px]">
+                    ↻ Refresh
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Results count ── */}
+          <div className="text-[12px] text-[var(--muted)] font-mono mb-3">
+            {loading
+              ? <span className="animate-pulse">Loading…</span>
+              : `${total.toLocaleString()} message${total !== 1 ? 's' : ''} found`}
+          </div>
+
+          {/* ── DESKTOP: table (hidden on mobile) ── */}
+          <div className="hidden md:block bg-[var(--surface)] border border-[var(--border)] rounded-xl overflow-hidden mb-6">
+
+            {/* Table header */}
+            <div className="grid grid-cols-[180px_140px_100px_90px_1fr_36px] gap-3 px-5 py-3 bg-[var(--surface2)] border-b border-[var(--border)] text-[11px] text-[var(--muted)] tracking-[0.1em] uppercase font-mono">
+              <span>To (Phone)</span>
+              <span>Sent At</span>
+              <span>Type</span>
+              <span>Status</span>
+              <span>Message</span>
+              <span />
+            </div>
+
+            {/* Empty state */}
+            {messages.length === 0 && !loading && (
+              <div className="py-16 text-center text-[var(--muted)] text-[13px]">No messages found.</div>
+            )}
+
+            {/* Loading shimmer */}
+            {loading && messages.length === 0 && (
+              <div className="py-16 text-center text-[var(--muted)] text-[13px] animate-pulse font-mono">Loading…</div>
+            )}
+
+            {/* Rows */}
+            {messages.map((msg: any) => {
+              const isExp = expanded === msg.id
+              return (
+                <div key={msg.id} className="border-b border-[var(--border)] last:border-b-0">
+                  {/* Main row */}
+                  <div
+                    onClick={() => setExpanded(isExp ? null : msg.id)}
+                    className="grid grid-cols-[180px_140px_100px_90px_1fr_36px] gap-3 px-5 py-3.5 items-center cursor-pointer hover:bg-[var(--surface2)] transition-colors"
+                  >
+                    <span className="text-[13px] font-mono text-[var(--text)] truncate">+{msg.to}</span>
+                    <span className="text-[11px] text-[var(--muted)]">{fmt(msg.sentAt ?? msg.createdAt)}</span>
+                    <span className={`text-[11px] px-2 py-1 rounded w-fit font-mono border
+                      ${msg.type === 'template'
+                        ? 'bg-[#7c3aed15] border-[#7c3aed30] text-[#a78bfa]'
+                        : 'bg-[var(--surface2)] border-[var(--border)] text-[var(--muted)]'}`}>
+                      {msg.type === 'template' ? '◈ template' : '✉ simple'}
+                    </span>
+                    <Badge status={msg.status} />
+                    <span className="text-[12px] text-[var(--muted)] truncate">{msg.body || msg.templateId || '—'}</span>
+                    <span className={`text-[var(--muted)] text-[13px] text-center transition-transform duration-200 ${isExp ? 'rotate-180' : ''}`}>▼</span>
+                  </div>
+
+                  {/* Expanded */}
+                  {isExp && (
+                    <div className="px-5 py-4 bg-[var(--surface2)] border-t border-[var(--border)]">
+                      <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                          <label className={LBL}>Message ID</label>
+                          <span className="text-[12px] font-mono text-[var(--muted)] break-all">{msg.id}</span>
+                        </div>
+                        {msg.whatsappMessageId && (
+                          <div>
+                            <label className={LBL}>WhatsApp Message ID</label>
+                            <span className="text-[12px] font-mono text-[var(--muted)] break-all">{msg.whatsappMessageId}</span>
+                          </div>
+                        )}
+                        {msg.templateId && (
+                          <div>
+                            <label className={LBL}>Template ID</label>
+                            <span className="text-[12px] font-mono text-[#a78bfa] break-all">{msg.templateId}</span>
+                          </div>
+                        )}
+                        {msg.error && (
+                          <div>
+                            <label className={LBL}>Error</label>
+                            <span className="text-[12px] text-[#ef4444]">{msg.error}</span>
+                          </div>
+                        )}
                       </div>
-                      {msg.whatsappMessageId && (
-                        <div>
-                          <label style={S.label}>WHATSAPP MESSAGE ID</label>
-                          <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: 'var(--muted)' }}>{msg.whatsappMessageId}</span>
+                      {msg.body && (
+                        <div className="mb-4">
+                          <label className={LBL}>Full Message</label>
+                          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg px-4 py-3 text-[13px] text-[var(--text)] leading-relaxed whitespace-pre-wrap">
+                            {msg.body}
+                          </div>
                         </div>
                       )}
-                      {msg.templateId && (
+                      {msg.variables && Object.keys(msg.variables).length > 0 && (
                         <div>
-                          <label style={S.label}>TEMPLATE ID</label>
-                          <span style={{ fontSize: 12, fontFamily: 'var(--font-mono)', color: '#a78bfa' }}>{msg.templateId}</span>
-                        </div>
-                      )}
-                      {msg.error && (
-                        <div>
-                          <label style={S.label}>ERROR</label>
-                          <span style={{ fontSize: 12, color: '#ef4444' }}>{msg.error}</span>
+                          <label className={LBL}>Variables Used</label>
+                          <div className="flex gap-2 flex-wrap">
+                            {Object.entries(msg.variables).map(([k, v]: any) => (
+                              <span key={k} className="text-[11px] px-2.5 py-1 rounded bg-[#7c3aed15] border border-[#7c3aed30] text-[#a78bfa] font-mono">
+                                {k}: {v}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>
-
-                    {msg.body && (
-                      <div>
-                        <label style={S.label}>FULL MESSAGE</label>
-                        <div style={{ background: 'var(--surface)', border: '1px solid var(--border)',
-                          borderRadius: 8, padding: '12px 16px', fontSize: 13,
-                          color: 'var(--text)', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>
-                          {msg.body}
-                        </div>
-                      </div>
-                    )}
-
-                    {msg.variables && Object.keys(msg.variables).length > 0 && (
-                      <div style={{ marginTop: 12 }}>
-                        <label style={S.label}>VARIABLES USED</label>
-                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                          {Object.entries(msg.variables).map(([k, v]: any) => (
-                            <span key={k} style={{ fontSize: 11, padding: '3px 10px', borderRadius: 4,
-                              background: '#7c3aed15', border: '1px solid #7c3aed30', color: '#a78bfa' }}>
-                              {k}: {v}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )
-          })}
-        </div>
-
-        {/* Pagination */}
-        {pages > 1 && (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-            <button
-              onClick={() => goPage(page - 1)} disabled={page === 1}
-              style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid var(--border)',
-                background: 'var(--surface2)', color: 'var(--muted)', cursor: page === 1 ? 'not-allowed' : 'pointer',
-                opacity: page === 1 ? 0.4 : 1, fontSize: 12, fontFamily: 'var(--font-mono)' }}>
-              ← Prev
-            </button>
-
-            {Array.from({ length: pages }, (_, i) => i + 1)
-              .filter(p => p === 1 || p === pages || Math.abs(p - page) <= 2)
-              .map((p, idx, arr) => (
-  <div
-    key={`page-group-${p}`}
-    style={{ display: 'flex', alignItems: 'center', gap: 8 }}
-  >
-    {idx > 0 && arr[idx - 1] !== p - 1 && (
-      <span
-        key={`ellipsis-${p}`}
-        style={{ color: 'var(--muted)', fontSize: 12 }}
-      >
-        …
-      </span>
-    )}
-
-    <button
-      onClick={() => goPage(p)}
-      style={{
-        width: 36,
-        height: 36,
-        borderRadius: 8,
-        border: `1px solid ${
-          p === page ? '#00e5a050' : 'var(--border)'
-        }`,
-        background:
-          p === page
-            ? '#00e5a015'
-            : 'var(--surface2)',
-        color:
-          p === page
-            ? '#00e5a0'
-            : 'var(--muted)',
-        cursor: 'pointer',
-        fontSize: 12,
-        fontFamily: 'var(--font-mono)',
-      }}
-    >
-      {p}
-    </button>
-  </div>
-))}
-
-            <button
-              onClick={() => goPage(page + 1)} disabled={page === pages}
-              style={{ padding: '8px 16px', borderRadius: 8, border: '1px solid var(--border)',
-                background: 'var(--surface2)', color: 'var(--muted)', cursor: page === pages ? 'not-allowed' : 'pointer',
-                opacity: page === pages ? 0.4 : 1, fontSize: 12, fontFamily: 'var(--font-mono)' }}>
-              Next →
-            </button>
+                  )}
+                </div>
+              )
+            })}
           </div>
-        )}
 
+          {/* ── MOBILE: card list (hidden on desktop) ── */}
+          <div className="md:hidden flex flex-col gap-3 mb-6">
+            {messages.length === 0 && !loading && (
+              <div className="py-16 text-center text-[var(--muted)] text-[13px] bg-[var(--surface)] border border-[var(--border)] rounded-xl">
+                No messages found.
+              </div>
+            )}
+            {loading && messages.length === 0 && (
+              <div className="py-12 text-center text-[var(--muted)] text-[13px] animate-pulse font-mono">Loading…</div>
+            )}
+            {messages.map((msg: any) => (
+              <MessageCard
+                key={msg.id}
+                msg={msg}
+                expanded={expanded === msg.id}
+                onToggle={() => setExpanded(expanded === msg.id ? null : msg.id)}
+                fmt={fmt}
+              />
+            ))}
+          </div>
+
+          {/* ── Pagination ── */}
+          <Pagination page={page} pages={pages} goPage={goPage} />
+
+        </div>
       </main>
     </div>
   )

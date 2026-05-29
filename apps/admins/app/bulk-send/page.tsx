@@ -4,25 +4,24 @@ import CustomMessageTab from '../components/CustomMessageTab'
 
 export default function CustomPage() {
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="min-h-screen bg-[var(--bg)] md:pl-[224px]">
       <Sidebar />
-      <main style={{
-        marginLeft: 224,
-        flex: 1,
-        padding: '32px 40px',
-        minHeight: '100vh',
-        maxWidth: 'calc(100vw - 224px)',
-        boxSizing: 'border-box' as const,
-      }}>
-        <div style={{ marginBottom: 28 }}>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, margin: 0 }}>
-            Custom Messages
-          </h1>
-          <p style={{ color: 'var(--muted)', fontSize: 13, marginTop: 4 }}>
-            Send free-form text, images, videos, and documents within the 24-hour window
-          </p>
+
+      <main className="min-w-0 overflow-x-hidden">
+        <div className="px-4 py-6 sm:px-6 md:px-10 md:py-10 max-w-[1400px] w-full mx-auto">
+
+          {/* ── Page header ── */}
+          <div className="mb-6 md:mb-8">
+            <h1 className="font-[var(--font-display)] text-2xl md:text-[32px] font-extrabold tracking-tight text-[var(--text)] mb-1">
+              Custom Messages
+            </h1>
+            <p className="text-sm text-[var(--muted)]">
+              Send free-form text, images, videos, and documents within the 24-hour window
+            </p>
+          </div>
+
+          <CustomMessageTab />
         </div>
-        <CustomMessageTab />
       </main>
     </div>
   )

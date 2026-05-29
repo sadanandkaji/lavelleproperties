@@ -35,63 +35,50 @@ export default function AdminPage() {
 
   useEffect(() => { fetchData(); }, []);
 
-  const handleLogout = async () => {
-    try { await fetch("/api/auth/logout", { method: "POST" }); } catch (_) {}
-    localStorage.removeItem("admin_token");
-    router.push("/login");
-  };
+  const soldOutCount = properties.filter(p => p.isSoldOut).length;
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#0f0f0f', fontFamily: 'monospace' }}>
+    <div className="flex min-h-screen bg-[#0f0f0f] font-mono">
 
-      {/* ── Sidebar ── */}
-      <AdminSidebar  />
+      {/* Sidebar owns its own mobile header + drawer — no wrapper needed */}
+      <AdminSidebar />
 
-      {/* ── Main content (offset by sidebar width) ── */}
-      <div style={{ marginLeft: 220, flex: 1, display: 'flex', flexDirection: 'column' }}>
+      {/* Main content
+          md:pl-[224px] offsets the fixed desktop sidebar.
+          On mobile the Sidebar renders a top header bar (52px),
+          so we add pt-[52px] on mobile and remove it on md+. */}
+      <div className="flex flex-col flex-1 min-w-0 pt-[52px] md:pt-0 md:pl-[224px]">
 
-        {/* Top bar */}
-        <header style={{
-          position: 'sticky', top: 0, zIndex: 10,
-          borderBottom: '1px solid #1f1f1f',
-          background: 'rgba(15,15,15,0.92)',
-          backdropFilter: 'blur(12px)',
-          padding: '18px 36px',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        }}>
+        {/* ── Top bar ── */}
+        <header className="sticky top-0 z-10 border-b border-[#1f1f1f] bg-[#0f0f0f]/95 backdrop-blur-xl px-4 sm:px-6 lg:px-9 py-4 flex items-center justify-between gap-4">
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <span style={{
-                width: 7, height: 7, borderRadius: '50%',
-                background: '#10b981', display: 'inline-block',
-                animation: 'pulse 2s infinite',
-              }} />
-              <h1 style={{ fontSize: 18, fontWeight: 800, color: '#fff', letterSpacing: '0.08em', textTransform: 'uppercase', margin: 0 }}>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 animate-pulse" />
+              <h1 className="text-sm sm:text-base font-extrabold text-white tracking-widest uppercase">
                 Property Admin
               </h1>
             </div>
-            <p style={{ fontSize: 10, color: '#444', letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: 4 }}>
-              Manage listings & amenity tiers
+            <p className="text-[9px] text-[#444] tracking-[0.2em] uppercase mt-0.5 hidden sm:block">
+              Manage listings &amp; amenity tiers
             </p>
           </div>
 
           <button
-            onClick={() => setIsFormOpen(!isFormOpen)}
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '9px 20px', borderRadius: 6,
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-              cursor: 'pointer', transition: 'all 0.15s',
-              background: isFormOpen ? '#1a1a1a' : '#10b981',
-              color: isFormOpen ? '#fff' : '#000',
-              border: isFormOpen ? '1px solid #333' : '1px solid transparent',
-            }}
+            onClick={() => setIsFormOpen(v => !v)}
+            className={[
+              "inline-flex items-center gap-2 px-4 py-2 rounded-md",
+              "text-[10px] font-bold tracking-widest uppercase cursor-pointer",
+              "transition-all duration-150 shrink-0 whitespace-nowrap",
+              isFormOpen
+                ? "bg-[#1a1a1a] text-white border border-[#333]"
+                : "bg-emerald-500 text-black border border-transparent hover:bg-emerald-400",
+            ].join(" ")}
           >
-            {isFormOpen ? '✕ Close' : '+ New Listing'}
+            {isFormOpen ? "✕ Close" : "+ New Listing"}
           </button>
         </header>
 
-        {/* Edit modal */}
+        {/* ── Edit modal ── */}
         {editingProperty && (
           <PropertyEditModal
             property={editingProperty}
@@ -100,74 +87,45 @@ export default function AdminPage() {
           />
         )}
 
-        {/* Page body */}
-        <main style={{ padding: '32px 36px', flex: 1 }}>
+        {/* ── Page body ── */}
+        <main className="flex-1 px-4 sm:px-6 lg:px-9 py-6 sm:py-8">
 
-          {/* Add property form */}
           {isFormOpen && (
-            <section style={{
-              marginBottom: 32, borderRadius: 14,
-              border: '1px solid #1f1f1f', background: '#141414', overflow: 'hidden',
-            }}>
+            <section className="mb-8 rounded-xl border border-[#1f1f1f] bg-[#141414] overflow-hidden">
               <PropertyForm onAdded={() => { fetchData(); setIsFormOpen(false); }} />
             </section>
           )}
 
-          {/* Inventory header */}
-          <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            borderBottom: '1px solid #1f1f1f', paddingBottom: 16, marginBottom: 24,
-          }}>
-            <h2 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', color: '#666', textTransform: 'uppercase', margin: 0 }}>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1f1f1f] pb-4 mb-6">
+            <h2 className="text-[10px] font-bold tracking-[0.2em] text-[#666] uppercase">
               Active Inventory
             </h2>
-            <div style={{ display: 'flex', gap: 10 }}>
-              <span style={{
-                padding: '4px 12px', borderRadius: 5,
-                border: '1px solid #222', background: '#1a1a1a',
-                fontSize: 10, fontWeight: 700, color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase',
-              }}>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 rounded border border-[#222] bg-[#1a1a1a] text-[10px] font-bold text-[#555] tracking-widest uppercase">
                 {properties.length} properties
               </span>
-              {properties.some(p => p.isSoldOut) && (
-                <span style={{
-                  padding: '4px 12px', borderRadius: 5,
-                  border: '1px solid rgba(239,68,68,0.3)', background: 'rgba(239,68,68,0.1)',
-                  fontSize: 10, fontWeight: 700, color: '#f87171', letterSpacing: '0.1em', textTransform: 'uppercase',
-                }}>
-                  {properties.filter(p => p.isSoldOut).length} sold out
+              {soldOutCount > 0 && (
+                <span className="px-3 py-1 rounded border border-red-500/30 bg-red-500/10 text-[10px] font-bold text-red-400 tracking-widest uppercase">
+                  {soldOutCount} sold out
                 </span>
               )}
             </div>
           </div>
 
-          {/* Loading */}
           {loading ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: 260, gap: 16 }}>
-              <div style={{
-                width: 32, height: 32, borderRadius: '50%',
-                border: '2px solid #10b981', borderTopColor: 'transparent',
-                animation: 'spin 0.8s linear infinite',
-              }} />
-              <p style={{ fontSize: 10, color: '#444', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-                Loading listings...
-              </p>
+            <div className="flex flex-col items-center justify-center h-64 gap-4">
+              <div className="w-8 h-8 rounded-full border-2 border-emerald-500 border-t-transparent animate-spin" />
+              <p className="text-[10px] text-[#444] tracking-[0.2em] uppercase">Loading listings…</p>
             </div>
+
           ) : properties.length === 0 ? (
-            <div style={{
-              display: 'flex', flexDirection: 'column', alignItems: 'center',
-              justifyContent: 'center', height: 260,
-              border: '1px dashed #222', borderRadius: 14,
-            }}>
-              <p style={{ fontSize: 13, color: '#444' }}>No properties found.</p>
-              <p style={{ fontSize: 11, color: '#333', marginTop: 6 }}>Start by adding a new listing above.</p>
+            <div className="flex flex-col items-center justify-center h-64 border border-dashed border-[#222] rounded-xl">
+              <p className="text-sm text-[#444]">No properties found.</p>
+              <p className="text-xs text-[#333] mt-1.5">Start by adding a new listing above.</p>
             </div>
+
           ) : (
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-              gap: 20,
-            }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
               {properties.map(p => (
                 <PropertyCard
                   key={p.id}
@@ -180,11 +138,6 @@ export default function AdminPage() {
           )}
         </main>
       </div>
-
-      <style>{`
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
-      `}</style>
     </div>
   );
 }
